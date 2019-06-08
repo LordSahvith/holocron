@@ -1,0 +1,15 @@
+/* * * * * * * * * * * * * * *
+* grid sets the media block  *
+* within a grid of rows/cols *
+* * * * * * * * * * * * * *  */
+.grid5NoGap {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(3, auto);
+  justify-content: center;
+  margin: @marginCenter;
+  
+  img {
+    min-height: auto;
+  }
+}

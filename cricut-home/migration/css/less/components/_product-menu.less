@@ -1,0 +1,44 @@
+.productMenuContainer {
+  position: absolute;
+  color: @white;
+  width: 100%;
+  max-width: 1600px;
+  background-color: rgba(65, 64, 66, 0.8);
+  padding: 10px 15px;
+  z-index: 999;
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+  }
+
+  a {
+    color: @white;
+  }
+
+  .productMenu {
+    display: flex;
+    justify-content: space-evenly;
+
+    .productMenuLeft {
+      align-self: center;
+      width: 100%;
+      h3 {
+        margin-bottom: 0;
+      }
+    }
+
+    .productMenuRight {
+      display: flex;
+      align-self: center;
+      justify-content: flex-end;
+      width: 100%;
+
+      .menuBtnContainer {
+        a {
+          padding: 5px 10px;
+        }
+      }
+    }
+  }
+}

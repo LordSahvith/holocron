@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moving background</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .hero {
+      height: 50vh;
+      overflow: hidden;
+    }
+
+    .codeArea {
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      position: relative;
+    }
+
+    .codeSnippet {
+      transition: all 4s;
+      position: absolute;
+    }
+
+    .moveLeft {
+      transform: translateX(-100%);
+    }
+
+    .moveRight {
+      transform: translateX(100%);
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="codeArea">
+      <!--
+      <code>
+        <pre class="codeSnippet">
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+       </pre>
+      </code>
+-->
+    </div>
+  </section>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  (function($) {
+
+    $(document).ready(function() {
+
+      function addToScreen() {
+        let topNumber = Math.floor(Math.random() * 400);
+        let leftNumber = Math.floor(Math.random() * 1200);
+        $('.codeArea').append('<code><pre class="codeSnippet">* {<br>  margin: 0;<br>  padding: 0;<br>  box-sizing: border-box;<br>}</pre></code>');
+
+        $('.codeSnippet').css({
+          "top": topNumber + "px",
+          "left": leftNumber + "px"
+        });
+      }
+
+      function moveItem() {
+        $('.codeSnippet').toggleClass('moveRight');
+      }
+
+      function startAnimation() {
+        addToScreen();
+        moveItem();
+      }
+
+      //      setInterval(startAnimation, 1000);
+    });
+
+
+  })(jQuery);
+</script>
+
+</html>

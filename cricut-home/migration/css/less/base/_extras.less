@@ -1,0 +1,46 @@
+@import "../abstracts/_variables.less";
+.hidden-xs {
+  display: none;
+}
+
+@media screen and (min-width: @breakpointMd) {
+  .hidden-xs {
+    display: inline-block;
+  }
+}
+
+.visible-xs-block {
+  display: inline-block;
+
+  @media screen and (min-width: @breakpointMd) {
+    display: none;
+  }
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+}
+
+ul.bullets li {
+  position: relative;
+  list-style-type: none;
+  text-align: left;
+  margin-bottom: 10px;
+
+  @media (min-width: @breakpointMd) {
+    margin-bottom: 25px;
+  }
+}
+
+ul.bullets li:before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: gray;
+  display: block;
+  position: absolute;
+  left: -17px;
+  top: 8px;
+}

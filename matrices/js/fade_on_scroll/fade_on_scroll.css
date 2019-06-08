@@ -1,0 +1,16 @@
+.fade-left > *,
+.fade-right > *,
+.fade-up > *,
+.fade-up-2 > *,
+.fade-up-3 > *,
+.fade-down > * {
+    transition: ease opacity .7s, ease transform .7s;
+}
+
+.fade-in > * { transition: ease opacity .9s; }
+.fade-in > * { transition-delay: .1s }
+
+.fade-up-2 > *:nth-child(2n+2) {transition-delay: .1s;}
+
+.fade-up-3 > *:nth-child(3n+2) {transition-delay: .1s;}
+.fade-up-3 > *:nth-child(3n+3) {transition-delay: .2s;}

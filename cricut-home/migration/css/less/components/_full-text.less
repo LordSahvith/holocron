@@ -1,0 +1,103 @@
+@import "../abstracts/_variables.less";
+/* * * * * * * * * * * * * * * *  * * 
+* fullText sets the image to full   *
+* width of the screen with the text *
+* either center, left or right      *
+* * * * * * * * * * * * * * * * * * */
+.fullTextCenter,
+.fullTextLeft,
+.fullTextRight {
+  .mediaText {
+    padding: 50px 40px;
+  }
+
+  &.hero .mediaText {
+    text-align: left;
+    margin: 0;
+  }
+
+  @media screen and (min-width: @breakpointSm) {
+    &.hero .mediaText {
+      text-align: center;
+      margin: @marginCenter;
+    }
+
+    &.hero .mediaText {
+      justify-content: start;
+      padding-top: 10%;
+    }
+
+    &.flexStart .mediaText {
+      justify-content: start;
+    }
+
+    &.flexEnd .mediaText {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.fullTextLeft,
+.fullTextRight {
+  @media screen and (min-width: @breakpointMd) {
+    grid-template-columns: 1fr 1fr;
+
+    .mediaImg {
+      grid-column: 1 e("/") 3;
+      grid-row: 1 e("/") 2;
+    }
+    .mediaText {
+      text-align: left;
+    }
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * 
+* fullTextCenter sets the image to full      *
+* width of the screen with the text centered *
+* aligned and centered on image              *
+* * * * * * * * * * * * * * * * * * * * * *  */
+.fullTextCenter {
+  @media screen and (min-width: @breakpointSm) {
+    grid-template-columns: 1fr;
+
+    .mediaImg {
+      grid-column: 1 e("/") 2;
+      grid-row: 1 e("/") 2;
+    }
+
+    .mediaText {
+      grid-column: 1 e("/") 2;
+      grid-row: 1 e("/") 2;
+      text-align: center;
+    }
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * * *  *
+* fullTextLeft sets the image to full width *
+* of the screen with the text left aligned  *
+* and on image but on the left side         *
+* * * * * * * * * * * * * * * * * * * * * * */
+.fullTextLeft {
+  @media screen and (min-width: @breakpointMd) {
+    .mediaText {
+      grid-column: 1 e("/") 2;
+      grid-row: 1 e("/") 2;
+    }
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * *
+* fullTextRight sets the image to full width *
+* of the screen with the text left aligned  *
+* and on image but on the right side         *
+* * * * * * * * * * * * * * * * * * * * * *  */
+.fullTextRight {
+  @media screen and (min-width: @breakpointMd) {
+    .mediaText {
+      grid-column: 2 e("/") 3;
+      grid-row: 1 e("/") 2;
+    }
+  }
+}

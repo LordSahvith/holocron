@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Populate Options</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #base,
+    #surface {
+      transition: all .4s;
+    }
+
+    .move-to-origin {
+      opacity: 0;
+      transform: translateY(-200%);
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <select id="material">
+    <option disabled selected value> -- select an option -- </option>
+    <option value="everyday">Everyday Iron-On<sup>&trade;</sup> / Lite / Metallic</option>
+    <option value="foil">Foil</option>
+    <option value="fusibleFabric">Fusible Fabric</option>
+    <option value="glitter">Glitter</option>
+    <option value="holographic">Holographic Sparkle</option>
+    <option value="designs">Iron-On Designs<sup>&trade;</sup></option>
+    <option value="patterned">Patterned Iron-On<sup>&trade;</sup></option>
+    <option value="sportflex">SportFlex Iron-On<sup>&trade;</sup></option>
+    <option value="iris">IRIS</option>
+    <option value="beads">Beads</option>
+  </select>
+
+  <select id="base" class="move-to-origin">
+  </select>
+
+  <p id="surface" class="move-to-origin">
+    <input type="radio" id="mat" name="surface" value="mat">
+    <label class="p1" for="mat">Cricut EasyPress Mat</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="towel" name="surface" value="towel">
+    <label class="p1" for="towel">Towel</label>
+  </p>
+
+  <div id="instructions">
+    <p>Pick a Material.</p>
+  </div>
+
+  <script>
+    (function($) {
+      $(document).ready(function() {
+
+        var optionValues = ["burlap", "cardstock", "chipboard", "corkboard", "cotton", "canvas", "cotton/poly", "faux", "felt", "mesh", "neoprene", "nylon", "polyester", "silk", "wood"];
+        var optionNames = ["Burlap", "Cardstock", "Chipboard", "Corkboard", "100% Cotton", "Cotton Canvas / Muslin", "Cotton / Poly Blend", "Faux Leather", "Felt", "Mesh", "Neoprene", "Nylon", "Polyester", "Silk", "Wood"];
+        var irisOptionNames = ["One", "Two", "Three"];
+        var irisOptionValue = ["one", "two", "three"];
+        var beadOptionNames = ["Four", "Five", "Six"];
+        var beadOptionValue = ["four", "five", "six"];
+        var baseOptions = $('#base');
+        var surfaceOptions = $('#surface');
+        var instructions = $('#instructions');
+        var baseChosen = false;
+        var surfaceChosen = false;
+
+        function addOptions(value, name) {
+          return '<option value=' + '"' + value + '"' + '>' + name + '</option>';
+          //          return `<option value="${value}">${name}</option>`;
+        }
+
+        function populateBaseOptions(material) {
+          let materialToLowerCase = material;
+          baseOptions.removeClass('move-to-origin');
+          surfaceOptions.removeClass('move-to-origin');
+          baseOptions.empty().append("<option disabled selected value> -- select an option -- </option>");
+          if (material != "iris" && material != "beads") {
+            for (var i = 0; i < optionValues.length; i++) {
+              baseOptions.append(addOptions(optionValues[i], optionNames[i]));
+            }
+          } else if (material == "iris") {
+            for (var i = 0; i < irisOptionValue.length; i++) {
+              baseOptions.append(addOptions(irisOptionValue[i], irisOptionNames[i]));
+            }
+          } else if (material == "beads") {
+            for (var i = 0; i < beadOptionValue.length; i++) {
+              baseOptions.append(addOptions(beadOptionValue[i], beadOptionNames[i]));
+            }
+          } else {
+            instructions.innerHTML = "<p>Not recommended.</p>";
+          }
+        }
+
+        function poputlateInstructions() {
+          if (baseChosen && surfaceChosen) {
+            instructions.empty().append("<p>It works.</p>");
+          }
+        }
+
+        // Handle material change
+        $('#material').change(function() {
+          let material = this.value;
+          console.log(material);
+          populateBaseOptions(material);
+          // Update instructions
+          // updateInstructions();
+        });
+
+        // Handle material change
+        $('#base').change(function() {
+          let base = this.value;
+          console.log(base);
+          baseChosen = true;
+          poputlateInstructions();
+          // Update instructions
+          // updateInstructions();
+        });
+
+        // INPUT & STATE CHANGE //
+        // Handle backing change
+        $('input[name="surface"]').change(function() {
+          let surface = this.value;
+          console.log(surface);
+          surfaceChosen = true;
+          poputlateInstructions();
+          // Update instructions
+          //          updateInstructions();
+        });
+
+      });
+    })(jQuery);
+
+  </script>
+
+</body>
+
+</html>

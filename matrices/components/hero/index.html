@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: 0;
+    }
+
+    body {
+      color: #eee;
+      font-family: 'Helvetica Neue', 'San Fransico', 'Roboto', Helvetica, sans-serif;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+      object-fit: cover;
+    }
+
+    section {
+      height: auto;
+    }
+
+    .grid {
+      display: grid;
+    }
+
+    .main-nav {
+      display: grid;
+      grid-template-areas: "logo logo . . link link link link link";
+      color: #000;
+    }
+
+    .hero {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero img {
+      height: 100vh;
+      position: fixed;
+      z-index: -1;
+    }
+
+    .block {
+      padding: 80px;
+      background-color: #333;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .block h2 {
+      padding-bottom: 40px;
+    }
+
+  </style>
+
+</head>
+
+<body class="grid">
+
+  <!--
+<nav class="main-nav">
+  <div class="logo">
+    <img src="http://via.placeholder.com/150x75/000000.jpg?text=Repressionist" alt="">
+  </div>
+  <div class="nav-links">
+    <ul>
+      <li><a href="">link 1</a></li>
+      <li><a href="">link 2</a></li>
+      <li><a href="">link 3</a></li>
+      <li><a href="">link 4</a></li>
+      <li><a href="">link 5</a></li>
+    </ul>
+  </div>
+</nav>
+-->
+
+  <section class="hero">
+    <picture>
+      <source media="(min-width: 769px)" srcset="img/repressionist.jpeg" />
+      <source media="(min-width: 641px)" srcset="img/repressionist.jpeg" />
+      <source media="(max-width: 640px)" srcset="img/repressionist.jpeg" />
+      <img src="img/repressionist.jpeg" alt="Hero">
+    </picture>
+  </section>
+
+  <section class="block">
+    <h2>Latest Music</h2>
+    <div class="spotify">
+      <iframe src="https://open.spotify.com/embed/album/2MlFrau8i0dclaS70RiZJR" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+  </section>
+
+
+  <script>
+
+
+
+  </script>
+
+</body>
+
+</html>

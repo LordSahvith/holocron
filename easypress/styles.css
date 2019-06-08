@@ -1,0 +1,68 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.center {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.slick-prev,
+.slick-next {
+    width: 50px;
+    height: 100%;
+    box-shadow: 1px 1px 2px 2px #d9dede;
+    z-index: 99;
+    background-color: #eee;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: #ddd;
+}
+
+.slick-prev:focus,
+.slick-next:focus {
+    background-color: #eee;
+}
+
+.slick-prev {
+    left: -50px;
+}
+
+.slick-next {
+    right: -45px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
+
+.active {
+    transform: scale(1.05);
+}
+
+.active img {
+    box-shadow: 1px 1px 2px 2px #d9dede;
+}
+
+.mySlide {
+    padding: 10px;
+    transition: all .5s;
+}
+
+.machineBtn,
+.machineBtn:focus,
+.machineBtn:active {
+    border: none; 
+    outline: 0;
+}

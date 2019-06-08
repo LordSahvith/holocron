@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Flexbox Cards</title>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="flexbox-cards.css">
+  <link rel="stylesheet" href="fade_on_scroll/fade_on_scroll.css">
+
+</head>
+
+<body>
+
+  <section class="hero"></section>
+
+  <div id="screen-width">
+    <h1>Screen Width: <span></span>px</h1>
+  </div>
+
+  <main class="main-area">
+
+    <h2 style="margin: 45px 0">We live and breathe our values.</h2>
+
+    <section class="cards fade-up-3">
+
+      <article class="card">
+        <div class="icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="headline">
+          <h2>We choose trust, respect, and&nbsp;candor.</h2>
+        </div>
+        <div class="subcopy">
+          <p>We bring issues out into the open and work together to solve&nbsp;them.</p>
+        </div>
+      </article> <!-- card -->
+
+      <article class="card">
+        <div class="icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="headline">
+          <h2>Put the stinky fish on the&nbsp;table.</h2>
+        </div>
+        <div class="subcopy">
+          <p>We bring issues out into the open and work together to solve&nbsp;them.</p>
+        </div>
+      </article> <!-- card -->
+
+      <article class="card">
+        <div class="icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="headline">
+          <h2>Great products are built by great&nbsp;teams.</h2>
+        </div>
+        <div class="subcopy">
+          <p>We work together as a unified force for the same&nbsp;goal.</p>
+        </div>
+      </article> <!-- card -->
+
+      <article class="card">
+        <div class="icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="headline">
+          <h2>Suffer the&nbsp;details.</h2>
+        </div>
+        <div class="subcopy">
+          <p>We take pride in particulars, specifics, fine points, and special&nbsp;touches.</p>
+        </div>
+      </article> <!-- card -->
+
+      <article class="card">
+        <div class="icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="headline">
+          <h2>Disagree and&nbsp;commit.</h2>
+        </div>
+        <div class="subcopy">
+          <p>We make our perspective heard, but always support the final&nbsp;decision.</p>
+        </div>
+      </article> <!-- card -->
+
+      <article class="card">
+        <div class="icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="headline">
+          <h2>Act like an&nbsp;owner.</h2>
+        </div>
+        <div class="subcopy">
+          <p>We don’t wait to be told to pinpoint issues and make positive&nbsp;changes.</p>
+        </div>
+      </article> <!-- card -->
+
+      <article class="card">
+        <div class="icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="headline">
+          <h2>Cheetah&nbsp;speed.</h2>
+        </div>
+        <div class="subcopy">
+          <p>We seize every day as an opportunity to move quickly and&nbsp;gracefully.</p>
+        </div>
+      </article> <!-- card -->
+
+      <article class="card">
+        <div class="icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="headline">
+          <h2>Build to&nbsp;delight.</h2>
+        </div>
+        <div class="subcopy">
+          <p>We stretch ourselves to create WOW-worthy&nbsp;innovations.</p>
+        </div>
+      </article> <!-- card -->
+
+      <article class="card">
+        <div class="icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="headline">
+          <h2>Proud, but&nbsp;hungry.</h2>
+        </div>
+        <div class="subcopy">
+          <p>We celebrate our accomplishments and we’re voracious for&nbsp;more.</p>
+        </div>
+      </article> <!-- card -->
+
+    </section>
+
+  </main>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="fade_on_scroll/fade_on_scroll.js"></script>
+
+  <script>
+    (function($) {
+
+      $(window).resize(function() {
+        var screenWidth = window.innerWidth;
+        $("#screen-width span").html(screenWidth);
+      });
+
+
+    })(jQuery);
+  </script>
+
+</body>
+</html>

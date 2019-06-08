@@ -1,0 +1,57 @@
+@import "../abstracts/_variables.less";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: @grayDark;
+  max-width: 1600px;
+  margin: @marginCenter;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  vertical-align: middle;
+  margin: @marginCenter;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  text-align: left;
+}
+
+// Table styles
+
+table th {
+  text-align: center;
+  font-weight: 200;
+  vertical-align: top;
+  padding: 10px;
+}
+
+table td {
+  padding: 16px 18px;
+}
+table tr:nth-child(even) td {
+  background: @grayLight;
+}
+
+table .bullet {
+  margin: 0 auto;
+}
+
+table td:not(:first-child) {
+  border-left: 1px solid @grayDark;
+}
+
+table tr:first-child {
+  border-bottom: 1px solid @grayDark;
+}

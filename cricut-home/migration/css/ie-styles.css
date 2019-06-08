@@ -1,0 +1,45 @@
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  .mediaBlock {
+    display: block;
+  }
+/* 
+  .textOnImage,
+  .hero {
+    position: relative;
+  }
+
+  .hero .mediaText,
+  .textOnImage .mediaText {
+    position: absolute;
+    left: 0;
+    right: 0;
+    color: #ffffff;
+  }
+
+  .hero .mediaText {
+    top: 10%;
+  }
+
+  .textOnImage .mediaText {
+    top: 20%;
+  }
+  */
+
+   .mediaBlock.contentLight {
+    color: #464646;
+    border-color: #464646;
+  }
+
+  .mediaBlock.contentLight.borderBottom::after {
+    background-color: #464646;
+  }
+
+  .mediaBlock.contentLight.headingUnderline h3::after {
+    background-color: #464646;
+  } 
+}
+
+@media screen and (min-width: 641px) {
+  /* .mediaBlock{display:-ms-grid;} */
+}

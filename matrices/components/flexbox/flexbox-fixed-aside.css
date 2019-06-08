@@ -1,0 +1,208 @@
+/* 
+  cricut green - #84bd00 
+  cricut dark green - #618600 
+  text - #464646
+*/
+
+/********************************
+*********** GENERAL *************
+********************************/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, 'Arial', sans-serif;
+  line-height: 1.5;
+}
+
+.nav {
+  height: 70px;
+  background-color: black;
+  z-index: 1;
+}
+
+a:active,
+a:focus {
+  text-decoration: none;
+  color: #618600;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active,
+button:focus {
+  outline: none;
+  border: none;
+}
+
+footer {
+  background-color: #aaa;
+  height: 900px;
+}
+
+/********************************
+************* PAGE **************
+********************************/
+
+.hero {
+  height: 100vh;
+  background-color: #fff;
+}
+
+#screen-width {
+  top: 0;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  font-size: 10px;
+  background-color: #ddd;
+  padding: 20px;
+  z-index: 1;
+}
+
+#screen-width span {
+  color: red;
+}
+
+/*******************************
+*********** CONTENT ************
+*******************************/
+
+.main-area {
+  display: flex;
+  margin: 40px 40px 100px;
+  max-width: 980px;
+}
+
+.content {
+  display: flex;
+  margin: 40px;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    flex-direction: row;
+  }
+}
+
+.change-flow {
+  flex-direction: row;
+}
+
+.content-docs {
+  display: flex;
+  order: 1;
+  flex-direction: column;
+}
+
+.content-doc {}
+
+/*******************************
+************* MENU *************
+*******************************/
+
+.menu {
+  display: flex;
+  padding: 20px 20px 20px 0;
+  order: 0;
+  transition: all .4s;
+  position: relative;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.main-menu {
+  margin-bottom: 50px;
+  min-width: 220px;
+  padding-top: 0;
+}
+
+.toggle-mobile-menu {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 100px;
+  transition: all .4s;
+  cursor: pointer;
+}
+
+.outer {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0 50px;
+  width: 55px;
+  background-color: #84bd00;
+}
+
+.outer:hover {
+  background-color: #618600;
+}
+
+.outer:hover .inner .menu-btn {
+  color: #618600;
+}
+
+.vertical-text {
+  display: flex;
+  transform: rotate(90deg);
+}
+
+.vertical-text .menu-btn {
+  color: #fff;
+  font-size: 18px;
+}
+
+.inner {
+  position: absolute;
+  left: 90%;
+  top: 10px;
+}
+
+.inner .menu-btn {
+  color: #84bd00;
+  font-size: 30px;
+}
+
+.mobile {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 100px;
+  background-color: #eee;
+}
+
+.list {
+  max-width: 220px;
+}
+
+.list ul h2 {
+  font-size: 30px;
+}
+
+.slide {
+  transform: translateX(-120%);
+}
+
+.fixed {
+  position: fixed;
+  top: 80px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: -50px;
+}

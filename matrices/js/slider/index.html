@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slider</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <section id="slider">
+        <div class="slider-container">
+            <div class="slider-images">
+                <img class="slider-image" alt="" src="http://via.placeholder.com/640/eef?text=1" />
+                <img class="slider-image hide" alt="" src="http://via.placeholder.com/640/eef?text=2" />
+                <img class="slider-image hide" alt="" src="http://via.placeholder.com/640/eef?text=3" />
+                <img class="slider-image hide" alt="" src="http://via.placeholder.com/640/eef?text=4" />
+                <img class="slider-image hide" alt="" src="http://via.placeholder.com/640/eef?text=5" />
+            </div>
+            <div class="slider-switch">
+                <span class="slider-prev" data-target="-1">&#10094;</span>
+                <span class="slider-next" data-target="1">&#10095;</span>
+            </div>
+            <div class="slider-dots">
+                <span class="slider-dot active-dot" data-target="1"></span>
+                <span class="slider-dot" data-target="2"></span>
+                <span class="slider-dot" data-target="3"></span>
+                <span class="slider-dot" data-target="4"></span>
+                <span class="slider-dot" data-target="5"></span>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

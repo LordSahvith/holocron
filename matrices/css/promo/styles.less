@@ -1,0 +1,32 @@
+// out: styles.css, compress: true, sourceMap: true
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.promo-blocks {
+    padding: 100px;
+}
+
+.col-1-1-1 {
+    grid-template-columns: 1fr 1fr 1fr;
+    display: grid;
+
+    .mediaBlock {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+#international-information {
+    display: none;
+}
+
+#international-toggle svg {
+    transition: transform 0.3s;
+}
+
+#international-toggle.rotate svg {
+    transform: rotate(180deg);
+}

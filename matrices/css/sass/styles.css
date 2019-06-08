@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.main-area {
+  background-color: #eee;
+  height: 100vh;
+}
+
+.color-change {
+  color: red;
+}
+.color-change:hover {
+  color: blue;
+}
+
+/*# sourceMappingURL=styles.css.map */

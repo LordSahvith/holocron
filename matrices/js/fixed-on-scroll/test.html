@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    nav {
+      height: 70px;
+      background-color: #333;
+    }
+
+    #ribbon {
+      height: 70px;
+      background-color: #eee;
+    }
+
+    .menu {
+      height: 70px;
+      background-color: #fff;
+      width: 100%;
+    }
+
+    section {
+      height: 100vh;
+      background-color: #ddd;
+    }
+    
+    section:nth-child(even) {
+      background-color: #ccc;
+    }
+
+    .fixed {
+      position: fixed;
+      top: 0;
+      z-index: 9999;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <nav></nav>
+  <div id="ribbon"></div>
+  <div class="menu"></div>
+
+  <section></section>
+  <section></section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        var $menuOffset = $('.menu').offset().top;
+      
+        $(window).scroll(function() {
+          var $window = $(window).scrollTop();
+          var $menu = $('.menu');
+          var $extraScroll = 10;
+          
+          if ($window > $menuOffset) {
+            $menu.addClass('fixed');
+          } 
+          if ($window < $menuOffset) {
+            $menu.removeClass('fixed');
+          }
+          
+        });
+    });
+
+  </script>
+
+</body>
+
+</html>

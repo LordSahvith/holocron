@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: 0;
+    }
+
+    body {
+      color: #eee;
+      font-family: 'Helvetica Neue', 'San Fransico', 'Roboto', Helvetica, sans-serif;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+      object-fit: cover;
+    }
+
+    section {
+      height: auto;
+    }
+
+    .grid {
+      display: grid;
+    }
+
+    .main-nav {
+      display: grid;
+      grid-template-areas: "logo button""links links";
+      color: #000;
+    }
+
+    @media screen and (min-width: 768px) {
+      .main-nav {
+        grid-template-areas: "logo links";
+      }
+    }
+
+    .logo {
+      grid-area: logo;
+      z-index: 10;
+    }
+
+    .mobile-menu-btn {
+      grid-area: button;
+    }
+
+    .nav-links {
+      grid-area: links;
+      display: grid;
+      justify-content: center;
+      transform: translateY(-100%);
+    }
+
+    .show-menu {
+      transform: translateY(0);
+    }
+
+    .nav-links ul {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    @media screen and (min-width: 768px) {
+      .nav-links ul {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    .nav-links li {
+      list-style: none;
+      padding: 20px 10px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+    }
+
+  </style>
+
+</head>
+
+<body class="grid">
+
+  <nav class="main-nav">
+    <div class="logo">
+      <img src="http://via.placeholder.com/100x50/000000.jpg?text=Repressionist" alt="">
+    </div>
+
+    <div class="mobile-menu-btn">
+      <button onclick="myFunction()">Try it</button>
+    </div>
+
+    <div class="nav-links">
+      <ul>
+        <li><a href="">link 1</a></li>
+        <li><a href="">link 2</a></li>
+        <li><a href="">link 3</a></li>
+        <li><a href="">link 4</a></li>
+        <li><a href="">link 5</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <script>
+    function myFunction() {
+      console.log("hello");
+      // var element = document.getElementById("nav-links");
+      // element.classList.toggle("show-menu");
+    }
+
+  </script>
+
+
+</body>
+
+</html>
