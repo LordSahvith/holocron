@@ -1,0 +1,19 @@
+.o-flexContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.--flexCenter {
+  justify-content: center;
+  align-items: stretch;
+}
+
+@media screen and (min-width: 641px) {
+  .--flexRow {
+    flex-direction: row;
+  }
+}
+
+.--bgWhite {
+  background-color: #fff;
+}

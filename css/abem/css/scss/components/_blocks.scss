@@ -1,0 +1,42 @@
+.o-hero {
+  position: relative;
+  max-width: 100%;
+  height: auto;
+}
+
+.m-mediaBlock {
+  height: auto;
+  flex: 0 0 calc(100% - 10px);
+  width: calc(100% - 10px);
+}
+
+@media screen and (min-width: 641px) {
+  .m-mediaBlock {
+    max-width: 560px;
+    flex: 0 0 calc(33.3333% - 10px);
+    width: calc(33.3333% - 10px);
+    margin-right: 40px;
+  }
+
+  .m-mediaBlock:last-child {
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .m-mediaBlock {
+    max-width: 560px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .m-mediaBlock {
+    max-width: 700px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .m-mediaBlock {
+    max-width: 790px;
+  }
+}

@@ -1,0 +1,24 @@
+.a-pageTitle {
+  position: absolute;
+  top: 78px;
+  /* top: 20%; */
+  text-align: center;
+}
+
+@media screen and (min-width: 1300px) {
+  .a-pageTitle {
+    top: 113px;
+  }
+}
+
+.--textAlignCenter {
+  text-align: center;
+}
+
+.--textAlignLeft {
+  text-align: left;
+}
+
+.--textAlignRight {
+  text-align: right;
+}

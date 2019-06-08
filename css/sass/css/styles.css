@@ -1,0 +1,48 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: #444;
+  padding: 40px;
+}
+
+h1 {
+  color: #941414;
+  border: 1px solid #941414;
+  padding: 40px;
+}
+
+h1,
+h2,
+h3 {
+  padding-bottom: 40px;
+}
+
+.content {
+  padding-bottom: 40px;
+}
+.content p {
+  line-height: 2em;
+}
+.content a {
+  color: #444;
+  text-decoration: none;
+}
+.content a:visited {
+  color: #670e0e;
+}
+.content a:hover, .content a:active {
+  color: #941414;
+}
+
+ul {
+  margin: 60px;
+  padding: 40px;
+}
+ul li {
+  padding: 20px;
+}
+
+/*# sourceMappingURL=styles.css.map */

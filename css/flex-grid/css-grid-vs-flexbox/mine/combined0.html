@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Combined: Grid &amp; Flex</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 50px 350px 50px;
+    }
+
+    header {
+      background: green;
+      grid-column: span 12;
+      display: flex;
+    }
+
+    header>div:nth-child(3) {
+      margin-left: auto;
+    }
+
+    main {
+      background: red;
+      grid-column: span 10;
+    }
+
+    aside {
+      background: yellow;
+      grid-column: span 2;
+    }
+
+    footer {
+      background: aqua;
+      grid-column: span 12;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <div>Home</div>
+      <div>Search</div>
+      <div>Logout</div>
+    </header>
+    <main>CONTENT</main>
+    <aside>MENU</aside>
+    <footer>FOOTER</footer>
+  </div>
+
+</body>
+</html>

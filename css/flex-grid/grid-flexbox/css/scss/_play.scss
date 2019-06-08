@@ -1,0 +1,257 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: red;
+}
+
+img {
+  display: inline;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+section {
+  padding: 40px;
+  text-align: center;
+}
+
+section:nth-child(odd) {
+  background-color: #eee;
+}
+
+.wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  -ms-grid-rows: (auto)[auto];
+  grid-template-rows: repeat(auto, auto);
+}
+
+.navigation {
+  padding: 20px;
+  background-color: #ccc;
+}
+
+.navigation ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.listItems {
+  padding: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation ul {
+    flex-direction: row;
+    -ms-flex-direction: row;
+  }
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  padding: 0;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+}
+
+.site-title {
+  position: absolute;
+  top: 20px;
+  left: 25%;
+}
+
+.landscape {
+  /*
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+*/
+  /*
+      display: grid;
+      grid-template-columns: 1fr;
+*/
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+  object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landscape img {
+  height: auto;
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.leap {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.leap img {
+  height: 200px;
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nirvana {
+  background-color: #eee;
+  text-align: center;
+}
+
+.design-space {
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .design-space-text {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 320px;
+    color: #fff;
+  }
+}
+
+
+.steps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  text-align: center;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 641px) {
+  .steps {
+    flex-direction: row;
+    -ms-flex-direction: row;
+  }
+}
+
+.step {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 100%;
+  flex: 0 1 100%;
+}
+
+@media screen and (min-width: 641px) {
+  .step {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 calc(33.3333% - 10px);
+    flex: 0 1 calc(33.3333% - 10px);
+    width: calc(33.3333% - 10px);
+  }
+}
+
+.step img {
+  border-radius: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.full-width {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+.full-width img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 641px) {
+  .full-width-text {
+    position: absolute;
+    width: 320px;
+    top: 40px;
+    right: 20px;
+    color: #fff;
+    text-align: left;
+  }
+
+  .full-width-text-alt {
+    position: absolute;
+    width: 50%;
+    top: 40px;
+    left: 25%;
+    color: #000;
+  }
+
+  .material-grid,
+  .margin-top img {
+    margin-top: 240px;
+  }
+}
+
+.material-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[5];
+  grid-template-columns: repeat(5, auto);
+  -ms-grid-rows: (auto)[auto];
+  grid-template-rows: repeat(auto, auto);
+}
+
+.left-align {
+  text-align: left;
+  left: 40px;
+}

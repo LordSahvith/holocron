@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>combined 1</title>
+
+  <style>
+
+    h1, h2 {
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2em auto;
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      grid-template-rows: repeat(auto, auto);
+      grid-gap: 1rem;
+    }
+
+    .container header {
+      grid-area: 1/1/2/3;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+    }
+    
+    .container div {      
+      padding: 20px 0;
+    }
+    
+    @media screen and (min-width: 768px) {
+      .container header {
+        flex-direction: row;
+      }
+    }
+
+    .container main {
+      grid-area: 2/1/3/3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    @media screen and (min-width: 768px) {
+      .container main {
+        grid-area: 2/1/3/2;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .container aside {
+      grid-area: 3/1/3/3;
+    }
+    
+    @media screen and (min-width: 768px) {
+      .container aside {
+        grid-area: 2/2/3/3;
+      }
+    }
+
+    .container footer {
+      grid-area: 4/1/4/3;
+    }
+    
+    @media screen and (min-width: 768px) {
+      .container footer {
+        grid-area: 3/1/4/3;
+      }
+    }
+
+    .container > * {
+      background-color: #ddd;
+      padding: 1rem;
+    }
+
+    /* Flexbox row styles */
+    .row-flex {
+      margin: 40px auto;
+      max-width: 600px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .row-flex div {
+      border: 1px dashed gray;
+      flex: 1 1 100px;
+      text-align: center;
+      padding: 12px;
+    }
+
+    /* Grid row styles */
+    .row-grid {
+      margin: 40px auto;
+      max-width: 600px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
+    .row-grid div {
+      border: 1px dashed gray;
+      text-align: center;
+      padding: 12px;
+    }
+     
+    .subscriber-form-container {
+      max-width: 800px;
+      margin: 40px auto;
+      border: 1px dashed gray;
+      box-sizing: border-box;
+    }
+    .subscriber-form-container form {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .subscriber-form-container form input {
+      margin: 6px;
+      padding: 0.4rem;
+      box-sizing: border-box;
+    }
+    .subscriber-form-container form input {
+      flex: 1 1 150px;
+    }
+    .subscriber-form-container form input[type="email"] {
+      flex: 2 1 300px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>Grid vs Flexbox</h1>
+
+  <h2>Grid Layout W/Flexbox Contents</h2>
+  <div class="container">
+    <header>
+      <h3>Header</h3>
+      <div>Home</div>
+      <div>Search</div>
+      <div>Logout</div>
+    </header>
+    <main>
+      <h3>Main</h3>
+      <p>height for rows is set to auto.</p>
+      <p>so it will grow depending on the content inside</p>
+      <p>Also this <code>&lt;main&gt;</code> tag is using <code>display: flex;</code> for it's contents</p>
+    </main>
+    <aside>Aside</aside>
+    <footer>Footer</footer>
+  </div>
+
+  <h2>Flexbox</h2>
+  <div class="row-flex">
+    <div>1 2 3 4 5 6 7 8 9 0</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+
+  <h2>Grid</h2>
+  <div class="row-grid">
+    <div>1 2 3 4 5 6 7 8 9 0</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+
+  <h2>Flexbox</h2>
+  <div class="subscriber-form-container">
+    <form>
+      <input type="email" placeholder="Email Address">
+      <input type="text" placeholder="Name">
+      <input type="submit" value="Subscribe">
+    </form>
+  </div>
+
+</body>
+</html>

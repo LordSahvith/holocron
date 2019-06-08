@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Grid</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .wrapper {
+      display: grid;
+      grid-gap: 5px;
+      grid-template-columns: repeat(3, minmax(100px, 1fr));
+      grid-template-rows: repeat(3, 20vh);
+    }
+
+    .wrapper>div {
+      /*      background-color: red;*/
+    }
+
+    .wrapper>div>img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .item1 {
+      grid-column: 1/4;
+      grid-row: 1/4;
+    }
+
+    .item3 {}
+
+    .item6 {}
+
+    .item {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    @media screen and (min-width: 768px) {
+      .content {
+        position: absolute;
+        color: #fff;
+      }
+    }
+
+    @media screen and (min-width: 992px) {
+      .content {
+        width: 60%;
+        right: 0;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div class="item item1"><img src="https://via.placeholder.com/640x615/00f0ff.jpg?text=Image+1" alt=""></div>
+
+    <div class="item item2">
+      <img src="https://via.placeholder.com/640x615/0000FF/808080.jpg?text=Image+2" alt="">
+      <div class="content">
+        <h3>hello</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae ad nihil, accusamus sed ex iusto voluptatum voluptatem rem. Dolore facilis, tenetur nihil ipsa asperiores. Culpa consequuntur laudantium, sapiente animi est.</p>
+      </div>
+    </div>
+
+    <div class="item item3">
+      <img src="https://via.placeholder.com/640x615/ff0000/ffffff.jpg?text=Image+3" alt="">
+      <div class="content">
+        <h3>hello</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae ad nihil, accusamus sed ex iusto voluptatum voluptatem rem. Dolore facilis, tenetur nihil ipsa asperiores. Culpa consequuntur laudantium, sapiente animi est.</p>
+      </div>
+    </div>
+
+    <div class="item item4">
+      <img src="https://via.placeholder.com/640x615/ffff00.jpg?text=Image+4" alt="">
+      <div class="content">
+        <h3>hello</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae ad nihil, accusamus sed ex iusto voluptatum voluptatem rem. Dolore facilis, tenetur nihil ipsa asperiores. Culpa consequuntur laudantium, sapiente animi est.</p>
+      </div>
+    </div>
+
+    <div class="item item5">
+      <img src="https://via.placeholder.com/640x615/000000.jpg?text=Image+5" alt="">
+      <div class="content">
+        <h3>hello</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae ad nihil, accusamus sed ex iusto voluptatum voluptatem rem. Dolore facilis, tenetur nihil ipsa asperiores. Culpa consequuntur laudantium, sapiente animi est.</p>
+      </div>
+    </div>
+
+    <div class="item item6">
+      <img src="https://via.placeholder.com/640x615/00ff00.jpg?text=Image+6" alt="">
+      <div class="content">
+        <h3>hello</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae ad nihil, accusamus sed ex iusto voluptatum voluptatem rem. Dolore facilis, tenetur nihil ipsa asperiores. Culpa consequuntur laudantium, sapiente animi est.</p>
+      </div>
+    </div>
+
+    <div class="item item6">
+      <img src="https://via.placeholder.com/640x615/ef09f0.jpg?text=Image+7" alt="">
+      <div class="content">
+        <h3>hello</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae ad nihil, accusamus sed ex iusto voluptatum voluptatem rem. Dolore facilis, tenetur nihil ipsa asperiores. Culpa consequuntur laudantium, sapiente animi est.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

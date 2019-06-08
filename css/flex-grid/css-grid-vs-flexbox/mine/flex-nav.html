@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flex Nav</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    header>div {}
+
+    header>div:nth-child(3) {
+      /*      margin-left: auto;*/
+      align-self: flex-end;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <header>
+    <div>Home</div>
+    <div>Search</div>
+    <div>Logout</div>
+  </header>
+</body>
+
+</html>

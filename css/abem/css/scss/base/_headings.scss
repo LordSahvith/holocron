@@ -1,0 +1,67 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 200;
+  margin-top: 0;
+  letter-spacing: -0.0225em;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 40px;
+  margin-bottom: 0px;
+}
+
+h2 {
+  font-size: 27px;
+  line-height: 35px;
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  h1 {
+    font-size: 37px;
+    line-height: 43px;
+  }
+
+  h2 {
+    font-size: 33px;
+    line-height: 38px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  h1 {
+    font-size: 43px;
+    line-height: 50px;
+  }
+
+  h2 {
+    font-size: 35px;
+    line-height: 40px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  h1 {
+    font-size: 50px;
+    line-height: 57px;
+  }
+
+  h2 {
+    font-size: 40px;
+    line-height: 47px;
+  }
+}

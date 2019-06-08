@@ -1,0 +1,118 @@
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ li {
+   list-style: none;
+ }
+
+ a {
+   text-decoration: none;
+   color: black;
+ }
+
+ a:hover {
+   color: red;
+ }
+
+ section {
+   padding: 40px;
+ }
+
+ .navigation {
+   padding: 20px;
+   background-color: #ccc;
+ }
+
+ .navigation ul {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+   text-align: center;
+ }
+
+ .listItems {
+   padding: 10px;
+ }
+
+ @media screen and (min-width: 768px) {
+   .navigation ul {
+     flex-direction: row;
+   }
+ }
+
+ .hero,
+ .design-space {
+   position: relative;
+   width: 100%;
+   height: auto;
+   max-height: 600px;
+   padding: 0;
+ }
+
+ .hero img,
+ .design-space img {
+   width: 100%;
+   height: auto;
+   max-height: 600px;
+   object-fit: cover;
+ }
+
+ .site-title {
+   position: absolute;
+   top: 20px;
+   left: 25%;
+ }
+
+ .leap {
+   margin-left: auto;
+   margin-right: auto;
+   text-align: center;
+ }
+
+ .leap img {
+   height: 200px;
+   width: 70%;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+ }
+
+ .nirvana {
+   background-color: #eee;
+   text-align: center;
+ }
+
+ .steps {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+ }
+
+ .step img {
+   border-radius: 100%;
+ }
+
+ @media screen and (min-width: 641px) {
+   .steps {
+     flex-direction: row;
+   }
+ }
+
+ .design-space {
+   position: relative;
+ }
+
+ @media screen and (min-width: 768px) {
+   .design-space-text {
+     position: absolute;
+     top: 20px;
+     right: 20px;
+     width: 320px;
+     color: #fff;
+   }
+ }

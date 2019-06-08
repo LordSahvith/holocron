@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Grid</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /*
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    a:hover {
+      color: red;
+    }
+
+    img {
+      display: inline;
+      vertical-align: middle;
+    }
+
+    section {
+      padding: 40px;
+      text-align: center;
+    }
+
+    section:nth-child(odd) {
+      background-color: #eee;
+    }
+
+    .wrapper {
+      -ms-display: grid;
+      display: grid;
+      grid-template-columns: 1fr;
+      -ms-grid-template-columns: 1fr;
+      grid-template-rows: repeat(auto, auto);
+      -ms-grid-template-rows: repeat(auto, auto);
+    }
+
+    .navigation {
+      padding: 20px;
+      background-color: #ccc;
+    }
+
+    .navigation ul {
+      display: flex;
+      -ms-display: flex;
+      flex-direction: column;
+      -ms-flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+    }
+
+    .listItems {
+      padding: 10px;
+    }
+
+    @media screen and (min-width: 768px) {
+      .navigation ul {
+        flex-direction: row;
+      }
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      padding: 0;
+    }
+
+    .hero img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: cover;
+    }
+
+    .site-title {
+      position: absolute;
+      top: 20px;
+      left: 25%;
+    }
+
+    .landscape {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+      text-align: center;
+
+      display: grid;
+      grid-template-columns: 1fr;
+
+      width: 100%;
+      max-width: 980px;
+      height: auto;
+      object-fit: cover;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .landscape img {
+      height: auto;
+      width: 70%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-content: center;
+      text-align: center;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media screen and (min-width: 641px) {
+      .steps {
+        flex-direction: row;
+      }
+    }
+
+    .step {
+      flex: 0 1 100%;
+    }
+
+    @media screen and (min-width: 641px) {
+      .step {
+        flex: 0 1 calc(33.3333% - 10px);
+        width: calc(33.3333% - 10px);
+      }
+    }
+
+    .step img {
+      border-radius: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .full-width {
+      position: relative;
+      width: 100%;
+      height: auto;
+      padding: 0;
+    }
+
+    .full-width img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: cover;
+    }
+
+    @media screen and (min-width: 641px) {
+      .full-width-text {
+        position: absolute;
+        width: 320px;
+        top: 40px;
+        right: 20px;
+        color: #fff;
+        text-align: left;
+      }
+
+      .full-width-text-alt {
+        position: absolute;
+        width: 50%;
+        top: 40px;
+        left: 25%;
+        color: #000;
+      }
+
+      .material-grid,
+      .margin-top img {
+        margin-top: 240px;
+      }
+    }
+
+    .material-grid {
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      grid-template-rows: repeat(auto, auto);
+    }
+
+    .left-align {
+      text-align: left;
+      left: 40px;
+    }
+*/
+  </style>
+</head>
+
+<body>
+
+  <!-- ======================= NAVIGATION ========================================== -->
+  <header>
+    <nav class="navigation">
+      <ul>
+        <li class="listItems"><a href="">item 1</a></li>
+        <li class="listItems"><a href="">item 2</a></li>
+        <li class="listItems"><a href="">item 3</a></li>
+        <li class="listItems"><a href="">item 4</a></li>
+        <li class="listItems"><a href="">item 5</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- ======================= MAIN ========================================== -->
+  <main class="wrapper">
+
+
+    <!-- ======================= HERO ========================================== -->
+    <section class="hero">
+      <picture>
+        <source media="(min-width: 769px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/experience-hero-new2.jpg" />
+        <source media="(min-width: 641px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/experience-hero-new2.jpg" />
+        <source media="(max-width: 640px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/experience-hero-new2.jpg" />
+        <img src="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/experience-hero-new2.jpg" alt="">
+      </picture>
+      <!--
+      <picture>
+        <source media="(min-width: 769px)" srcset="http://via.placeholder.com/1200x600/ff0000.jpg?text=Hero" />
+        <source media="(min-width: 641px)" srcset="http://via.placeholder.com/768x563/0000ff.jpg?text=Hero" />
+        <source media="(max-width: 640px)" srcset="http://via.placeholder.com/650/00ff00.jpg?text=Hero" />
+        <img src="http://via.placeholder.com/1200x600/ff0000.jpg?text=Hero" alt="">
+      </picture>
+-->
+      <h2 class="site-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+    </section>
+
+
+    <!-- ======================= LANDSCAPE ========================================== -->
+    <section class="landscape">
+      <picture>
+        <source media="(min-width: 769px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/20170613_Athena_Marketing_V01.jpg" />
+        <source media="(min-width: 641px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/20170613_Athena_Marketing_V01.jpg" />
+        <source media="(max-width: 640px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/20170613_Athena_Marketing_V01.jpg" />
+        <img src="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/20170613_Athena_Marketing_V01.jpg" alt="">
+      </picture>
+      <!--
+      <picture>
+        <source media="(min-width: 769px)" srcset="http://via.placeholder.com/790x450/ff0000.jpg?text=Landscape" />
+        <source media="(min-width: 641px)" srcset="http://via.placeholder.com/768x563/0000ff.jpg?text=Landscape" />
+        <source media="(max-width: 640px)" srcset="http://via.placeholder.com/650/00ff00.jpg?text=Landscape" />
+        <img src="http://via.placeholder.com/790x450/ff0000.jpg?text=Landscape" alt="">
+      </picture>
+-->
+
+      <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In quis nobis reiciendis nesciunt dolorem, nisi explicabo facere corporis, adipisci veniam aut porro autem inventore voluptates illo veritatis repellendus assumenda laborum.</p>
+    </section>
+
+
+    <!-- ======================= STEPS ========================================== -->
+    <section>
+      <h2>Lorem ipsum dolor sit amet, consectetur.</h2>
+
+      <div class="steps">
+
+        <article class="step">
+          <img src="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/c2-design.png" alt="">
+          <!--          <img src="http://via.placeholder.com/302/00ff00.jpg?text=Step+1" alt="">-->
+          <h3>Lorem</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium eveniet reprehenderit enim maxime blanditiis.</p>
+        </article>
+
+        <article class="step">
+          <img src="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/c2-cut.png" alt="">
+          <!--          <img src="http://via.placeholder.com/302/00ff00.jpg?text=Step+2" alt="">-->
+          <h3>Lorem</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium eveniet reprehenderit enim maxime blanditiis.</p>
+        </article>
+
+        <article class="step">
+          <img src="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/admire.png" alt="">
+          <!--          <img src="http://via.placeholder.com/302/00ff00.jpg?text=Step+3" alt="">-->
+          <h3>Lorem</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium eveniet reprehenderit enim maxime blanditiis.</p>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- ======================= DESIGN SPACE ========================================== -->
+    <section class="full-width">
+      <picture>
+        <source media="(min-width: 769px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/ds_simplicity3.jpg" />
+        <source media="(min-width: 641px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/ds_simplicity3.jpg" />
+        <source media="(max-width: 640px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/experience_laptops_mobile.jpg" />
+        <img src="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/ds_simplicity3.jpg" alt="">
+      </picture>
+      <!--
+      <picture>
+        <source media="(min-width: 769px)" srcset="http://via.placeholder.com/1200x600/0000ff.jpg?text=Design+Space" />
+        <source media="(min-width: 641px)" srcset="http://via.placeholder.com/768x563/0000ff.jpg?text=Design+Space" />
+        <source media="(max-width: 640px)" srcset="http://via.placeholder.com/650/0000ff.jpg?text=Design+Space" />
+        <img src="http://via.placeholder.com/1200x600/0000ff.jpg?text=Design+Space" alt="">
+      </picture>
+-->
+
+      <div class="full-width-text">
+        <h3>lorem ipsum</h3>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi magnam omnis, laudantium rem dolorum voluptate hic excepturi cupiditate at laboriosam sed, dolore aperiam perferendis provident reprehenderit temporibus earum. In, reprehenderit.</p>
+      </div>
+    </section>
+
+
+    <!-- ======================= LIBRARY ========================================== -->
+    <section class="full-width margin-top">
+      <picture>
+        <source media="(min-width: 769px)" srcset="http://via.placeholder.com/1200x600/ffffff.jpg?text=Cricut+Library" />
+        <source media="(min-width: 641px)" srcset="http://via.placeholder.com/768x563/ffffff.jpg?text=Cricut+Library" />
+        <source media="(max-width: 640px)" srcset="http://via.placeholder.com/650/ffffff.jpg?text=Cricut+Library" />
+        <img src="http://via.placeholder.com/1200x600/ffffff.jpg?text=Cricut+Library" alt="">
+      </picture>
+
+      <div class="full-width-text-alt">
+        <h3>lorem ipsum</h3>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi magnam omnis, laudantium rem dolorum voluptate hic excepturi cupiditate at laboriosam sed, dolore aperiam perferendis provident reprehenderit temporibus earum. In, reprehenderit.</p>
+      </div>
+    </section>
+
+
+    <!-- ======================= DESIGNING ========================================== -->
+    <section class="full-width">
+      <picture>
+        <source media="(min-width: 769px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/designing-no-badge2.jpg" />
+        <source media="(min-width: 641px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/designing-no-badge2.jpg" />
+        <source media="(max-width: 640px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/designing-no-badge2.jpg" />
+        <img src="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/designing-no-badge2.jpg" alt="">
+      </picture>
+      <!--
+      <picture>
+        <source media="(min-width: 769px)" srcset="http://via.placeholder.com/1200x600/0000ff.jpg?text=Designing" />
+        <source media="(min-width: 641px)" srcset="http://via.placeholder.com/768x563/0000ff.jpg?text=Designing" />
+        <source media="(max-width: 640px)" srcset="http://via.placeholder.com/650/0000ff.jpg?text=Designing" />
+        <img src="http://via.placeholder.com/1200x600/0000ff" alt="">
+      </picture>
+-->
+
+      <div class="full-width-text">
+        <h3>lorem ipsum</h3>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi magnam omnis, laudantium rem dolorum voluptate hic excepturi cupiditate at laboriosam sed, dolore aperiam perferendis provident reprehenderit temporibus earum. In, reprehenderit.</p>
+      </div>
+    </section>
+
+
+    <!-- ======================= MATERIALS ========================================== -->
+    <section class="full-width alt">
+      <div class="material-grid">
+        <img src="http://via.placeholder.com/250/ff0000.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/ffff00.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/ff00ff.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/0000ff.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/00ffff.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/ffffff.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/000000.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/ff453d.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/7s8f93.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/ff90ef.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/afa023.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/00ff00.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/ffd050.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/cf2000.jpg?text=Selecting+Materials" alt="">
+        <img src="http://via.placeholder.com/250/ff0b48.jpg?text=Selecting+Materials" alt="">
+      </div>
+
+      <div class="full-width-text-alt">
+        <h3>lorem ipsum</h3>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi magnam omnis, laudantium rem dolorum voluptate hic excepturi cupiditate at laboriosam sed, dolore aperiam perferendis provident reprehenderit temporibus earum. In, reprehenderit.</p>
+      </div>
+    </section>
+
+
+    <!-- ======================= USING MACHINE ========================================== -->
+    <section class="full-width">
+      <picture>
+        <source media="(min-width: 769px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/chair-mobile.jpg" />
+        <source media="(min-width: 641px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/chair-mobile.jpg" />
+        <source media="(max-width: 640px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/chair-mobile.jpg" />
+        <img src="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/chair-mobile.jpg" alt="">
+      </picture>
+      <!--
+      <picture>
+        <source media="(min-width: 769px)" srcset="http://via.placeholder.com/1200x600/ffffff.jpg?text=Using+Machine" />
+        <source media="(min-width: 641px)" srcset="http://via.placeholder.com/768x563/ffffff.jpg?text=Using+Machine" />
+        <source media="(max-width: 640px)" srcset="http://via.placeholder.com/650/ffffff.jpg?text=Using+Machine" />
+        <img src="http://via.placeholder.com/1200x600/ffffff.jpg?text=Using+Machine" alt="">
+      </picture>
+-->
+
+      <div class="full-width-text-alt left-align">
+        <h3>lorem ipsum</h3>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi magnam omnis, laudantium rem dolorum voluptate hic excepturi cupiditate at laboriosam sed, dolore aperiam perferendis provident reprehenderit temporibus earum. In, reprehenderit.</p>
+      </div>
+    </section>
+
+
+    <!-- ======================= FINISHING ========================================== -->
+    <section class="full-width">
+      <picture>
+        <source media="(min-width: 769px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/experience_dezi_mobile_cup.jpg" />
+        <source media="(min-width: 641px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/experience_dezi_mobile_cup.jpg" />
+        <source media="(max-width: 640px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/experience_dezi_mobile_cup.jpg" />
+        <img src="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/experience_dezi_mobile_cup.jpg" alt="">
+      </picture>
+      <!--
+      <picture>
+        <source media="(min-width: 769px)" srcset="http://via.placeholder.com/1200x600/000000.jpg?text=Finishing" />
+        <source media="(min-width: 641px)" srcset="http://via.placeholder.com/768x563/000000.jpg?text=Finishing" />
+        <source media="(max-width: 640px)" srcset="http://via.placeholder.com/650/000000.jpg?text=Finishing" />
+        <img src="http://via.placeholder.com/1200x600/000000.jpg?text=Finishing" alt="">
+      </picture>
+-->
+
+      <div class="full-width-text">
+        <h3>lorem ipsum</h3>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi magnam omnis, laudantium rem dolorum voluptate hic excepturi cupiditate at laboriosam sed, dolore aperiam perferendis provident reprehenderit temporibus earum. In, reprehenderit.</p>
+      </div>
+    </section>
+
+
+    <!-- ======================= PROMISES ========================================== -->
+    <section class="full-width">
+      <picture>
+        <source media="(min-width: 769px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/experience_purse2.jpg" />
+        <source media="(min-width: 641px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/bag3.jpg" />
+        <source media="(max-width: 640px)" srcset="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/bag3.jpg" />
+        <img src="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/experience/experience_purse2.jpg" alt="">
+      </picture>
+      <!--
+      <picture>
+        <source media="(min-width: 769px)" srcset="http://via.placeholder.com/1200x600/ffffff" />
+        <source media="(min-width: 641px)" srcset="http://via.placeholder.com/768x563/ffffff" />
+        <source media="(max-width: 640px)" srcset="http://via.placeholder.com/650/ffffff" />
+        <img src="http://via.placeholder.com/1200x600/ffffff" alt="">
+      </picture>
+-->
+
+      <div class="full-width-text-alt left-align">
+        <h3>lorem ipsum</h3>
+        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi magnam omnis, laudantium rem dolorum voluptate hic excepturi cupiditate at laboriosam sed, dolore aperiam perferendis provident reprehenderit temporibus earum. In, reprehenderit.</p>
+      </div>
+    </section>
+
+
+    <!-- ======================= SEE THE POSSIBILITIES ========================================== -->
+    <section>hello</section>
+
+  </main>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+$mainColor: #941414;
+$secondaryColor: #444;
+$fontSize: 16px;
+$thinBorder: 1px solid $mainColor;
+$paddingSm: 20px;
+$paddingMd: 40px;
+$paddingLg: 60px;
+
+@mixin common {
+  margin: $paddingLg;
+  padding: $paddingMd;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  color: $secondaryColor;
+  padding: $paddingMd;
+}
+
+h1 {
+  color: $mainColor;
+  border: $thinBorder;
+  padding: $paddingMd;
+}
+
+h1,
+h2,
+h3 {
+  padding-bottom: $paddingMd;
+}
+
+.content {
+  padding-bottom: $paddingMd;
+
+  p {
+    line-height: 2em;
+  }
+
+  a {
+    color: $secondaryColor;
+    text-decoration: none;
+
+    &:visited {
+      color: darken($mainColor, 10%);
+    }
+
+    &:hover,
+    &:active {
+      color: $mainColor;
+    }
+  }
+}
+
+ul {
+  @include common;
+  li {
+    padding: $paddingSm;
+  }
+}
