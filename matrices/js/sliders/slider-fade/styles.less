@@ -1,0 +1,174 @@
+// out: styles.css, compress: true, sourceMap: true
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/*
+    CONTROLS FOR SLIDING/FADING
+*/
+
+.hide {
+    display: none;
+}
+
+.fadeIn {
+    opacity: 1;
+    animation: fadeIn 1s;
+}
+
+.fadeOut {
+    opacity: 0;
+    animation: fadeOut 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/*
+   / CONTROLS FOR SLIDING/FADING
+*/
+
+// #slider1 {
+// }
+
+.slider {
+    max-width: 500px;
+    width: 100%;
+    display: grid;
+    grid-template-areas: "switch-p img switch-n"
+        ". text ."
+        "selector selector selector"
+        "selector1 selector1 selector1";
+}
+
+.slider-content {
+    display: grid;
+    grid-template-areas: "img";
+    transition: opacity 2s;
+
+    &.slider-images {
+        grid-area: img;
+    }
+
+    &.slider-text-wrapper {
+        grid-area: text;
+    }
+
+    >* {
+        grid-area: img;
+    }
+
+    .fadeIn {
+        opacity: 1;
+        animation: fadeIn 1s;
+    }
+
+    .fadeOut {
+        opacity: 0;
+        animation: fadeOut 1s;
+    }
+}
+
+.slider-switch,
+.slider-selector {
+    cursor: pointer;
+}
+
+.slider-switch {
+    align-self: center;
+}
+
+.slider-prev {
+    grid-area: switch-p;
+}
+
+.slider-next {
+    grid-area: switch-n;
+}
+
+.slider-selector {
+    text-align: center;
+}
+
+.slider-dots {
+    grid-area: selector;
+}
+
+.slider-tabs {
+    display: flex;
+    justify-content: space-evenly;
+    grid-area: selector1;
+
+    .slider-tab {
+        background-color: transparent;
+        width: auto;
+    
+        &:after {
+            content: "";
+            display: block;
+            position: relative;
+            bottom: -0.5em;
+            width: 0;
+            height: 2px;
+            background-color: #00C08B;
+            transition: width .2s ease;
+        }
+    
+        &.active {
+            color: #00C08B;
+    
+            &:after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.active {
+    // opacity: 1;
+}
+
+.slider-dots {
+    width: 100%;
+    z-index: 1;
+}
+
+.slider-dot {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.2);
+    // border: 1px solid #111;
+    border-radius: 100%;
+    height: 10px;
+    width: 10px;
+    transition: all 1s;
+
+    &.active {
+        background-color: #111;
+    }
+}
