@@ -1,18 +1,17 @@
-
 (function ($) {
     $(document).ready(function () {
-        var sliderWrapper = $($(window).outerWidth() < 768) ? '#suiteTools .slider-wrapper' : '#suiteTools .tabs-wrapper';
-        var initialSlideLength = ($(window).outerWidth < 768) ? $(sliderWrapper + ' .slide').length : $(sliderWrapper + ' .slide').length;
-        var slides = $(sliderWrapper + ' .slide');
+        var sliderWrapperQS = $($(window).outerWidth() < 768) ? '#quickSwap .slider-wrapper' : '#quickSwap .tabs-wrapper';
+        var initialSlideLengthQS = ($(window).outerWidth < 768) ? $(sliderWrapperQS + ' .slide').length : $(sliderWrapperQS + ' .slide').length;
+        var slides = $(sliderWrapperQS + ' .slide');
         var slidesCopy = [];
-        var currentSlide = 0;
+        var currentSlideQS = 0;
         var initialLeftPercentage;
         var slideDistance = 0;
-        var tabMargin = 22;
+        var tabMargin = 15;
+        var beenEngagedQS = false;
         var firstClick;
-        var interval;
-        var hasFaded;
-
+        var intervalQS;
+        var hasFadedQS;
 
         $(window).on('resize', function () {
             sliderSetup();
@@ -23,130 +22,177 @@
 
         function sliderSetup() {
             if ($(window).outerWidth() < 768) {
-                sliderWrapper = '#suiteTools .slider-wrapper';
-                slides = $(sliderWrapper + ' .slide');
-                $(sliderWrapper + ' .slide').removeClass('fadeOut');
+                sliderWrapperQS = '#quickSwap .slider-wrapper';
+                slides = $(sliderWrapperQS + ' .slide');
+                $(sliderWrapperQS + ' .slide').removeClass('fadeOut');
                 firstClick = false;
-                hasFaded = false;
+                hasFadedQS = false;
+                beenEngagedQS = false;
             } else if ($(window).outerWidth() < 992) {
-                tabMargin = 14;
-                sliderWrapper = '#quickSwap .tabs-wrapper';
-                slides = $(sliderWrapper + ' .slide');
+                tabMargin = 15;
+                sliderWrapperQS = '#quickSwap .tabs-wrapper';
+                slides = $(sliderWrapperQS + ' .slide');
                 firstClick = true;
-                // addCopiedSlides();
+                beenEngagedQS = false;
+                addCopiedSlides();
                 fadeOutSlides();
             } else {
-                sliderWrapper = '#suiteTools .tabs-wrapper';
-                slides = $(sliderWrapper + ' .slide');
+                tabMargin = 15;
+                sliderWrapperQS = '#quickSwap .tabs-wrapper';
+                slides = $(sliderWrapperQS + ' .slide');
                 firstClick = true;
-                // addCopiedSlides();
+                beenEngagedQS = false;
+                addCopiedSlides();
                 fadeOutSlides();
             }
         }
 
         function fadeOutSlides() {
-            if (!hasFaded) {
-                $('#suiteTools .slider-wrapper .slide').addClass('fadeOut');
-                $('#suiteTools .slider-wrapper .slide').first().removeClass('fadeOut').addClass('fadeIn');
-                hasFaded = true;
+            if (!hasFadedQS) {
+                $('#quickSwap .slider-wrapper .slide').addClass('fadeOut');
+                $('#quickSwap .slider-wrapper .slide').first().removeClass('fadeOut').addClass('fadeIn');
+                hasFadedQS = true;
             }
         }
 
         // listens for click on next/prev buttons
-        $('#suiteTools .button').on('click', function () {
+        $('#quickSwap .button').on('click', function () {
             // checks what was clicked prev or next
             var direction = ($(this).hasClass("prev")) ? -1 : 1;
-            currentSlide += direction;
+            currentSlideQS += direction;
             currentIndex();
             if (direction === -1) {
                 if (!firstClick) {
                     if ($(window).outerWidth() < 768) {
                         slideLeft();
+                        beenEngagedQS = true;
                     } else {
+                        if ($(window).outerWidth() < 992) {
+                            beenEngagedQS = true;
+                        }
                         tabSlideTo(true);
                     }
                 }
             } else {
                 if ($(window).outerWidth() < 768) {
                     slideRight();
+                    beenEngagedQS = true;
                 } else {
+                    if ($(window).outerWidth() < 992) {
+                        beenEngagedQS = true;
+                    }
                     tabSlideTo(false);
                 }
             }
-            activeDot(currentSlide);
+            startInterval();
+            activeDot(currentSlideQS);
         });
 
-        $('#suiteTools .slider-selector').on('click', { sliderObj: $(event) }, function (event) {
+        $('#quickSwap .slider-selector').on('click', { sliderObj: $(event) }, function (event) {
             let slideNumber = Number($(event.target).attr('data-selector'));
             // let target = $(event.target).attr('data-target');
             if (!$(event.target).hasClass('slider-selector')) {
                 if ($(window).outerWidth() < 768) {
                     slideTo(slideNumber);
-                } else {
-                    activeImage(slideNumber);
+                    beenEngagedQS = true;
                 }
             }
+            startInterval();
+        });
+
+        $('#quickSwap .slider-tab').on('click', { sliderObj: $(event) }, function (event) {
+            let slideNumber = Number($(event.target).attr('data-selector'));
+            // let target = $(event.target).attr('data-target');
+            if (!$(event.target).hasClass('slider-selector')) {
+                if ($(window).outerWidth() < 992) {
+                    beenEngagedQS = true;
+                }
+                activeImage(slideNumber);
+            }
+            startInterval();
         });
 
         // listens for swipe to right
-        $(sliderWrapper).on('swiperight', function () {
+        $(sliderWrapperQS).on('swiperight', function () {
             if ($(window).outerWidth() < 768) {
                 slideLeft(true);
+                beenEngagedQS = true;
             } else {
+                if ($(window).outerWidth() < 992) {
+                    beenEngagedQS = true;
+                }
                 tabSlideTo(true);
             }
+            startInterval();
         });
 
         // listens for swipe to left
-        $(sliderWrapper).on('swipeleft', function () {
+        $(sliderWrapperQS).on('swipeleft', function () {
             if ($(window).outerWidth() < 768) {
                 slideRight(true);
+                beenEngagedQS = true;
+            } else if ($(window).outerWidth() < 992) {
+                tabSlideTo(false);
+                beenEngagedQS = true;
             } else {
                 tabSlideTo(false);
             }
+            startInterval();
         });
 
         // starts/stops interval on hover/leave
-        $('#suiteTools .slider-viewport').hover(function () {
+        $('#quickSwap .slider-viewport').hover(function () {
             stopInterval();
         }, function () {
             startInterval();
         });
 
-        // stops interval
+        // stops intervalQS
         function stopInterval() {
-            clearInterval(interval);
+            clearInterval(intervalQS);
         }
 
-        // resets interval
+        // resets intervalQS
         function startInterval() {
             stopInterval();
-            if ($(window).outerWidth() < 768) {
-                interval = setInterval(function () { slideRight(true); }, 3000);
-            } else {
-                interval = setInterval(function () {
-                    // tabSlideTo(false);
+            if ($(window).outerWidth() < 768 && !beenEngagedQS) {
+                intervalQS = setInterval(function () {
+                    slideRight(true);
+                    beenEngagedQS = true;
+                }, 4000);
+            } else if ($(window).outerWidth() < 992 && !beenEngagedQS) {
+                intervalQS = setInterval(function () {
+                    tabSlideTo(false);
                     currentIndex();
-                    activeDot(currentSlide);
-                    activeImage(currentSlide);
-                    currentSlide++;
-                }, 3000);
+                    activeDot(currentSlideQS);
+                    activeImage(currentSlideQS);
+                    currentSlideQS++;
+                }, 4000);
+            } else if (!beenEngagedQS) {
+                intervalQS = setInterval(function () {
+                    tabSlideTo(false);
+                    currentIndex();
+                    activeDot(currentSlideQS);
+                    activeImage(currentSlideQS);
+                    currentSlideQS++;
+                }, 4000);
             }
         }
 
         function slideRight(isInterval) {
             if (isInterval) {
-                currentSlide++;
+                currentSlideQS++;
                 currentIndex();
-                activeDot(currentSlide);
+                activeDot(currentSlideQS);
             }
             let middle;
-            slides = $(sliderWrapper + ' .slide');
+            slides = $(sliderWrapperQS + ' .slide');
 
             // clone middle slide          
             middle = slides[Math.round((slides.length - 1) / 2)];
 
             // set 1st slide's width to 0%
+            $('#quickSwap .slide:first .mediaText').css('display', 'none');
             slides.first().removeClass('fullWidth').addClass('noWidth');
             slides.first().one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
                 function () {
@@ -163,13 +209,13 @@
 
         function slideLeft(isInterval) {
             if (isInterval) {
-                currentSlide--;
+                currentSlideQS--;
                 currentIndex();
-                activeDot(currentSlide);
+                activeDot(currentSlideQS);
             }
             let middle;
             // clone middle slide          
-            slides = $(sliderWrapper + ' .slide');
+            slides = $(sliderWrapperQS + ' .slide');
             middle = slides[Math.round((slides.length - 1) / 2)];
 
             // set width of clone to 0%
@@ -179,21 +225,17 @@
             slides.first().before(middle);
 
             // set width of first slide to 100%
-            slides = $(sliderWrapper + ' .slide');
+            slides = $(sliderWrapperQS + ' .slide');
             slides.first().removeClass('noWidth').addClass('fullWidth');
 
             // delete last slide
             slides.last().remove();
         }
 
-        // handles siding for mobile dots
         function slideTo(targetSlide) {
-            let distance = targetSlide - currentSlide;
-            // slide left
+            let distance = targetSlide - currentSlideQS;
             if (distance < 0) {
-                // checks if its the last slide and goes backwards
-                // otherwise go forward
-                if (distance === -(initialSlideLength - 1)) {
+                if (distance === -(initialSlideLengthQS - 1)) {
                     for (let i = 0; i < 1; i++) {
                         slideRight();
                     }
@@ -203,78 +245,76 @@
                     }
                 }
             } else {
-                // checks if its the last slide and goes forwards
-                if (distance === initialSlideLength - 1) {
+                if (distance === initialSlideLengthQS - 1) {
                     for (let i = 0; i < 1; i++) {
                         slideLeft();
                     }
                 } else if (distance === 1) {
                     slideRight();
                 } else {
-                    // handles how far to slide
-                    let leftPercentage = ((initialSlideLength - 1) * 100);
+                    let leftPercentage = ((initialSlideLengthQS - 1) * 100);
                     let newDiff = distance;
                     let tabSlide = (100 * newDiff);
                     leftPercentage += tabSlide;
-                    slides = $(sliderWrapper + ' .slide');
+                    slides = $(sliderWrapperQS + ' .slide');
                     slides.each(function () {
                         slidesCopy = slides;
                     });
-                    var j = initialSlideLength - 1;
-                    for (let i = slides.length - 1; i > initialSlideLength - 2; i--) {
+                    var j = initialSlideLengthQS - 1;
+                    for (let i = slides.length - 1; i > initialSlideLengthQS - 2; i--) {
                         if (i !== slides.length - 1) {
-                            $(sliderWrapper + ' .slide').last().after($(slidesCopy[j]).clone(true));
+                            $(sliderWrapperQS + ' .slide').last().after($(slidesCopy[j]).clone(true));
                             j++;
                         }
                     }
-                    $(sliderWrapper).animate({ 'left': '-' + leftPercentage + '%' }, 1000, function () {
+                    $(sliderWrapperQS).animate({ 'left': '-' + leftPercentage + '%' }, 1000, function () {
                         leftPercentage *= -1;
-                        for (let i = 0; i < initialSlideLength - 1; i++) {
-                            slides = $(sliderWrapper + ' .slide');
-                            $(sliderWrapper + ' .slide').first().remove();
+                        for (let i = 0; i < initialSlideLengthQS - 1; i++) {
+                            slides = $(sliderWrapperQS + ' .slide');
+                            $(sliderWrapperQS + ' .slide').first().remove();
                             leftPercentage += 100;
-                            $('#suiteTools .slider-wrapper').css('left', leftPercentage + '%');
+                            $('#quickSwap .slider-wrapper').css('left', leftPercentage + '%');
                         }
                     });
                 }
             }
-            currentSlide = targetSlide;
+            // currentIndex();
+            currentSlideQS = targetSlide;
             activeDot(targetSlide);
         }
 
-        // handles sliding for tablet/desktop tabs
         function tabSlideTo(isLeft) {
             if (isLeft) {
-                let leftPercentage = $(sliderWrapper + ' .slide').outerWidth() + tabMargin;
-                // slideDistance += leftPercentage;
+                let leftPercentage = $(sliderWrapperQS + ' .slide').outerWidth() + tabMargin;
+                slideDistance += leftPercentage;
                 initialLeftPercentage += leftPercentage;
-                $(sliderWrapper).animate({ 'left': initialLeftPercentage + 'px' }, 1000, function () {
+                $(sliderWrapperQS).animate({ 'left': initialLeftPercentage + 'px' }, 1000, function () {
                     let middle;
-                    slides = $(sliderWrapper + ' .slide');
+                    slides = $(sliderWrapperQS + ' .slide');
 
                     // clone middle slide          
                     middle = slides[Math.round((slides.length - 1) / 2)];
                     // append clone to end of slides
                     slides.first().before($(middle).clone(true));
-                    initialLeftPercentage += -$(sliderWrapper + ' .slide').outerWidth() - tabMargin;
-                    $(sliderWrapper).css('left', initialLeftPercentage);
+                    initialLeftPercentage += -$(sliderWrapperQS + ' .slide').outerWidth() + tabMargin;
+                    $(sliderWrapperQS).css('left', initialLeftPercentage);
                     // delete first slide
                     slides.last().remove();
                 });
             } else {
-                let leftPercentage = $(sliderWrapper + ' .slide').outerWidth() + tabMargin;
+                let leftPercentage = $(sliderWrapperQS + ' .slide').outerWidth() + tabMargin;
                 initialLeftPercentage += -leftPercentage;
                 let middle;
-                slides = $(sliderWrapper + ' .slide');
+                slides = $(sliderWrapperQS + ' .slide');
 
                 // clone middle slide          
                 middle = slides[Math.round((slides.length - 1) / 2)];
                 // append clone to end of slides
                 slides.last().after($(middle).clone(true));
-                $(sliderWrapper).animate({ 'left': initialLeftPercentage + 'px' }, 1000, function () {
+                $(sliderWrapperQS).animate({ 'left': initialLeftPercentage + 'px' }, 1000, function () {
                     slides.first().remove();
-                    initialLeftPercentage += $(sliderWrapper + ' .slide').outerWidth() + tabMargin;
-                    $(sliderWrapper).css('left', initialLeftPercentage);
+                    initialLeftPercentage += $(sliderWrapperQS + ' .slide').outerWidth() + tabMargin;
+                    $(sliderWrapperQS).css('left', initialLeftPercentage);
                 });
                 if ($(window).outerWidth() >= 768) {
                     firstClick = false;
@@ -282,14 +322,14 @@
             }
         }
 
-        // keeps currentSlide at the same 'index' as the sliders
+        // keeps currentSlideQS at the same 'index' as the sliders
         function currentIndex() {
-            var cycle = !!(currentSlide <= 0 || currentSlide === initialSlideLength);
+            var cycle = !!(currentSlideQS <= 0 || currentSlideQS === initialSlideLengthQS);
             if (cycle) {
-                if (currentSlide < 0) {
-                    currentSlide = initialSlideLength - 1;
-                } else if (currentSlide === initialSlideLength) {
-                    currentSlide = 0;
+                if (currentSlideQS < 0) {
+                    currentSlideQS = initialSlideLengthQS - 1;
+                } else if (currentSlideQS === initialSlideLengthQS) {
+                    currentSlideQS = 0;
                 }
             }
         }
@@ -300,16 +340,19 @@
          * there are
          */
         function setLeftPosition() {
-            let leftPercentage = (-(initialSlideLength - 1) * 100);
+            let leftPercentage = (-(initialSlideLengthQS - 1) * 100);
             initialLeftPercentage = leftPercentage;
             leftPercentage += '%';
             if ($(window).outerWidth() < 768) {
-                $(sliderWrapper).css('left', leftPercentage);
+                $(sliderWrapperQS).css('left', leftPercentage);
             } else {
-                leftPercentage = 0;
+                // leftPercentage = (-(slides.length - 2) * ($(sliderWrapperQS + ' .slide').outerWidth() + tabMargin));
+                // leftPercentage = 0;
+                leftPercentage = -($(sliderWrapperQS + ' .slide').outerWidth() + tabMargin);
                 initialLeftPercentage = leftPercentage;
                 leftPercentage += 'px';
-                $('#suiteTools .slider-wrapper').css('left', '0%');
+                $('#quickSwap .tabs-wrapper').css('left', leftPercentage);
+                $('#quickSwap .slider-wrapper').css('left', '0%');
             }
         }
 
@@ -319,30 +362,22 @@
          * one to the front
          */
         function addCopiedSlides() {
-            slides = $(sliderWrapper + ' .slide');
-            // copy slides
+            slides = $(sliderWrapperQS + ' .slide');
             slides.each(function () {
                 slidesCopy = slides;
             });
 
-            // delete any duplicates
-            // this is to ensure that 
-            // copies aren't being 
-            // duplicated more than 
-            // necessary
             for (let i = 0; i < slides.length; i++) {
-                if (i > initialSlideLength) {
+                if (i > initialSlideLengthQS) {
                     slides[i].remove();
                 }
             }
 
-            // copies for mobile
             if ($(window).outerWidth() < 768) {
                 for (let i = 1; i < slidesCopy.length; i++) {
                     slides.first().before($(slidesCopy[i]).clone(true));
                 }
             } else {
-                // copies for tablet/desktop
                 for (let i = 1; i < slidesCopy.length * 2; i++) {
                     slides.first().before($(slidesCopy[i]).clone(true));
                 }
@@ -352,7 +387,7 @@
 
         // create dots and adds them to page
         function createDots() {
-            $('#suiteTools .slider-dots').empty();
+            $('#quickSwap .slider-dots').empty();
             if ($(window).outerWidth() < 768) {
                 setDots(1);
             } else if ($(window).outerWidth() < 992) {
@@ -364,13 +399,13 @@
 
         // controls how many dots show up
         function setDots(dotIncrement) {
-            if (dotIncrement !== initialSlideLength) {
-                for (let i = 0; i < initialSlideLength; i += dotIncrement) {
+            if (dotIncrement !== initialSlideLengthQS) {
+                for (let i = 0; i < initialSlideLengthQS; i += dotIncrement) {
                     // gives first dot class of active
                     if (i === 0) {
-                        $('#suiteTools .slider-dots').append('<div class="slider-dot active" data-target="#slider1" data-selector="' + i + '"></div>');
+                        $('#quickSwap .slider-dots').append('<div class="slider-dot active" data-target="#slider1" data-selector="' + i + '"></div>');
                     } else {
-                        $('#suiteTools .slider-dots').append('<div class="slider-dot" data-target="#slider1" data-selector="' + i + '"></div>');
+                        $('#quickSwap .slider-dots').append('<div class="slider-dot" data-target="#slider1" data-selector="' + i + '"></div>');
                     }
                 }
             }
@@ -378,26 +413,26 @@
 
         // sets active dot that correlates to slide being displayed
         function activeDot(slideIndex) {
-            let prev = $('#suiteTools .slider-dot.active');
-            let currentSlide = $('#suiteTools .slider-dot[data-selector="' + slideIndex + '"]');
+            let prev = $('#quickSwap .slider-dot.active');
+            let currentSlideQS = $('#quickSwap .slider-dot[data-selector="' + slideIndex + '"]');
             prev.removeClass('active');
-            currentSlide.addClass('active');
+            currentSlideQS.addClass('active');
         }
 
         // sets active tab that correlates to slide being displayed
         function activeTab(slideIndex) {
-            let prev = $('#suiteTools .slider-tab.active');
-            let currentSlide = $('#suiteTools .slider-tab[data-selector="' + slideIndex + '"]');
+            let prev = $('#quickSwap .slider-tab.active');
+            let currentSlideQS = $('#quickSwap .slider-tab[data-selector="' + slideIndex + '"]');
             prev.removeClass('active');
-            currentSlide.addClass('active');
+            currentSlideQS.addClass('active');
         }
 
         // sets active image that correlates to slide being displayed
         function activeImage(slideIndex) {
-            let prev = $('#suiteTools .slider-wrapper .slide.fadeIn');
-            let currentSlide = $('#suiteTools .slider-wrapper .slide[data-slide="' + slideIndex + '"]');
+            let prev = $('#quickSwap .slider-wrapper .slide.fadeIn');
+            let currentSlideQS = $('#quickSwap .slider-wrapper .slide[data-slide="' + slideIndex + '"]');
             prev.removeClass('fadeIn').addClass('fadeOut');
-            currentSlide.removeClass('fadeOut').addClass('fadeIn');
+            currentSlideQS.removeClass('fadeOut').addClass('fadeIn');
             activeTab(slideIndex);
         }
 
