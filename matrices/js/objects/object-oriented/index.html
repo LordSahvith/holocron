@@ -10,16 +10,25 @@
     
 
     <script>
-
-        function Person(name) {
-            this.name = name;
+        
+        function Person(first, last, age, gender, interests) {
+            this.name = {
+                first: first,
+                last: last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+            this.bio = function() {
+                console.log(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old and likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+            };
             this.greeting = function() {
-                console.log('Hi! I\'m ' + this.name + '.');
+                console.log('Hi! I\'m ' + this.name.first + '.');
             };
         }
 
-        var person1 = new Person('Ezio');
-        var person2 = new Person('Alexios');
+        var person1 = new Person('Ezio', 'Auditore', 27, 'male', ['hunting down the pieces of Eden', 'killing templars']);
+        var person2 = new Person('Evie', 'Frye', 23, 'female', ['climbing buildings', 'killing templars']);
 
     </script>
 </body>
