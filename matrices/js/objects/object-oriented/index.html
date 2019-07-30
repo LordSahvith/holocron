@@ -11,14 +11,15 @@
 
     <script>
 
-        function createNewPerson(name) {
-            var obj = {};
-            obj.name = name;
-            obj.greeting = function() {
-                console.log('Hi! I\'m ' + obj.name + '.');
-            }
-            return obj;
+        function Person(name) {
+            this.name = name;
+            this.greeting = function() {
+                console.log('Hi! I\'m ' + this.name + '.');
+            };
         }
+
+        var person1 = new Person('Ezio');
+        var person2 = new Person('Alexios');
 
     </script>
 </body>
