@@ -10,7 +10,16 @@
     
 
     <script>
-        
+
+        function createNewPerson(name) {
+            var obj = {};
+            obj.name = name;
+            obj.greeting = function() {
+                console.log('Hi! I\'m ' + obj.name + '.');
+            }
+            return obj;
+        }
+
     </script>
 </body>
 </html>
