@@ -30,6 +30,10 @@
         var person1 = new Person('Ezio', 'Auditore', 27, 'male', ['hunting down the pieces of Eden', 'killing templars']);
         var person2 = new Person('Evie', 'Frye', 23, 'female', ['climbing buildings', 'killing templars']);
 
+        Person.prototype.farewell = function() {
+            console.log(this.name.first + ' has left the building. Bye for now!');
+        };
+
     </script>
 </body>
 </html>
