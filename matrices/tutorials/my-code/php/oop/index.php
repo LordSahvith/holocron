@@ -33,6 +33,11 @@
 
   class MyOtherClass extends MyClass
   {
+    public function __construct()
+    {
+      echo 'The new constructor in "', __CLASS__ , '".<br />';
+    }  
+
     public function newMethod() 
     {
       echo "From a new method in " . __Class__ . ".<br />";
