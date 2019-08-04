@@ -14,6 +14,12 @@
       echo 'The class "', __CLASS__, '" was destroyed.<br />';
     }
 
+    public function __toString()
+    {
+      echo "Using the toString methogd: ";
+      return $this->getProperty();
+    }
+
     public function setProperty($newVal) 
     {
       $this->prop1 = $newVal;
@@ -25,12 +31,20 @@
     }
   }
 
+  class MyOtherClass extends MyClass
+  {
+    public function newMethod() 
+    {
+      echo "From a new method in " . __Class__ . ".<br />";
+    }
+  }
+
   // create a new object
-  $obj = new MyClass;
+  $newobj = new MyOtherClass;
 
-  // output both objects' $prop1 value
-  echo $obj->getProperty();
+  // output as string
+  echo $newobj->newMethod();
 
-  // output a message at eh end of the file
-  echo "End of file.<br />"
+  // Use a method from the parent class
+  echo $newobj->getProperty();
 ?>
