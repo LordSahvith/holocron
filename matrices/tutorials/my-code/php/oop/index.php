@@ -1,11 +1,19 @@
 <?php
 
   class MyClass {
-    public $prop1 = "I'm a class property!";
+    public $prop1 = "This is a class property!";
+
+    public function setProperty($newVal) {
+      $this->prop1 = $newVal;
+    }
+
+    public function getProperty() {
+      return $this->prop1 . "<br />";
+    }
   }
 
   $obj = new MyClass;
 
-  var_dump($obj);
+  echo $obj->prop1;
 
 ?>
