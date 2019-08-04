@@ -37,13 +37,17 @@
     {
       parent::__construct(); // call the parent class's constructor
       echo 'The new constructor in "', __CLASS__ , '".<br />';
-      // this works because it extends MyClass so it can access getProperty();
-      echo $this->getProperty();
     }  
 
     public function newMethod() 
     {
       echo "From a new method in " . __Class__ . ".<br />";
+    }
+
+    public function callProtected() 
+    {
+      // this works because it extends MyClass so it can access getProperty();
+      echo $this->getProperty();
     }
   }
 
@@ -52,5 +56,5 @@
 
   // Use a method from the parent class
   // can't access getProperty() of protected method
-  echo $newobj->getProperty();
+  echo $newobj->callProtected();
 ?>
