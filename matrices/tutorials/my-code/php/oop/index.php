@@ -4,6 +4,8 @@
   {
     public $prop1 = "This is a class property!";
 
+    public static $count = 0;
+
     public function __construct()
     {
       echo 'The class "', __CLASS__ , '" was initiated!<br />';
@@ -29,6 +31,11 @@
     {
       return $this->prop1 . "<br />";
     }
+
+    public static function plusOne()
+    {
+      return "The count is " . ++self::$count . ".<br />";
+    }
   }
 
   class MyOtherClass extends MyClass
@@ -51,10 +58,9 @@
     }
   }
 
-  // create a new object
-  $newobj = new MyOtherClass;
-
-  // Use a method from the parent class
-  // can't access getProperty() of protected method
-  echo $newobj->callProtected();
+  do 
+  {
+    // Call plusOne without instantiating MyClass
+    echo MyClass::plusOne();
+  } while ( MyClass::$count < 10);
 ?>
