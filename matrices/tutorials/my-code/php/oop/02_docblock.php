@@ -1,4 +1,4 @@
-<?php 
+2<?php 
 
 /**
  * A simple class
