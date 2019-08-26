@@ -51,7 +51,40 @@
       border-bottom: 1px solid #111111;
     }
 
-    .dropdown-links  {
+    @media screen and (min-width: 1024px) {
+      .nav-link {
+        border-bottom: none;
+      }
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-activator::after {
+      content: '';
+      position: absolute;
+      height: 5px;
+      width: 5px;
+      top: 26px;
+      right: 20px;
+      border-right: 1px solid #111111;
+      border-top: 1px solid #111111;
+      transform: rotate(135deg);
+      transition: all .3s;
+    }
+
+    .dropdown-activator.active::after {
+      transform: rotate(315deg);
+    }
+
+    @media screen and (min-width: 1024px) {
+      .dropdown-activator::after {
+        right: 0;
+      }
+    }
+
+    .dropdown-links {
       padding-left: 20px;
     }
 
@@ -99,7 +132,15 @@
         </div>
       </div>
 
-      <div class="nav-link"><a href="#">Item 3</a></div>
+      <div class="nav-link dropdown">
+        <div class="dropdown-activator" data-drop="drop-item-3">
+          <a href="#">Item 3</a>
+        </div>
+        <div id="drop-item-3" class="dropdown-links">
+          <div class="nav-link"><a href="#">Dropdown 1</a></div>
+          <div class="nav-link"><a href="#">Dropdown 2</a></div>
+        </div>
+      </div>
 
       <div class="nav-link"><a href="#">Item 4</a></div>
     </div>
@@ -110,24 +151,39 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <script>
-  
-  (function($) {
 
-    $(document).ready(function() {
-      
-      $('.dropdown-links').hide();
+    (function ($) {
 
-      $('.dropdown-activator').on('click', function() {
-        let self = $(this);
-        let target = self.attr('data-drop');
-        $('#' + target).slideToggle();
-        console.log(target);        
+      $(document).ready(function () {
+
+        $('.dropdown-links').hide();
+
+        $('.dropdown').on('click', function () {
+          let self = $(this).children('.dropdown-activator');
+          let target = self.attr('data-drop');
+          $('#' + target).slideToggle();
+          self.toggleClass('active');
+        });
+
+        $('.dropdown').hover(
+          function () {
+            let self = $(this).children('.dropdown-activator');
+            let target = self.attr('data-drop');
+            $('#' + target).slideToggle();
+            self.toggleClass('active');
+          },
+          function () {
+            let self = $(this).children('.dropdown-activator');
+            let target = self.attr('data-drop');
+            $('#' + target).slideToggle();
+            self.toggleClass('active');
+          }
+        );
+
       });
 
-    });
+    })(jQuery);
 
-  })(jQuery);
-  
   </script>
 
 </body>
