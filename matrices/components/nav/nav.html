@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nav</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media screen and (min-width: 1024px) {
+      nav {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media screen and (min-width: 1024px) {
+      .nav-links {
+        flex-direction: row;
+      }
+    }
+
+    .nav-link {
+      padding: 20px 15px;
+      font-size: 18px;
+      border-bottom: 1px solid #111111;
+    }
+
+    .dropdown-links  {
+      padding-left: 20px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      .dropdown-links {
+        display: none;
+      }
+    }
+
+    .dropdown-links .nav-link {
+      padding: 10px 15px;
+      font-size: 16px;
+      border-bottom: none;
+    }
+
+    .dropdown-links .nav-link:last-child {
+      padding-bottom: 0px;
+    }
+
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <nav>
+    <div class="brand-logo center">
+      <img src="https://via.placeholder.com/70" alt="">
+    </div>
+    <div class="nav-links">
+      <div class="nav-link"><a href="#">Item 1</a></div>
+
+      <div class="nav-link dropdown">
+        <div class="dropdown-activator" data-drop="drop-item-2">
+          <a href="#">Item 2</a>
+        </div>
+        <div id="drop-item-2" class="dropdown-links">
+          <div class="nav-link"><a href="#">Dropdown 1</a></div>
+          <div class="nav-link"><a href="#">Dropdown 2</a></div>
+        </div>
+      </div>
+
+      <div class="nav-link"><a href="#">Item 3</a></div>
+
+      <div class="nav-link"><a href="#">Item 4</a></div>
+    </div>
+  </nav>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script>
+  
+  (function($) {
+
+    $(document).ready(function() {
+      
+      $('.dropdown-links').hide();
+
+      $('.dropdown-activator').on('click', function() {
+        let self = $(this);
+        let target = self.attr('data-drop');
+        $('#' + target).slideToggle();
+        console.log(target);        
+      });
+
+    });
+
+  })(jQuery);
+  
+  </script>
+
+</body>
+
+</html>
