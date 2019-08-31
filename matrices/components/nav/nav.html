@@ -7,124 +7,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Nav</title>
 
-  <style>
-    * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
-
-    li {
-      list-style-type: none;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    nav {
-      display: flex;
-      flex-direction: column;
-    }
-
-    @media screen and (min-width: 1024px) {
-      nav {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
-
-    @media screen and (min-width: 1024px) {
-      .brand-logo.center {
-        align-items: flex-start;
-      }
-    }
-
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-    }
-
-    @media screen and (min-width: 1024px) {
-      .nav-links {
-        flex-direction: row;
-      }
-    }
-
-    .nav-link {
-      padding: 20px 15px;
-      font-size: 18px;
-      border-bottom: 1px solid #111111;
-    }
-
-    @media screen and (min-width: 1024px) {
-      .nav-link {
-        border-bottom: none;
-      }
-    }
-
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown-activator::after {
-      content: '';
-      position: absolute;
-      height: 5px;
-      width: 5px;
-      top: 26px;
-      right: 20px;
-      border-right: 1px solid #111111;
-      border-top: 1px solid #111111;
-      transform: rotate(135deg);
-      transition: all .5s;
-    }
-
-    .dropdown-activator.active::after {
-      transform: rotate(315deg);
-    }
-
-    @media screen and (min-width: 1024px) {
-      .dropdown-activator::after {
-        right: 0;
-      }
-    }
-
-    .dropdown-links {
-      /* padding-left: 20px; */
-    }
-
-    @media screen and (min-width: 1024px) {
-      .dropdown-links {
-        display: none;
-      }
-    }
-
-    .dropdown-links .nav-link {
-      padding: 10px 15px;
-      font-size: 16px;
-      border-bottom: none;
-    }
-
-    .dropdown-links .nav-link:last-child {
-      padding-bottom: 0px;
-    }
-
-    .center {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 
 </head>
 
 <body>
 
   <nav>
+      <!-- BRAND-LOGO -->
     <div class="brand-logo center">
       <img src="https://via.placeholder.com/70" alt="">
     </div>
+    <!-- / BRAND-LOGO -->
+
+    <!-- NAV-LINKS -->
     <div class="nav-links">
       <div class="nav-link"><a href="#">Item 1</a></div>
 
@@ -149,7 +45,8 @@
       </div>
 
       <div class="nav-link"><a href="#">Item 4</a></div>
-    </div>
+    </div> 
+    <!-- / NAV-LINKS -->
   </nav>
 
 
@@ -199,6 +96,7 @@
           let self = $(element).children('.dropdown-activator');
           let target = self.attr('data-drop');
           $('#' + target).slideToggle();
+          // $('#' + target).toggleClass('active').css({'max-height': $('#' + target).outerHeight});
           self.toggleClass('active');
         }
 
