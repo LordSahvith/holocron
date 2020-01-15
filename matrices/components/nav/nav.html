@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nav</title>
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+  <nav>
+      <!-- BRAND-LOGO -->
+    <div class="brand-logo center">
+      <img src="https://via.placeholder.com/70" alt="">
+    </div>
+    <!-- / BRAND-LOGO -->
+
+    <!-- NAV-LINKS -->
+    <div class="nav-links">
+      <div class="nav-link"><a href="#">Item 1</a></div>
+
+      <div class="nav-link dropdown">
+        <div class="dropdown-activator" data-drop="drop-item-2">
+          <a href="#">Item 2</a>
+        </div>
+        <div id="drop-item-2" class="dropdown-links">
+          <div class="nav-link"><a href="#">Dropdown 1</a></div>
+          <div class="nav-link"><a href="#">Dropdown 2</a></div>
+        </div>
+      </div>
+
+      <div class="nav-link dropdown">
+        <div class="dropdown-activator" data-drop="drop-item-3">
+          <a href="#">Item 3</a>
+        </div>
+        <div id="drop-item-3" class="dropdown-links">
+          <div class="nav-link"><a href="#">Dropdown 1</a></div>
+          <div class="nav-link"><a href="#">Dropdown 2</a></div>
+        </div>
+      </div>
+
+      <div class="nav-link"><a href="#">Item 4</a></div>
+    </div> 
+    <!-- / NAV-LINKS -->
+  </nav>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script>
+
+    (function ($) {
+
+      var justResized = true;
+
+      $(document).ready(function () {
+
+        $('.dropdown-links').hide();
+
+        $('.dropdown').on('click', function () {
+            if ($(window).outerWidth() < 1024) {
+              toggleDropdown(this);
+            }
+        });
+
+        $('.dropdown').hover(
+          function () {
+            if ($(window).outerWidth() > 1024) {
+              toggleDropdown(this);
+            }
+          },
+          function () {
+            if ($(window).outerWidth() > 1024) {
+              toggleDropdown(this);
+            }
+          }
+        );
+
+        $(window).on('resize', function() {          
+          if ($(window).outerWidth() > 1024 && justResized) {
+              $('.dropdown-activator').removeClass('active');
+              $('.dropdown-links').hide();
+              justResized = false;
+            } else if ($(window).outerWidth() < 1024) {
+              justResized = true;
+            }
+        });
+
+        function toggleDropdown(element) {
+          let self = $(element).children('.dropdown-activator');
+          let target = self.attr('data-drop');
+          $('#' + target).slideToggle();
+          // $('#' + target).toggleClass('active').css({'max-height': $('#' + target).outerHeight});
+          self.toggleClass('active');
+        }
+
+      });
+
+    })(jQuery);
+
+  </script>
+
+</body>
+
+</html>

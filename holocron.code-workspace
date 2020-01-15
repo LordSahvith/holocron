@@ -1,8 +1,11 @@
 {
 	"folders": [
-		{
-			"path": "."
-		}
+    {
+      "path": "."
+    },
+    {
+      "path": "E:\\Users\\Owner\\Documents\\coding\\games"
+    }
   ],
   "settings": {}
 }
