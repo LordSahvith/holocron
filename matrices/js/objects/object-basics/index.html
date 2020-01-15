@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        const person = {
+            name: {
+                first: 'Lord', 
+                last: 'Sahvith'
+            },
+            age: 27,
+            gender: 'male',
+            interests: ['gaming', 'music'],
+            bio: function() {
+                console.log(this.name['first'] + ' ' + this.name['last'] + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+            },
+            greeting: function() {
+                console.log('Hi! I\'m ' + this.name['last'] + '.');
+            }
+        };    
+        let myDataName = 'height';
+        let myDataValue = '2.0m';
+        person[myDataName] = myDataValue;
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+// out: styles.css, compress: true, sourceMap: true
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.6em;
+    margin: 30px 0;
+}
+
+// hide jquery mobile default
+.ui-loader {
+    display: none;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.slider-wrapper {
+    width: 600px;
+    height: 300px;
+    // overflow: hidden;
+    border: 5px solid black;
+    padding: 0 20px;
+}
+
+.inner-wrapper {
+    // width: 300%;
+    height: 100%;
+    position: relative;
+    left: -100%;
+    // this stops error for passive elements 
+    touch-action: manipulation;
+}
+
+.slide {
+    // width: calc(100% / 3);
+    height: 100%;
+    float: left;
+    // font-size: 100px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button {
+    width: 30px;
+    height: 30px;
+    border-top: 2px solid black;
+    position: absolute;
+    cursor: pointer;
+}
+
+.prev {
+    border-left: 2px solid black;
+    left: 10%;
+    transform: rotate(-45deg);
+}
+
+.next {
+    border-right: 2px solid black;
+    right: 10%;
+    transform: rotate(45deg);
+}
