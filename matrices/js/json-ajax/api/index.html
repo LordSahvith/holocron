@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>APIs</title>
+</head>
+
+<body>
+
+    <section class="jobs"></section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        (function ($) {
+            'use strict';
+            // ENDPOINTS
+            // const API_ENDPOINT = 'https://api.smartrecruiters.com/feed/publications';
+            const API_ENDPOINT = 'https://api.smartrecruiters.com/v1/companies/cricut/postings';
+
+            /** 
+             * @param {string} endpointUrl 
+             * string of the endpoint of database table
+             * 
+             * @return {Promise} promise
+             */
+            function getData(endpointUrl) {
+                return new Promise(
+                    (resolve, reject) => {
+                        $.get(endpointUrl, function (data, status) {
+                            if (status === "success" && data !== false) {
+                                resolve(data.content);
+                            } else {
+                                const ERROR_MESSAGE = new Error("Cannot load data.");
+                                reject(ERROR_MESSAGE);
+                            }
+                        });
+                    }
+                );
+            }
+
+            // irrelevant for now but will display data to screen
+            function displayData(data) {
+                for (let i = 0; i < data.length; i++) {
+                    $('.jobs').append(
+                        '<div class="grid-tile-container"><div class="grid-tile">'
+                        + '<h3>' + data[i].customField[0].valueLabel + '</h3>'
+                        + '<div style="display:flex;"><p>' + data[i].name + '</p>'
+                        + '<p>&nbsp;&nbsp;' + data[i].location.city + ' ' + data[i].location.region + '</p>'
+                        + '</div></div>'
+                    );
+                }
+            }
+
+            // controls data so that none is lost
+            function controlData(data) {
+                console.log(data);
+                let storeDepartment = getDataDepartments(data);
+                console.log('Titles: ', storeDepartment);
+                let addDataToDepartment = sortDataTitles(data, storeDepartment);
+                console.log('Sorted: ', addDataToDepartment);
+                // addDataToDepartment['Creative Development'].sort(dynamicSort('name'));
+                // console.log('Sorted again: ', addDataToDepartment['Creative Development']);
+                let alphabetizeJobTitle = sortJobTitle(addDataToDepartment);
+            }
+
+            // create associative array by departments
+            function getDataDepartments(data) {
+                let titles = [];
+
+                for (let i = 0; i < data.length; i++) {
+                    if (!titles.includes(data[i].department.label)) {
+                        titles[data[i].department.label] = [];
+                    }
+                }
+                return titles;
+            }
+
+            // sort data into departments
+            function sortDataTitles(data, department) {
+                console.log(data.length);
+                for (let i = 0; i < data.length; i++) {
+                    department[data[i].department.label].push(data[i]);
+                }
+                return department;
+            }
+
+            function sortJobTitle(data) {
+                let newData = [];
+                console.log(Object.keys(data).length);
+                for (let i = 0; i < Object.keys(data).length; i++) {
+                    console.log('sortJobTitle: ', data[0]);
+                    // newData.push(data[i].sort(dynamicSort('name')));
+                }
+                // console.log(newData);
+            }
+
+            function dynamicSort(property) {
+                var sortOrder = 1;
+
+                if (property[0] === "-") {
+                    sortOrder = -1;
+                    property = property.substr(1);
+                }
+
+                return function (a, b) {
+                    if (sortOrder == -1) {
+                        return b[property].localeCompare(a[property]);
+                    } else {                        
+                        return a[property].localeCompare(b[property]);
+                    }
+                }
+            }
+
+            getData(API_ENDPOINT)
+                .then(data => controlData(data))
+                .catch(error => console.log(error.message));
+        })(jQuery);
+
+    </script>
+</body>
+
+</html>
