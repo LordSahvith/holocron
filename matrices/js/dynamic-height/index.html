@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dynamic iframe</title>
+</head>
+
+<body>
+
+  <div id="refer-a-friend-from">
+
+    <!-- <iframe frameborder="0" width="1600" height="100%"
+      src="https://cricut.slgnt.us/optiext/optiextension.dll?ID=PbkPje00U_BJM_aSoy4gkalM8x4P6K2yiwlsQ5FAU8xhFRy5zxhMyR715P4ph0_9My8U36PMXUGdUvZtdY&amp;BTPARAMS=UFJPRklMRUlEPTdNV1F3WkdRd01ESXRPVEk0TWkwMFpUZGlMV0U1TkRrdFpHTmhPRFZoWWpabVlUZGpPelptWTBNV1ExWXpndE5tRTJPQzAwTnpRNUxUbGpaRGd0TVdNNFpEVmtZV0UwWWpVeE96c0ElM0QmT0ZGRVI9cmFmLWRldiZBQ1RJT049U2hvdyBSQUYmQ09OVEVOVElEPTdmZmZmZGZiLWZmZmYtZmQyMC03ZmZmLWZlYTlmZmZmZmNhZCZTX0JfSUQ9N2ZmZmZkZmItZmZmZi1mZDIwLTdmZmYtZmVhOWZmZmZmY2Fk"></iframe> -->
+      <iframe id="ifrm" src="https://cricut.slgnt.us/optiext/optiextension.dll?ID=PbkPje00U_BJM_aSoy4gkalM8x4P6K2yiwlsQ5FAU8xhFRy5zxhMyR715P4ph0_9My8U36PMXUGdUvZtdY&amp;BTPARAMS=UFJPRklMRUlEPTdNV1F3WkdRd01ESXRPVEk0TWkwMFpUZGlMV0U1TkRrdFpHTmhPRFZoWWpabVlUZGpPelptWTBNV1ExWXpndE5tRTJPQzAwTnpRNUxUbGpaRGd0TVdNNFpEVmtZV0UwWWpVeE96c0ElM0QmT0ZGRVI9cmFmLWRldiZBQ1RJT049U2hvdyBSQUYmQ09OVEVOVElEPTdmZmZmZGZiLWZmZmYtZmQyMC03ZmZmLWZlYTlmZmZmZmNhZCZTX0JfSUQ9N2ZmZmZkZmItZmZmZi1mZDIwLTdmZmYtZmVhOWZmZmZmY2Fk" onload="setIframeHeight(this.id)"></iframe>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+
+    function setIframeHeight(id) {
+      var ifrm = document.getElementById(id);
+      var doc = ifrm.contentDocument ? ifrm.contentDocument :
+        ifrm.contentWindow.document;
+      ifrm.style.visibility = 'hidden';
+      ifrm.style.height = "10px"; // reset to minimal height ...
+      // IE opt. for bing/msn needs a bit added or scrollbar appears
+      ifrm.style.height = getDocHeight(doc) + 4 + "px";
+      ifrm.style.visibility = 'visible';
+    }
+
+    function getDocHeight(doc) {
+      doc = doc || document;
+      // stackoverflow.com/questions/1145850/
+      var body = doc.body, html = doc.documentElement;
+      var height = Math.max(body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight, html.offsetHeight);
+      return height;
+    }
+
+    (function ($) {
+      $(document).ready(function () {
+
+        // console.log($('#refer-a-friend-form').contents());
+
+      });
+    })(jQuery);
+
+  </script>
+
+</body>
+
+</html>

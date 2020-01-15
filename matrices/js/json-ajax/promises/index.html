@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promises</title>
+</head>
+
+<body>
+
+    <script>
+        // 
+        var isMomHappy = true;
+
+        // promise 1
+        var willIGetNewPhone = new Promise(
+            function (resolve, reject) {
+                if (isMomHappy) {
+                    var phone = {
+                        brand: "iPhone",
+                        color: "black"
+                    };
+                    resolve(phone);
+                } else {
+                    var reason = new Error("mom is not happy");
+                    reject(reason);
+                }
+            }
+        );
+
+        // promise 2 version 1
+        var showOff1 = function (phone) {
+            return new Promise(
+                function (resolve, reject) {
+                    var message = "Hey friend, I have a new " + phone.color + " " + phone.brand + " phone.";
+                    resolve(message);
+                }
+            );
+        };
+
+        // promise 2 version 2
+        var showOff2 = function (phone) {
+            var message = "Hey friend, I have a new " + phone.color + " " + phone.brand + " phone.";
+            return Promise.resolve(message);
+        }
+
+        var askMom = function () {
+            willIGetNewPhone
+                .then(showOff1)
+                .then(function (message1) {
+                    console.log(message1);
+                })
+                .then(showOff2) // this throws error since the first then() returned a promise and not the phone object
+                .then(function (message2) {
+                    console.log(message2);
+                })
+                .catch(function (error) {
+                    console.log("error: ", error.message);
+                });
+        };
+
+        askMom();
+    </script>
+
+    <script>
+        // ES6
+        const isMomHappy2 = true;
+
+        // promise
+        const willIGetNewPhone2 = new Promise(
+            (resolve, reject) => {
+                if (isMomHappy2) {
+                    const phone2 = {
+                        brand: "iPhone 8",
+                        color: "black"
+                    };
+                    resolve(phone2);
+                } else {
+                    const reason2 = new Error("mom is not happy");
+                    reject(reason2);
+                }
+            }
+        );
+
+        const showOff3 = function(phone) {
+            const message3 = "Hey friend, I have a new " + phone.color + " " + phone.brand;
+            return Promise.resolve(message3);
+        }
+
+        // call our promise
+        const askMom2 = function () {
+            willIGetNewPhone2
+                .then(showOff3)
+                .then(data => console.log(data))
+                .catch(error => console.log(error.message));
+        };
+    
+        askMom2();
+    </script>
+
+    <script>
+        // ES7
+        const isMomHappy3 = true; 
+
+        // promise
+        const willIGetNewPhone3 = new Promise(
+            (resolve, reject) => {
+                if (isMomHappy3) {
+                    const phone3 = {
+                        brand: "samsung",
+                        color: "black"
+                    };
+                    resolve(phone3);
+                } else {
+                    const reason3 = new Error("mom is not happy");
+                    reject(reason3);
+                }
+            }
+        );
+
+        // 2nd promise
+        async function showOff4(phone) {
+            return new Promise(
+                (resolve, reject) => {
+                    var message4 = "hey friend, I have a new " + phone.color + " " + phone.brand;
+                    resolve(message4);
+                }
+            );
+        }
+
+        async function askMom3() {
+            try {
+                console.log('before asking mom');
+
+                let newPhone = await willIGetNewPhone3;
+                let newMessage = await showOff4(newPhone);
+
+                console.log(newMessage);
+                console.log('after asking mom');
+            }
+            catch(error) {
+                console.log(error.message);
+            }
+        }
+
+        (async () => {
+            await askMom3();
+        })();
+    </script>
+
+</body>
+
+</html>

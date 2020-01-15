@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slider</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <section id="slider1" class="slider">
+        <div class="slider-content slider-images">
+            <img src="http://via.placeholder.com/740/eef?text=1" alt="" class="slider-image">
+            <img src="http://via.placeholder.com/640/eef?text=2" alt="" class="slider-image hide">
+            <img src="http://via.placeholder.com/640/eef?text=3" alt="" class="slider-image hide">
+            <img src="http://via.placeholder.com/640/eef?text=4" alt="" class="slider-image hide">
+        </div>
+        <div class="slider-content slider-text-wrapper">
+            <div class="slider-text hide">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa minus non consequuntur earum praesentium et totam.</div>
+            <div class="slider-text hide">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita placeat voluptas animi dignissimos consequatur eius quis magni nihil est corporis similique, perferendis, vel voluptates vitae in quam atque, nobis cum?</div>
+            <div class="slider-text hide">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, provident repellendus! Error quibusdam ullam perspiciatis ratione officiis repudiandae vel corrupti cupiditate, deleniti inventore enim minima dolore quis natus molestias odit.</div>
+            <div class="slider-text hide">Lorem ipsum dolor sit amet consectetur adipisicing elit. A hic totam eius impedit culpa ad rem sunt cupiditate, quae nostrum. Provident minima eaque temporibus animi laborum illo magni sed debitis.</div>
+        </div>
+        <div class="slider-switch slider-prev">
+            <span data-target="#slider1" data-switch="-1">&#10094;</span>
+        </div>
+        <div class="slider-switch slider-next">
+            <span data-target="#slider1" data-switch="1">&#10095;</span>
+        </div>
+        <div class="slider-selector slider-dots">
+            <div class="slider-dot" data-target="#slider1" data-selector="1"></div>
+            <div class="slider-dot" data-target="#slider1" data-selector="2"></div>
+            <div class="slider-dot" data-target="#slider1" data-selector="3"></div>
+            <div class="slider-dot" data-target="#slider1" data-selector="4"></div>
+        </div>
+        <div class="slider-selector slider-tabs">
+            <div class="slider-tab" data-target="#slider1" data-selector="1">One</div>
+            <div class="slider-tab" data-target="#slider1" data-selector="2">Two</div>
+            <div class="slider-tab" data-target="#slider1" data-selector="3">Three</div>
+            <div class="slider-tab" data-target="#slider1" data-selector="4">Four</div>
+        </div>
+    </section>
+
+    <section id="slider2" class="slider">
+        <div class="slider-content slider-images">
+            <img src="http://via.placeholder.com/740/eef?text=1" alt="" class="slider-image">
+            <img src="http://via.placeholder.com/640/eef?text=2" alt="" class="slider-image hide">
+            <img src="http://via.placeholder.com/640/eef?text=3" alt="" class="slider-image hide">
+        </div>
+        <div class="slider-switch slider-prev">
+            <span data-target="#slider2" data-switch="-1">&#10094;</span>
+        </div>
+        <div class="slider-switch slider-next">
+            <span data-target="#slider2" data-switch="1">&#10095;</span>
+        </div>
+        <div class="slider-selector slider-dots">
+            <div class="slider-dot" data-target="#slider2" data-selector="1"></div>
+            <div class="slider-dot" data-target="#slider2" data-selector="2"></div>
+            <div class="slider-dot" data-target="#slider2" data-selector="3"></div>
+        </div>
+        <div class="slider-selector slider-tabs">
+            <div class="slider-tab"></div>
+            <div class="slider-tab"></div>
+            <div class="slider-tab"></div>
+        </div>
+    </section>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="class.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
