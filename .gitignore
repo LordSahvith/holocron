@@ -1,4 +1,5 @@
 **/tutorials/follow-along-code
 *.css.map
 *.css
-/courses/
+**/examples
+*.DS_Store
