@@ -72,9 +72,46 @@ echo "<pre>";
 print_r($sortedCharacters);
 echo "</pre><br />";
 $sortedAssocArray = $assocArray;
-sort($sortedAssocArray); // notice keys are now indexed
+sort($sortedAssocArray); // notice keys are now indexed, use asort() or ksort() for associative arrays
 echo "<pre>";
 print_r($sortedAssocArray);
 echo "</pre><br />";
+asort($assocArray); // notice keys are kept and sorted by value
+echo "<pre>";
+print_r($assocArray);
+echo "</pre><br />";
+ksort($assocArray); // notice keys are kept and sorted by key
+echo "<pre>";
+print_r($assocArray);
+echo "</pre><br />";
+echo count($characters);
+echo "<br />";
+
+foreach ($characters as $character)
+{
+    echo $character . "<br />";
+}
+
+foreach ($assocArray as $key => $value)
+{
+    echo $key . " : " . $value . "<br />";
+}
+
+$multiDimensionalArray = array(
+    "Hero" => array(
+        "Batman" => array("is cool", "and stuff"),
+        "Superman" => array("is kinda cool", "some stuff"),
+        "Kylar Stern" => array("is a badass", "super stuff")
+    ),
+    "Villian" => array(
+        "Joker" => array("is cool", "and stuff"),
+        "Lex Luthor" => array("is kinda cool", "some stuff"),
+        "Durzo Blint" => array("is a badass", "super stuff")
+    )
+);
+echo "<pre>";
+print_r($multiDimensionalArray);
+echo "</pre><br />";
+
 
 ?>
