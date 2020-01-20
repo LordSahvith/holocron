@@ -8,9 +8,9 @@ class Person
 {
     const AVG_LIFE_SPAN = 79;
 
-    public $firstName;
-    public $lastName;
-    public $yearBorn;
+    protected $firstName;
+    protected $lastName;
+    protected $yearBorn;
 
     function __construct($firstName = "", $lastName = "", $yearBorn = "")
     {
@@ -30,32 +30,31 @@ class Person
         $this->firstName = $tempName;
     }
     
-    public function getFullName()
+    protected function getFullName()
     {
-        echo "Person-getFullName()".PHP_EOL;
-        return $this->firstName . " " . $this->lastName.PHP_EOL;
+        echo "Person-getFullName()<br />";
+        return $this->firstName . " " . $this->lastName;
     }
 }
 
 class Author extends Person
 {
-    public $penName = "Mark Twain";
+    protected $penName = "Your Holiness";
 
     public function getPenName()
     {
         return $this->penName.PHP_EOL;
     }
     
-    public function getFullName()
+    public function getCompleteName()
     {
-        echo "Author-getFullName()<br />";
-        return $this->firstName . " " . $this->lastName . "<br />";
+        return $this->getFullName() . " a.k.a. ". $this->penName . "<br />";
     }
 }
 
 $newAuthor = new Author("Darth", "Sahvith", "3350bby");
 echo "<br />";
-echo $newAuthor->getFullName();
+echo $newAuthor->getCompleteName();
 
 
 
