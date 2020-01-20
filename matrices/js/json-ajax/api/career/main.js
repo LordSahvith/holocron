@@ -1,15 +1,10 @@
 const ENDPOINT = 'https://api.smartrecruiters.com/v1/companies/cricut/postings';
-const ENDPOINT1 = 'https://swapi.co/api/people/';
 
 const jobs = [];
 const sortedJobs = [];
 const sortedDepartments = [];
 const sortedDepAndJobs = [];
 const gridTile = document.querySelector('.grid-tile-container');
-
-fetch(ENDPOINT1)
-    .then(blob => blob.json())
-    .then(data => console.log(data));
 
 /**
  * API Promise (GET call)
