@@ -48,7 +48,7 @@ class Author extends Person
     
     public function getCompleteName()
     {
-        return $this->getFullName() . " a.k.a. ". $this->penName . "<br />";
+        return $this->firstName . " " . $this->lastName . " a.k.a. ". $this->penName . "<br />";
     }
 }
 
