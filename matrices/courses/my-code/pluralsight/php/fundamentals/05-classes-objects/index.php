@@ -14,6 +14,7 @@ class Person
 
     function __construct($firstName = "", $lastName = "", $yearBorn = "")
     {
+        echo "Person Constructor.".PHP_EOL;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->yearBorn = $yearBorn;
@@ -28,34 +29,67 @@ class Person
     {
         $this->firstName = $tempName;
     }
+    
+    public function getFullName()
+    {
+        echo "Person-getFullName()".PHP_EOL;
+        return $this->firstName . " " . $this->lastName.PHP_EOL;
+    }
 }
 
-$myObject = new Person("Lord", "Sahvith", "3350bby");
+class Author extends Person
+{
+    public $penName = "Mark Twain";
 
-echo $myObject::AVG_LIFE_SPAN;
-echo "<br />";
-echo $myObject->firstName;
-echo "<br />";
+    public function getPenName()
+    {
+        return $this->penName.PHP_EOL;
+    }
+    
+    public function getFullName()
+    {
+        echo "Author-getFullName()<br />";
+        return $this->firstName . " " . $this->lastName . "<br />";
+    }
+}
 
-$myObject->firstName = "Darth";
-echo $myObject->firstName . " ";
-echo $myObject->lastName . " ";
-echo $myObject->yearBorn;
+$newAuthor = new Author("Darth", "Sahvith", "3350bby");
 echo "<br />";
+echo $newAuthor->getFullName();
 
-$myObject->setFirstName("Your Holiness");
-echo $myObject->firstName;
-echo "<br />";
 
-$secObject = new Person("Billy", "Bob", 1945);
-$secObject->setFirstName("billy");
-echo $secObject->firstName;
-echo $secObject->yearBorn;
-echo "<br />";
 
-$thirdObject = new Person();
-$thirdObject->setFirstName("Another one");
-echo $thirdObject->getFirstName();
-echo "<br />";
+
+
+
+
+
+// $myObject = new Person("Lord", "Sahvith", "3350bby");
+
+// echo $myObject::AVG_LIFE_SPAN;
+// echo "<br />";
+// echo $myObject->firstName;
+// echo "<br />";
+
+// $myObject->firstName = "Darth";
+// echo $myObject->firstName . " ";
+// echo $myObject->lastName . " ";
+// echo $myObject->yearBorn;
+// echo "<br />";
+
+// $myObject->setFirstName("Your Holiness");
+// echo $myObject->firstName;
+// echo "<br />";
+
+// $secObject = new Person("Billy", "Bob", 1945);
+// $secObject->setFirstName("billy");
+// echo $secObject->firstName;
+// echo $secObject->yearBorn;
+// echo "<br />";
+
+// $thirdObject = new Person();
+// $thirdObject->setFirstName("Another one");
+// echo $thirdObject->getFirstName();
+// echo "<br />";
 
 ?>
