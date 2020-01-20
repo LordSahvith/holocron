@@ -8,9 +8,9 @@ class Person
 {
     const AVG_LIFE_SPAN = 79;
 
-    protected $firstName;
-    protected $lastName;
-    protected $yearBorn;
+    private $firstName;
+    private $lastName;
+    private $yearBorn;
 
     function __construct($firstName = "", $lastName = "", $yearBorn = "")
     {
@@ -39,7 +39,7 @@ class Person
 
 class Author extends Person
 {
-    protected $penName = "Your Holiness";
+    private $penName = "Your Holiness";
 
     public function getPenName()
     {
@@ -48,7 +48,7 @@ class Author extends Person
     
     public function getCompleteName()
     {
-        return $this->firstName . " " . $this->lastName . " a.k.a. ". $this->penName . "<br />";
+        return $this->getFullName() . " a.k.a. ". $this->penName . "<br />";
     }
 }
 
