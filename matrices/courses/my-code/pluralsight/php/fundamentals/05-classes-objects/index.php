@@ -39,6 +39,7 @@ class Person
 
 class Author extends Person
 {
+    // public $
     private $penName = "Your Holiness";
 
     public function getPenName()
