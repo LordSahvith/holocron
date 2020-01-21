@@ -1,5 +1,4 @@
 <?php
-
 class Person 
 {
     const AVG_LIFE_SPAN = 79;

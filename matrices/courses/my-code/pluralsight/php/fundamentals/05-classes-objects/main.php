@@ -1,6 +1,6 @@
 <?php
-include "Person.php";
-include "Author.php";
+include_once "Person.php";
+include_once "Author.php";
 
 echo "<h1>PHP Include Files</h1>";
 
