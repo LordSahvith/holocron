@@ -9,7 +9,7 @@ class Person
 
     public static $test = "testing complete.";
 
-    function __construct($firstName = "", $lastName = "", $yearBorn = "")
+    public function __construct($firstName = "", $lastName = "", $yearBorn = "")
     {
         echo "Person Constructor.<br />";
         $this->firstName = $firstName;
@@ -41,6 +41,10 @@ class Person
     public function setYearBorn($yearBorn)
     {
         $this->yearBorn = $yearBorn;
+    }
+
+    public function getAge() {
+        return 25;
     }
 }
 ?>
