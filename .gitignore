@@ -1,6 +1,5 @@
 **/tutorials/follow-along-code
 *.css.map
-*.css
 **/examples
 *.DS_Store
 node_modules/
