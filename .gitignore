@@ -3,3 +3,6 @@
 *.css
 *.DS_Store
 examples/
+**/examples
+node_modules/
+package-lock.json
