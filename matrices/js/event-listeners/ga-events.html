@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onclick</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57602548-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+
+        gtag('config', 'UA-57602548-3');
+    </script>
+</head>
+
+<body>
+
+    <a href="#" data-ga-events="send, event, Learning, Video, Home Hero Watch Video - Cricut Maker Tools, true">Click / press enter</a>
+
+    <div class="google"></div>
+
+
+
+    <script>
+        const googleAnalytics = document.querySelectorAll('[data-ga-events]');
+        const googleDiv = document.querySelector('.google');
+
+        function sendData(e) {
+            const data = this.dataset.gaEvents; // get data form element
+            const dataArray = convertStringToArray(data);
+            console.log(dataArray);
+            const keyPressed = e.which || e.key; // assigns button pressed
+            if (keyPressed === 1 || keyPressed === "enter" || keyPressed === 13) {
+                googleDiv.innerHTML = `data = ${data}, keyPressed = ${keyPressed}`;
+                ga(data);
+            }
+        }
+
+        function convertStringToArray(string) {
+            let array = string.split(', '); // create array from data
+
+            // convert strings to booleans
+            if (array[array.length - 1] === "true") {
+                array[array.length - 1] = true;
+            }
+
+            if (array[array.length - 1] === "false") {
+                array[array.length - 1] = false;
+            }
+
+            return array;
+        }
+
+        googleAnalytics.forEach(button => button.addEventListener("mouseup", sendData));
+        googleAnalytics.forEach(button => button.addEventListener("keyup", sendData));
+    </script>
+
+</body>
+
+</html>
