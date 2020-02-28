@@ -3,8 +3,8 @@ const mstHour = document.querySelector('.mst_hour');
 const utc = document.querySelector('.utc');
 
 // UTC open and close times in 24 hour format
-const utcOpenTime = 14; // utc 2:00 pm
-const utcCloseTime = 4; // utc 4:00 am
+const utcOpenTime = 14; // utc 2:00 pm / 13 for daylight savings
+const utcCloseTime = 4; // utc 4:00 am / 3 for daylight savings
 
 const localTime = new Date();
 // getTimezoneOffest returns mins. convert to hours

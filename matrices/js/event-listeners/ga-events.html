@@ -20,7 +20,7 @@
 
 <body>
 
-    <a href="#" data-ga-events="send, event, Learning, Video, Home Hero Watch Video - Cricut Maker Tools, true">Click / press enter</a>
+    <a href="#" data-ga-events='{"apiMethod":"send", "type":"event", "category":"Learning", "action":"Video", "label":"Home Hero Watch Video - Cricut Maker Tools", "interaction":true}'>Click / press enter</a>
 
     <div class="google"></div>
 
@@ -32,28 +32,13 @@
 
         function sendData(e) {
             const data = this.dataset.gaEvents; // get data form element
-            const dataArray = convertStringToArray(data);
-            console.log(dataArray);
-            const keyPressed = e.which || e.key; // assigns button pressed
+            const dataObj = JSON.parse(data); // create object
+            const keyPressed = e.which || e.key; // assign button pressed
+
+            // checks if mouse or enter key was clicked/pressed
             if (keyPressed === 1 || keyPressed === "enter" || keyPressed === 13) {
-                googleDiv.innerHTML = `data = ${data}, keyPressed = ${keyPressed}`;
-                ga(data);
+                ga(dataObj.apiMethod, dataObj.type, dataObj.category, dataObj.action, dataObj.label, dataObj.interaction);
             }
-        }
-
-        function convertStringToArray(string) {
-            let array = string.split(', '); // create array from data
-
-            // convert strings to booleans
-            if (array[array.length - 1] === "true") {
-                array[array.length - 1] = true;
-            }
-
-            if (array[array.length - 1] === "false") {
-                array[array.length - 1] = false;
-            }
-
-            return array;
         }
 
         googleAnalytics.forEach(button => button.addEventListener("mouseup", sendData));
