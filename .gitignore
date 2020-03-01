@@ -1,3 +1,7 @@
-**/tutorials/follow-along-code
+**/follow-along-code
 *.css.map
-*.css
+*.DS_Store
+examples/
+**/examples
+node_modules/
+package-lock.json
