@@ -2,10 +2,13 @@ public class Hello {
     public static void main(String[] args) {
         System.out.println("Hello, Lord Sahvith!");
 
-        // declaration statement which initializes variable
-        int myFirstNumber = 4; // int is whole number (i.e. no decimals)
-        System.out.println(myFirstNumber); // creates new line after printing
-        System.out.print(myFirstNumber); // doesn't create new line after printing
-        System.out.print(myFirstNumber); // this should print right after above
+        int myFirstNumber = (4 + 11) + (4 * 5);
+        int mySecondNumber = 12;
+        int myThirdNumber = myFirstNumber * 2;
+        int myTotal = myFirstNumber + mySecondNumber + myThirdNumber;
+        int myLastOne = myTotal - 1000;
+
+        System.out.println(myTotal);
+        System.out.println(myLastOne);
     }
 }
