@@ -34,5 +34,11 @@ public class Main {
         System.out.println("New Int value (" + myIntValue + " / 3) = " + myIntValue / 3d);
         System.out.println("New Float value (" + myFloatValue + " / 3) = " + myFloatValue / 3d);
         System.out.println("New Double value (" + myDoubleValue + " / 3) = " + myDoubleValue / 3d);
+
+        // challenge
+        int pounds = 193;
+        double kilogram = 0.45359237d;
+        double convertedWeight = (double) (pounds * kilogram);
+        System.out.println(pounds + " lbs is " + convertedWeight + " kilograms");
     }
 }
