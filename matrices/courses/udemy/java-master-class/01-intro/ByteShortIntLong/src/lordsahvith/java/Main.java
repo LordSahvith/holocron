@@ -40,5 +40,13 @@ public class Main {
         int myTotal = (myMinIntValue / 2);
         byte myNewByteValue = (byte) (myMinByteValue / 2); // casting
         short myNewShortValue = (short) (myMinShortValue / 2); // casting
+
+        // challenge
+        byte myChallengeByte = 44;
+        short myChallengeShort = 4444;
+        int myChallengeInt = 444444;
+        long myChallengeLong = 50000L + (10L *
+                (myChallengeByte + myChallengeShort + myChallengeInt)); // long doesn't need casting from int (which is default)
+        System.out.println("Challenge: " + myChallengeLong);
     }
 }
