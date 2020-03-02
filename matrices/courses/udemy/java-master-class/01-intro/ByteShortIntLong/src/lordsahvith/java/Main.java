@@ -25,10 +25,20 @@ public class Main {
         System.out.println("Busted MAX value = " + (myMaxIntValue + 1)); // overflow when you go greater than biggest number
         System.out.println("Busted MIN value = " + (myMinIntValue - 1)); // underflow when you go less than smallest number
 
+        // long = 64 bits of memory
         long myLongValue = 100L;
         long myMinLongValue = Long.MIN_VALUE;
         long myMaxLongValue = Long.MAX_VALUE;
         System.out.println("Long min value = " + myMinLongValue);
         System.out.println("Long max value = " + myMaxLongValue);
+
+        /**
+         *  default for java is int
+         *  so we need to CAST it
+         *  to the correct data type
+         */
+        int myTotal = (myMinIntValue / 2);
+        byte myNewByteValue = (byte) (myMinByteValue / 2); // casting
+        short myNewShortValue = (short) (myMinShortValue / 2); // casting
     }
 }
