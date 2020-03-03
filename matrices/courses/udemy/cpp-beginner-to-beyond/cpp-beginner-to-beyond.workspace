@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="cpp-beginner-to-beyond" Database="" Version="10000">
-  <Project Name="UseMadeTemplate" Path="UseMadeTemplate/UseMadeTemplate.project" Active="Yes"/>
-  <Project Name="HelloWorld" Path="HelloWorld/HelloWorld.project"/>
+  <Project Name="UseMadeTemplate" Path="UseMadeTemplate/UseMadeTemplate.project" Active="No"/>
+  <Project Name="HelloWorld" Path="HelloWorld/HelloWorld.project" Active="Yes"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>

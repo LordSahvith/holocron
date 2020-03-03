@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Session Name="E:\Users\Owner\Documents\holocron\matrices\courses\udemy\cpp-beginner-to-beyond\cpp-beginner-to-beyond\cpp-beginner-to-beyond.workspace">
+<Session Name="E:\Users\Owner\Documents\holocron\matrices\courses\udemy\cpp-beginner-to-beyond\cpp-beginner-to-beyond.workspace">
   <int Value="0" Name="m_selectedTab"/>
-  <wxString Value="E:\Users\Owner\Documents\holocron\matrices\courses\udemy\cpp-beginner-to-beyond\cpp-beginner-to-beyond\cpp-beginner-to-beyond.workspace" Name="m_workspaceName"/>
+  <wxString Value="E:\Users\Owner\Documents\holocron\matrices\courses\udemy\cpp-beginner-to-beyond\cpp-beginner-to-beyond.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray"/>
   <SerializedObject Name="m_breakpoints">
     <long Value="0" Name="Count"/>

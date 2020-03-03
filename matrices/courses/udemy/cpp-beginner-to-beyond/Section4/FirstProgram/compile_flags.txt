@@ -1,0 +1,9 @@
+-Ic:\MinGW\lib\gcc\mingw32\8.2.0\include\c++
+-Ic:\MinGW\lib\gcc\mingw32\8.2.0\include\c++\mingw32
+-Ic:\MinGW\lib\gcc\mingw32\8.2.0\include\c++\backward
+-Ic:\MinGW\lib\gcc\mingw32\8.2.0\include
+-Ic:\MinGW\include
+-Ic:\MinGW\lib\gcc\mingw32\8.2.0\include-fixed
+-IE:\Users\Owner\Documents\holocron\matrices\courses\udemy\cpp-beginner-to-beyond\Section4\FirstProgram
+-target
+i686-pc-windows-gnu
