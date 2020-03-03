@@ -5,3 +5,19 @@ examples/
 **/examples
 node_modules/
 package-lock.json
+**/Debug
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+# Executables
+*.exe
+*.out
+*.app
+*.ipa
+*.pdb
+*.idb
+*.log
+*.tlog
+*.ilk
