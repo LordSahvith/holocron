@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="cpp-beginner-to-beyond" Database="" Version="10000">
-  <Project Name="Test1" Path="Test1/Test1.project" Active="Yes"/>
+  <Project Name="UseMadeTemplate" Path="UseMadeTemplate/UseMadeTemplate.project" Active="Yes"/>
+  <Project Name="HelloWorld" Path="HelloWorld/HelloWorld.project"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
-      <Project Name="Test1" ConfigName="Debug"/>
+      <Project Name="UseMadeTemplate" ConfigName="Debug"/>
+      <Project Name="HelloWorld" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
-      <Project Name="Test1" ConfigName="Release"/>
+      <Project Name="UseMadeTemplate" ConfigName="Release"/>
+      <Project Name="HelloWorld" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

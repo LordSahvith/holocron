@@ -4,6 +4,6 @@
 -Ic:\MinGW\lib\gcc\mingw32\8.2.0\include
 -Ic:\MinGW\include
 -Ic:\MinGW\lib\gcc\mingw32\8.2.0\include-fixed
--IE:\Users\Owner\Documents\holocron\matrices\courses\udemy\cpp-beginner-to-beyond\Test1
+-IE:\Users\Owner\Documents\holocron\matrices\courses\udemy\cpp-beginner-to-beyond\HelloWorld
 -target
 i686-pc-windows-gnu

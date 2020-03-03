@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ Test1 - Debug ]----------"
-	@cd "Test1" && "$(MAKE)" -f  "Test1.mk"
+	@echo "----------Building project:[ UseMadeTemplate - Debug ]----------"
+	@cd "UseMadeTemplate" && "$(MAKE)" -f  "UseMadeTemplate.mk"
 clean:
-	@echo "----------Cleaning project:[ Test1 - Debug ]----------"
-	@cd "Test1" && "$(MAKE)" -f  "Test1.mk" clean
+	@echo "----------Cleaning project:[ UseMadeTemplate - Debug ]----------"
+	@cd "UseMadeTemplate" && "$(MAKE)" -f  "UseMadeTemplate.mk" clean
