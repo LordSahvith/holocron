@@ -1,6 +1,6 @@
 <?php
 include_once "Person.php";
-include_once "Author.php";
+require "Author.php"; // must exist otherwise script will stop
 
 echo "<h1>PHP Include Files</h1>";
 
