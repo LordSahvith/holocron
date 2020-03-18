@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<info>
+  <user>
+    <name>
+      <firstname>FirstName</firstname>
+      <lastname>Last Name</lastname>
+      <nameCoordinate>
+        <xName>this works too</xName>
+        <yName>3</yName>
+      </nameCoordinate>
+    </name>
+  </user>
+</info>
