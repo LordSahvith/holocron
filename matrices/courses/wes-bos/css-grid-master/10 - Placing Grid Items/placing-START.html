@@ -18,7 +18,7 @@
         <div class="item item6">6</div>
         <div class="item item7">7</div>
         <div class="item item8">8</div>
-        <div class="item item8">💩</div>
+        <div class="item item8 poop">💩</div>
         <div class="item item9">9</div>
         <div class="item item10">10</div>
         <div class="item item11">11</div>
@@ -48,6 +48,14 @@
             display: grid;
             grid-gap: 20px;
             grid-template-columns: repeat(5, 1fr);
+        }
+
+        .poop {
+            background: #BADA55;
+            /* grid-column-start: 2;
+            grid-column-end: 5; */
+            grid-column: 2 / -1;
+            grid-row: 3 / 5;
         }
     </style>
 </body>
