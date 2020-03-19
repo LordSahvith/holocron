@@ -12,6 +12,9 @@
     <div class="container">
         <div class="item">1</div>
         <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
     </div>
 
     <style>
@@ -19,6 +22,8 @@
             display: grid;
             grid-gap: 20px;
             grid-template-columns: 400px 200px;
+            grid-auto-flow: column; /* any extra element cretes new column */
+            grid-auto-columns: 200px; /* defines implicitly created element */
         }
     </style>
 </body>
