@@ -7,7 +7,7 @@
     padding: 10px;
 }
 
-/* Colours for each box */
+/* Colors for each box */
 .box1 {
     background: #1abc9c;
 }
@@ -51,5 +51,7 @@
 
 /* We start writing out flexbox here. The above is just page setup */
 .container {
-    
+    display: flex;
+    border: 10px solid goldenrod;
+    height: 100vh;
 }
