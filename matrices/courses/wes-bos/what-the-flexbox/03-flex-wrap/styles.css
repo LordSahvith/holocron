@@ -54,11 +54,10 @@
     display: flex;
     border: 10px solid goldenrod;
     min-height: 100vh;
-    flex-direction: column;
-    /* MAIN AXIS DIRECTION 
-        * row (default): left to right →
-        * column: top to bottom ↓
-        * row-reverse: right to left ←
-        * column-reverse: right to left ꜛ
-    */
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 300px;
 }
