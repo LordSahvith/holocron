@@ -52,24 +52,29 @@
 /* We start writing out flexbox here. The above is just page setup */
 .container {
     display: flex;
+    justify-content: space-between;
+    /* JUSTIFY CONTENT 
+        main axis (row = horizontal, coloumn = vertical)
+        * flex-start: puts element at beginning one after another
+        * flex-end: puts elements at end one before the other
+        * space-between: puts element at beginning and end and evenly distributes rest
+        * space-around: spaces all elements evenly, padding on right and left add together
+        * space-evenly: spaces all elements evenly merging padding on left and right
+        * center: centers element on main axis
+    */
+    border: 10px solid red;
 }
 
-.box {
-    flex: 1;
+
+/* We start writing out flexbox here. The above is just page setup */
+.container2 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column; /* MAIN AXIS CHANGE */
+    border: 10px solid blue;
+    min-height: 50vh;
 }
 
-.box3 {
-    order: 2;
-}
-
-.box5 {
-    order: 3;
-}
-
-.box8 {
-    order: 1;
-}
-
-.box10 {
-    order: -1;
+.container2 .box {
+    font-size: 40px;
 }
