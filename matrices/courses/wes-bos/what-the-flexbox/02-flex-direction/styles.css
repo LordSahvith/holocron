@@ -53,5 +53,12 @@
 .container {
     display: flex;
     border: 10px solid goldenrod;
-    height: 100vh;
+    min-height: 100vh;
+    flex-direction: column;
+    /* MAIN AXIS DIRECTION 
+        * row (default): left to right →
+        * column: top to bottom ↓
+        * row-reverse: right to left ←
+        * column-reverse: right to left ꜛ
+    */
 }
