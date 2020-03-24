@@ -52,16 +52,16 @@
 /* We start writing out flexbox here. The above is just page setup */
 .container {
     display: flex;
-    justify-content: space-between;
-    /* JUSTIFY CONTENT 
-        main axis (row = horizontal, coloumn = vertical)
+    align-items: center;
+    /* ALIGN ITEMS
+        cross axis (row = vertical, coloumn = horizontal)
+        * stretch (default): stretches available space in cross axis
         * flex-start: puts element at beginning one after another
         * flex-end: puts elements at end one before the other
-        * space-between: puts element at beginning and end and evenly distributes rest
-        * space-around: spaces all elements evenly, padding on right and left add together
-        * space-evenly: spaces all elements evenly merging padding on left and right
+        * baseline: aligns to bottom of text in elements
         * center: centers element on main axis
     */
+    height: 50vh;
     border: 10px solid red;
 }
 
@@ -69,8 +69,8 @@
 /* We start writing out flexbox here. The above is just page setup */
 .container2 {
     display: flex;
-    justify-content: space-between;
-    flex-direction: column; /* MAIN AXIS CHANGE */
+    align-items: center;
+    flex-direction: column; /* CROSS AXIS CHANGE */
     border: 10px solid blue;
     min-height: 50vh;
 }
