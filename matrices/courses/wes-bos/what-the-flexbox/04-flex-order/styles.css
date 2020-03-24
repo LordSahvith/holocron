@@ -52,12 +52,24 @@
 /* We start writing out flexbox here. The above is just page setup */
 .container {
     display: flex;
-    border: 10px solid goldenrod;
-    min-height: 100vh;
-    flex-direction: row;
-    flex-wrap: wrap;
 }
 
 .box {
-    width: 300px;
+    flex: 1;
+}
+
+.box3 {
+    order: 2;
+}
+
+.box5 {
+    order: 3;
+}
+
+.box8 {
+    order: 1;
+}
+
+.box10 {
+    order: -1;
 }
