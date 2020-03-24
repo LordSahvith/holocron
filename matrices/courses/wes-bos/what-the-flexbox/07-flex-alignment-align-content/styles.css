@@ -52,29 +52,21 @@
 /* We start writing out flexbox here. The above is just page setup */
 .container {
     display: flex;
-    align-items: center;
-    /* ALIGN ITEMS
+    flex-wrap: wrap;
+    align-content: space-around;
+    /* ALIGN CONTENT
         cross axis (row = vertical, coloumn = horizontal)
         * stretch (default): stretches available space in cross axis
         * flex-start: puts element at beginning one after another
         * flex-end: puts elements at end one before the other
-        * baseline: aligns to bottom of text in elements
+        * space-between: puts at beginning and end and evenly distributes the rest
+        * space-around: puts space around each element, padding is added on left and right
         * center: centers element on main axis
     */
-    height: 50vh;
+    height: 100vh;
     border: 10px solid red;
 }
 
-
-/* We start writing out flexbox here. The above is just page setup */
-.container2 {
-    display: flex;
-    align-items: center;
-    flex-direction: column; /* CROSS AXIS CHANGE */
-    border: 10px solid blue;
-    min-height: 50vh;
-}
-
-.container2 .box {
-    font-size: 40px;
+.box {
+    width: 33.33333%;
 }
