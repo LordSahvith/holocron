@@ -1,65 +1,71 @@
-/* Some CSS Setup - nothing to do with flexbox */
-html {
-  box-sizing: border-box;
+/* Some default styles to make each box visible */
+.box {
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    padding: 10px;
 }
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+
+/* Colours for each box */
+.box1 {
+    background: #1abc9c;
 }
-body {
-  font-family: sans-serif;
-  margin: 0;
-  background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
+
+.box2 {
+    background: #3498db;
 }
-a {
-  color: white;
-  font-weight: 100;
-  letter-spacing: 2px;
-  text-decoration: none;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 20px 5px;
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  transition: all 0.5s;
+
+.box3 {
+    background: #9b59b6;
 }
-a:hover {
-  background: rgba(0, 0, 0, 0.3);
+
+.box4 {
+    background: #34495e;
 }
-.wrapper {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 50px;
+
+.box5 {
+    background: #f1c40f;
 }
-.social {
-  font-size: 11px;
+
+.box6 {
+    background: #e67e22;
 }
-/* Flex Container */
-.flex-nav ul {
-  border: 1px solid black;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
+
+.box7 {
+    background: #e74c3c;
 }
-.flex-nav li {
-  flex: 1 1 100%;
+
+.box8 {
+    background: #bdc3c7;
 }
-.flex-nav .social {
-  flex: 1 1 25%;
+
+.box9 {
+    background: #2ecc71;
 }
-@media all and (min-width: 500px) {
-  .flex-nav li {
-    flex-basis: 50%;
-  }
+
+.box10 {
+    background: #16a085;
 }
-@media all and (min-width: 1000px) {
-  .flex-nav li {
-    flex: 3;
-  }
-  .flex-nav .social {
-    flex: 1;
-  }
+
+
+/* We start writing out flexbox here. The above is just page setup */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.box {
+    flex-basis: 250px;
+    flex-grow: 1;
+}
+
+.box3 {
+    flex-grow: 3;
+}
+
+.box4 {
+    flex-basis: 100px;
 }
