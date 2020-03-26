@@ -54,3 +54,16 @@
     display: flex;
 }
 
+.box1 {
+    flex-basis: 400px;
+    flex-grow: 10; /* grow when extra space available */
+    flex-shrink: 5; /* shrink once on available space left */
+}
+
+.box2 {
+    /* flex-basis: 400px;
+    flex-grow: 1;
+    flex-shrink: 1; */
+    flex: 1 1 400px;
+}
+
