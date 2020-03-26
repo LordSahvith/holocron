@@ -32,10 +32,34 @@ a:hover {
   margin: 0 auto;
   padding: 50px;
 }
+.social {
+  font-size: 11px;
+}
 /* Flex Container */
 .flex-nav ul {
   border: 1px solid black;
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-nav li {
+  flex: 1 1 100%;
+}
+.flex-nav .social {
+  flex: 1 1 25%;
+}
+@media all and (min-width: 500px) {
+  .flex-nav li {
+    flex-basis: 50%;
+  }
+}
+@media all and (min-width: 1000px) {
+  .flex-nav li {
+    flex: 3;
+  }
+  .flex-nav .social {
+    flex: 1;
+  }
 }
