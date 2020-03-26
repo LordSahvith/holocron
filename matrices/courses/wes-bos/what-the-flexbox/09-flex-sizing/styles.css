@@ -53,3 +53,15 @@
 .container {
     display: flex;
 }
+
+.box {
+    flex: 1;
+}
+
+.box3 {
+    flex: 2;
+}
+
+.box5 {
+    flex: 3;
+}
