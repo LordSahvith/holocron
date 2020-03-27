@@ -103,3 +103,30 @@ a.button {
 /*
     Overall Layout
   */
+
+  .app-wrap {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .app-wrap > * {
+      flex: 1 1 auto;
+  }
+
+  /* header */
+  .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+  /* content */
+  .content {
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+  }
+
+  /* icon bar */
+  .icon-bar {
+      display: flex;
+  }
