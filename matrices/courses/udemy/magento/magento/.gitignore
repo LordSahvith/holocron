@@ -16,6 +16,7 @@ atlassian*
 /.gitattributes
 /app/config_sandbox
 /app/etc/env.php
+/app/etc/config.php
 /app/code/Magento/TestModule*
 /lib/internal/flex/uploader/.actionScriptProperties
 /lib/internal/flex/uploader/.flexProperties
@@ -32,6 +33,8 @@ atlassian*
 /.php_cs
 /.php_cs.cache
 /grunt-config.json
+/dev/tools/grunt/configs/local-themes.js
+
 /pub/media/*.*
 !/pub/media/.htaccess
 /pub/media/attribute/*
@@ -47,8 +50,6 @@ atlassian*
 /pub/media/import/*
 !/pub/media/import/.htaccess
 /pub/media/logo/*
-/pub/media/custom_options/*
-!/pub/media/custom_options/.htaccess
 /pub/media/theme/*
 /pub/media/theme_customization/*
 !/pub/media/theme_customization/.htaccess
@@ -66,4 +67,6 @@ atlassian*
 !/vendor/.htaccess
 /generated/*
 !/generated/.htaccess
+
 .DS_Store
+composer.lock
