@@ -1,6 +1,7 @@
 const mst = document.querySelector('.mst');
 const mstHour = document.querySelector('.mst_hour');
 const utc = document.querySelector('.utc');
+const timeZones = document.querySelectorAll('.time-zone');
 
 // UTC open and close times in 24 hour format
 const utcOpenTime = 14; // utc 2:00 pm / 13 for daylight savings
@@ -34,7 +35,7 @@ utc.innerHTML = `${convertedOpenUtc} - ${convertedCloseUtc}`;
  * 
  * @return {string} time
  */
-function getLocalTime(utcOffset, utcTime) {
+function getLocalTime(utcOffset, utcTime, isHalfHour) {
     let time = -(utcOffset) + utcTime;
 
     // keeps time in 24 hour format
@@ -45,10 +46,23 @@ function getLocalTime(utcOffset, utcTime) {
 
     // convert from 24 hour format to am/pm
     if (time < 12) {
-        time += ":00 am";
+        time += "&nbsp;am";
     } else {
-        time = time === 12 ? `${time}:00 pm` : `${time - 12}:00 pm`;
+        if (!isHalfHour) {
+            time = time === 12 ? `${time}&nbsp;pm` : `${time - 12}&nbsp;pm`;
+        } else {
+            time = time === 12 ? `${time}:30&nbsp;pm` : `${time - 12}:30&nbsp;pm`;
+        }
     }
     
     return time;
 }
+
+function getTimeZone() { 
+    let zone = /\((.*)\)/.exec(new Date().toString())[1];
+    let matches = zone.match(/\b(\w)/g);
+    let acronym = matches.join('');
+    return acronym;
+}
+
+timeZones.forEach(zone => zone.innerHTML = getTimeZone());
