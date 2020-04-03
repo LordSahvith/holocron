@@ -1,28 +1,72 @@
-const mst = document.querySelector('.mst');
-const mstHour = document.querySelector('.mst_hour');
+const offset = document.querySelector('.offset');
+const hour = document.querySelector('.hour');
+const phoneHour = document.querySelector('.phone-hour');
+const satHour = document.querySelector('.sat-hour');
 const utc = document.querySelector('.utc');
+const phoneUtc = document.querySelector('.phone-utc');
+const utcSat = document.querySelector('.utc-sat');
 const timeZones = document.querySelectorAll('.time-zone');
 
-// UTC open and close times in 24 hour format
-const utcOpenTime = 14; // utc 2:00 pm / 13 for daylight savings
-const utcCloseTime = 4; // utc 4:00 am / 3 for daylight savings
+const americanFormat = ['MDT', 'MST'];
 
+/**
+ * UTC Chat open and close times in 24 hour format
+ * (daylight / reg)
+ * open      : 13 / 14 - 1p / 2p
+ * close     : 3 / 4  - 3a / 4a
+ * open sat  : 14 / 15 - 2p / 3p
+ * close sat : 22 / 23 - 10:30p / 11:30p
+ */
+const utcOpenTimeChat = 13;
+const utcCloseTimeChat = 3; 
+const utcOpenTimeSatChat = 14;
+const utcCloseTimeSatChat = 22;
+
+/**
+ * UTC Phone open and close times in 24 hour format
+ * (daylight / reg)
+ * open      : 13 / 14 - 1p / 2p
+ * close     : 24 / 1  - 12a / 1a
+ */
+const utcOpenTimePhone = 13;
+const utcCloseTimePhone = 24; 
+
+// get users time zone
 const localTime = new Date();
-// getTimezoneOffest returns mins. convert to hours
-const utcOffset = localTime.getTimezoneOffset() / 60;
-
-// convert local time
-const localOpenTime = getLocalTime(utcOffset, utcOpenTime);
-const localCloseTime = getLocalTime(utcOffset, utcCloseTime);
+const utcOffset = localTime.getTimezoneOffset() / 60; // convert mins to hours
 
 // convert utc
-const convertedOpenUtc = getLocalTime(0, utcOpenTime);
-const convertedCloseUtc = getLocalTime(0, utcCloseTime);
+const convertedOpenUtc = getLocalTime(0, utcOpenTimeChat, false);
+const convertedCloseUtc = getLocalTime(0, utcCloseTimeChat, false);
+const convertedOpenUtcSat = getLocalTime(0, utcOpenTimeSatChat, false);
+const convertedCloseUtcSat = getLocalTime(0, utcCloseTimeSatChat, true);
+const convertedOpenUtcPhone = getLocalTime(0, utcOpenTimePhone, false);
+const convertedCloseUtcPhone = getLocalTime(0, utcCloseTimePhone, false);
+
+// convert local time
+var localOpenTimeChat =  getLocalTime(utcOffset, utcOpenTimeChat, false);
+var localCloseTimeChat = getLocalTime(utcOffset, utcCloseTimeChat, false);
+var localOpenTimeSatChat = getLocalTime(utcOffset, utcOpenTimeSatChat, false);
+var localCloseTimeSatChat = getLocalTime(utcOffset, utcCloseTimeSatChat, true);
+var localOpenTimeSatPhone = getLocalTime(utcOffset, utcOpenTimePhone, false);
+var localCloseTimeSatPhone = getLocalTime(utcOffset, utcCloseTimePhone, false);
+if (getTimeZone() === "MST" || getTimeZone() === "MDT") {
+    localOpenTimeChat = "7&nbsp;am";
+    localCloseTimeChat = "9&nbsp;pm";
+    localOpenTimeSatChat = "8&nbsp;am";
+    localCloseTimeSatChat = "4:30&nbsp;pm";
+    localOpenTimeSatPhone = "7&nbsp;am";
+    localCloseTimeSatPhone = "6&nbsp;pm";   
+}
 
 // display to screen
-mst.innerHTML = `${utcOffset} hours`;
-mstHour.innerHTML = `${localOpenTime} - ${localCloseTime}`;
+offset.innerHTML = `${utcOffset} hours`;
+hour.innerHTML = `${localOpenTimeChat} - ${localCloseTimeChat}`;
+phoneHour.innerHTML = `${localOpenTimeSatPhone} - ${localCloseTimeSatPhone}`;
+satHour.innerHTML = `${localOpenTimeSatChat} - ${localCloseTimeSatChat}`;
 utc.innerHTML = `${convertedOpenUtc} - ${convertedCloseUtc}`;
+phoneUtc.innerHTML = `${convertedOpenUtcPhone} - ${convertedCloseUtcPhone}`;
+utcSat.innerHTML = `${convertedOpenUtcSat} - ${convertedCloseUtcSat}`;
 
 /**
  * @param {int} utcOffset 
@@ -37,24 +81,60 @@ utc.innerHTML = `${convertedOpenUtc} - ${convertedCloseUtc}`;
  */
 function getLocalTime(utcOffset, utcTime, isHalfHour) {
     let time = -(utcOffset) + utcTime;
+    console.log(time);
 
-    // keeps time in 24 hour format
+    // converts negative number to correct 24 hour equivalent
     if (time < 0) {
         let temp = time;
         time = 24 + temp;
     }
 
-    // convert from 24 hour format to am/pm
-    if (time < 12) {
-        time += "&nbsp;am";
+    if (americanFormat.includes(getTimeZone())) {
+        time = convertToAmPm(time, isHalfHour);
     } else {
-        if (!isHalfHour) {
-            time = time === 12 ? `${time}&nbsp;pm` : `${time - 12}&nbsp;pm`;
-        } else {
-            time = time === 12 ? `${time}:30&nbsp;pm` : `${time - 12}:30&nbsp;pm`;
-        }
+        time = convertTo24Hour(time, isHalfHour);
     }
     
+    return time;
+}
+
+function convertToAmPm(timeToConvert, isHalfHour) {
+    let time = timeToConvert;
+
+    // convert am/pm check if time needs :30 appended
+    if (!isHalfHour) {
+        if (time >= 12) {
+            time = time === 12 ? `${time}&nbsp;pm` : `${time - 12}&nbsp;pm`; // TODO: prints pm when it's midnight
+        } else {
+            time += "&nbsp;am";
+        }
+    } else {
+        if (time >= 12) {
+            time = time === 12 ? `${time}:30&nbsp;pm` : `${time - 12}:30&nbsp;pm`;
+        } else {
+            time += ":30&nbsp;am";
+        }
+    }
+    return time;
+}
+
+function convertTo24Hour(timeToConvert, isHalfHour) {
+    let time = timeToConvert;
+
+    // convert am/pm check if time needs :30 appended
+    if (!isHalfHour) {
+        if (time < 12) {
+            time = `0${time}00`;
+        } else {
+            time += "00";
+        }
+    } else {
+        if (time < 12) {
+            time = `0${time}30`;
+        } else {
+            time += "30";
+        }
+    }
     return time;
 }
 
