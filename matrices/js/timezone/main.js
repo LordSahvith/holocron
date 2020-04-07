@@ -1,4 +1,4 @@
-// REGULAR OPEN/CLOSE TIMES
+// OPEN/CLOSE TIMES - REGULAR 
 // const chatOpenTimeUTC     = 14;
 // const chatCloseTimeUTC    = 4;
 // const chatSatOpenTimeUTC  = 13;
@@ -6,7 +6,7 @@
 // const phoneOpenTimeUTC    = 14;
 // const phoneCloseTimeUTC   = 1;
 
-// DAYLIGHT OPEN/CLOSE TIMES
+// OPEN/CLOSE TIMES - DAYLIGHT SAVINGS
 const chatOpenTimeUTC     = 13; 
 const chatCloseTimeUTC    = 3;
 const chatSatOpenTimeUTC  = 14;
