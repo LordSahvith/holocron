@@ -12,47 +12,87 @@
     <canvas id="gameCanvas" width="800" height="600"></canvas>
 
     <script>
+        var canvas, canvasContext;
+
         var ballX = 75;
         var ballY = 100;
         var ballSpeedX = 5;
         var ballSpeedY = 3;
 
-        var canvas, canvasContext;
+        const PADDLE_WIDTH = 100;
+        const PADDLE_THICKNESS = 10;
+        const PADDLE_DIST_FROM_BOTTOM = 60;
+        var paddleX = 400;
+
+        function updateMousePos(evt) {
+            var rect = canvas.getBoundingClientRect();
+            var root = document.documentElement;
+
+            var mouseX = evt.clientX - rect.left - root.scrollLeft;
+            // var mouseY = evt.clientY - rect.top - root.scrollTop;
+
+            paddleX = mouseX - PADDLE_WIDTH / 2;
+        }
+
+        function ballReset() {
+            ballX = canvas.width / 2;
+            ballY = canvas.height / 2;
+        }
 
         window.onload = function () {
             canvas = document.querySelector("#gameCanvas");
             canvasContext = canvas.getContext("2d");
 
+            ballReset();
+
             var framesPerSecond = 30;
             setInterval(updateAll, 1000 / framesPerSecond);
+
+            canvas.addEventListener("mousemove", updateMousePos);
         }
 
         function updateAll() {
+            moveAll();
+            drawAll();
+        }
+
+        function moveAll() {
             ballX += ballSpeedX;
             ballY += ballSpeedY;
             
-            if (ballX < 0) {
+            if (ballX < 0) { // left
                 ballSpeedX *= -1;
             }
 
-            if (ballX > canvas.width) {
+            if (ballX > canvas.width) { // right
                 ballSpeedX *= -1;
             }
             
-            if (ballY < 0) {
+            if (ballY < 0) { // top
                 ballSpeedY *= -1;
             }
 
-            if (ballY > canvas.height) {
-                ballSpeedY *= -1;
+            if (ballY > canvas.height) { // bottom
+                ballReset();
+                // ballSpeedY *= -1;
             }
-            
-            canvasContext.fillStyle = "black";
-            canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+        }
 
-            canvasContext.fillStyle = "white";
+        function drawAll() {     
+            colorRect(0, 0, canvas.width, canvas.height, "black");
+            colorCircle(ballX, ballY, 10, "red");
+            colorRect(paddleX, canvas.height - PADDLE_DIST_FROM_BOTTOM, PADDLE_WIDTH, PADDLE_THICKNESS);
+        }
+
+        function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor) {
+            canvasContext.fillStyle = fillColor;
+            canvasContext.fillRect(topLeftX, topLeftY, boxWidth, boxHeight);
+        }
+
+        function colorCircle(centerX, centerY, radius, fillColor) {
+            canvasContext.fillStyle = fillColor;
             canvasContext.beginPath();
-            canvasContext.arc(ballX, ballY, 10, 0, Math.PI * 2, true);
+            canvasContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
             canvasContext.fill();
         }
 
