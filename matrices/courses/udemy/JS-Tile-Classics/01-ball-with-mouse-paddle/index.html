@@ -87,6 +87,10 @@
                 ballX > paddleLeftEdgeX && // right of the left side of paddle
                 ballX < paddleRightEdgeX) { // left of the right side of paddle
                     ballSpeedY *= -1;
+
+                    var centerOfPaddlex = paddleX + PADDLE_WIDTH / 2;
+                    var ballDistFromPaddleCenterX = ballX - centerOfPaddlex;
+                    ballSpeedX = ballDistFromPaddleCenterX * 0.35;
                 }
         }
 
