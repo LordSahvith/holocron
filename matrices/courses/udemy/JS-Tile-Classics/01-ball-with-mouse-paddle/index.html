@@ -76,6 +76,18 @@
                 ballReset();
                 // ballSpeedY *= -1;
             }
+
+            var paddleTopEdgeY = canvas.height - PADDLE_DIST_FROM_BOTTOM;
+            var paddleBottomEdgeY = paddleTopEdgeY + PADDLE_THICKNESS;
+            var paddleLeftEdgeX = paddleX;
+            var paddleRightEdgeX = paddleLeftEdgeX + PADDLE_WIDTH;
+
+            if (ballY > paddleTopEdgeY && // below the top of paddle
+                ballY < paddleBottomEdgeY && // above bottom of paddle
+                ballX > paddleLeftEdgeX && // right of the left side of paddle
+                ballX < paddleRightEdgeX) { // left of the right side of paddle
+                    ballSpeedY *= -1;
+                }
         }
 
         function drawAll() {     
