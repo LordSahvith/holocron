@@ -15,7 +15,7 @@ const phoneOpenTimeUTC    = 13;
 const phoneCloseTimeUTC   = 24;
 
 // MOUNTAIN STANDARD TIMEZONES
-const MTTimeZones = ["MDTs", "MSTs", "MTs"];
+const MTTimeZones = ["MDT", "MST", "MT"];
 
 // AMERICAN TIME FORMAT 
 const americanFormat = ["MDT", "MST", "MT"];
@@ -53,19 +53,15 @@ if (!MTTimeZones.includes(getTimeZone())) {
     localPhoneCloseTime   = "6&nbsp;pm";   
 }
 
-chatTime.innerHTML = `${localChatOpenTime} - ${localChatCloseTime} ${getTimeZone()}`;
-chatTimeSat.innerHTML = `${localChatSatOpenTime} - ${localChatSatCloseTime} ${getTimeZone()}`;
-phoneTime.innerHTML = `${localPhoneOpenTime} - ${localPhoneCloseTime} ${getTimeZone()}`;
-
 /**
  * @param {int} utcOffset 
  * offset of local time to UTC
  * @param {int} utcTime 
  * UTC time
+ * @param {boolean} isHalfHour
+ * time has :30 min
  * 
- * convert difference of utcOffset to utcTime
- * and append appropriate am/pm
- * 
+ * convert difference of utcOffset to utcTime * 
  * @return {string} time
  */
 function getLocalTime(utcOffset, utcTime, isHalfHour) {
@@ -77,21 +73,31 @@ function getLocalTime(utcOffset, utcTime, isHalfHour) {
         time = 24 + temp;
     }
 
-    if (americanFormat.includes(getTimeZone())) {
-        time = convertToAmPm(time, isHalfHour);
+    // check which time formatting to use
+    if (!americanFormat.includes(getTimeZone())) {
+        tßime = convertTo24Hour(time, isHalfHour);
     } else {
-        time = convertTo24Hour(time, isHalfHour);
+        time = convertToAmPm(time, isHalfHour);
     }
     
     return time;
 }
 
+/** 
+ * @param {int} timeToConvert 
+ * @param {boolean} isHalfHour 
+ * time has :30 min
+ * 
+ * convert time to am/pm format
+ * @returns {string} time 
+ */
 function convertToAmPm(timeToConvert, isHalfHour) {
     let time = timeToConvert;
 
     // check if time needs :30 appended
     if (!isHalfHour) {
         if (time >= 12) {
+            // check if it's midnight
             if (time !== 24) {
                 time = time === 12 ? `${time}&nbsp;p.m.` : `${time - 12}&nbsp;p.m.`;
             } else {
@@ -102,6 +108,7 @@ function convertToAmPm(timeToConvert, isHalfHour) {
         }
     } else {
         if (time >= 12) {
+            // check if it's midnight
             if (time !== 24) {
                 time = time === 12 ? `${time}:30&nbsp;p.m.` : `${time - 12}:30&nbsp;p.m.`;
             } else {
@@ -114,6 +121,14 @@ function convertToAmPm(timeToConvert, isHalfHour) {
     return time;
 }
 
+/** 
+ * @param {int} timeToConvert 
+ * @param {boolean} isHalfHour 
+ * time has :30 min
+ * 
+ * convert time to 24 hour format
+ * @returns {string} time 
+ */
 function convertTo24Hour(timeToConvert, isHalfHour) {
     let time = timeToConvert;
 
@@ -134,9 +149,18 @@ function convertTo24Hour(timeToConvert, isHalfHour) {
     return time;
 }
 
+/**
+ * get time zone name and 
+ * abbreviate (MDT, CET, MST, etc.)
+ */
 function getTimeZone() { 
     let zone = /\((.*)\)/.exec(new Date().toString())[1];
     let matches = zone.match(/\b(\w)/g);
     let acronym = matches.join('');
     return acronym;
 }
+
+// DISPLAY TO SCREEN
+chatTime.innerHTML = `${localChatOpenTime} - ${localChatCloseTime} ${getTimeZone()}`;
+chatTimeSat.innerHTML = `${localChatSatOpenTime} - ${localChatSatCloseTime} ${getTimeZone()}`;
+phoneTime.innerHTML = `${localPhoneOpenTime} - ${localPhoneCloseTime} ${getTimeZone()}`;
