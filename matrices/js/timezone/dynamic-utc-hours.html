@@ -4,12 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Zone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
+
+    <div class="footer">
+        <div class="col">
+            <h2>Chat</h2>
+            <p>Mon-Fri: <span class="chat-time">1&nbsp;p.m. - 3&nbsp;a.m.&nbsp;UTC</span></p>
+            <p>Sat: <span class="chat-time-sat">2&nbsp;p.m. - 10:30&nbsp;p.m.&nbsp;UTC</span></p>
+        </div>
+        <div class="col">
+            <h2>Email</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+        <div class="col">
+            <h2>Call</h2>
+            <p>Mon-Fri: <span class="phone-time">1&nbsp;p.m. - 12&nbsp;a.m.&nbsp;UTC</span></p>
+        </div>
+    </div>
+
     
-    <p>MST Offset: <span class="mst"></span></p>
-    <p>MST: <span class="mst_hour"></span></p>
-    <p>UTC: <span class="utc"></span></p>
     
     <script src="main.js"></script>
 
