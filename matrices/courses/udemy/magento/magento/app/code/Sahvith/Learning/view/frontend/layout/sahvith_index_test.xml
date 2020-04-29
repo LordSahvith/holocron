@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<page  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <referenceBlock name="content">
+        <block class="Sahvith\Learning\Block\Test" name="some_name" template="Sahvith_Learning::test.phtml" />
+    </referenceBlock>
+</page>

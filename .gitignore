@@ -5,3 +5,16 @@ examples/
 **/examples
 node_modules/
 package-lock.json
+
+.buildpath
+.cache
+.metadata
+.project
+.settings
+.vscode
+atlassian*
+nbproject
+.idea
+.gitattributes
+.DS_Store
+/magento/app/code/Cryozonic/StripePayments/lib/stripe-php/
