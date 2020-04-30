@@ -26,6 +26,11 @@
         const BRICK_H = 50;
         const BRICK_COUNT = 4;
 
+        var brick1 = true;
+        var brick2 = false;
+        var brick3 = true;
+        var brick4 = false;
+
         const PADDLE_WIDTH = 100;
         const PADDLE_THICKNESS = 10;
         const PADDLE_DIST_FROM_BOTTOM = 60;
@@ -102,10 +107,18 @@
         }
 
         function drawBricks() {
-            colorRect(0, 0, BRICK_W - 2, BRICK_H, "blue");
-            colorRect(BRICK_W, 0, BRICK_W - 2, BRICK_H, "blue");
-            colorRect(BRICK_W * 2, 0, BRICK_W - 2, BRICK_H, "blue");
-            colorRect(BRICK_W * 3, 0, BRICK_W - 2, BRICK_H, "blue");
+            if (brick1){
+                colorRect(0, 0, BRICK_W - 2, BRICK_H, "blue");
+            }
+            if (brick2){
+                colorRect(BRICK_W, 0, BRICK_W - 2, BRICK_H, "blue");
+            }
+            if (brick3){
+                colorRect(BRICK_W * 2, 0, BRICK_W - 2, BRICK_H, "blue");
+            }
+            if (brick4){
+                colorRect(BRICK_W * 3, 0, BRICK_W - 2, BRICK_H, "blue");
+            }
         }
 
         function drawAll() {
