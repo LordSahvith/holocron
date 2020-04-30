@@ -24,7 +24,9 @@
 
         const BRICK_W = 100;
         const BRICK_H = 50;
+        const BRICK_GAP = 2;
         const BRICK_COUNT = 8;
+        const BRICK_ROWS = 3;
 
         var brickGrid = new Array(BRICK_COUNT);
 
@@ -50,7 +52,8 @@
 
         function brickReset() {
             for (let i = 0; i < brickGrid.length; i++) {
-               ((Math.random() * 10) < 5 )  ? brickGrid[i] = true : brickGrid[i] = false;
+                // ((Math.random() * 10) < 5 )  ? brickGrid[i] = true : brickGrid[i] = false;
+                brickGrid[i] = true;
             }
         }
 
@@ -111,9 +114,11 @@
         }
 
         function drawBricks() {
-            for (let i = 0; i < brickGrid.length; i++) {
-                if (brickGrid[i]) {
-                    colorRect(BRICK_W * i, 0, BRICK_W - 2, BRICK_H, "blue");
+            for (let eachRow = 0; eachRow < BRICK_ROWS; eachRow++) {
+                for (let brick = 0; brick < BRICK_COUNT; brick++) {
+                    if (brickGrid[brick]) {
+                        colorRect(BRICK_W * brick, BRICK_H * eachRow, BRICK_W - BRICK_GAP, BRICK_H - BRICK_GAP, "blue");
+                    }
                 }
             }
         }
@@ -123,7 +128,10 @@
             colorCircle(ballX, ballY, 10, "red");
             colorRect(paddleX, canvas.height - PADDLE_DIST_FROM_BOTTOM, PADDLE_WIDTH, PADDLE_THICKNESS);
             drawBricks();
-            colorText(mouseX + "," + mouseY, mouseX, mouseY, "yellow");
+
+            let mouseBrickCol = mouseX / BRICK_W;
+            let mouseBrickRow = mouseY / BRICK_H;
+            colorText(mouseBrickCol + "," + mouseBrickRow, mouseX, mouseY, "yellow");
         }
 
         function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor) {
