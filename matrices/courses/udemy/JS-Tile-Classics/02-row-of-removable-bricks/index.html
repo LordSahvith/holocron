@@ -12,7 +12,10 @@
     <canvas id="gameCanvas" width="800" height="600"></canvas>
 
     <script>
-        var canvas, canvasContext;
+        var canvas,
+            canvasContext,
+            mouseX,
+            mouseY;
 
         var ballX = 75;
         var ballY = 100;
@@ -28,8 +31,8 @@
             var rect = canvas.getBoundingClientRect();
             var root = document.documentElement;
 
-            var mouseX = evt.clientX - rect.left - root.scrollLeft;
-            // var mouseY = evt.clientY - rect.top - root.scrollTop;
+            mouseX = evt.clientX - rect.left - root.scrollLeft;
+            mouseY = evt.clientY - rect.top - root.scrollTop;
 
             paddleX = mouseX - PADDLE_WIDTH / 2;
         }
@@ -59,7 +62,7 @@
         function moveAll() {
             ballX += ballSpeedX;
             ballY += ballSpeedY;
-            
+
             if (ballX < 0) { // left
                 ballSpeedX *= -1;
             }
@@ -67,7 +70,7 @@
             if (ballX > canvas.width) { // right
                 ballSpeedX *= -1;
             }
-            
+
             if (ballY < 0) { // top
                 ballSpeedY *= -1;
             }
@@ -86,18 +89,19 @@
                 ballY < paddleBottomEdgeY && // above bottom of paddle
                 ballX > paddleLeftEdgeX && // right of the left side of paddle
                 ballX < paddleRightEdgeX) { // left of the right side of paddle
-                    ballSpeedY *= -1;
+                ballSpeedY *= -1;
 
-                    var centerOfPaddlex = paddleX + PADDLE_WIDTH / 2;
-                    var ballDistFromPaddleCenterX = ballX - centerOfPaddlex;
-                    ballSpeedX = ballDistFromPaddleCenterX * 0.35;
-                }
+                var centerOfPaddlex = paddleX + PADDLE_WIDTH / 2;
+                var ballDistFromPaddleCenterX = ballX - centerOfPaddlex;
+                ballSpeedX = ballDistFromPaddleCenterX * 0.35;
+            }
         }
 
-        function drawAll() {     
+        function drawAll() {
             colorRect(0, 0, canvas.width, canvas.height, "black");
             colorCircle(ballX, ballY, 10, "red");
             colorRect(paddleX, canvas.height - PADDLE_DIST_FROM_BOTTOM, PADDLE_WIDTH, PADDLE_THICKNESS);
+            colorText(mouseX + "," + mouseY, mouseX, mouseY, "yellow");
         }
 
         function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor) {
@@ -112,6 +116,10 @@
             canvasContext.fill();
         }
 
+        function colorText(showWords, textX, textY, fillColor) {
+            canvasContext.fillStyle = fillColor;
+            canvasContext.fillText(showWords, textX, textY);
+        }
     </script>
 
 </body>
