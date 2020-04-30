@@ -24,12 +24,9 @@
 
         const BRICK_W = 100;
         const BRICK_H = 50;
-        const BRICK_COUNT = 4;
+        const BRICK_COUNT = 14;
 
-        var brick1 = true;
-        var brick2 = false;
-        var brick3 = true;
-        var brick4 = false;
+        var brickGrid = new Array(BRICK_COUNT);
 
         const PADDLE_WIDTH = 100;
         const PADDLE_THICKNESS = 10;
@@ -51,11 +48,18 @@
             ballY = canvas.height / 2;
         }
 
+        function brickReset() {
+            for (let i = 0; i < brickGrid.length; i++) {
+               ((Math.random() * 10) < 5 )  ? brickGrid[i] = true : brickGrid[i] = false;
+            }
+        }
+
         window.onload = function () {
             canvas = document.querySelector("#gameCanvas");
             canvasContext = canvas.getContext("2d");
 
             ballReset();
+            brickReset();
 
             var framesPerSecond = 30;
             setInterval(updateAll, 1000 / framesPerSecond);
@@ -107,17 +111,10 @@
         }
 
         function drawBricks() {
-            if (brick1){
-                colorRect(0, 0, BRICK_W - 2, BRICK_H, "blue");
-            }
-            if (brick2){
-                colorRect(BRICK_W, 0, BRICK_W - 2, BRICK_H, "blue");
-            }
-            if (brick3){
-                colorRect(BRICK_W * 2, 0, BRICK_W - 2, BRICK_H, "blue");
-            }
-            if (brick4){
-                colorRect(BRICK_W * 3, 0, BRICK_W - 2, BRICK_H, "blue");
+            for (let i = 0; i < brickGrid.length; i++) {
+                if (brickGrid[i]) {
+                    colorRect(BRICK_W * i, 0, BRICK_W - 2, BRICK_H, "blue");
+                }
             }
         }
 
