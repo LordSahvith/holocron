@@ -22,6 +22,10 @@
         var ballSpeedX = 5;
         var ballSpeedY = 3;
 
+        const BRICK_W = 100;
+        const BRICK_H = 50;
+        const BRICK_COUNT = 4;
+
         const PADDLE_WIDTH = 100;
         const PADDLE_THICKNESS = 10;
         const PADDLE_DIST_FROM_BOTTOM = 60;
@@ -97,10 +101,15 @@
             }
         }
 
+        function drawBricks() {
+            colorRect(0, 0, BRICK_W, BRICK_H, "blue");
+        }
+
         function drawAll() {
             colorRect(0, 0, canvas.width, canvas.height, "black");
             colorCircle(ballX, ballY, 10, "red");
             colorRect(paddleX, canvas.height - PADDLE_DIST_FROM_BOTTOM, PADDLE_WIDTH, PADDLE_THICKNESS);
+            drawBricks();
             colorText(mouseX + "," + mouseY, mouseX, mouseY, "yellow");
         }
 
