@@ -28,20 +28,20 @@
         const TRACK_COLS = 20;
         const TRACK_ROWS = 15;
         var trackGrid = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                         1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,
-                         1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,
-                         1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1,
-                         1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1,
-                         1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1,
-                         1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1,
-                         1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1,
-                         1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1,
-                         1, 2, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1,
-                         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1,
-                         1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-                         1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-                         1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-                         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+            1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1,
+            1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1,
+            1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1,
+            1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1,
+            1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1,
+            1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1,
+            1, 2, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
         var mouseX = 0;
         var mouseY = 0;
@@ -63,7 +63,7 @@
 
             canvas.addEventListener('mousemove', updateMousePos);
 
-            carPic.onload = function() {
+            carPic.onload = function () {
                 carPicLoaded = true;
             };
             carPic.src = "player1car.png";
@@ -82,8 +82,8 @@
                     var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
                     if (trackGrid[arrayIndex] == 2) {
                         trackGrid[arrayIndex] = 0;
-                        carX = eachCol * TRACK_W + TRACK_W / 2;   
-                        carY = eachRow * TRACK_H + TRACK_H / 2;   
+                        carX = eachCol * TRACK_W + TRACK_W / 2;
+                        carY = eachRow * TRACK_H + TRACK_H / 2;
                     }
                 }
             }
@@ -94,29 +94,16 @@
             carY += Math.sin(carAng) * carSpeed;
 
             carAng += 0.02;
-
-            if (carX < 0 && carSpeedX > 0.0) { //left
-                carSpeedX *= -1;
-            }
-            if (carX > canvas.width && carSpeedX > 0.0) { // right
-                carSpeedX *= -1;
-            }
-            if (carY < 0 && carSpeedY > 0.0) { // top
-                carSpeedY *= -1;
-            }
-            if (carY > canvas.height) { // bottom
-                carReset();
-            }
         }
 
         function isTrackAtColRow(col, row) {
             if (col >= 0 && col < TRACK_COLS &&
                 row >= 0 && row < TRACK_ROWS) {
-                    var trackIndexUnderCoord = rowColToArrayIndex(col, row);
-                    return trackGrid[trackIndexUnderCoord] == 1;
-                } else {
-                    return false;
-                }
+                var trackIndexUnderCoord = rowColToArrayIndex(col, row);
+                return trackGrid[trackIndexUnderCoord] == 1;
+            } else {
+                return false;
+            }
         }
 
         function carTrackCHandling() {
@@ -124,32 +111,11 @@
             var carTrackRow = Math.floor(carY / TRACK_H);
             var trackIndexUnderCar = rowColToArrayIndex(carTrackCol, carTrackRow);
 
-            if (isTrackAtColRow(carTrackCol, carTrackRow)) {
-                if (trackGrid[trackIndexUnderCar]) {
-                    var prevCarX = carX - carSpeedX;
-                    var prevCarY = carY - carSpeedY;
-                    var prevTrackCol = Math.floor(prevCarX / TRACK_W);
-                    var prevTrackRow = Math.floor(prevCarY / TRACK_H);
+            if (carTrackCol >= 0 && carTrackCol < TRACK_COLS &&
+                carTrackRow >= 0 && carTrackRow < TRACK_ROWS) {
 
-                    var bothTestFailed = true;
-
-                    if (prevTrackCol != carTrackCol) {
-                        if (!isTrackAtColRow(prevTrackCol, carTrackRow)) {
-                            carSpeedX *= -1;
-                            bothTestFailed = false;
-                        }
-                    }
-                    if (prevTrackRow != carTrackRow) {
-                        if (!isTrackAtColRow(prevTrackRow, carTrackCol)) {
-                            carSpeedY *= -1;
-                            bothTestFailed = false;
-                        }
-                    }
-
-                    if (bothTestFailed) {
-                        carSpeedX *= -1;
-                        carSpeedY *= -1;
-                    }
+                if (isTrackAtColRow(carTrackCol, carTrackRow)) {
+                    carSpeed *= -1;
                 }
             }
         }
