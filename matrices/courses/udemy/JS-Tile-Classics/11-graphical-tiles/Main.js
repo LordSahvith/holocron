@@ -9,6 +9,7 @@ window.onload = function () {
 
     setupInput();
 
+    trackImagesLoad();
     carImageLoad();
 
     carReset();
@@ -24,12 +25,12 @@ function moveAll() {
     carTrackCHandling();
 }
 
-function clerScreen() {
+function clearScreen() {
     colorRect(0, 0, canvas.width, canvas.height, 'black'); 
 }
 
 function drawAll() {
-    clerScreen();
-    carDraw();
+    clearScreen();
     drawTracks();
+    carDraw();
 }

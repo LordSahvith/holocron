@@ -13,11 +13,11 @@ const TURN_RATE = 0.03;
 var carPic = document.createElement('img');
 var carPicLoaded = false;
 
-function carImage() {
+function carImageLoad() {
     carPic.onload = function () {
         carPicLoaded = true;
     };
-    carPic.src = "player1car.png";
+    carPic.src = "images/player1car.png";
 }
 
 function carReset() {
