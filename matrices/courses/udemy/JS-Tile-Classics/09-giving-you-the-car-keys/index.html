@@ -139,6 +139,7 @@
                     var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
                     if (trackGrid[arrayIndex] == 2) {
                         trackGrid[arrayIndex] = 0;
+                        carAng = -Math.PI / 2;
                         carX = eachCol * TRACK_W + TRACK_W / 2;
                         carY = eachRow * TRACK_H + TRACK_H / 2;
                     }
@@ -147,12 +148,14 @@
         }
 
         function moveCar() {
+            carSpeed *= 0.97;
+
             if (keyHeld_Gas) {
-                carSpeed += 0.2;
+                carSpeed += 0.3;
             }
 
             if (keyHeld_Reverse) {
-                carSpeed -= 0.2;
+                carSpeed -= 0.3;
             }
 
             if (keyHeld_TurnLeft) {
