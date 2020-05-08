@@ -14,7 +14,6 @@ function countLoadedImagesAndLaunchIfReady() {
 function beginLoadingImage(imgVar, fileName) {
     imgVar.onload = countLoadedImagesAndLaunchIfReady();
     imgVar.src = fileName;
-}arImageLoad() {
 }
 
 function loadImages() {
