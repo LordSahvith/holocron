@@ -1,5 +1,8 @@
 var roadPic = document.createElement('img');
 var wallPic = document.createElement('img');
+var goalPic = document.createElement('img');
+var treesPic = document.createElement('img');
+var flagPic = document.createElement('img');
 var carPic = document.createElement('img');
 
 var picsToLoad = 0;
@@ -20,6 +23,9 @@ function loadImages() {
     var imageList = [
         {varName: roadPic, theFile: "images/track_road.png"},
         {varName: wallPic, theFile: "images/track_wall.png"},
+        {varName: goalPic, theFile: "images/track_goal.png"},
+        {varName: treesPic, theFile: "images/track_trees.png"},
+        {varName: flagPic, theFile: "images/track_flag.png"},
         {varName: carPic, theFile: "images/player1car.png"}
     ];
 
