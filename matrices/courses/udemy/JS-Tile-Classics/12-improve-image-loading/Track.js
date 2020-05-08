@@ -37,7 +37,6 @@ function isWallAtColRow(col, row) {
 function carTrackCHandling() {
     var carTrackCol = Math.floor(carX / TRACK_W);
     var carTrackRow = Math.floor(carY / TRACK_H);
-    var trackIndexUnderCar = rowColToArrayIndex(carTrackCol, carTrackRow);
 
     if (carTrackCol >= 0 && carTrackCol < TRACK_COLS &&
         carTrackRow >= 0 && carTrackRow < TRACK_ROWS) {
@@ -62,9 +61,9 @@ function drawTracks() {
             var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 
             if (trackGrid[arrayIndex] == TRACK_ROAD) {
-                canvasContext.drawImage(trackRoadPic, TRACK_W * eachCol, TRACK_H * eachRow);
+                canvasContext.drawImage(roadPic, TRACK_W * eachCol, TRACK_H * eachRow);
             } else if (trackGrid[arrayIndex] == TRACK_WALL) {
-                canvasContext.drawImage(trackWallPic, TRACK_W * eachCol, TRACK_H * eachRow);
+                canvasContext.drawImage(wallPic, TRACK_W * eachCol, TRACK_H * eachRow);
             }
         }
     }

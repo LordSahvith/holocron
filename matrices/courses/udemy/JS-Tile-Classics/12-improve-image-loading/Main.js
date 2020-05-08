@@ -5,7 +5,7 @@ window.onload = function () {
     canvasContext = canvas.getContext('2d');
 
     colorRect(0, 0, canvas.width, canvas.height, "black");
-    colorText("LOADING IMAGES", canvas.width / 2, canvas,hegiht / 2, "white");
+    colorText("LOADING IMAGES", canvas.width / 2, canvas.height / 2, "white");
 
     loadImages();
 }
