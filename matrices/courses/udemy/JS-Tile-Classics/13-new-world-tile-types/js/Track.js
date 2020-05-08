@@ -27,13 +27,12 @@ const TRACK_GOAL = 3;
 const TRACK_TREES = 4;
 const TRACK_FLAG = 5;
 
-function isWallAtColRow(col, row) {
+function isObstacleAtColRow(col, row) {
     if (col >= 0 && col < TRACK_COLS &&
         row >= 0 && row < TRACK_ROWS) {
         var trackIndexUnderCoord = rowColToArrayIndex(col, row);
-        // this returns true only if it's a wall
         // this can be used to modify to allow for short cuts
-        return trackGrid[trackIndexUnderCoord] == TRACK_WALL; 
+        return trackGrid[trackIndexUnderCoord] != TRACK_ROAD;
     } else {
         return false;
     }
@@ -46,10 +45,10 @@ function carTrackCHandling() {
     if (carTrackCol >= 0 && carTrackCol < TRACK_COLS &&
         carTrackRow >= 0 && carTrackRow < TRACK_ROWS) {
 
-        if (isWallAtColRow(carTrackCol, carTrackRow)) {
+        if (isObstacleAtColRow(carTrackCol, carTrackRow)) {
             carX -= Math.cos(carAng) * carSpeed;
             carY -= Math.sin(carAng) * carSpeed;
-            
+
             carSpeed *= -0.5;
         }
     }
@@ -64,18 +63,27 @@ function drawTracks() {
         for (var eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
 
             var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
+            var tileKindHere = trackGrid[arrayIndex];
+            var varImg;
 
-            if (trackGrid[arrayIndex] == TRACK_ROAD) {
-                canvasContext.drawImage(roadPic, TRACK_W * eachCol, TRACK_H * eachRow);
-            } else if (trackGrid[arrayIndex] == TRACK_WALL) {
-                canvasContext.drawImage(wallPic, TRACK_W * eachCol, TRACK_H * eachRow);
-            } else if (trackGrid[arrayIndex] == TRACK_GOAL) {
-                canvasContext.drawImage(goalPic, TRACK_W * eachCol, TRACK_H * eachRow);
-            } else if (trackGrid[arrayIndex] == TRACK_TREES) {
-                canvasContext.drawImage(treesPic, TRACK_W * eachCol, TRACK_H * eachRow);
-            } else if (trackGrid[arrayIndex] == TRACK_FLAG) {
-                canvasContext.drawImage(flagPic, TRACK_W * eachCol, TRACK_H * eachRow);
+            switch (tileKindHere) {
+                case TRACK_ROAD:
+                    varImg = roadPic;
+                    break;
+                case TRACK_WALL:
+                    varImg = wallPic;
+                    break;
+                case TRACK_GOAL:
+                    varImg = goalPic;
+                    break;
+                case TRACK_TREES:
+                    varImg = treesPic;
+                    break;
+                case TRACK_FLAG:
+                    varImg = flagPic;
+                    break;
             }
+            canvasContext.drawImage(varImg, TRACK_W * eachCol, TRACK_H * eachRow);
         }
     }
 }
