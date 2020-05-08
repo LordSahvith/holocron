@@ -72,7 +72,7 @@ function drawTracks() {
 
             var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 
-            if (trackGrid[arrayIndex] == TRACK_ROAD || trackGrid[arrayIndex] == TRACK_PLAYERSTART) {
+            if (trackGrid[arrayIndex] == TRACK_ROAD) {
                 canvasContext.drawImage(trackRoadPic, TRACK_W * eachCol, TRACK_H * eachRow);
             } else if (trackGrid[arrayIndex] == TRACK_WALL) {
                 canvasContext.drawImage(trackWallPic, TRACK_W * eachCol, TRACK_H * eachRow);
