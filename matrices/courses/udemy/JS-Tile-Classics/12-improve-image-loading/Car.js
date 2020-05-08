@@ -10,16 +10,6 @@ const DRIVE_POWER = 0.5;
 const REVERSE_POWER = 0.2;
 const TURN_RATE = 0.03;
 
-var carPic = document.createElement('img');
-var carPicLoaded = false;
-
-function carImageLoad() {
-    carPic.onload = function () {
-        carPicLoaded = true;
-    };
-    carPic.src = "images/player1car.png";
-}
-
 function carReset() {
     for (var eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
         for (var eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
@@ -58,7 +48,5 @@ function moveCar() {
 }
 
 function carDraw() {
-    if (carPicLoaded) {
-        drawBitmapwCenteredWithRotation(carPic, carX, carY, carAng);
-    }
+    drawBitmapwCenteredWithRotation(carPic, carX, carY, carAng);
 }
