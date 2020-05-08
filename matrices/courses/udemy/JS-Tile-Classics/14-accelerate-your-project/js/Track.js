@@ -59,31 +59,20 @@ function rowColToArrayIndex(col, row) {
 }
 
 function drawTracks() {
+    var arrayIndex = 0;
+    var drawTileX = 0;
+    var drawTileY = 0;
     for (var eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
         for (var eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
-
-            var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
             var tileKindHere = trackGrid[arrayIndex];
-            var varImg;
+            var useImg = trackPics[tileKindHere];
 
-            switch (tileKindHere) {
-                case TRACK_ROAD:
-                    varImg = roadPic;
-                    break;
-                case TRACK_WALL:
-                    varImg = wallPic;
-                    break;
-                case TRACK_GOAL:
-                    varImg = goalPic;
-                    break;
-                case TRACK_TREES:
-                    varImg = treesPic;
-                    break;
-                case TRACK_FLAG:
-                    varImg = flagPic;
-                    break;
-            }
-            canvasContext.drawImage(varImg, TRACK_W * eachCol, TRACK_H * eachRow);
+            canvasContext.drawImage(useImg, drawTileX, drawTileY);
+
+            drawTileX += TRACK_W;
+            arrayIndex++;
         }
+        drawTileY += TRACK_H;
+        drawTileX = 0;
     }
 }
