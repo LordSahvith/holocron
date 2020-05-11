@@ -1,43 +1,44 @@
-var carPic = document.createElement("img");
-var carPic2 = document.createElement("img");
-var trackPics = [];
-var picsToLoad = 0;
+var warriorPic = document.createElement("img");
+var worldPics = [];
+
+var picsToLoad = 0; // set automatically based on imageList in loadImages()
 
 function countLoadedImagesAndLaunchIfReady() {
-    picsToLoad--;
-    if (picsToLoad == 0) {
-        imageLoadingDoneSoStartGame();
-    }
+	picsToLoad--;
+	console.log(picsToLoad);
+	if(picsToLoad == 0) {
+		imageLoadingDoneSoStartGame();
+	}
 }
 
 function beginLoadingImage(imgVar, fileName) {
-    imgVar.onload = countLoadedImagesAndLaunchIfReady();
-    imgVar.src = fileName;
+	imgVar.onload = countLoadedImagesAndLaunchIfReady;
+	imgVar.src = "images/"+fileName;
 }
 
-function loadImageForTrackCode(trackCode, fileName) {
-    trackPics[trackCode] = document.createElement("img");
-    beginLoadingImage(trackPics[trackCode], fileName);
+function loadImageForWorldCode(worldCode, fileName) {
+	worldPics[worldCode] = document.createElement("img");
+	beginLoadingImage(worldPics[worldCode], fileName);
 }
 
 function loadImages() {
-    var imageList = [
-        {varName: carPic, theFile: "images/player1car.png"},
-        {varName: carPic2, theFile: "images/player2car.png"},
-        {trackType: TRACK_ROAD, theFile: "images/track_road.png"},
-        {trackType: TRACK_WALL, theFile: "images/track_wall.png"},
-        {trackType: TRACK_GOAL, theFile: "images/track_goal.png"},
-        {trackType: TRACK_TREES, theFile: "images/track_trees.png"},
-        {trackType: TRACK_FLAG, theFile: "images/track_flag.png"}
-    ];
+	var imageList = [
+		{varName: warriorPic, theFile: "warrior.png"},
 
-    picsToLoad = imageList.length;
-    
-    for (var i = 0; i < imageList.length; i++) {
-        if (imageList[i].varName != undefined) {
-            beginLoadingImage(imageList[i].varName, imageList[i].theFile);
-        } else {
-            loadImageForTrackCode(imageList[i].trackType, imageList[i].theFile);
-        }
-    }
+		{worldType: TILE_GROUND, theFile: "world_ground.png"},
+		{worldType: TILE_WALL, theFile: "world_wall.png"},
+		{worldType: TILE_GOAL, theFile: "world_goal.png"},
+		{worldType: TILE_KEY, theFile: "world_key.png"},
+		{worldType: TILE_DOOR, theFile: "world_door.png"}
+		];
+
+	picsToLoad = imageList.length;
+
+	for(var i=0;i<imageList.length;i++) {
+		if(imageList[i].varName != undefined) {
+			beginLoadingImage(imageList[i].varName, imageList[i].theFile);
+		} else {
+			loadImageForWorldCode(imageList[i].worldType, imageList[i].theFile);
+		}
+	}
 }
