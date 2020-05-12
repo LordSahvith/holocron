@@ -6,6 +6,43 @@
     <title>Table Tennis</title>
 </head>
 <body>
+
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <script>
+        var canvas,
+            canvasContext;
+
+        window.onload = function() {
+            // save the conavas for dimensions, and it's 2d context for drawing 
+            canvas = document.querySelector("#gameCanvas");
+            canvasContext = canvas.getContext("2d");
+
+            drawEverything();
+        }
+        
+        function drawEverything() {
+            // hex or select color names
+            canvasContext.fillStyle = "#000000"; 
+            /** 
+             * draws rectangle starting at the top left corner 0,0
+             * fillRect(x, y, width, height);
+            */ 
+            canvasContext.fillRect(0, 0, canvas.width, canvas.height); 
+            
+            // set color
+            canvasContext.fillStyle = "#FFFFFF";
+            // new shape
+            canvasContext.beginPath();
+            /**
+             * draw circle
+             * arc(x, y, radius, radianStart, radianEnd, drawCounterClockwise);
+            */
+            canvasContext.arc(75, 75, 10, 0, Math.PI*2, true);
+            // draw what shapes have been created since last beginPath() method
+            canvasContext.fill();
+        }
+    </script>
     
 </body>
 </html>
