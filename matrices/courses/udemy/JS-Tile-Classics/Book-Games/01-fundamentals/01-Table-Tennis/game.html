@@ -21,14 +21,19 @@
             canvas = document.querySelector("#gameCanvas");
             canvasContext = canvas.getContext("2d");
 
-            let fps = 30;
-            setInterval(drawEverything, 1000 / fps);
+            let framesPerSecond = 30;
+            setInterval(function () {
+                moveEverything();
+                drawEverything();
+            }, 1000 / framesPerSecond);
+        }
+
+        function moveEverything() {
+            // move the ball some amount
+            ballPosX += 2;
         }
         
         function drawEverything() {
-            // ballPosX += 10;
-            // console.log(ballPosX);
-
             // hex or select color names
             canvasContext.fillStyle = "#000000"; 
             /** 
