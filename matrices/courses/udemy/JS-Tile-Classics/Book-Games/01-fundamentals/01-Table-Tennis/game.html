@@ -21,6 +21,8 @@
         var ballSpeedX = 8;
         var ballSpeedY = 8;
 
+        var paddle1Score = 0;
+
         var paddle1Y = 250;
         var paddle2Y = 250;
         const PADDLE_HEIGHT = 100;
@@ -76,6 +78,7 @@
                     ballSpeedX *= -1;
                 } else {
                     ballReset();
+                    paddle1Score++;
                 }
             }
             if (ballPosY < 0) { // checks for top of screen
@@ -153,7 +156,7 @@
 
             // draw score
             canvasContext.fillStyle = "#FFFFFF";
-            canvasContext.fillText("hello", 100, 100);
+            canvasContext.fillText("score: " + paddle1Score, 100, 100);
         }
     </script>
 
