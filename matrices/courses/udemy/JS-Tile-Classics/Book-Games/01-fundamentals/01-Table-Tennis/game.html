@@ -16,7 +16,7 @@
         var ballPosX = 75;
         var ballPosY = 75;
 
-        var ballSpeedX = 2; 
+        var ballSpeedX = 8; 
 
         window.onload = function() {
             // save the conavas for dimensions, and it's 2d context for drawing 
@@ -34,9 +34,11 @@
             if (ballPosX > canvas.width) {
                 ballSpeedX *= -1;
             }
+            if (ballPosX < 0) {
+                ballSpeedX *= -1;
+            }
             // move the ball some amount
             ballPosX += ballSpeedX;
-            console.log(ballSpeedX);
         }
         
         function drawEverything() {
