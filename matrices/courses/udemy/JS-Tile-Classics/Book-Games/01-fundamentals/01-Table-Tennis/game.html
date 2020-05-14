@@ -54,9 +54,20 @@
             });
         }
 
+        function ballReset() {
+            ballPosX = 75;
+            ballPosY = 75;
+            ballSpeedX *= -1;
+            ballSpeedY = 8;
+        }
+
         function moveEverything() {
             if (ballPosX < 0) { // checks left side of screen
+                if (ballPosY > paddle1Y && ballPosY < paddle1Y + PADDLE_HEIGHT) {
                 ballSpeedX *= -1;
+                } else {
+                    ballReset();
+                }
             }
             if (ballPosX > canvas.width) { // checks right side of screen
                 ballSpeedX *= -1;
