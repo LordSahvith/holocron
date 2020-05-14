@@ -22,6 +22,7 @@
         var ballSpeedY = 8;
 
         var paddle1Y = 250;
+        var paddle2Y = 250;
         const PADDLE_HEIGHT = 100;
         const PADDLE_WIDTH = 10;
 
@@ -139,6 +140,8 @@
 
             // draw the player left paddle
             colorRectangle(0, paddle1Y, PADDLE_WIDTH, PADDLE_HEIGHT, "#FFFFFF");
+            // draw the player right paddle
+            colorRectangle(canvas.width - PADDLE_WIDTH, paddle2Y, PADDLE_WIDTH, PADDLE_HEIGHT, "#FFFFFF");
 
             // draw the ball
             colorCircle(ballPosX, ballPosY, 10, "#FFFFFF");
