@@ -75,6 +75,10 @@
             canvasContext.arc(ballPosX, ballPosY, 10, 0, Math.PI * 2, true);
             // draw what shapes have been created since last beginPath() method
             canvasContext.fill();
+
+            // player left paddle
+            canvasContext.fillStyle = "#FFFFFF"; // white
+            canvasContext.fillRect(0, 250, 10, 100);
         }
     </script>
 
