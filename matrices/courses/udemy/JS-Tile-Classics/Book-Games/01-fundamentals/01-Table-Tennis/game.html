@@ -72,7 +72,11 @@
                 }
             }
             if (ballPosX > canvas.width) { // checks right side of screen
-                ballSpeedX *= -1;
+                if (ballPosY > paddle2Y && ballPosY < paddle2Y + PADDLE_HEIGHT) {
+                    ballSpeedX *= -1;
+                } else {
+                    ballReset();
+                }
             }
             if (ballPosY < 0) { // checks for top of screen
                 ballSpeedY *= -1;
