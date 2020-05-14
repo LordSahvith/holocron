@@ -22,6 +22,7 @@
         var ballSpeedY = 8;
 
         var paddle1Score = 0;
+        var paddle2Score = 0;
 
         var paddle1Y = 250;
         var paddle2Y = 250;
@@ -61,7 +62,7 @@
         function ballReset() {
             ballPosX = 75;
             ballPosY = 75;
-            ballSpeedX *= -1;
+            ballSpeedX =8
             ballSpeedY = 8;
         }
 
@@ -71,6 +72,7 @@
                     ballSpeedX *= -1;
                 } else {
                     ballReset();
+                    paddle2Score++;
                 }
             }
             if (ballPosX > canvas.width) { // checks right side of screen
@@ -154,9 +156,13 @@
             // draw the ball
             colorCircle(ballPosX, ballPosY, 10, "#FFFFFF");
 
-            // draw score
+            // draw left player score
             canvasContext.fillStyle = "#FFFFFF";
             canvasContext.fillText("score: " + paddle1Score, 100, 100);
+
+            // draw right player score
+            canvasContext.fillStyle = "#FFFFFF";
+            canvasContext.fillText("score: " + paddle2Score, canvas.width - 110, 100);
         }
     </script>
 
