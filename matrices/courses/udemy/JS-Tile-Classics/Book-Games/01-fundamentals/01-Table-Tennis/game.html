@@ -55,30 +55,61 @@
             ballPosY += ballSpeedY;
         }
 
-        function drawEverything() {
-            // hex or select color names
-            canvasContext.fillStyle = "#000000";
+        /**
+         * @param {int} topLeftX 
+         * top left X coord corner of canvas
+         * @param {int}  topLeftY 
+         * top left Y coord corner of canvas
+         * @param {int}  boxWidth 
+         * width of rectangle
+         * @param {int}  boxHeight 
+         * height of rectangle
+         * @param {string}  fillColor 
+         * color of rectangle (takes hex or certain string names)
+         */
+        function colorRectangle(topLeftX, topLeftY, boxWidth, boxHeight, fillColor) {
+            // set color
+            canvasContext.fillStyle = fillColor;
             /** 
              * draws rectangle starting at the top left corner 0,0
              * fillRect(x, y, width, height);
             */
-            canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+            canvasContext.fillRect(topLeftX, topLeftY, boxWidth, boxHeight);
+        }
 
+        /**
+         * @param {int} centerX 
+         * center X of ball
+         * @param {int} centerY 
+         * center Y of ball
+         * @param {int} radius 
+         * radius size of ball
+         * @param {string} fillColor 
+         * color of ball (hex or string of select color names)
+         */
+        function colorCircle(centerX, centerY, radius, fillColor) {
             // set color
-            canvasContext.fillStyle = "#FFFFFF";
+            canvasContext.fillStyle = fillColor;
             // new shape
             canvasContext.beginPath();
             /**
              * draw circle
              * arc(x, y, radius, radianStart, radianEnd, drawCounterClockwise);
             */
-            canvasContext.arc(ballPosX, ballPosY, 10, 0, Math.PI * 2, true);
+            canvasContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
             // draw what shapes have been created since last beginPath() method
             canvasContext.fill();
+        }
 
-            // player left paddle
-            canvasContext.fillStyle = "#FFFFFF"; // white
-            canvasContext.fillRect(0, 250, 10, 100);
+        function drawEverything() {
+            // clear screen by adding black background 
+            colorRectangle(0, 0, canvas.width, canvas.height, "#000000");
+
+            // draw the player left paddle
+            colorRectangle(0, 250, 10, 100, "#FFFFFF");
+
+            // draw the ball
+            colorCircle(ballPosX, ballPosY, 10, "#FFFFFF");
         }
     </script>
 
