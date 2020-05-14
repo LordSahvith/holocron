@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table Tennis</title>
 </head>
+
 <body>
 
     <canvas id="gameCanvas" width="800" height="600"></canvas>
@@ -16,9 +18,10 @@
         var ballPosX = 75;
         var ballPosY = 75;
 
-        var ballSpeedX = 8; 
+        var ballSpeedX = 8;
+        var ballSpeedY = 8;
 
-        window.onload = function() {
+        window.onload = function () {
             // save the conavas for dimensions, and it's 2d context for drawing 
             canvas = document.querySelector("#gameCanvas");
             canvasContext = canvas.getContext("2d");
@@ -31,25 +34,36 @@
         }
 
         function moveEverything() {
-            if (ballPosX > canvas.width) {
+            if (ballPosX < 0) { // checks left side of screen
                 ballSpeedX *= -1;
             }
-            if (ballPosX < 0) {
+            if (ballPosX > canvas.width) { // checks right side of screen
                 ballSpeedX *= -1;
             }
-            // move the ball some amount
+            if (ballPosY < 0) { // checks for top of screen
+                ballSpeedY *= -1;
+            }
+            if (ballPosY > canvas.height) { // check for bottom of screen
+                ballSpeedY *= -1;
+            }
+            /** 
+             * move the ball some amount
+             * these get updated in drawEverything()
+             * when arc() is called and redrawn on screen
+            */
             ballPosX += ballSpeedX;
+            ballPosY += ballSpeedY;
         }
-        
+
         function drawEverything() {
             // hex or select color names
-            canvasContext.fillStyle = "#000000"; 
+            canvasContext.fillStyle = "#000000";
             /** 
              * draws rectangle starting at the top left corner 0,0
              * fillRect(x, y, width, height);
-            */ 
-            canvasContext.fillRect(0, 0, canvas.width, canvas.height); 
-            
+            */
+            canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+
             // set color
             canvasContext.fillStyle = "#FFFFFF";
             // new shape
@@ -58,11 +72,12 @@
              * draw circle
              * arc(x, y, radius, radianStart, radianEnd, drawCounterClockwise);
             */
-            canvasContext.arc(ballPosX, ballPosY, 10, 0, Math.PI*2, true);
+            canvasContext.arc(ballPosX, ballPosY, 10, 0, Math.PI * 2, true);
             // draw what shapes have been created since last beginPath() method
             canvasContext.fill();
         }
     </script>
-    
+
 </body>
+
 </html>
