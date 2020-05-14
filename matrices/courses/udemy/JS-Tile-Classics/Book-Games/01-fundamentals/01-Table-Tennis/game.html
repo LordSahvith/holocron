@@ -48,10 +48,11 @@
                 drawEverything();
             }, 1000 / framesPerSecond);
 
-            canvas.addEventListener('mousemove', function(evt) {
+            canvas.addEventListener('mousemove', function (evt) {
                 var mousePos = calculateMousePos(evt);
                 // minus half the height to center paddle 
                 paddle1Y = mousePos.y - (PADDLE_HEIGHT / 2);
+                paddle2Y = mousePos.y - (PADDLE_HEIGHT / 2);
             });
         }
 
@@ -65,7 +66,7 @@
         function moveEverything() {
             if (ballPosX < 0) { // checks left side of screen
                 if (ballPosY > paddle1Y && ballPosY < paddle1Y + PADDLE_HEIGHT) {
-                ballSpeedX *= -1;
+                    ballSpeedX *= -1;
                 } else {
                     ballReset();
                 }
