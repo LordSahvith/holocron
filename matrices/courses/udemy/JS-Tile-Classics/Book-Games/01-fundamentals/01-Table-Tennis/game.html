@@ -30,6 +30,7 @@
         const PADDLE_WIDTH = 10;
 
         const COMPUTER_SPEED = 6;
+        const COMPUTER_AWARENESS_DIST = 35;
 
         function calculateMousePos(evt) {
             var rect = canvas.getBoundingClientRect(), root = document.documentElement;
@@ -76,9 +77,9 @@
             var centerOfPaddle2Y = paddle2TopEdgeY + PADDLE_HEIGHT / 2;
             var ballDistFromPaddle2CenterY = ballPosY - centerOfPaddle2Y;
 
-            if (ballDistFromPaddle2CenterY < 0) {
+            if (ballDistFromPaddle2CenterY < -COMPUTER_AWARENESS_DIST) {
                 paddle2Y -= COMPUTER_SPEED;
-            } else if (ballDistFromPaddle2CenterY > 0) {
+            } else if (ballDistFromPaddle2CenterY > COMPUTER_AWARENESS_DIST) {
                 paddle2Y += COMPUTER_SPEED;
             }
         }
