@@ -29,10 +29,13 @@
         const PADDLE_HEIGHT = 100;
         const PADDLE_WIDTH = 10;
 
-        const COMPUTER_SPEED = 6;
+        const PADDLE_BOUNCE_SPEED = 1.05;
+        const PADDLE_ANGLE_SPEED = 0.35;
+
+        const COMPUTER_SPEED = 7;
         const COMPUTER_AWARENESS_DIST = 30;
 
-        const WIN_SCORE = 1;
+        const WIN_SCORE = 5;
         var showingWinScreen = false;
         var winText = "";
 
@@ -81,9 +84,11 @@
         }
 
         function gameReset() {
-            showingWinScreen = false;
-            ballReset();
-            scoreReset();
+            if (showingWinScreen) {
+                showingWinScreen = false;
+                ballReset();
+                scoreReset();
+            }
         }
 
         function checkForWinner(playerScore, playerName) {
@@ -108,7 +113,7 @@
             if (ballPosX < 0) { // checks left side of screen
                 if (ballPosY > paddle1Y && ballPosY < paddle1Y + PADDLE_HEIGHT) {
                     ballSpeedX *= -1;
-                    ballSpeedY = getBallDistFromCenterOfPaddle(paddle1Y) * 0.35;
+                    ballSpeedY = getBallDistFromCenterOfPaddle(paddle1Y) * PADDLE_ANGLE_SPEED;
                 } else {
                     ballReset();
                     paddle2Score++;
@@ -119,7 +124,7 @@
             if (ballPosX > canvas.width) { // checks right side of screen
                 if (ballPosY > paddle2Y && ballPosY < paddle2Y + PADDLE_HEIGHT) {
                     ballSpeedX *= -1;
-                    ballSpeedY = getBallDistFromCenterOfPaddle(paddle2Y) * 0.35;
+                    ballSpeedY = getBallDistFromCenterOfPaddle(paddle2Y) * PADDLE_ANGLE_SPEED;
                 } else {
                     ballReset();
                     paddle1Score++;
@@ -140,8 +145,8 @@
              * these get updated in drawEverything()
              * when arc() is called and redrawn on screen
             */
-            ballPosX += ballSpeedX;
-            ballPosY += ballSpeedY;
+            ballPosX += ballSpeedX * PADDLE_BOUNCE_SPEED;
+            ballPosY += ballSpeedY * PADDLE_BOUNCE_SPEED;
         }
 
         function getBallDistFromCenterOfPaddle(paddleY) {
@@ -235,6 +240,7 @@
                 // draw right player score
                 canvasContext.fillStyle = "#FFFFFF";
                 canvasContext.fillText(winText, canvas.width / 2, 50);
+                canvasContext.fillText("click on screen to restart", canvas.width / 2, 100);
                 canvas.addEventListener('click', gameReset);
             }
         }
