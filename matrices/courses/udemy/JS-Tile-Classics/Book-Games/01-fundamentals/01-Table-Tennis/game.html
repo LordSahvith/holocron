@@ -29,6 +29,8 @@
         const PADDLE_HEIGHT = 100;
         const PADDLE_WIDTH = 10;
 
+        const COMPUTER_SPEED = 6;
+
         function calculateMousePos(evt) {
             var rect = canvas.getBoundingClientRect(), root = document.documentElement;
 
@@ -52,13 +54,12 @@
                 var mousePos = calculateMousePos(evt);
                 // minus half the height to center paddle 
                 paddle1Y = mousePos.y - (PADDLE_HEIGHT / 2);
-                paddle2Y = mousePos.y - (PADDLE_HEIGHT / 2);
+                // paddle2Y = mousePos.y - (PADDLE_HEIGHT / 2);
             });
         }
 
         function updateAll() {
             moveEverything();
-            // ballPaddleHandling();
             drawEverything();
         }
 
@@ -69,25 +70,21 @@
             ballSpeedY = 8;
         }
 
-        function ballPaddleHandling() {
-            var paddleTopEdgeY = paddle1Y;
-            var paddleBottomEdgeY = paddleTopEdgeY + PADDLE_HEIGHT;
-            // if (ballPosX > paddleTopEdgeY && // below the top of paddle
-            //     ballPosX < paddleBottomEdgeY ) { // above bottom of paddle
+        function moveComputerPaddle() {
+            var paddle2TopEdgeY = paddle2Y;
+            var paddleBottomEdgeY = paddle2TopEdgeY + PADDLE_HEIGHT;
+            var centerOfPaddle2Y = paddle2TopEdgeY + PADDLE_HEIGHT / 2;
+            var ballDistFromPaddle2CenterY = ballPosY - centerOfPaddle2Y;
 
-            //     ballSpeedY *= -1;
-
-            //     var centerOfPaddleY = paddleTopEdgeY + PADDLE_HEIGHT / 2;
-            //     var ballDistFromPaddleCenterY = ballPosX - centerOfPaddleY;
-            //     ballSpeedX = ballDistFromPaddleCenterY * 0.35;
-
-            //     // if (bricksLeft == 0) {
-            //     //     brickReset();
-            //     // }
-            // }
+            if (ballDistFromPaddle2CenterY < 0) {
+                paddle2Y -= COMPUTER_SPEED;
+            } else if (ballDistFromPaddle2CenterY > 0) {
+                paddle2Y += COMPUTER_SPEED;
+            }
         }
 
         function moveEverything() {
+            moveComputerPaddle();
             var paddle1TopEdgeY = paddle1Y;
             var paddleBottomEdgeY = paddle1TopEdgeY + PADDLE_HEIGHT;
             var paddle2TopEdgeY = paddle2Y;
