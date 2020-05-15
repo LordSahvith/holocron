@@ -32,7 +32,9 @@
         const COMPUTER_SPEED = 6;
         const COMPUTER_AWARENESS_DIST = 30;
 
-        const WIN_SCORE = 3;
+        const WIN_SCORE = 1;
+        var showingWinScreen = false;
+        var winText = "";
 
         function calculateMousePos(evt) {
             var rect = canvas.getBoundingClientRect(), root = document.documentElement;
@@ -79,13 +81,16 @@
         }
 
         function gameReset() {
+            showingWinScreen = false;
             ballReset();
             scoreReset();
         }
 
-        function checkForWinner(playerScore) {
-            if (playerScore === WIN_SCORE) {
-                gameReset();
+        function checkForWinner(playerScore, playerName) {
+            console.log(playerScore);
+            if (playerScore == WIN_SCORE) {
+                showingWinScreen = true;
+                winText = playerName + " Wins!!";
             }
         }
 
@@ -98,7 +103,7 @@
                 paddle2Y += COMPUTER_SPEED;
             }
         }
-        
+
         function ballHandling() {
             if (ballPosX < 0) { // checks left side of screen
                 if (ballPosY > paddle1Y && ballPosY < paddle1Y + PADDLE_HEIGHT) {
@@ -107,7 +112,7 @@
                 } else {
                     ballReset();
                     paddle2Score++;
-                    checkForWinner(paddle2Score);
+                    checkForWinner(paddle2Score, "right");
                 }
             }
 
@@ -118,7 +123,7 @@
                 } else {
                     ballReset();
                     paddle1Score++;
-                    checkForWinner(paddle1Score);
+                    checkForWinner(paddle1Score, "left");
                 }
             }
 
@@ -208,6 +213,7 @@
             // draw the ball
             colorCircle(ballPosX, ballPosY, 10, "#FFFFFF");
 
+            canvasContext.textAlign = "center";
             // draw left player score
             canvasContext.fillStyle = "#FFFFFF";
             canvasContext.fillText("score: " + paddle1Score, 100, 100);
@@ -215,6 +221,22 @@
             // draw right player score
             canvasContext.fillStyle = "#FFFFFF";
             canvasContext.fillText("score: " + paddle2Score, canvas.width - 110, 100);
+
+            if (showingWinScreen) {
+                // clear screen by adding black background 
+                colorRectangle(0, 0, canvas.width, canvas.height, "#000000");
+                // draw left player score
+                canvasContext.fillStyle = "#FFFFFF";
+                canvasContext.fillText("score: " + paddle1Score, 100, 100);
+
+                // draw right player score
+                canvasContext.fillStyle = "#FFFFFF";
+                canvasContext.fillText("score: " + paddle2Score, canvas.width - 110, 100);
+                // draw right player score
+                canvasContext.fillStyle = "#FFFFFF";
+                canvasContext.fillText(winText, canvas.width / 2, 50);
+                canvas.addEventListener('click', gameReset);
+            }
         }
     </script>
 
