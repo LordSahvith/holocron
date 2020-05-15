@@ -32,6 +32,8 @@
         const COMPUTER_SPEED = 6;
         const COMPUTER_AWARENESS_DIST = 30;
 
+        const WIN_SCORE = 3;
+
         function calculateMousePos(evt) {
             var rect = canvas.getBoundingClientRect(), root = document.documentElement;
 
@@ -71,6 +73,22 @@
             ballSpeedY = 8;
         }
 
+        function scoreReset() {
+            paddle1Score = 0;
+            paddle2Score = 0;
+        }
+
+        function gameReset() {
+            ballReset();
+            scoreReset();
+        }
+
+        function checkForWinner(playerScore) {
+            if (playerScore === WIN_SCORE) {
+                gameReset();
+            }
+        }
+
         function moveComputerPaddle() {
             var ballDistFromCenterOfPaddle = getBallDistFromCenterOfPaddle(paddle2Y);
 
@@ -89,6 +107,7 @@
                 } else {
                     ballReset();
                     paddle2Score++;
+                    checkForWinner(paddle2Score);
                 }
             }
 
@@ -99,6 +118,7 @@
                 } else {
                     ballReset();
                     paddle1Score++;
+                    checkForWinner(paddle1Score);
                 }
             }
 
