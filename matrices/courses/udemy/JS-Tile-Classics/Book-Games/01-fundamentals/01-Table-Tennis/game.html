@@ -92,7 +92,6 @@
         }
 
         function checkForWinner(playerScore, playerName) {
-            console.log(playerScore);
             if (playerScore == WIN_SCORE) {
                 showingWinScreen = true;
                 winText = playerName + " Wins!!";
@@ -206,6 +205,15 @@
             canvasContext.fill();
         }
 
+        function drawNet() {
+            var netLines = canvas.height / 40;
+            var netLineY = 0;
+            for (var i = 0; i < netLines; i++) {
+                colorRectangle(canvas.width / 2, netLineY * 2, 2, 20, "#FFFFFF");
+                netLineY += 20;
+            }
+        }
+
         function drawEverything() {
             // clear screen by adding black background 
             colorRectangle(0, 0, canvas.width, canvas.height, "#000000");
@@ -226,6 +234,8 @@
             // draw right player score
             canvasContext.fillStyle = "#FFFFFF";
             canvasContext.fillText("score: " + paddle2Score, canvas.width - 110, 100);
+
+            drawNet();
 
             if (showingWinScreen) {
                 // clear screen by adding black background 
