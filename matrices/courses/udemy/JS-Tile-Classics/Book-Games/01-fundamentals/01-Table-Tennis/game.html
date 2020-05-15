@@ -30,7 +30,7 @@
         const PADDLE_WIDTH = 10;
 
         const COMPUTER_SPEED = 6;
-        const COMPUTER_AWARENESS_DIST = 35;
+        const COMPUTER_AWARENESS_DIST = 30;
 
         function calculateMousePos(evt) {
             var rect = canvas.getBoundingClientRect(), root = document.documentElement;
@@ -72,53 +72,44 @@
         }
 
         function moveComputerPaddle() {
-            var paddle2TopEdgeY = paddle2Y;
-            var paddleBottomEdgeY = paddle2TopEdgeY + PADDLE_HEIGHT;
-            var centerOfPaddle2Y = paddle2TopEdgeY + PADDLE_HEIGHT / 2;
-            var ballDistFromPaddle2CenterY = ballPosY - centerOfPaddle2Y;
+            var ballDistFromCenterOfPaddle = getBallDistFromCenterOfPaddle(paddle2Y);
 
-            if (ballDistFromPaddle2CenterY < -COMPUTER_AWARENESS_DIST) {
+            if (ballDistFromCenterOfPaddle < -COMPUTER_AWARENESS_DIST) {
                 paddle2Y -= COMPUTER_SPEED;
-            } else if (ballDistFromPaddle2CenterY > COMPUTER_AWARENESS_DIST) {
+            } else if (ballDistFromCenterOfPaddle > COMPUTER_AWARENESS_DIST) {
                 paddle2Y += COMPUTER_SPEED;
             }
         }
-
-        function moveEverything() {
-            moveComputerPaddle();
-            var paddle1TopEdgeY = paddle1Y;
-            var paddleBottomEdgeY = paddle1TopEdgeY + PADDLE_HEIGHT;
-            var paddle2TopEdgeY = paddle2Y;
-            var paddleBottomEdgeY = paddle2TopEdgeY + PADDLE_HEIGHT;
-
+        
+        function ballHandling() {
             if (ballPosX < 0) { // checks left side of screen
                 if (ballPosY > paddle1Y && ballPosY < paddle1Y + PADDLE_HEIGHT) {
                     ballSpeedX *= -1;
-                    var centerOfPaddle1Y = paddle1TopEdgeY + PADDLE_HEIGHT / 2;
-                    var ballDistFromPaddle1CenterY = ballPosY - centerOfPaddle1Y;
-                    ballSpeedY = ballDistFromPaddle1CenterY * 0.35;
+                    ballSpeedY = getBallDistFromCenterOfPaddle(paddle1Y) * 0.35;
                 } else {
                     ballReset();
                     paddle2Score++;
                 }
             }
+
             if (ballPosX > canvas.width) { // checks right side of screen
                 if (ballPosY > paddle2Y && ballPosY < paddle2Y + PADDLE_HEIGHT) {
                     ballSpeedX *= -1;
-                    var centerOfPaddle2Y = paddle2TopEdgeY + PADDLE_HEIGHT / 2;
-                    var ballDistFromPaddle2CenterY = ballPosY - centerOfPaddle2Y;
-                    ballSpeedY = ballDistFromPaddle2CenterY * 0.35;
+                    ballSpeedY = getBallDistFromCenterOfPaddle(paddle2Y) * 0.35;
                 } else {
                     ballReset();
                     paddle1Score++;
                 }
             }
+
             if (ballPosY < 0) { // checks for top of screen
                 ballSpeedY *= -1;
             }
+
             if (ballPosY > canvas.height) { // check for bottom of screen
                 ballSpeedY *= -1;
             }
+
             /** 
              * move the ball some amount
              * these get updated in drawEverything()
@@ -126,6 +117,17 @@
             */
             ballPosX += ballSpeedX;
             ballPosY += ballSpeedY;
+        }
+
+        function getBallDistFromCenterOfPaddle(paddleY) {
+            var paddleTop = paddleY;
+            var centerOfPaddle = paddleTop + PADDLE_HEIGHT / 2;
+            return ballPosY - centerOfPaddle;
+        }
+
+        function moveEverything() {
+            moveComputerPaddle();
+            ballHandling();
         }
 
         /**
