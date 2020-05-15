@@ -77,10 +77,15 @@
                 if (ballPosX > paddlePosX &&
                     ballPosX < paddlePosX + PADDLE_WIDTH) {
                     ballSpeedY *= -1;
+                    var centerOfPaddle = paddlePosX + PADDLE_WIDTH / 2;
+                    var ballDistFromCenterOfPaddle = ballPosX - centerOfPaddle;
+                    ballSpeedX = ballDistFromCenterOfPaddle * 0.35;
                 }
                 if (ballPosY > canvas.height) {
                     ballPosX = 75;
                     ballPosY = 75;
+                    ballSpeedX = 8;
+                    ballSpeedY = 8;
                 }
             }
 
