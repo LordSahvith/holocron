@@ -21,16 +21,43 @@
         var ballSpeedX = 8;
         var ballSpeedY = 8;
 
+        var paddlePosX = 250;
+        var paddlePosY; // set on page load
+
+        const PADDLE_WIDTH = 100;
+        const PADDLE_HEIGHT = 10;
+        const PADDLE_GAP_FROM_BOTTOM = 20;
+        const TOP_OF_PADDLE = PADDLE_HEIGHT + PADDLE_GAP_FROM_BOTTOM;
+
+        function calculateMousePos(evt) {
+            var rect = canvas.getBoundingClientRect(), root = document.documentElement;
+
+            var mouseX = evt.clientX - rect.left - root.scrollLeft;
+            var mouseY = evt.clientY - rect.top - root.scrollTop;
+            return {
+                x: mouseX,
+                y: mouseY
+            }
+        }
+
         window.onload = function () {
             // save the conavas for dimensions, and it's 2d context for drawing 
             canvas = document.querySelector("#gameCanvas");
             canvasContext = canvas.getContext("2d");
+
+            paddlePosY = canvas.height - TOP_OF_PADDLE;
 
             let framesPerSecond = 30;
             setInterval(function () {
                 moveEverything();
                 drawEverything();
             }, 1000 / framesPerSecond);
+
+            canvas.addEventListener('mousemove', function (evt) {
+                var mousePos = calculateMousePos(evt);
+                // minus half the height to center paddle 
+                paddlePosX = mousePos.x - (PADDLE_WIDTH / 2);
+            });
         }
 
         function moveEverything() {
@@ -46,8 +73,15 @@
                 ballSpeedY *= -1;
             }
 
-            if (ballPosY > canvas.height) {
-                ballSpeedY *= -1;
+            if (ballPosY > paddlePosY) {
+                if (ballPosX > paddlePosX &&
+                    ballPosX < paddlePosX + PADDLE_WIDTH) {
+                    ballSpeedY *= -1;
+                }
+                if (ballPosY > canvas.height) {
+                    ballPosX = 75;
+                    ballPosY = 75;
+                }
             }
 
             // move the ball some amount
@@ -56,23 +90,58 @@
         }
 
         function drawEverything() {
-            // hex or select color names
-            canvasContext.fillStyle = "#000000";
+            // clear screen
+            colorRectangle(0, 0, canvas.width, canvas.height, "black");
+
+            // draw ball
+            colorCircle(ballPosX, ballPosY, 10, "white");
+
+            // draw paddle
+            colorRectangle(paddlePosX, paddlePosY, PADDLE_WIDTH, PADDLE_HEIGHT, "white");
+        }
+
+        /**
+         * @param {int} topLeftX 
+         * top left X coord corner of canvas
+         * @param {int}  topLeftY 
+         * top left Y coord corner of canvas
+         * @param {int}  boxWidth 
+         * width of rectangle
+         * @param {int}  boxHeight 
+         * height of rectangle
+         * @param {string}  fillColor 
+         * color of rectangle (takes hex or certain string names)
+         */
+        function colorRectangle(topLeftX, topLeftY, boxWidth, boxHeight, fillColor) {
+            // set color
+            canvasContext.fillStyle = fillColor;
             /** 
              * draws rectangle starting at the top left corner 0,0
              * fillRect(x, y, width, height);
             */
-            canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+            canvasContext.fillRect(topLeftX, topLeftY, boxWidth, boxHeight);
+        }
 
+        /**
+         * @param {int} centerX 
+         * center X of ball
+         * @param {int} centerY 
+         * center Y of ball
+         * @param {int} radius 
+         * radius size of ball
+         * @param {string} fillColor 
+         * color of ball (hex or string of select color names)
+         */
+        function colorCircle(centerX, centerY, radius, fillColor) {
             // set color
-            canvasContext.fillStyle = "#FFFFFF";
+            canvasContext.fillStyle = fillColor;
             // new shape
             canvasContext.beginPath();
             /**
              * draw circle
              * arc(x, y, radius, radianStart, radianEnd, drawCounterClockwise);
             */
-            canvasContext.arc(ballPosX, ballPosY, 10, 0, Math.PI * 2, true);
+            canvasContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
             // draw what shapes have been created since last beginPath() method
             canvasContext.fill();
         }
