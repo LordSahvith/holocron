@@ -8,7 +8,7 @@ $dbName = "phpfundamentals";
 $connection = new mysqli($dbServer, $dbUserName, $dbPassword, $dbName);
 
 if ($connection->connect_errno) {
-    exit("Database Connection Failed, Reason: " . $connection->connect_error);
+    die("Database Connection Failed, Reason: " . $connection->connect_error);
 }
 
 // $query = "DELETE FROM authors WHERE first_name='bob'";
@@ -17,15 +17,34 @@ if ($connection->connect_errno) {
 // $connection->query($query);
 // echo "Newly created author id: " . $connection->insert_id . PHP_EOL;
 
-$query = "SELECT first_name, last_name, pen_name FROM Authors ORDER BY first_name";
-$resultObj = $connection->query($query);
+// $query = "SELECT first_name, last_name, pen_name FROM Authors ORDER BY first_name";
+// $resultObj = $connection->query($query);
 
-if ($resultObj->num_rows > 0) {
-    while ($singleRowFromQuery = $resultObj->fetch_assoc()) {
-        // print_r($singleRowFromQuery);
-        echo "Author: " . $singleRowFromQuery['first_name'].PHP_EOL; 
+// if ($resultObj->num_rows > 0) {
+//     while ($singleRowFromQuery = $resultObj->fetch_assoc()) {
+//         // print_r($singleRowFromQuery);
+//         echo "Author: " . $singleRowFromQuery['first_name'].PHP_EOL; 
+//     }
+// }
+
+// $resultObj->close();
+
+$tempFirstName = "batman";
+
+$query = "SELECT first_name, last_name, pen_name FROM Authors WHERE first_name=?";
+$statementObj = $connection->prepare($query);
+
+$statementObj->bind_param("s", $tempFirstName);
+$statementObj->execute();
+
+$statementObj->bind_result($firstName, $lastName, $penName);
+$statementObj->store_result();
+
+if ($statementObj->num_rows > 0) {
+    while ($statementObj->fetch()) {
+        echo $firstName." ".$lastName." (".$penName.")".PHP_EOL;
     }
 }
 
-$resultObj->close();
+$statementObj->close();
 $connection->close();
