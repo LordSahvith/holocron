@@ -33,9 +33,9 @@ $resultObj = $connection->query($query);
             </div>
             <div class="multiple">
                 <label>Favorite Century:</label>
-                17th Century <input type="checkbox" name="century" value="17th">
-                18th Century <input type="checkbox" name="century" value="18th">
-                19th Century <input type="checkbox" name="century" value="19th">
+                17th Century <input type="checkbox" name="century[]" value="17th">
+                18th Century <input type="checkbox" name="century[]" value="18th">
+                19th Century <input type="checkbox" name="century[]" value="19th">
             </div>
             <div>
                 <label>Comments:</label>
@@ -51,8 +51,8 @@ $resultObj = $connection->query($query);
             </div>
             <div class="multiple">
                 <label>Receive Newsletter:</label>
-                Yes <input type="radio" name="newsletter" value="no">
-                No <input type="radio" name="newsletter" value="yes">
+                Yes <input type="radio" name="newsletter" value="yes">
+                No <input type="radio" name="newsletter" value="no">
             </div>
             <div class="multiple">
                 <label>&nbsp;</label>
