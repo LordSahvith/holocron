@@ -7,6 +7,7 @@ $resultObj = $connection->query($query);
 
 if (count($_POST) > 0) {
     if ($_POST['email'] != "") {
+        $_SESSION['formPostData'] = $_POST;
         header('Location: final.php');
     } else {
         $emailError = "validation";
