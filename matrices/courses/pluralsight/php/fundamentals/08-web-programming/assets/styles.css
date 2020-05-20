@@ -75,3 +75,11 @@ img {
 .multiple {
     font-size: 14px;
 }
+
+.validation label {
+    color: #CC0000;
+}
+
+.validation input {
+    border-color: #CC0000;
+}

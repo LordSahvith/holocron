@@ -3,6 +3,14 @@ require 'assets/dbInfo.php';
 
 $query = "SELECT id, first_name, last_name, pen_name FROM Authors ORDER BY first_name";
 $resultObj = $connection->query($query);
+
+if (count($_POST) > 0) {
+    if ($_POST['email'] != "") {
+        header('Location: final.php');
+    } else {
+        $emailError = "validation";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +29,7 @@ $resultObj = $connection->query($query);
         </h2>
     </div>
     <div id="Body">
-        <form method="get" action="final.php">
+        <form method="post" action="index.php">
             <div>
                 <label>Favorite Author:</label>
                 <select name="author">
@@ -45,7 +53,7 @@ $resultObj = $connection->query($query);
                 <label>Name:</label>
                 <input type="text" name="name" />
             </div>
-            <div>
+            <div class="<?= $emailError; ?>">
                 <label>E-mail Address:</label>
                 <input type="text" name="email" />
             </div>
