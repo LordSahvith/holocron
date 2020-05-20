@@ -1,4 +1,5 @@
 <?php
+include 'assets/include.php';
 require 'assets/dbInfo.php';
 
 $query = "SELECT id, first_name, last_name, pen_name FROM Authors ORDER BY first_name";
