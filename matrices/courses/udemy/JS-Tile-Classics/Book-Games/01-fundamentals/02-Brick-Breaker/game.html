@@ -26,7 +26,7 @@
 
         const PADDLE_WIDTH = 100;
         const PADDLE_HEIGHT = 10;
-        const PADDLE_GAP_FROM_BOTTOM = 50;
+        const PADDLE_GAP_FROM_BOTTOM = 60;
         const TOP_OF_PADDLE = PADDLE_HEIGHT + PADDLE_GAP_FROM_BOTTOM;
 
         function calculateMousePos(evt) {
@@ -61,27 +61,28 @@
         }
 
         function moveEverything() {
-            if (ballPosX > canvas.width) {
+
+            if (ballPosX > canvas.width) { // right side of screen
                 ballSpeedX *= -1;
             }
 
-            if (ballPosX < 0) {
+            if (ballPosX < 0) { // left side of screen
                 ballSpeedX *= -1;
             }
 
-            if (ballPosY < 0) {
+            if (ballPosY < 0) { // top of screen
                 ballSpeedY *= -1;
             }
 
-            if (ballPosY > paddlePosY) {
-                if (ballPosX > paddlePosX &&
-                    ballPosX < paddlePosX + PADDLE_WIDTH) {
+            if (ballPosY > paddlePosY) { // ball passes height of paddle
+                if (ballPosX > paddlePosX && // ball is right of left side of paddle
+                    ballPosX < paddlePosX + PADDLE_WIDTH) {  // ball is left of right side of paddle
                     ballSpeedY *= -1;
                     var centerOfPaddle = paddlePosX + PADDLE_WIDTH / 2;
                     var ballDistFromCenterOfPaddle = ballPosX - centerOfPaddle;
                     ballSpeedX = ballDistFromCenterOfPaddle * 0.35;
                 }
-                if (ballPosY > canvas.height) {
+                if (ballPosY > canvas.height) { // passes paddle and leaves bottom of screen
                     ballPosX = 75;
                     ballPosY = 75;
                     ballSpeedX = 8;
@@ -89,7 +90,7 @@
                 }
             }
 
-            // move the ball some amount
+            // move the ball
             ballPosX += ballSpeedX;
             ballPosY += ballSpeedY;
         }
