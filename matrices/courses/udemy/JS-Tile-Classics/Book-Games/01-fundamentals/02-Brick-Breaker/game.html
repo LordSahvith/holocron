@@ -29,6 +29,12 @@
         const PADDLE_GAP_FROM_BOTTOM = 60;
         const TOP_OF_PADDLE = PADDLE_HEIGHT + PADDLE_GAP_FROM_BOTTOM;
 
+        const BRICK_W = 80;
+        const BRICK_H = 20;
+        const BRICK_GAP = 2;
+        const BRICK_COLS = 10;
+        const BRICK_ROWS = 14;
+
         function calculateMousePos(evt) {
             var rect = canvas.getBoundingClientRect(), root = document.documentElement;
 
@@ -61,7 +67,6 @@
         }
 
         function moveEverything() {
-
             if (ballPosX > canvas.width) { // right side of screen
                 ballSpeedX *= -1;
             }
@@ -74,20 +79,21 @@
                 ballSpeedY *= -1;
             }
 
-            if (ballPosY > paddlePosY) { // ball passes height of paddle
-                if (ballPosX > paddlePosX && // ball is right of left side of paddle
-                    ballPosX < paddlePosX + PADDLE_WIDTH) {  // ball is left of right side of paddle
-                    ballSpeedY *= -1;
-                    var centerOfPaddle = paddlePosX + PADDLE_WIDTH / 2;
-                    var ballDistFromCenterOfPaddle = ballPosX - centerOfPaddle;
-                    ballSpeedX = ballDistFromCenterOfPaddle * 0.35;
-                }
-                if (ballPosY > canvas.height) { // passes paddle and leaves bottom of screen
-                    ballPosX = 75;
-                    ballPosY = 75;
-                    ballSpeedX = 8;
-                    ballSpeedY = 8;
-                }
+            if (ballPosY > paddlePosY && // ball passes top of paddle
+                ballPosY < paddlePosY + PADDLE_HEIGHT && // ball is above bottom of paddle
+                ballPosX > paddlePosX && // ball is right of left side of paddle
+                ballPosX < paddlePosX + PADDLE_WIDTH) {  // ball is left of right side of paddle
+                ballSpeedY *= -1;
+                var centerOfPaddle = paddlePosX + PADDLE_WIDTH / 2;
+                var ballDistFromCenterOfPaddle = ballPosX - centerOfPaddle;
+                ballSpeedX = ballDistFromCenterOfPaddle * 0.35;
+            }
+
+            if (ballPosY > canvas.height) { // ball leaves bottom of screen
+                ballPosX = 75;
+                ballPosY = 75;
+                ballSpeedX = 8;
+                ballSpeedY = 8;
             }
 
             // move the ball
@@ -95,9 +101,25 @@
             ballPosY += ballSpeedY;
         }
 
+        function drawBricks() {
+            for (var col = 0; col < BRICK_COLS; col++) {
+                for (var row = 0; row < BRICK_ROWS; row++) {
+                    // compute the corner in pixel coordinates of the corresponding brick
+                    // multiply the brick's tile coordinate by BRICK_W or BRICK_H for pixel
+                    var brickLeftEdgeX = col * BRICK_W;
+                    var brickLeftEdgeY = row * BRICK_H;
+                    // draw blue rectangle at position, leaving small gap
+                    colorRectangle(brickLeftEdgeX, brickLeftEdgeY, BRICK_W - BRICK_GAP, BRICK_H - BRICK_GAP, 'blue');
+                }
+            }
+        }
+
         function drawEverything() {
             // clear screen
             colorRectangle(0, 0, canvas.width, canvas.height, "black");
+
+            // draw bricks
+            drawBricks();
 
             // draw ball
             colorCircle(ballPosX, ballPosY, 10, "white");
