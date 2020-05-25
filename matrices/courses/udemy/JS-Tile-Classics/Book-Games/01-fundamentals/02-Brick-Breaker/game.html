@@ -35,6 +35,8 @@
         const BRICK_COLS = 10;
         const BRICK_ROWS = 14;
 
+        var brickGrid = new Array(BRICK_COLS * BRICK_ROWS);
+
         function calculateMousePos(evt) {
             var rect = canvas.getBoundingClientRect(), root = document.documentElement;
 
@@ -53,6 +55,8 @@
 
             paddlePosY = canvas.height - TOP_OF_PADDLE;
 
+            resetBricks();
+
             let framesPerSecond = 30;
             setInterval(function () {
                 moveEverything();
@@ -64,6 +68,21 @@
                 // minus half the height to center paddle 
                 paddlePosX = mousePos.x - (PADDLE_WIDTH / 2);
             });
+        }
+
+        function resetBricks() {
+            for (var i = 0; i < BRICK_COLS * BRICK_H; i++) {
+                if (Math.random() < 0.5) {
+                    brickGrid[i] = 1;
+                } else {
+                    brickGrid[i] = 0;
+                }
+            }
+        }
+
+        function isBrickAtTileCoord(brickTileCol, brickTileRow) {
+            var brickIndex = brickTileCol + (BRICK_COLS * brickTileRow);
+            return (brickGrid[brickIndex] == 1);
         }
 
         function moveEverything() {
@@ -104,12 +123,14 @@
         function drawBricks() {
             for (var col = 0; col < BRICK_COLS; col++) {
                 for (var row = 0; row < BRICK_ROWS; row++) {
-                    // compute the corner in pixel coordinates of the corresponding brick
-                    // multiply the brick's tile coordinate by BRICK_W or BRICK_H for pixel
-                    var brickLeftEdgeX = col * BRICK_W;
-                    var brickLeftEdgeY = row * BRICK_H;
-                    // draw blue rectangle at position, leaving small gap
-                    colorRectangle(brickLeftEdgeX, brickLeftEdgeY, BRICK_W - BRICK_GAP, BRICK_H - BRICK_GAP, 'blue');
+                    if (isBrickAtTileCoord(col, row)) {
+                        // compute the corner in pixel coordinates of the corresponding brick
+                        // multiply the brick's tile coordinate by BRICK_W or BRICK_H for pixel
+                        var brickLeftEdgeX = col * BRICK_W;
+                        var brickLeftEdgeY = row * BRICK_H;
+                        // draw blue rectangle at position, leaving small gap
+                        colorRectangle(brickLeftEdgeX, brickLeftEdgeY, BRICK_W - BRICK_GAP, BRICK_H - BRICK_GAP, 'blue');
+                    }
                 }
             }
         }
