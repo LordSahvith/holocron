@@ -72,16 +72,16 @@
 
         function resetBricks() {
             for (var i = 0; i < BRICK_COLS * BRICK_H; i++) {
-                if (Math.random() < 0.5) {
-                    brickGrid[i] = 1;
-                } else {
-                    brickGrid[i] = 0;
-                }
+                brickGrid[i] = 1;
             }
         }
 
+        function brickTileToIndex(tileCol, tileRow) {
+            return (tileCol + (BRICK_COLS * tileRow));
+        }
+
         function isBrickAtTileCoord(brickTileCol, brickTileRow) {
-            var brickIndex = brickTileCol + (BRICK_COLS * brickTileRow);
+            var brickIndex = brickTileToIndex(brickTileCol, brickTileRow);
             return (brickGrid[brickIndex] == 1);
         }
 
@@ -115,9 +115,30 @@
                 ballSpeedY = 8;
             }
 
+            removeBrickAtPixelCoord(ballPosX, ballPosY);
+
             // move the ball
             ballPosX += ballSpeedX;
             ballPosY += ballSpeedY;
+        }
+
+        function removeBrickAtPixelCoord(pixelX, pixelY) {
+            // get row / col of ball
+            var tileCol = pixelX / BRICK_W;
+            var tileRow = pixelY / BRICK_H;
+
+            // round down to whole number
+            tileCol = Math.floor(tileCol);
+            tileRow = Math.floor(tileRow);
+
+            // check the ball is in the playing field
+            if (tileCol < 0 || tileCol >= BRICK_COLS ||
+                tileRow < 0 || tileRow >= BRICK_ROWS) {
+                return; // bail out of function if out of bounds
+            }
+
+            var brickIndex = brickTileToIndex(tileCol, tileRow);
+            brickGrid[brickIndex] = 0;
         }
 
         function drawBricks() {
