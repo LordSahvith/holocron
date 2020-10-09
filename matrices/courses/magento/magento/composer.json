@@ -61,7 +61,7 @@
             "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/"
         }
     },
-    "version": "2.3.4",
+    "version": "2.3.5-p2",
     "minimum-stability": "stable",
     "repositories": [
         {
