@@ -17,7 +17,7 @@ $authors = $connection->query($query);
 			</h2>
 		</div>        
         <div id="Body">
-            <form method="get" action="final.php" >
+            <form method="post" action="final.php" >
                 <div>
                     <label>Favorite Author:</label>
                     <select name="author">

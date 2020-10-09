@@ -1,9 +1,9 @@
 <?php
 echo '<pre>';
-print_r($_GET);
+print_r($_POST);
 echo '</pre>';
 
-echo $_GET['author'];
+echo $_POST['century'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,27 +21,27 @@ echo $_GET['author'];
         <div id="Body">
             <div>
                 <label>Favorite Author:</label> 
-                <span> </span>
-            </div>		
+                <span><?= $_POST['author'] ?></span>
+            </div>
             <div>
                 <label>Favorite Century:</label>
-                <span> </span>
+                <span><?= $_POST['century'] ?></span>
             </div>
             <div>
                 <label>Comments:</label>
-                <span> </span>
+                <span><?= $_POST['comments'] ?></span>
             </div>
             <div>
                 <label>Name:</label>
-                <span> </span>
+                <span><?= $_POST['name'] ?></span>
             </div>
             <div>
                 <label>E-mail Address:</label>
-                <span> </span>
+                <span><?= $_POST['email'] ?></span>
             </div>
             <div>
                 <label>Receive Newsletter:</label>
-                <span> </span>
+                <span><?= $_POST['newsletter'] ?></span>
             </div>
         </div>
 	</body>
