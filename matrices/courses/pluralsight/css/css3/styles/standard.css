@@ -1,0 +1,231 @@
+﻿@charset 'utf-8';
+
+/** FONTS **/
+/* text */
+@font-face {
+    font-family: 'Aaargh';
+    src: url('../fonts/aaargh-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'DJ';
+    src: url('../fonts/dj-webfont.woff') format('woff');
+}
+
+body {
+    padding-top: 1em;
+    background-repeat: no-repeat;
+    /* text */
+    font-family: 'Aaargh', Arial;
+}
+
+h1, h2 {
+    /* shadowing */
+    text-shadow: 0.016em 0.016em 0.25em #AA5500;
+}
+
+:root {
+    background-color: #432100;
+}
+
+article, section {
+    height: 21em;
+    width: 44em;
+    /* border */
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+}
+
+footer {
+    padding-top: 23em;
+    /* border */
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+}
+
+#titles {
+    /* border */
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+}
+
+#content {
+    /* border */
+    border-radius: 2em;
+    /* shadowing */
+
+    -webkit-box-shadow: 0 0 0.5em 0.16em #555555,
+    0.50em 0.50em 3em #0055AA,
+    -0.25em 0 3em #0055AA;
+    box-shadow: 0 0 0.5em 0.16em #555555,
+    0.50em 0.50em 3em #0055AA,
+    -0.25em 0 3em #0055AA;
+}
+
+#about {
+    /* layout */
+    display: -webkit-box;
+    display: -ms-box;
+    display: box;
+    background: url(../images/css3logo.png) bottom left, url(../images/about_palermo_right.png) top right, #FFFFFF;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-size: auto, contain;
+}
+
+#topics ul {
+    height: 8em;
+    width: 98.5%;
+    margin-top: 1em;
+    border: .0625em solid #432100;
+    /* shadowing */
+    -webkit-box-shadow: .5em .5em .5em #555555;
+    box-shadow: .5em .5em .5em #555555;
+
+}
+
+#topics li p {
+    top: 10em;
+    left: 2em;
+}
+
+#title {
+    /* color */
+    color: hsla(210, 100%, 10%, 0.75);
+    /* text */
+    font-family: 'DJ', Script;
+    /* shadowing */
+    text-shadow: 0.16em 0.16em 0.5em rgb(170, 85, 0);
+
+    /* animation */
+    -webkit-transition: color 3s;
+    -ms-transition: color 3s;
+}
+
+#title:hover {
+    /* color */
+    opacity: 0.75;
+    color: #FFFFFF;
+}
+
+#subtitle {
+    /* text */
+    font-family: 'DJ', Script;
+    /* color */
+    color: rgb(170, 85, 0);
+    opacity: 0.75;
+}
+
+#subtitle:hover {
+    /* color */
+    opacity: 1;
+}
+
+nav a {
+    /* more supported than transparent */
+    color: rgba(0, 0, 0, 0);
+    /* shadowing */
+    text-shadow: 0.16em 0.16em 0.16em #FFBB77;
+}
+
+/* scripting */
+.no-textshadow nav a {
+    color: #FFEDDB;
+    font-weight: bold;
+}
+
+footer p:after {
+    content: "(standard)";
+}
+
+/* view screen is less than 801px width */
+@media screen and (max-width: 800px) {
+
+    #content {
+        width: 30em;
+    }
+
+    article, section {
+        width: 28em;
+    }
+
+    #title {
+        font-size: 3em;
+    }
+
+    #subtitle {
+        font-size: 2em;
+        opacity: 1;
+    }
+
+    #topic ul {
+        height: 8em;
+    }
+
+    /* scripting */
+    .no-csscolumns #topics li {
+        width: 8.1875em;
+    }
+
+    #topics p {
+        font-size: 90%;
+    }
+
+    #intro span.introClicked {
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        left: 8em;
+    }
+
+    #about {
+        display: inherit;
+        background-size: 30%, 50%;
+    }
+
+    #about p {
+        margin-top: 3em;
+        margin-left: 4em;
+        font-size: 200%;
+        -webkit-transform: rotate(15deg);
+        -ms-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+
+}
+
+/* view screen is greater than 800px width */
+@media screen and (min-width: 801px) {
+    #title:hover {
+        /* transforms */
+        -webkit-transform: scale(1.15);
+        -ms-transform: scale(1.15);
+        transform: scale(1.15);
+    }
+
+    body {
+        /* background */
+        background: -ms-linear-gradient(
+                bottom,
+                #432100 30%,
+                #00AAAA 70%);
+        background: -moz-linear-gradient(
+                bottom center,
+                #432100 30%,
+                #00AAAA 70%);
+        background: -webkit-gradient(
+                linear, left bottom, left top,
+                color-stop(0.70, #00AAAA),
+                color-stop(0.30, #432100));
+    }
+
+    #intro span {
+        /* animation */
+        -webkit-transition: all 3s;
+        -ms-transition: all 3s;
+    }
+
+    #intro span.introClicked {
+        -webkit-transform: scale(3);
+        -ms-transform: scale(3);
+    }
+}

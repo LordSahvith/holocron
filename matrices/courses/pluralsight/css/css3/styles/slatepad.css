@@ -1,0 +1,66 @@
+﻿@charset 'utf-8';
+
+body {
+    background-color: #000000;
+    color: #432100;
+    font-family: Arial;
+}
+
+#content {
+    width: 32em;
+    box-shadow: none;
+    border-color: #ffffff;
+}
+
+article, section {
+    height: 18em;
+    width: 30em;
+    top: 6em;
+}
+
+#title {
+    font-size: 2.5em;
+}
+
+#subtitle {
+    font-size: 1.5em;
+    opacity: 1;
+    color: #432100;
+}
+
+#intro span.introClicked {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    left: 9em;
+}
+
+#topics ul {
+    margin-left: 0.75em;
+}
+
+#topics li p {
+    top: 13em;
+    left: 1em;
+
+}
+
+footer {
+    padding-top: 20em;
+}
+
+footer p {
+    font-size: 60%;
+}
+
+footer p:after {
+    content: "(slatepad)";
+}
+
+nav {
+    position: relative;
+    top: 24.5em;
+}
+
+nav a:last-child {
+    display: none;
+}

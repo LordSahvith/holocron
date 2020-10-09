@@ -1,0 +1,65 @@
+﻿@charset 'utf-8';
+
+body {
+    background-color: #000000;
+    color: #432100;
+    font-family: Arial;
+}
+
+#content {
+    width: 28em;
+}
+
+article, section {
+    height: 18em;
+    width: 26em;
+    top: 6em;
+}
+
+#title {
+    font-size: 2.5em;
+}
+
+#subtitle {
+    font-size: 1.5em;
+    opacity: 1;
+    color: #432100;
+}
+
+#intro span.introClicked {
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    left: 9em;
+}
+
+#topics ul {
+    margin-left: 0.75em;
+}
+
+.no-csscolumns #topics li {
+    display: inline-block;
+    padding: 0.1875em;
+    width: 11em;
+    float: left;
+}
+
+#topics li p {
+    top: 10em;
+    left: 0em;
+}
+
+footer {
+    padding-top: 20em;
+}
+
+footer p {
+    font-size: 60%;
+}
+
+footer p:after {
+    content: "(mobile)";
+}
+
+nav a:last-child {
+    display: none;
+}
