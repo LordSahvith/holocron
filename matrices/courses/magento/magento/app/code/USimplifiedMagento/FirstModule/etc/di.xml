@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="\USimplifiedMagento\FirstModule\NonMagentoWay\PencilInterface"
-                type="\USimplifiedMagento\FirstModule\NonMagentoWay\RedPencil" />
+    <preference for="USimplifiedMagento\FirstModule\Api\PencilInterface"
+                type="USimplifiedMagento\FirstModule\Model\Pencil" />
+    <preference for="USimplifiedMagento\FirstModule\Api\Color"
+                type="USimplifiedMagento\FirstModule\Model\Red" />
+    <preference for="USimplifiedMagento\FirstModule\Api\Size"
+                type="USimplifiedMagento\FirstModule\Model\Normal" />
 </config>
