@@ -56,6 +56,7 @@
             paddlePosY = canvas.height - TOP_OF_PADDLE;
 
             resetBricks();
+            // ballReset();
 
             let framesPerSecond = 30;
             setInterval(function () {
@@ -74,6 +75,13 @@
             for (var i = 0; i < BRICK_COLS * BRICK_H; i++) {
                 brickGrid[i] = 1;
             }
+        }
+
+        function ballReset() {
+            ballPosX = 75;
+            ballPosY = 285;
+            ballSpeedX = 8;
+            ballSpeedY = 8;
         }
 
         function brickTileToIndex(tileCol, tileRow) {
@@ -109,20 +117,17 @@
             }
 
             if (ballPosY > canvas.height) { // ball leaves bottom of screen
-                ballPosX = 75;
-                ballPosY = 75;
-                ballSpeedX = 8;
-                ballSpeedY = 8;
+                ballReset();
             }
 
-            removeBrickAtPixelCoord(ballPosX, ballPosY);
+            checkForAndRemoveBrickAtPixelCoord(ballPosX, ballPosY);
 
             // move the ball
             ballPosX += ballSpeedX;
             ballPosY += ballSpeedY;
         }
 
-        function removeBrickAtPixelCoord(pixelX, pixelY) {
+        function checkForAndRemoveBrickAtPixelCoord(pixelX, pixelY) {
             // get row / col of ball
             var tileCol = pixelX / BRICK_W;
             var tileRow = pixelY / BRICK_H;
@@ -139,6 +144,8 @@
 
             var brickIndex = brickTileToIndex(tileCol, tileRow);
             brickGrid[brickIndex] = 0;
+            ballSpeedY *= -1;
+            // return brickGrid[brickIndex] == 0;
         }
 
         function drawBricks() {
