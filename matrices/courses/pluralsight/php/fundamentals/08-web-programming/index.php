@@ -1,10 +1,13 @@
 <?php
+include 'assets/include.php';
 require 'assets/db-connection.php';
+
 $query = 'SELECT id, first_name, last_name, pen_name FROM Authors ORDER BY id';
 $authors = $connection->query($query);
 
 if (isset($_POST['email'])) {
     if ($_POST['email'] != '') {
+        $_SESSION['formPostData'] = $_POST;
         header('Location: final.php');
     } else {
         $emailError = 'validation';

@@ -1,9 +1,11 @@
 <?php
+include 'assets/include.php';
+
 echo '<pre>';
-print_r($_POST);
+print_r($_SESSION);
 echo '</pre>';
 
-echo $_POST['century'];
+$postedData = $_SESSION['formPostData'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,27 +23,27 @@ echo $_POST['century'];
         <div id="Body">
             <div>
                 <label>Favorite Author:</label> 
-                <span><?= $_POST['author'] ?></span>
+                <span><?= $postedData['author'] ?></span>
             </div>
             <div>
                 <label>Favorite Century:</label>
-                <span><?= $_POST['century'] ?></span>
+                <span><?= $postedData['century'] ?></span>
             </div>
             <div>
                 <label>Comments:</label>
-                <span><?= $_POST['comments'] ?></span>
+                <span><?= $postedData['comments'] ?></span>
             </div>
             <div>
                 <label>Name:</label>
-                <span><?= $_POST['name'] ?></span>
+                <span><?= $postedData['name'] ?></span>
             </div>
             <div>
                 <label>E-mail Address:</label>
-                <span><?= $_POST['email'] ?></span>
+                <span><?= $postedData['email'] ?></span>
             </div>
             <div>
                 <label>Receive Newsletter:</label>
-                <span><?= $_POST['newsletter'] ?></span>
+                <span><?= $postedData['newsletter'] ?></span>
             </div>
         </div>
 	</body>
