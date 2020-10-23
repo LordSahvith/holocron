@@ -11,3 +11,4 @@ img { height: 150px; float: left; }
 #Header { text-align: center; padding: 0 0 20px 0; width: 500px; overflow: hidden; margin: 0 auto;   }
 .multiple input { width: auto; margin: 0 15px 0 5px; }
 .multiple { font-size: 14px; }
+.validation { border: 1px solid red; }
