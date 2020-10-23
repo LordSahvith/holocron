@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PO Box Regex</title>
+</head>
+<body>
+
+    <div class="display"></div>
+    
+
+    <script>
+
+        const displayEl = document.querySelector('.display');
+        const poBoxRegex = /^(P\.?O\.?)?\s?Box\s*\d+/i;
+
+        let addresses = ['PO Box 1234', 'P.O. Box 1234', 'Box 1234', 'Boxer 1234', 'PO Boxer 1234', '1234 Box'];
+
+        let output = '';
+
+        for (let i = 0; i < addresses.length; i++) {
+            if (addresses[i].match(poBoxRegex)) {
+                console.log(addresses[i]);
+            }
+            output += addresses[i] + '<br>';
+        }
+
+        displayEl.innerHTML = output;
+
+    </script>
+
+</body>
+</html>
