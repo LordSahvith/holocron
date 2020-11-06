@@ -3,7 +3,7 @@
 if (isset($_GET['id']) && ctype_digit($_GET['id'])) {
     $id = $_GET['id'];
 } else {
-    header('Location: select.php');
+    header('Location: read.php');
 }
 
 $db = new mysqli(
