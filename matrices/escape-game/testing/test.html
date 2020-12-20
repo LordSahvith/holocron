@@ -42,7 +42,7 @@
 
         const PADDLE_THICKNESS = paddle.height;
         const PADDLE_WIDTH = paddle.width;
-        const PADDLE_DIST_FROM_EDGE = PADDLE_THICKNESS * 5;
+        const PADDLE_TOP = PADDLE_THICKNESS * 5;
 
         window.onload = function () {
             console.log('Game is loading...[setting game parameters...]');
@@ -145,7 +145,7 @@
         function drawPaddle() {
             let paddleBackground = 'white';
             drawRect(paddle.pos.x,
-                canvas.height - PADDLE_DIST_FROM_EDGE,
+                canvas.height - PADDLE_TOP,
                 PADDLE_WIDTH,
                 PADDLE_THICKNESS,
                 paddleBackground
@@ -153,12 +153,16 @@
         }
 
         function paddleCollision() {
-            let topOfPaddle = canvas.height - PADDLE_DIST_FROM_EDGE;
+            let topOfPaddle = canvas.height - PADDLE_TOP;
             if (ball.y.pos > topOfPaddle &&
                 ball.y.pos < topOfPaddle + PADDLE_THICKNESS &&
                 ball.x.pos > paddle.pos.x &&
                 ball.x.pos < paddle.pos.x + PADDLE_WIDTH) {
                     ball.y.speed *= -1;
+                    
+                    let centerOfPaddle = paddle.pos.x + (PADDLE_WIDTH / 2);
+                    let ballDistFromPaddleCenter = ball.x.pos - centerOfPaddle;
+                    ball.x.speed = ballDistFromPaddleCenter * 0.35;
                 }
         }
 
