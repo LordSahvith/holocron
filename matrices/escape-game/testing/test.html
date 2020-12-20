@@ -14,8 +14,9 @@
     <script>
 
         'use strict';
-
-        console.log('Game is loading...[start compilation]');
+        console.group('Brick Breaker Load');
+        console.group('Game Compilation');
+        console.log('compilation started...');
 
         let canvas;
         let canvastContext;
@@ -45,11 +46,13 @@
         const PADDLE_TOP = PADDLE_THICKNESS * 5;
 
         window.onload = function () {
-            console.log('Game is loading...[setting game parameters...]');
+            console.group('Set Game Parameters');
+            console.log('setting game parameters...');
             canvas = document.querySelector('#gameCanvas');
             canvastContext = canvas.getContext('2d');
 
-            console.log('Game is loading...[game parameters set]');
+            console.log('game parameters set');
+            console.groupEnd();
             init();
         };
 
@@ -67,8 +70,9 @@
         }
 
         function init() {
-            console.log('Game has loaded.');
-            console.log('Menu here.');
+            console.log('Game build sucessful.');
+            console.groupEnd();
+            console.log('Game Menu.');
 
             addEventListeners();
 
@@ -168,7 +172,8 @@
 
         // END: GAME SPECIFIC FUNCTIONALITY METHODS
 
-        console.log('Game is loading...[compilation finished]');
+        console.log('compilation finished.');
+        console.groupEnd();
     </script>
 
 </body>
