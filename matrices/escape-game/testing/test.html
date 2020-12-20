@@ -42,6 +42,7 @@
 
         const PADDLE_THICKNESS = paddle.height;
         const PADDLE_WIDTH = paddle.width;
+        const PADDLE_DIST_FROM_EDGE = PADDLE_THICKNESS * 5;
 
         window.onload = function () {
             console.log('Game is loading...[setting game parameters...]');
@@ -49,7 +50,6 @@
             canvastContext = canvas.getContext('2d');
 
             console.log('Game is loading...[game parameters set]');
-            addEventListeners();
             init();
         };
 
@@ -69,6 +69,8 @@
         function init() {
             console.log('Game has loaded.');
             console.log('Menu here.');
+
+            addEventListeners();
 
             let framesPerSecond = 30;
             setInterval(updateScreen, 1000 / framesPerSecond);
@@ -91,6 +93,19 @@
             canvastContext.fill();
         }
 
+
+        // ADDING YOU OWN FUNCTIONALITY    
+        function updateScreen() {
+            drawCanvas();
+            drawBall();
+            moveBall();
+            drawPaddle();
+            paddleCollision();
+        }
+
+
+        // START: GAME SPECIFIC FUNCTIONALITY METHODS
+
         function drawBall() {
             let ballBackground = 'red';
             drawCircle(ball.x.pos, ball.y.pos, 10, ballBackground);
@@ -101,6 +116,11 @@
             ball.y.pos += ball.y.speed;
 
             setBallBoundries();
+        }
+
+        function ballReset() {
+            ball.x.pos = canvas.width / 2;
+            ball.y.pos = canvas.height / 2;
         }
 
         function setBallBoundries() {
@@ -118,26 +138,31 @@
             }
             // set bottom
             if (ball.y.pos > canvas.height) {
-                ball.y.speed *= -1;
+                ballReset();
             }
         }
 
         function drawPaddle() {
             let paddleBackground = 'white';
             drawRect(paddle.pos.x,
-                canvas.height - PADDLE_THICKNESS,
+                canvas.height - PADDLE_DIST_FROM_EDGE,
                 PADDLE_WIDTH,
                 PADDLE_THICKNESS,
                 paddleBackground
             );
         }
 
-        function updateScreen() {
-            drawCanvas();
-            drawBall();
-            moveBall();
-            drawPaddle();
+        function paddleCollision() {
+            let topOfPaddle = canvas.height - PADDLE_DIST_FROM_EDGE;
+            if (ball.y.pos > topOfPaddle &&
+                ball.y.pos < topOfPaddle + PADDLE_THICKNESS &&
+                ball.x.pos > paddle.pos.x &&
+                ball.x.pos < paddle.pos.x + PADDLE_WIDTH) {
+                    ball.y.speed *= -1;
+                }
         }
+
+        // END: GAME SPECIFIC FUNCTIONALITY METHODS
 
         console.log('Game is loading...[compilation finished]');
     </script>
