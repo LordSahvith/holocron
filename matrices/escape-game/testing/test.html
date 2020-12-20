@@ -20,32 +20,123 @@
         let canvas;
         let canvastContext;
 
+        let ball = {
+            x: {
+                pos: 75,
+                speed: 5
+            },
+            y: {
+                pos: 75,
+                speed: 7
+            }
+        };
+
+        let paddle = {
+            width: 100,
+            height: 10,
+            pos: {
+                x: 400,
+                y: 100
+            }
+        };
+
+        const PADDLE_THICKNESS = paddle.height;
+        const PADDLE_WIDTH = paddle.width;
+
         window.onload = function () {
             console.log('Game is loading...[setting game parameters...]');
             canvas = document.querySelector('#gameCanvas');
             canvastContext = canvas.getContext('2d');
 
             console.log('Game is loading...[game parameters set]');
+            addEventListeners();
             init();
         };
+
+        function updateMousePos(e) {
+            let rect = canvas.getBoundingClientRect();
+            let root = document.documentElement;
+
+            let mouseX = e.clientX - rect.left - root.scrollLeft;
+
+            paddle.pos.x = mouseX - (PADDLE_WIDTH / 2);
+        }
+
+        function addEventListeners() {
+            canvas.addEventListener('mousemove', updateMousePos);
+        }
 
         function init() {
             console.log('Game has loaded.');
             console.log('Menu here.');
-            drawCanvas();
-            drawBall();
+
+            let framesPerSecond = 30;
+            setInterval(updateScreen, 1000 / framesPerSecond);
         }
 
         function drawCanvas() {
-            canvastContext.fillStyle = 'black';
-            canvastContext.fillRect(0, 0, canvas.width, canvas.height);
+            let canvasBackground = 'black';
+            drawRect(0, 0, canvas.width, canvas.height, canvasBackground);
+        }
+
+        function drawRect(topLeftX, topLeftY, width, height, fillColor) {
+            canvastContext.fillStyle = fillColor;
+            canvastContext.fillRect(topLeftX, topLeftY, width, height);
+        }
+
+        function drawCircle(centerX, centerY, radius, fillColor) {
+            canvastContext.fillStyle = fillColor;
+            canvastContext.beginPath();
+            canvastContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
+            canvastContext.fill();
         }
 
         function drawBall() {
-            canvastContext.fillStyle = 'white';
-            canvastContext.beginPath();
-            canvastContext.arc(100, 100, 10, 0, Math.PI*2, true);
-            canvastContext.fill();
+            let ballBackground = 'red';
+            drawCircle(ball.x.pos, ball.y.pos, 10, ballBackground);
+        }
+
+        function moveBall() {
+            ball.x.pos += ball.x.speed;
+            ball.y.pos += ball.y.speed;
+
+            setBallBoundries();
+        }
+
+        function setBallBoundries() {
+            // set left
+            if (ball.x.pos < 0) {
+                ball.x.speed *= -1;
+            }
+            // set right
+            if (ball.x.pos > canvas.width) {
+                ball.x.speed *= -1;
+            }
+            // set top
+            if (ball.y.pos < 0) {
+                ball.y.speed *= -1;
+            }
+            // set bottom
+            if (ball.y.pos > canvas.height) {
+                ball.y.speed *= -1;
+            }
+        }
+
+        function drawPaddle() {
+            let paddleBackground = 'white';
+            drawRect(paddle.pos.x,
+                canvas.height - PADDLE_THICKNESS,
+                PADDLE_WIDTH,
+                PADDLE_THICKNESS,
+                paddleBackground
+            );
+        }
+
+        function updateScreen() {
+            drawCanvas();
+            drawBall();
+            moveBall();
+            drawPaddle();
         }
 
         console.log('Game is loading...[compilation finished]');
