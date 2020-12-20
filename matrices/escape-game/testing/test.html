@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Game Test</title>
+</head>
+
+<body>
+
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <script>
+
+        'use strict';
+
+        console.log('Game is loading...[start compilation]');
+
+        let canvas;
+        let canvastContext;
+
+        window.onload = function () {
+            console.log('Game is loading...[setting game parameters...]');
+            canvas = document.querySelector('#gameCanvas');
+            canvastContext = canvas.getContext('2d');
+
+            console.log('Game is loading...[game parameters set]');
+            init();
+        };
+
+        function init() {
+            console.log('Game has loaded.');
+            console.log('Menu here.');
+            drawCanvas();
+            drawBall();
+        }
+
+        function drawCanvas() {
+            canvastContext.fillStyle = 'black';
+            canvastContext.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function drawBall() {
+            canvastContext.fillStyle = 'white';
+            canvastContext.beginPath();
+            canvastContext.arc(100, 100, 10, 0, Math.PI*2, true);
+            canvastContext.fill();
+        }
+
+        console.log('Game is loading...[compilation finished]');
+    </script>
+
+</body>
+
+</html>
