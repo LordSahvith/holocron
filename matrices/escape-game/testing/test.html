@@ -75,11 +75,11 @@
         }
 
         let layout1 = [
-            1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, 1, 1, 1, 1, 1
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+            1, 1, 1, 1, 1, 1, 1, 1, 1, 1
         ];
 
         let layout2 = [
@@ -93,7 +93,7 @@
         let levelInfo = {
             level1: {
                 brick: {
-                    width: 100,
+                    width: 80,
                     height: 20,
                     gap: 2,
                     layout: layout1
@@ -124,7 +124,7 @@
         };
 
 
-        // ADDING YOU OWN FUNCTIONALITY    
+        // ADD YOUR OWN FUNCTIONALITY    
         function updateScreen() {
             drawCanvas();
             drawBall();
@@ -132,14 +132,34 @@
             drawPaddle();
             paddleCollision();
             drawBricks();
+            brickCollision();
 
             // TODO: mouse coords debug lines
-            let brickX = mouse.x / currentLevelInfo.brick.width;
-            let brickY = mouse.y / currentLevelInfo.brick.height;
-            drawText(`${brickX},${brickY}`, mouse.x, mouse.y, 'yellow');
+            let brickCol = Math.floor(mouse.x / currentLevelInfo.brick.width);
+            let brickRow = Math.floor(mouse.y / currentLevelInfo.brick.height);
+
+            let brickUnderMouse = getRowColLayoutIndex(brickCol, brickRow);
+            drawText(`${brickCol},${brickRow}:${brickUnderMouse}`, mouse.x, mouse.y, 'yellow');
+
+            if (brickCol >= 0 && brickCol < getColCount() &&
+                brickRow >= 0 && brickRow < getRowCount()) {
+                currentLevelInfo.brick.layout[brickUnderMouse] = 0;
+            }
         }
 
         // START: BASE ENGINE FUNCTIONS
+
+        function getRowCount() {
+            return (currentLevelInfo.brick.layout.length * currentLevelInfo.brick.width) / canvas.width;
+        }
+
+        function getColCount() {
+            return currentLevelInfo.brick.layout.length / getRowCount();
+        }
+
+        function getRowColLayoutIndex(col, row) {
+            return col + getColCount() * row;
+        }
 
         function updateMousePos(e) {
             let rect = canvas.getBoundingClientRect();
@@ -256,17 +276,25 @@
         function drawBricks() {
             let brickBackground = ['blue', 'purple', 'green', 'red'];
             let brick = currentLevelInfo.brick;
-            let rowCount = (brick.layout.length * brick.width) / canvas.width;
-            let colCount = brick.layout.length / rowCount;
-            let brickNumber = 0;
 
-            for (let row = 0; row < rowCount; row++) {
-                for (let col = 0; col < colCount; col++) {
+            for (let row = 0; row < getRowCount(); row++) {
+                for (let col = 0; col < getColCount(); col++) {
+                    let brickNumber = getRowColLayoutIndex(col, row);
                     if (brick.layout[brickNumber] === 1) {
                         drawRect(brick.width * col, brick.height * row, brick.width - brick.gap, brick.height - brick.gap, brickBackground[row]);
                     }
-                    brickNumber++;
                 }
+            }
+        }
+
+        function brickCollision() {
+            let ballBrickCol = Math.floor(ball.x.pos / currentLevelInfo.brick.width);
+            let ballBrickRow = Math.floor(ball.y.pos / currentLevelInfo.brick.height);
+            let brickUnderMouse = getRowColLayoutIndex(ballBrickCol, ballBrickRow);
+
+            if (ballBrickCol >= 0 && ballBrickCol < getColCount() &&
+                ballBrickRow >= 0 && ballBrickRow < getRowCount()) {
+                currentLevelInfo.brick.layout[brickUnderMouse] = 0;
             }
         }
 
