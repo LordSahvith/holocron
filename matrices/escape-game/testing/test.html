@@ -139,10 +139,10 @@
             let brickUnderMouse = getRowColLayoutIndex(brickCol, brickRow);
             drawText(`${brickCol},${brickRow}:${brickUnderMouse}`, mouse.x, mouse.y, 'yellow');
 
-            if (brickCol >= 0 && brickCol < getColCount() &&
-                brickRow >= 0 && brickRow < getRowCount()) {
-                currentLevelInfo.brick.layout[brickUnderMouse] = 0;
-            }
+            // if (brickCol >= 0 && brickCol < getColCount() &&
+            //     brickRow >= 0 && brickRow < getRowCount()) {
+            //     currentLevelInfo.brick.layout[brickUnderMouse] = 0;
+            // }
             // TODO: END: mouse coords debug lines
         }
 
@@ -190,6 +190,12 @@
             mouse.y = e.clientY - rect.top - root.scrollTop;
 
             paddle.pos.x = mouse.x - (PADDLE_WIDTH / 2);
+
+            // TODO: temp mod for testing
+            ball.x.pos = mouse.x;
+            ball.y.pos = mouse.y;
+            ball.x.speed = 4;
+            ball.y.speed = -4;
         }
 
         // TODO: update to use layout/map vs canvas width
@@ -304,7 +310,7 @@
             for (let row = 0; row < getRowCount(); row++) {
                 for (let col = 0; col < getColCount(); col++) {
                     let brickNumber = getRowColLayoutIndex(col, row);
-                    if (brick.layout[brickNumber]) {
+                    if (brick.layout[brickNumber] === 1) {
                         drawRect(brick.width * col, brick.height * row, brick.width - brick.gap, brick.height - brick.gap, brickBackground[row]);
                     }
                 }
@@ -318,9 +324,37 @@
 
             if (ballBrickCol >= 0 && ballBrickCol < getColCount() &&
                 ballBrickRow >= 0 && ballBrickRow < getRowCount()) {
-                if (currentLevelInfo.brick.layout[brickUnderBall]) {
+                if (currentLevelInfo.brick.layout[brickUnderBall] === 1) {
                     currentLevelInfo.brick.layout[brickUnderBall] = 0;
-                    ball.y.speed *= -1;
+
+                    let prevBallCol = ball.x.pos - ball.x.speed;
+                    let prevBallRow = ball.y.pos - ball.y.speed;
+                    let prevBrickCol = Math.floor(prevBallCol / currentLevelInfo.brick.width);
+                    let prevBrickRow = Math.floor(prevBallRow / currentLevelInfo.brick.height);
+
+                    let bothTestsFailed = true;
+                    if (prevBrickCol !== ballBrickCol) {
+                        let adjBrickSide = getRowColLayoutIndex(prevBrickCol, ballBrickRow);
+
+                        if (currentLevelInfo.brick.layout[adjBrickSide] === 0) {
+                            ball.x.speed *= -1;
+                            bothTestsFailed = false;
+                        }
+                    }
+
+                    if (prevBrickRow !== ballBrickRow) {
+                        let adjBrickTopBot = getRowColLayoutIndex(ballBrickCol, prevBrickRow);
+
+                        if (currentLevelInfo.brick.layout[adjBrickTopBot] === 0) {
+                            ball.y.speed *= -1;
+                            bothTestsFailed = false;
+                        }
+                    }
+
+                    if (bothTestsFailed) {
+                        ball.x.speed *= -1;
+                        ball.y.speed *= -1;
+                    }
                 }
             }
         }
