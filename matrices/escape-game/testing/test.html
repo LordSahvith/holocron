@@ -75,6 +75,9 @@
         }
 
         let layout1 = [
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -96,7 +99,8 @@
                     width: 80,
                     height: 20,
                     gap: 2,
-                    layout: layout1
+                    gutter: 3,
+                    layout: [...layout1]
                 }
             },
             level2: {
@@ -111,6 +115,11 @@
 
         let currentLevel = 'level1';
         let currentLevelInfo = levelInfo[currentLevel];
+
+        let bricksLeft = 0;
+        let bricksCounted = false;
+
+        let myInterval;
 
         window.onload = function () {
             console.group('Set Game Parameters');
@@ -173,9 +182,14 @@
             console.log('Game Menu.');
 
             addEventListeners();
+            ballReset();
+            bricksCounted = false;
+            handleInterval();
+        }
 
+        function handleInterval() {
             let framesPerSecond = 30;
-            setInterval(updateScreen, 1000 / framesPerSecond);
+            myInterval = setInterval(updateScreen, 1000 / framesPerSecond);
         }
 
         function addEventListeners() {
@@ -248,6 +262,18 @@
             drawCircle(ball.x.pos, ball.y.pos, 10, ballBackground);
         }
 
+        function ballReset() {
+            console.log("game over");
+            ball.x.pos = paddle.pos.x;
+            ball.y.pos = paddle.pos.y;
+        }
+
+        function gameOver() {     
+            clearInterval(myInterval);
+            currentLevelInfo.brick.layout = [...layout1];
+            init();
+        }
+
         function moveBall() {
             ball.x.pos += ball.x.speed;
             ball.y.pos += ball.y.speed;
@@ -300,6 +326,10 @@
                 let centerOfPaddle = paddle.pos.x + (PADDLE_WIDTH / 2);
                 let ballDistFromPaddleCenter = ball.x.pos - centerOfPaddle;
                 ball.x.speed = ballDistFromPaddleCenter * 0.35;
+
+                if (bricksLeft === 0) {
+                    gameOver();
+                }
             }
         }
 
@@ -311,10 +341,14 @@
                 for (let col = 0; col < getColCount(); col++) {
                     let brickNumber = getRowColLayoutIndex(col, row);
                     if (brick.layout[brickNumber] === 1) {
-                        drawRect(brick.width * col, brick.height * row, brick.width - brick.gap, brick.height - brick.gap, brickBackground[row]);
+                        drawRect(brick.width * col, brick.height * row, brick.width - brick.gap, brick.height - brick.gap, brickBackground[row - brick.gutter]);
+                        if (!bricksCounted) {
+                            bricksLeft++;
+                        }
                     }
                 }
             }
+            bricksCounted = true;
         }
 
         function brickCollision() {
@@ -326,6 +360,8 @@
                 ballBrickRow >= 0 && ballBrickRow < getRowCount()) {
                 if (currentLevelInfo.brick.layout[brickUnderBall] === 1) {
                     currentLevelInfo.brick.layout[brickUnderBall] = 0;
+                    bricksLeft--;
+                    console.log(bricksLeft);
 
                     let prevBallCol = ball.x.pos - ball.x.speed;
                     let prevBallRow = ball.y.pos - ball.y.speed;
