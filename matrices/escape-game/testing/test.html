@@ -75,9 +75,9 @@
         }
 
         let layout1 = [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -135,7 +135,7 @@
 
         /*****************************
          * ADD YOUR CUSTOM CODE HERE *
-        ******************************/   
+        ******************************/
         function updateScreen() {
             drawObjects();
             objectCollisions();
@@ -145,8 +145,8 @@
             let brickCol = Math.floor(mouse.x / currentLevelInfo.brick.width);
             let brickRow = Math.floor(mouse.y / currentLevelInfo.brick.height);
 
-            let brickUnderMouse = getRowColLayoutIndex(brickCol, brickRow);
-            drawText(`${brickCol},${brickRow}:${brickUnderMouse}`, mouse.x, mouse.y, 'yellow');
+            // let brickUnderMouse = getRowColLayoutIndex(brickCol, brickRow);
+            // drawText(`${brickCol},${brickRow}:${brickUnderMouse}`, mouse.x, mouse.y, 'yellow');
 
             // if (brickCol >= 0 && brickCol < getColCount() &&
             //     brickRow >= 0 && brickRow < getRowCount()) {
@@ -165,9 +165,9 @@
         function objectCollisions() {
             paddleCollision();
             brickCollision();
-        } 
+        }
 
-        function movingObjects() {     
+        function movingObjects() {
             moveBall();
         }
 
@@ -206,10 +206,10 @@
             paddle.pos.x = mouse.x - (PADDLE_WIDTH / 2);
 
             // TODO: temp mod for testing
-            ball.x.pos = mouse.x;
-            ball.y.pos = mouse.y;
-            ball.x.speed = 4;
-            ball.y.speed = -4;
+            // ball.x.pos = mouse.x;
+            // ball.y.pos = mouse.y;
+            // ball.x.speed = 4;
+            // ball.y.speed = -4;
         }
 
         // TODO: update to use layout/map vs canvas width
@@ -268,7 +268,7 @@
             ball.y.pos = paddle.pos.y;
         }
 
-        function gameOver() {     
+        function gameOver() {
             clearInterval(myInterval);
             currentLevelInfo.brick.layout = [...layout1];
             init();
@@ -288,15 +288,15 @@
 
         function setBallBoundries() {
             // set left
-            if (ball.x.pos < 0) {
+            if (ball.x.pos < 0 && ball.x.speed < 0.0) {
                 ball.x.speed *= -1;
             }
             // set right
-            if (ball.x.pos > canvas.width) {
+            if (ball.x.pos > canvas.width && ball.x.speed > 0.0) {
                 ball.x.speed *= -1;
             }
             // set top
-            if (ball.y.pos < 0) {
+            if (ball.y.pos < 0 && ball.y.speed < 0.0) {
                 ball.y.speed *= -1;
             }
             // set bottom
@@ -361,7 +361,6 @@
                 if (currentLevelInfo.brick.layout[brickUnderBall] === 1) {
                     currentLevelInfo.brick.layout[brickUnderBall] = 0;
                     bricksLeft--;
-                    console.log(bricksLeft);
 
                     let prevBallCol = ball.x.pos - ball.x.speed;
                     let prevBallRow = ball.y.pos - ball.y.speed;
@@ -369,29 +368,36 @@
                     let prevBrickRow = Math.floor(prevBallRow / currentLevelInfo.brick.height);
 
                     let bothTestsFailed = true;
+                    // check sides of brick
                     if (prevBrickCol !== ballBrickCol) {
-                        let adjBrickSide = getRowColLayoutIndex(prevBrickCol, ballBrickRow);
-
-                        if (currentLevelInfo.brick.layout[adjBrickSide] === 0) {
+                        if (!isBrickAtColRow(prevBrickCol, ballBrickRow)) {
                             ball.x.speed *= -1;
                             bothTestsFailed = false;
                         }
                     }
-
+                    // check bottom/top of brick
                     if (prevBrickRow !== ballBrickRow) {
-                        let adjBrickTopBot = getRowColLayoutIndex(ballBrickCol, prevBrickRow);
-
-                        if (currentLevelInfo.brick.layout[adjBrickTopBot] === 0) {
+                        if (!isBrickAtColRow(ballBrickCol, prevBrickRow)) {
                             ball.y.speed *= -1;
                             bothTestsFailed = false;
                         }
                     }
-
+                    // checks for armpit
                     if (bothTestsFailed) {
                         ball.x.speed *= -1;
                         ball.y.speed *= -1;
                     }
                 }
+            }
+        }
+
+        function isBrickAtColRow(col, row) {
+            if (col >= 0 && col < getColCount() &&
+                row >= 0 && row < getRowCount()) {
+                let brickUnderCoord = getRowColLayoutIndex(col, row);
+                return currentLevelInfo.brick.layout[brickUnderCoord];
+            } else {
+                return false;
             }
         }
 
