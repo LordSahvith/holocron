@@ -280,7 +280,7 @@
             for (let row = 0; row < getRowCount(); row++) {
                 for (let col = 0; col < getColCount(); col++) {
                     let brickNumber = getRowColLayoutIndex(col, row);
-                    if (brick.layout[brickNumber] === 1) {
+                    if (brick.layout[brickNumber]) {
                         drawRect(brick.width * col, brick.height * row, brick.width - brick.gap, brick.height - brick.gap, brickBackground[row]);
                     }
                 }
@@ -290,11 +290,14 @@
         function brickCollision() {
             let ballBrickCol = Math.floor(ball.x.pos / currentLevelInfo.brick.width);
             let ballBrickRow = Math.floor(ball.y.pos / currentLevelInfo.brick.height);
-            let brickUnderMouse = getRowColLayoutIndex(ballBrickCol, ballBrickRow);
+            let brickUnderBall = getRowColLayoutIndex(ballBrickCol, ballBrickRow);
 
             if (ballBrickCol >= 0 && ballBrickCol < getColCount() &&
                 ballBrickRow >= 0 && ballBrickRow < getRowCount()) {
-                currentLevelInfo.brick.layout[brickUnderMouse] = 0;
+                if (currentLevelInfo.brick.layout[brickUnderBall]) {
+                    currentLevelInfo.brick.layout[brickUnderBall] = 0;
+                    ball.y.speed *= -1;
+                }
             }
         }
 
