@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape Game Test</title>
+    <title>Racing Game Test</title>
 
     <style>
         * {
@@ -38,7 +38,7 @@
     <script>
 
         'use strict';
-        console.group('Brick Breaker Load');
+        console.group('Track Breaker Load');
         console.group('Game Compilation');
         console.log('compilation started...');
 
@@ -55,19 +55,6 @@
                 speed: 7
             }
         };
-
-        let paddle = {
-            width: 100,
-            height: 10,
-            pos: {
-                x: 400,
-                y: 100
-            }
-        };
-
-        const PADDLE_THICKNESS = paddle.height;
-        const PADDLE_WIDTH = paddle.width;
-        const PADDLE_TOP = PADDLE_THICKNESS * 5;
 
         let mouse = {
             x: 0,
@@ -95,7 +82,7 @@
 
         let levelInfo = {
             level1: {
-                brick: {
+                track: {
                     width: 80,
                     height: 20,
                     gap: 2,
@@ -104,7 +91,7 @@
                 }
             },
             level2: {
-                brick: {
+                track: {
                     width: 100,
                     height: 20,
                     gap: 2,
@@ -116,8 +103,8 @@
         let currentLevel = 'level1';
         let currentLevelInfo = levelInfo[currentLevel];
 
-        let bricksLeft = 0;
-        let bricksCounted = false;
+        let tracksLeft = 0;
+        let tracksCounted = false;
 
         let myInterval;
 
@@ -142,15 +129,15 @@
             movingObjects();
 
             // TODO: START: mouse coords debug lines
-            let brickCol = Math.floor(mouse.x / currentLevelInfo.brick.width);
-            let brickRow = Math.floor(mouse.y / currentLevelInfo.brick.height);
+            let trackCol = Math.floor(mouse.x / currentLevelInfo.track.width);
+            let trackRow = Math.floor(mouse.y / currentLevelInfo.track.height);
 
-            // let brickUnderMouse = getRowColLayoutIndex(brickCol, brickRow);
-            // drawText(`${brickCol},${brickRow}:${brickUnderMouse}`, mouse.x, mouse.y, 'yellow');
+            // let trackUnderMouse = getRowColLayoutIndex(trackCol, trackRow);
+            // drawText(`${trackCol},${trackRow}:${trackUnderMouse}`, mouse.x, mouse.y, 'yellow');
 
-            // if (brickCol >= 0 && brickCol < getColCount() &&
-            //     brickRow >= 0 && brickRow < getRowCount()) {
-            //     currentLevelInfo.brick.layout[brickUnderMouse] = 0;
+            // if (trackCol >= 0 && trackCol < getColCount() &&
+            //     trackRow >= 0 && trackRow < getRowCount()) {
+            //     currentLevelInfo.track.layout[trackUnderMouse] = 0;
             // }
             // TODO: END: mouse coords debug lines
         }
@@ -158,13 +145,11 @@
         function drawObjects() {
             drawCanvas();
             drawBall();
-            drawPaddle();
-            drawBricks();
+            drawTracks();
         }
 
         function objectCollisions() {
-            paddleCollision();
-            brickCollision();
+            trackCollision();
         }
 
         function movingObjects() {
@@ -183,7 +168,7 @@
 
             addEventListeners();
             ballReset();
-            bricksCounted = false;
+            tracksCounted = false;
             handleInterval();
         }
 
@@ -203,8 +188,6 @@
             mouse.x = e.clientX - rect.left - root.scrollLeft;
             mouse.y = e.clientY - rect.top - root.scrollTop;
 
-            paddle.pos.x = mouse.x - (PADDLE_WIDTH / 2);
-
             // TODO: temp mod for testing
             // ball.x.pos = mouse.x;
             // ball.y.pos = mouse.y;
@@ -214,12 +197,12 @@
 
         // TODO: update to use layout/map vs canvas width
         function getRowCount() {
-            return (currentLevelInfo.brick.layout.length * currentLevelInfo.brick.width) / canvas.width;
+            return (currentLevelInfo.track.layout.length * currentLevelInfo.track.width) / canvas.width;
         }
 
         // TODO: update to use layout/map vs canvas width
         function getColCount() {
-            return currentLevelInfo.brick.layout.length / getRowCount();
+            return currentLevelInfo.track.layout.length / getRowCount();
         }
 
         function getRowColLayoutIndex(col, row) {
@@ -264,13 +247,13 @@
 
         function ballReset() {
             console.log("game over");
-            ball.x.pos = paddle.pos.x;
-            ball.y.pos = paddle.pos.y;
+            ball.x.pos = canvas.width / 2;
+            ball.y.pos = canvas.height / 2;
         }
 
         function gameOver() {
             clearInterval(myInterval);
-            currentLevelInfo.brick.layout = [...layout1];
+            currentLevelInfo.track.layout = [...layout1];
             init();
         }
 
@@ -305,79 +288,51 @@
             }
         }
 
-        function drawPaddle() {
-            let paddleBackground = 'white';
-            drawRect(paddle.pos.x,
-                canvas.height - PADDLE_TOP,
-                PADDLE_WIDTH,
-                PADDLE_THICKNESS,
-                paddleBackground
-            );
-        }
-
-        function paddleCollision() {
-            let topOfPaddle = canvas.height - PADDLE_TOP;
-            if (ball.y.pos > topOfPaddle &&
-                ball.y.pos < topOfPaddle + PADDLE_THICKNESS &&
-                ball.x.pos > paddle.pos.x &&
-                ball.x.pos < paddle.pos.x + PADDLE_WIDTH) {
-                ball.y.speed *= -1;
-
-                let centerOfPaddle = paddle.pos.x + (PADDLE_WIDTH / 2);
-                let ballDistFromPaddleCenter = ball.x.pos - centerOfPaddle;
-                ball.x.speed = ballDistFromPaddleCenter * 0.35;
-
-                if (bricksLeft === 0) {
-                    gameOver();
-                }
-            }
-        }
-
-        function drawBricks() {
-            let brickBackground = ['blue', 'purple', 'green', 'red'];
-            let brick = currentLevelInfo.brick;
+        function drawTracks() {
+            let trackBackground = ['blue', 'purple', 'green', 'red'];
+            let track = currentLevelInfo.track;
 
             for (let row = 0; row < getRowCount(); row++) {
                 for (let col = 0; col < getColCount(); col++) {
-                    let brickNumber = getRowColLayoutIndex(col, row);
-                    if (brick.layout[brickNumber] === 1) {
-                        drawRect(brick.width * col, brick.height * row, brick.width - brick.gap, brick.height - brick.gap, brickBackground[row - brick.gutter]);
-                        if (!bricksCounted) {
-                            bricksLeft++;
+                    let trackNumber = getRowColLayoutIndex(col, row);
+                    if (track.layout[trackNumber] === 1) {
+                        drawRect(track.width * col, track.height * row, track.width - track.gap, track.height - track.gap, trackBackground[row - track.gutter]);
+                        if (!tracksCounted) {
+                            tracksLeft++;
                         }
                     }
                 }
             }
-            bricksCounted = true;
+            tracksCounted = true;
         }
 
-        function brickCollision() {
-            let ballBrickCol = Math.floor(ball.x.pos / currentLevelInfo.brick.width);
-            let ballBrickRow = Math.floor(ball.y.pos / currentLevelInfo.brick.height);
-            let brickUnderBall = getRowColLayoutIndex(ballBrickCol, ballBrickRow);
+        function trackCollision() {
+            let ballTrackCol = Math.floor(ball.x.pos / currentLevelInfo.track.width);
+            let ballTrackRow = Math.floor(ball.y.pos / currentLevelInfo.track.height);
+            let trackUnderBall = getRowColLayoutIndex(ballTrackCol, ballTrackRow);
 
-            if (ballBrickCol >= 0 && ballBrickCol < getColCount() &&
-                ballBrickRow >= 0 && ballBrickRow < getRowCount()) {
-                if (currentLevelInfo.brick.layout[brickUnderBall] === 1) {
-                    currentLevelInfo.brick.layout[brickUnderBall] = 0;
-                    bricksLeft--;
+            if (ballTrackCol >= 0 && ballTrackCol < getColCount() &&
+                ballTrackRow >= 0 && ballTrackRow < getRowCount()) {
+                if (currentLevelInfo.track.layout[trackUnderBall] === 1) {
+                    currentLevelInfo.track.layout[trackUnderBall] = 0;
+                    tracksLeft--;
 
                     let prevBallCol = ball.x.pos - ball.x.speed;
                     let prevBallRow = ball.y.pos - ball.y.speed;
-                    let prevBrickCol = Math.floor(prevBallCol / currentLevelInfo.brick.width);
-                    let prevBrickRow = Math.floor(prevBallRow / currentLevelInfo.brick.height);
+                    let prevTrackCol = Math.floor(prevBallCol / currentLevelInfo.track.width);
+                    let prevTrackRow = Math.floor(prevBallRow / currentLevelInfo.track.height);
 
                     let bothTestsFailed = true;
-                    // check sides of brick
-                    if (prevBrickCol !== ballBrickCol) {
-                        if (!isBrickAtColRow(prevBrickCol, ballBrickRow)) {
+                    // check sides of track
+                    if (prevTrackCol !== ballTrackCol) {
+                        if (!isTrackAtColRow(prevTrackCol, ballTrackRow)) {
                             ball.x.speed *= -1;
                             bothTestsFailed = false;
                         }
                     }
-                    // check bottom/top of brick
-                    if (prevBrickRow !== ballBrickRow) {
-                        if (!isBrickAtColRow(ballBrickCol, prevBrickRow)) {
+                    // check bottom/top of track
+                    if (prevTrackRow !== ballTrackRow) {
+                        if (!isTrackAtColRow(ballTrackCol, prevTrackRow)) {
                             ball.y.speed *= -1;
                             bothTestsFailed = false;
                         }
@@ -391,11 +346,11 @@
             }
         }
 
-        function isBrickAtColRow(col, row) {
+        function isTrackAtColRow(col, row) {
             if (col >= 0 && col < getColCount() &&
                 row >= 0 && row < getRowCount()) {
-                let brickUnderCoord = getRowColLayoutIndex(col, row);
-                return currentLevelInfo.brick.layout[brickUnderCoord];
+                let trackUnderCoord = getRowColLayoutIndex(col, row);
+                return currentLevelInfo.track.layout[trackUnderCoord];
             } else {
                 return false;
             }
