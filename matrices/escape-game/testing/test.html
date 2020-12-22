@@ -124,17 +124,15 @@
         };
 
 
-        // ADD YOUR OWN FUNCTIONALITY    
+        /*****************************
+         * ADD YOUR CUSTOM CODE HERE *
+        ******************************/   
         function updateScreen() {
-            drawCanvas();
-            drawBall();
-            moveBall();
-            drawPaddle();
-            paddleCollision();
-            drawBricks();
-            brickCollision();
+            drawObjects();
+            objectCollisions();
+            movingObjects();
 
-            // TODO: mouse coords debug lines
+            // TODO: START: mouse coords debug lines
             let brickCol = Math.floor(mouse.x / currentLevelInfo.brick.width);
             let brickRow = Math.floor(mouse.y / currentLevelInfo.brick.height);
 
@@ -145,20 +143,43 @@
                 brickRow >= 0 && brickRow < getRowCount()) {
                 currentLevelInfo.brick.layout[brickUnderMouse] = 0;
             }
+            // TODO: END: mouse coords debug lines
         }
 
-        // START: BASE ENGINE FUNCTIONS
-
-        function getRowCount() {
-            return (currentLevelInfo.brick.layout.length * currentLevelInfo.brick.width) / canvas.width;
+        function drawObjects() {
+            drawCanvas();
+            drawBall();
+            drawPaddle();
+            drawBricks();
         }
 
-        function getColCount() {
-            return currentLevelInfo.brick.layout.length / getRowCount();
+        function objectCollisions() {
+            paddleCollision();
+            brickCollision();
+        } 
+
+        function movingObjects() {     
+            moveBall();
         }
 
-        function getRowColLayoutIndex(col, row) {
-            return col + getColCount() * row;
+
+        /********************************
+         * START: BASE ENGINE FUNCTIONS *
+        *********************************/
+
+        function init() {
+            console.log('Game build sucessful.');
+            console.groupEnd();
+            console.log('Game Menu.');
+
+            addEventListeners();
+
+            let framesPerSecond = 30;
+            setInterval(updateScreen, 1000 / framesPerSecond);
+        }
+
+        function addEventListeners() {
+            canvas.addEventListener('mousemove', updateMousePos);
         }
 
         function updateMousePos(e) {
@@ -171,19 +192,18 @@
             paddle.pos.x = mouse.x - (PADDLE_WIDTH / 2);
         }
 
-        function addEventListeners() {
-            canvas.addEventListener('mousemove', updateMousePos);
+        // TODO: update to use layout/map vs canvas width
+        function getRowCount() {
+            return (currentLevelInfo.brick.layout.length * currentLevelInfo.brick.width) / canvas.width;
         }
 
-        function init() {
-            console.log('Game build sucessful.');
-            console.groupEnd();
-            console.log('Game Menu.');
+        // TODO: update to use layout/map vs canvas width
+        function getColCount() {
+            return currentLevelInfo.brick.layout.length / getRowCount();
+        }
 
-            addEventListeners();
-
-            let framesPerSecond = 30;
-            setInterval(updateScreen, 1000 / framesPerSecond);
+        function getRowColLayoutIndex(col, row) {
+            return col + getColCount() * row;
         }
 
         function drawCanvas() {
@@ -208,10 +228,14 @@
             canvastContext.fillText(text, xPos, yPos);
         }
 
-        // END: BASE ENGINE FUNCTIONS
+        /******************************
+         * END: BASE ENGINE FUNCTIONS *
+        *******************************/
 
 
-        // START: GAME SPECIFIC FUNCTIONALITY METHODS
+        /*****************************
+         * START: GAME SPECIFIC CODE *
+        ******************************/
 
         function drawBall() {
             let ballBackground = 'red';
@@ -301,7 +325,9 @@
             }
         }
 
-        // END: GAME SPECIFIC FUNCTIONALITY METHODS
+        /***************************
+         * END: GAME SPECIFIC CODE *
+        ****************************/
 
         console.log('compilation finished.');
         console.groupEnd();
