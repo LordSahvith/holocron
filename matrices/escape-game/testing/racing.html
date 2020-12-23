@@ -48,7 +48,7 @@
         let canvas;
         let canvastContext;
 
-        let ball = {
+        let car = {
             x: {
                 pos: 75,
                 speed: 5
@@ -56,7 +56,9 @@
             y: {
                 pos: 75,
                 speed: 7
-            }
+            },
+            ang: 0,
+            speed: 2
         };
 
         let mouse = {
@@ -157,7 +159,7 @@
 
         function drawObjects() {
             drawCanvas();
-            drawBall();
+            drawCar();
             drawTracks();
         }
 
@@ -166,7 +168,7 @@
         }
 
         function movingObjects() {
-            // moveBall();
+            moveCar();
         }
 
 
@@ -180,7 +182,7 @@
             console.log('Game Menu.');
 
             addEventListeners();
-            ballReset();
+            carReset();
             handleInterval();
         }
 
@@ -201,10 +203,10 @@
             mouse.y = e.clientY - rect.top - root.scrollTop;
 
             // TODO: temp mod for testing
-            // ball.x.pos = mouse.x;
-            // ball.y.pos = mouse.y;
-            // ball.x.speed = 4;
-            // ball.y.speed = -4;
+            // car.x.pos = mouse.x;
+            // car.y.pos = mouse.y;
+            // car.x.speed = 4;
+            // car.y.speed = -4;
         }
 
         // TODO: update to use layout/map vs canvas width
@@ -252,11 +254,11 @@
          * START: GAME SPECIFIC CODE *
         ******************************/
 
-        function drawBall() {
-            // let ballBackground = 'red';
-            // drawCircle(ball.x.pos, ball.y.pos, 10, ballBackground);
+        function drawCar() {
+            // let carBackground = 'red';
+            // drawCircle(car.x.pos, car.y.pos, 10, carBackground);
             if (carPicLoaded) {
-                canvastContext.drawImage(carPic, ball.x.pos - carPic.width / 2, ball.y.pos - carPic.height / 2);
+                drawBitMapCenteredWithRotation(carPic, car.x.pos, car.y.pos, car.ang);
             }
         }
 
@@ -266,14 +268,23 @@
             init();
         }
 
-        function moveBall() {
-            ball.x.pos += ball.x.speed;
-            ball.y.pos += ball.y.speed;
+        function moveCar() {
+            car.x.pos += Math.cos(car.ang) * car.speed;
+            car.y.pos += Math.sin(car.ang) * car.speed;
 
-            setBallBoundries();
+            car.ang += 0.02;
+            setCarBoundries();
         }
 
-        function ballReset() {
+        function drawBitMapCenteredWithRotation(useBitmap, atX, atY, withAng) {
+            canvastContext.save();
+            canvastContext.translate(atX, atY);
+            canvastContext.rotate(withAng);
+            canvastContext.drawImage(useBitmap, -useBitmap.width / 2, -useBitmap.height / 2);
+            canvastContext.restore();
+        }
+
+        function carReset() {
             let trackBackground = 'red';
             let track = currentLevelInfo.track;
 
@@ -282,29 +293,29 @@
                     let trackNumber = getRowColLayoutIndex(col, row);
                     if (track.layout[trackNumber] === 2) {
                         track.layout[trackNumber] = 0;
-                        ball.x.pos = (col * track.width) + (track.width / 2);
-                        ball.y.pos = (row * track.height) + (track.height / 2);
+                        car.x.pos = (col * track.width) + (track.width / 2);
+                        car.y.pos = (row * track.height) + (track.height / 2);
                     }
                 }
             }
         }
 
-        function setBallBoundries() {
+        function setCarBoundries() {
             // set left
-            if (ball.x.pos < 0 && ball.x.speed < 0.0) {
-                ball.x.speed *= -1;
+            if (car.x.pos < 0 && car.x.speed < 0.0) {
+                car.x.speed *= -1;
             }
             // set right
-            if (ball.x.pos > canvas.width && ball.x.speed > 0.0) {
-                ball.x.speed *= -1;
+            if (car.x.pos > canvas.width && car.x.speed > 0.0) {
+                car.x.speed *= -1;
             }
             // set top
-            if (ball.y.pos < 0 && ball.y.speed < 0.0) {
-                ball.y.speed *= -1;
+            if (car.y.pos < 0 && car.y.speed < 0.0) {
+                car.y.speed *= -1;
             }
             // set bottom
-            if (ball.y.pos > canvas.height) {
-                ballReset();
+            if (car.y.pos > canvas.height) {
+                carReset();
             }
         }
 
@@ -323,38 +334,38 @@
         }
 
         function trackCollision() {
-            let ballTrackCol = Math.floor(ball.x.pos / currentLevelInfo.track.width);
-            let ballTrackRow = Math.floor(ball.y.pos / currentLevelInfo.track.height);
-            let trackUnderBall = getRowColLayoutIndex(ballTrackCol, ballTrackRow);
+            let carTrackCol = Math.floor(car.x.pos / currentLevelInfo.track.width);
+            let carTrackRow = Math.floor(car.y.pos / currentLevelInfo.track.height);
+            let trackUnderCar = getRowColLayoutIndex(carTrackCol, carTrackRow);
 
-            if (ballTrackCol >= 0 && ballTrackCol < getColCount() &&
-                ballTrackRow >= 0 && ballTrackRow < getRowCount()) {
-                if (currentLevelInfo.track.layout[trackUnderBall] === 1) {
+            if (carTrackCol >= 0 && carTrackCol < getColCount() &&
+                carTrackRow >= 0 && carTrackRow < getRowCount()) {
+                if (currentLevelInfo.track.layout[trackUnderCar] === 1) {
 
-                    let prevBallCol = ball.x.pos - ball.x.speed;
-                    let prevBallRow = ball.y.pos - ball.y.speed;
-                    let prevTrackCol = Math.floor(prevBallCol / currentLevelInfo.track.width);
-                    let prevTrackRow = Math.floor(prevBallRow / currentLevelInfo.track.height);
+                    let prevCarCol = car.x.pos - car.x.speed;
+                    let prevCarRow = car.y.pos - car.y.speed;
+                    let prevTrackCol = Math.floor(prevCarCol / currentLevelInfo.track.width);
+                    let prevTrackRow = Math.floor(prevCarRow / currentLevelInfo.track.height);
 
                     let bothTestsFailed = true;
                     // check sides of track
-                    if (prevTrackCol !== ballTrackCol) {
-                        if (!isTrackAtColRow(prevTrackCol, ballTrackRow)) {
-                            ball.x.speed *= -1;
+                    if (prevTrackCol !== carTrackCol) {
+                        if (!isTrackAtColRow(prevTrackCol, carTrackRow)) {
+                            car.x.speed *= -1;
                             bothTestsFailed = false;
                         }
                     }
                     // check bottom/top of track
-                    if (prevTrackRow !== ballTrackRow) {
-                        if (!isTrackAtColRow(ballTrackCol, prevTrackRow)) {
-                            ball.y.speed *= -1;
+                    if (prevTrackRow !== carTrackRow) {
+                        if (!isTrackAtColRow(carTrackCol, prevTrackRow)) {
+                            car.y.speed *= -1;
                             bothTestsFailed = false;
                         }
                     }
                     // checks for armpit
                     if (bothTestsFailed) {
-                        ball.x.speed *= -1;
-                        ball.y.speed *= -1;
+                        car.x.speed *= -1;
+                        car.y.speed *= -1;
                     }
                 }
             }
