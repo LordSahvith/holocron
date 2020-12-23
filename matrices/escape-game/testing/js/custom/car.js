@@ -10,7 +10,7 @@ let canvastContext;
 const GROUNDSPEED_FRICTION = 0.94;
 const GAS_POWER = 0.5;
 const REVERSE_POWER = 0.2;
-const TURN_RATE = 0.03;
+const TURN_RATE = 0.05;
 
 let car = {
     x: {
@@ -34,11 +34,7 @@ function carImageLoad() {
 
     let playerCarImg = 'img/player1car.png';
     
-    try {
-        carPic.src = playerCarImg;
-    } catch(error) {
-        console.error(`Problem loading image (${playerCarImg}): ${error}`);
-    }
+    carPic.src = playerCarImg;
 }
 console.log('compilation successful.');
 console.groupEnd();
@@ -51,7 +47,7 @@ function carReset() {
             let trackNumber = getRowColLayoutIndex(col, row);
             if (track.layout[trackNumber] === TRACK_PLAYERSTART) {
                 track.layout[trackNumber] = TRACK_ROAD;
-                car.ang = -Math.PI / 2;
+                car.ang = Math.PI / 2;
                 car.x.pos = (col * track.width) + (track.width / 2);
                 car.y.pos = (row * track.height) + (track.height / 2);
             }

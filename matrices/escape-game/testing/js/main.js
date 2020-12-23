@@ -52,7 +52,7 @@ function updateScreen() {
 }
 
 function drawObjects() {
-    drawCanvas();
+    // drawCanvas();
     drawTracks();
     drawCar();
 }
