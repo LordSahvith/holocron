@@ -48,6 +48,21 @@
         let canvas;
         let canvastContext;
 
+        const KEY_W = 87;
+        const KEY_A = 65;
+        const KEY_S = 83;
+        const KEY_D = 68;
+
+        let keyHeld_Gas = false;
+        let keyHeld_Reverse = false;
+        let keyHeld_TurnLeft = false;
+        let keyHeld_TurnRight = false;
+
+        const GROUNDSPEED_FRICTION = 0.94;
+        const GAS_POWER = 0.5;
+        const REVERSE_POWER = 0.2;
+        const TURN_RATE = 0.03;
+
         let car = {
             x: {
                 pos: 75,
@@ -58,7 +73,7 @@
                 speed: 7
             },
             ang: 0,
-            speed: 2
+            speed: 0
         };
 
         let mouse = {
@@ -123,7 +138,7 @@
             canvas = document.querySelector('#gameCanvas');
             canvastContext = canvas.getContext('2d');
 
-            carPic.onload = function() {
+            carPic.onload = function () {
                 carPicLoaded = true;
             };
 
@@ -171,6 +186,48 @@
             moveCar();
         }
 
+        function keyPressed(e) {
+            // console.log('Key Press:', e.keyCode);
+            e.preventDefault();
+
+            if (e.keyCode === KEY_A) {
+                keyHeld_TurnLeft = true;
+            }
+
+            if (e.keyCode === KEY_D) {
+                keyHeld_TurnRight = true;
+            }
+
+            if (e.keyCode === KEY_W) {
+                keyHeld_Gas = true;
+            }
+
+            if (e.keyCode === KEY_S) {
+                keyHeld_Reverse = true;
+            }
+        }
+
+        function keyReleased(e) {
+            // console.log('Key Release:', e.keyCode);
+            e.preventDefault();
+
+            if (e.keyCode === KEY_A) {
+                keyHeld_TurnLeft = false;
+            }
+
+            if (e.keyCode === KEY_D) {
+                keyHeld_TurnRight = false;
+            }
+
+            if (e.keyCode === KEY_W) {
+                keyHeld_Gas = false;
+            }
+
+            if (e.keyCode === KEY_S) {
+                keyHeld_Reverse = false;
+            }
+        }
+
 
         /********************************
          * START: BASE ENGINE FUNCTIONS *
@@ -193,6 +250,8 @@
 
         function addEventListeners() {
             canvas.addEventListener('mousemove', updateMousePos);
+            document.addEventListener('keydown', keyPressed);
+            document.addEventListener('keyup', keyReleased);
         }
 
         function updateMousePos(e) {
@@ -269,10 +328,26 @@
         }
 
         function moveCar() {
+            car.speed *= GROUNDSPEED_FRICTION;
+
+            if (keyHeld_Gas) {
+                car.speed += GAS_POWER;
+            }
+
+            if (keyHeld_Reverse) {
+                car.speed -= REVERSE_POWER;
+            }
+
+            if (keyHeld_TurnLeft) {
+                car.ang -= TURN_RATE;
+            }
+
+            if (keyHeld_TurnRight) {
+                car.ang += TURN_RATE;
+            }
+
             car.x.pos += Math.cos(car.ang) * car.speed;
             car.y.pos += Math.sin(car.ang) * car.speed;
-
-            car.ang += 0.02;
             setCarBoundries();
         }
 
@@ -293,6 +368,7 @@
                     let trackNumber = getRowColLayoutIndex(col, row);
                     if (track.layout[trackNumber] === 2) {
                         track.layout[trackNumber] = 0;
+                        car.ang = -Math.PI / 2;
                         car.x.pos = (col * track.width) + (track.width / 2);
                         car.y.pos = (row * track.height) + (track.height / 2);
                     }
@@ -341,32 +417,9 @@
             if (carTrackCol >= 0 && carTrackCol < getColCount() &&
                 carTrackRow >= 0 && carTrackRow < getRowCount()) {
                 if (currentLevelInfo.track.layout[trackUnderCar] === 1) {
-
-                    let prevCarCol = car.x.pos - car.x.speed;
-                    let prevCarRow = car.y.pos - car.y.speed;
-                    let prevTrackCol = Math.floor(prevCarCol / currentLevelInfo.track.width);
-                    let prevTrackRow = Math.floor(prevCarRow / currentLevelInfo.track.height);
-
-                    let bothTestsFailed = true;
-                    // check sides of track
-                    if (prevTrackCol !== carTrackCol) {
-                        if (!isTrackAtColRow(prevTrackCol, carTrackRow)) {
-                            car.x.speed *= -1;
-                            bothTestsFailed = false;
-                        }
-                    }
-                    // check bottom/top of track
-                    if (prevTrackRow !== carTrackRow) {
-                        if (!isTrackAtColRow(carTrackCol, prevTrackRow)) {
-                            car.y.speed *= -1;
-                            bothTestsFailed = false;
-                        }
-                    }
-                    // checks for armpit
-                    if (bothTestsFailed) {
-                        car.x.speed *= -1;
-                        car.y.speed *= -1;
-                    }
+                    car.x.pos -= Math.cos(car.ang) * car.speed;
+                    car.y.pos -= Math.sin(car.ang) * car.speed;
+                    car.speed *= -0.5;
                 }
             }
         }
