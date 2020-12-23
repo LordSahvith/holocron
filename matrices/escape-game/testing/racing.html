@@ -99,6 +99,10 @@
             1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
         ];
 
+        const TRACK_ROAD = 0;
+        const TRACK_WALL = 1;
+        const TRACK_PLAYERSTART = 2;
+
         let layout2 = [
             1, 1, 1, 1, 0, 1, 1, 1,
             1, 1, 0, 1, 1, 1, 1, 1,
@@ -179,7 +183,7 @@
         }
 
         function objectCollisions() {
-            trackCollision();
+            wallCollision();
         }
 
         function movingObjects() {
@@ -366,8 +370,8 @@
             for (let row = 0; row < getRowCount(); row++) {
                 for (let col = 0; col < getColCount(); col++) {
                     let trackNumber = getRowColLayoutIndex(col, row);
-                    if (track.layout[trackNumber] === 2) {
-                        track.layout[trackNumber] = 0;
+                    if (track.layout[trackNumber] === TRACK_PLAYERSTART) {
+                        track.layout[trackNumber] = TRACK_ROAD;
                         car.ang = -Math.PI / 2;
                         car.x.pos = (col * track.width) + (track.width / 2);
                         car.y.pos = (row * track.height) + (track.height / 2);
@@ -402,21 +406,20 @@
             for (let row = 0; row < getRowCount(); row++) {
                 for (let col = 0; col < getColCount(); col++) {
                     let trackNumber = getRowColLayoutIndex(col, row);
-                    if (track.layout[trackNumber] === 1) {
+                    if (track.layout[trackNumber] === TRACK_WALL) {
                         drawRect(track.width * col, track.height * row, track.width - track.gap, track.height - track.gap, trackBackground);
                     }
                 }
             }
         }
 
-        function trackCollision() {
+        function wallCollision() {
             let carTrackCol = Math.floor(car.x.pos / currentLevelInfo.track.width);
             let carTrackRow = Math.floor(car.y.pos / currentLevelInfo.track.height);
-            let trackUnderCar = getRowColLayoutIndex(carTrackCol, carTrackRow);
 
             if (carTrackCol >= 0 && carTrackCol < getColCount() &&
                 carTrackRow >= 0 && carTrackRow < getRowCount()) {
-                if (currentLevelInfo.track.layout[trackUnderCar] === 1) {
+                if (isWallAtColRow(carTrackCol, carTrackRow)) {
                     car.x.pos -= Math.cos(car.ang) * car.speed;
                     car.y.pos -= Math.sin(car.ang) * car.speed;
                     car.speed *= -0.5;
@@ -424,14 +427,9 @@
             }
         }
 
-        function isTrackAtColRow(col, row) {
-            if (col >= 0 && col < getColCount() &&
-                row >= 0 && row < getRowCount()) {
-                let trackUnderCoord = getRowColLayoutIndex(col, row);
-                return currentLevelInfo.track.layout[trackUnderCoord];
-            } else {
-                return false;
-            }
+        function isWallAtColRow(col, row) {
+            let trackUnderCoord = getRowColLayoutIndex(col, row);
+            return currentLevelInfo.track.layout[trackUnderCoord] === TRACK_WALL;
         }
 
         /***************************
