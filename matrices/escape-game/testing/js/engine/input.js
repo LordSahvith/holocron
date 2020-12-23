@@ -1,4 +1,4 @@
-console.group('Input Library');
+console.groupCollapsed('Input Library');
 console.log('compilation started...');
 
 const KEY_W = 87;

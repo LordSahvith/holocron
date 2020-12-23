@@ -1,5 +1,5 @@
 'use strict';
-console.group('Set Game Parameters');
+console.groupCollapsed('Game Parameters');
 console.log('setting game parameters...');
 
 let currentLevel = 'level1';
@@ -58,6 +58,7 @@ function drawObjects() {
 }
 
 function loadImages() {
+    trackImageLoad();
     carImageLoad();
 }
 
