@@ -1,4 +1,4 @@
-console.group('Drawing Library');
+console.groupCollapsed('Drawing Library');
 console.log('compilation started...');
 
 function drawCanvas() {

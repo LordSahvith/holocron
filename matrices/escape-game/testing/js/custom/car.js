@@ -1,4 +1,4 @@
-console.group('Car Library');
+console.groupCollapsed('Car Library');
 console.log('compilation started...');
 
 let carPic = document.createElement('img');
@@ -25,7 +25,7 @@ let car = {
     speed: 0
 };
 
-console.group('Load Images');
+console.groupCollapsed('Load Images');
 console.log('compilation started...');
 function carImageLoad() {
     carPic.onload = function () {

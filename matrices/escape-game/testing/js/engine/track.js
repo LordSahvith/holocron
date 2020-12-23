@@ -1,5 +1,8 @@
-console.group('Track Library');
+console.groupCollapsed('Track Library');
 console.log('compilation started...');
+
+let trackRoadPic = document.createElement('img');
+let trackRoadPicLoaded = false;
 
 const TRACK_ROAD = 0;
 const TRACK_WALL = 1;
@@ -35,14 +38,32 @@ let levelInfo = {
     }
 };
 
+console.groupCollapsed('Load Images');
+console.log('compilation started...');
+function trackImageLoad() {
+    trackRoadPic.onload = function () {
+        trackRoadPicLoaded = true;
+    };
+
+    let trackRoadImg = 'img/racing/track_road.png';
+    
+    try {
+        trackRoadPic.src = trackRoadImg;
+    } catch(error) {
+        console.error(`Problem loading image (${trackRoadImg}): ${error}`);
+    }
+}
+console.log('compilation successful.');
+console.groupEnd();
+
 function drawTracks() {
-    let trackBackground = 'red';
+    let trackBackground = 'green';
     let track = currentLevelInfo.track;
 
     for (let row = 0; row < getRowCount(); row++) {
         for (let col = 0; col < getColCount(); col++) {
             let trackNumber = getRowColLayoutIndex(col, row);
-            if (track.layout[trackNumber] === TRACK_WALL) {
+            if (track.layout[trackNumber] === TRACK_ROAD) {
                 drawRect(track.width * col, track.height * row, track.width - track.gap, track.height - track.gap, trackBackground);
             }
         }
