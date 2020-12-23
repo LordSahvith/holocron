@@ -42,6 +42,9 @@
         console.group('Game Compilation');
         console.log('compilation started...');
 
+        let carPic = document.createElement('img');
+        let carPicLoaded = false;
+
         let canvas;
         let canvastContext;
 
@@ -117,6 +120,12 @@
             console.log('setting game parameters...');
             canvas = document.querySelector('#gameCanvas');
             canvastContext = canvas.getContext('2d');
+
+            carPic.onload = function() {
+                carPicLoaded = true;
+            };
+
+            carPic.src = 'img/player1car.png';
 
             console.log('game parameters set');
             console.groupEnd();
@@ -244,8 +253,11 @@
         ******************************/
 
         function drawBall() {
-            let ballBackground = 'red';
-            drawCircle(ball.x.pos, ball.y.pos, 10, ballBackground);
+            // let ballBackground = 'red';
+            // drawCircle(ball.x.pos, ball.y.pos, 10, ballBackground);
+            if (carPicLoaded) {
+                canvastContext.drawImage(carPic, ball.x.pos - carPic.width / 2, ball.y.pos - carPic.height / 2);
+            }
         }
 
         function gameOver() {
