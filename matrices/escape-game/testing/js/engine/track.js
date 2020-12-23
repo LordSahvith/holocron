@@ -1,4 +1,4 @@
-console.group('Game Track Library');
+console.group('Track Library');
 console.log('compilation started...');
 
 const TRACK_ROAD = 0;
@@ -82,5 +82,5 @@ function getRowColLayoutIndex(col, row) {
     return col + getColCount() * row;
 }
 
-console.log('Game Track Library sucessful.');
+console.log('compilation successful.');
 console.groupEnd();

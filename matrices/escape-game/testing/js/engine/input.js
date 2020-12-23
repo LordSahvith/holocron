@@ -1,4 +1,4 @@
-console.group('Game Input Library');
+console.group('Input Library');
 console.log('compilation started...');
 
 const KEY_W = 87;
@@ -72,5 +72,5 @@ function addEventListeners() {
     document.addEventListener('keyup', keyReleased);
 }
 
-console.log('Game Input Library sucessful.');
+console.log('compilation successful.');
 console.groupEnd();

@@ -1,4 +1,4 @@
-console.group('Game Car Library');
+console.group('Car Library');
 console.log('compilation started...');
 
 let carPic = document.createElement('img');
@@ -25,13 +25,23 @@ let car = {
     speed: 0
 };
 
+console.group('Load Images');
+console.log('compilation started...');
 function carImageLoad() {
     carPic.onload = function () {
         carPicLoaded = true;
     };
 
-    carPic.src = 'img/player1car.png';
+    let playerCarImg = 'img/player1car.png';
+    
+    try {
+        carPic.src = playerCarImg;
+    } catch(error) {
+        console.error(`Problem loading image (${playerCarImg}): ${error}`);
+    }
 }
+console.log('compilation successful.');
+console.groupEnd();
 
 function carReset() {
     let track = currentLevelInfo.track;
@@ -98,5 +108,5 @@ function setCarBoundries() {
     }
 }
 
-console.log('Game Car Library sucessful.');
+console.log('compilation successful.');
 console.groupEnd();

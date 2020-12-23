@@ -1,4 +1,4 @@
-console.group('Game Drawing Library');
+console.group('Drawing Library');
 console.log('compilation started...');
 
 function drawCanvas() {
@@ -77,5 +77,5 @@ function drawBitMapCenteredWithRotation(useBitmap, atX, atY, withAng) {
     canvastContext.restore();
 }
 
-console.log('Game Drawing Library load sucessful.');
+console.log('compilation successful.');
 console.groupEnd();
