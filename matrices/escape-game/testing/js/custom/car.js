@@ -47,7 +47,7 @@ function carReset() {
             let trackNumber = getRowColLayoutIndex(col, row);
             if (track.layout[trackNumber] === TRACK_PLAYERSTART) {
                 track.layout[trackNumber] = TRACK_ROAD;
-                car.ang = Math.PI / 2;
+                car.ang = turn90deg();
                 car.x.pos = (col * track.width) + (track.width / 2);
                 car.y.pos = (row * track.height) + (track.height / 2);
             }
@@ -102,6 +102,14 @@ function setCarBoundries() {
     if (car.y.pos > canvas.height) {
         carReset();
     }
+}
+
+function turn90deg(){
+    return Math.PI / 2;
+}
+
+function turn180deg(){
+    return Math.PI;
 }
 
 console.log('compilation successful.');
