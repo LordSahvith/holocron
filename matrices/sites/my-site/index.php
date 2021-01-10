@@ -20,10 +20,17 @@
 
     <main>
         <section class="projects">
-            <?php include 'components/projects-carousel.html'; ?>
+            <?php // include 'components/projects-carousel.html'; ?>
         </section>
     </main>
 
+    <div class="test" do-as-i-please="fuck yeah"></div>
+
+    <script>
+        let test = document.querySelector('.test');
+        let attr = test.getAttribute('do-as-i-please');
+        console.log(attr);
+    </script>
 
 
     <script src="../uikit/designing/js/uikit.min.js"></script>    
