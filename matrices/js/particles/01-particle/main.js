@@ -14,3 +14,17 @@ context.fillStyle = 'white';
 context.arc(500, 200, 10, 0, Math.PI*2, true);
 context.closePath();
 context.fill();
+
+let posX = 20;
+let posY = 100;
+
+setInterval(function() {
+    posX += 1;
+    posY += 0.25;
+
+    context.beginPath();
+    context.fillStyle = 'white';
+    context.arc(posX, posY, 10, 0, Math.PI*2, true);
+    context.closePath();
+    context.fill();
+}, 30);
