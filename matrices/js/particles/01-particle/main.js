@@ -5,7 +5,7 @@ const context = canvas.getContext('2d');
 context.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 
 let posX = 20;
-let posY = 100;
+let posY = canvas.clientHeight / 2;
 let velX = 10;
 let velY = -10;
 let gravity = 1;
@@ -16,6 +16,13 @@ setInterval(function() {
 
     posX += velX;
     posY += velY;
+
+    if (posY > canvas.clientHeight ) {
+        velY *= -0.6;
+        velX *= 0.75;
+        posY = canvas.clientHeight;
+    }
+
     velY += gravity;
 
     context.beginPath();
