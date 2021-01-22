@@ -89,7 +89,7 @@ function connect() {
                             ((particleArray[a].y - particleArray[b].y) *
                             (particleArray[a].y - particleArray[b].y));
             
-            if (distance < 2500) {
+            if (distance < 3500) {
                 opacityValue = 1 - (distance / 10000);
                 ctx.strokeStyle = `rgba(255, 255, 255, ${opacityValue})`;
                 ctx.beginPath();
