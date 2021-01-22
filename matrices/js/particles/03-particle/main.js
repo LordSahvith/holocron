@@ -40,7 +40,7 @@ class Particle {
     }
 
     update() {
-        this.size -= 0.05
+        this.size -= 0.05;
         if (this.size < 0) {
             this.x = (mouse.x + ((Math.random() * 20) - 10));
             this.y = (mouse.y + ((Math.random() * 20) - 10));
