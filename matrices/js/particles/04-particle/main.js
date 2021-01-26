@@ -11,8 +11,8 @@ class Particle {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.size = 10;
-        this.weight = 2;
+        this.size = Math.random() * 15 + 1;
+        this.weight = Math.random() * 1 + 1;
         this.directionX = -2;
     }
 
@@ -20,7 +20,7 @@ class Particle {
         if (this.y > canvas.height) {
             this.y = 0 - this.size;
             this.weight = 0.05;
-            this.x = Math.random() * canvas.width;
+            this.x = Math.random() * canvas.width * 1.3;
         }
         this.weight += 0.01;
         this.y += this.weight;
