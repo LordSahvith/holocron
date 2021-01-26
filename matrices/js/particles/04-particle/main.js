@@ -5,6 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let particlesArray = [];
+let numberOfParticles = 300;
 
 class Particle {
     constructor(x, y) {
@@ -18,7 +19,7 @@ class Particle {
     update() {
         if (this.y > canvas.height) {
             this.y = 0 - this.size;
-            this.weight = 2;
+            this.weight = 0.05;
             this.x = Math.random() * canvas.width;
         }
         this.weight += 0.01;
@@ -35,19 +36,26 @@ class Particle {
     }
 }
 
-const particle1 = new Particle(400, 80);
-const particle2 = new Particle(100, 10);
+function init() {  
+    particlesArray = [];
+    for (let i = 0; i < numberOfParticles; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        particlesArray.push(new Particle(x, y));
+    }
+}
 
 function animate() {
     ctx.fillStyle = 'rgba(255, 255, 255, 0.01)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    particle1.update();
-    particle1.draw();
-    particle2.update();
-    particle2.draw();
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+    }
 
     requestAnimationFrame(animate);
 }
 
+init();
 animate();
