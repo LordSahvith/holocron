@@ -10,13 +10,12 @@ let particleArray = [];
 const mouse = {
     x: null,
     y: null,
-    radius: 150
+    radius: 250
 };
 
 window.addEventListener('mousemove', function(event) {
     mouse.x = event.x;
     mouse.y = event.y;
-    mouse.radius = 150;
 });
 
 ctx.fillStyle = 'white';
@@ -31,7 +30,7 @@ class Particle {
         this.size = 3;
         this.baseX = this.x;
         this.baseY = this.y;
-        this.density = (Math.random() * 30) + 1;
+        this.density = (Math.random() * 40) + 5;
     }
 
     draw() {
@@ -58,7 +57,15 @@ class Particle {
             this.x -= directionX;
             this.y -= directionY;
         } else {
-            this.size = 3;
+            if (this.x !== this.baseX) {
+                let dx = this.x - this.baseX;
+                this.x -= dx / 10;
+            }
+
+            if (this.y !== this.baseY) {
+                let dy = this.y - this.baseY;
+                this.y -= dy / 10;
+            }
         }
     }
 }
