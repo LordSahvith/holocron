@@ -13,6 +13,10 @@ body {
     overflow: hidden;
 }
 
+#myCanvas {
+    z-index: -10;
+}
+
 .container {
     margin: 0 auto;
     perspective: 380px;
