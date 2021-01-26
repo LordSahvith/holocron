@@ -34,17 +34,28 @@ class Particle {
     }
 
     draw() {
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'red';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
         ctx.closePath();
         ctx.fill();
     }
+
+    update() {
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+        if (distance < 100) {
+            this.size = 30;
+        } else {
+            this.size = 3;
+        }
+    }
 }
 
 function init() {
     particleArray = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 500; i++) {
         let x = Math.random() * canvas.width;
         let y = Math.random() * canvas.height;
         particleArray.push(new Particle(x, y));
@@ -56,6 +67,7 @@ function animate() {
 
     for (let i = 0; i < particleArray.length; i++) {
         particleArray[i].draw();
+        particleArray[i].update();
     }
 
     requestAnimationFrame(animate);
