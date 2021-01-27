@@ -10,7 +10,7 @@ let particleArray = [];
 const mouse = {
     x: null,
     y: null,
-    radius: 150
+    radius: 250
 };
 
 window.addEventListener('mousemove', function(event) {
@@ -30,7 +30,7 @@ class Particle {
         this.size = 3;
         this.baseX = this.x;
         this.baseY = this.y;
-        this.density = (Math.random() * 30) + 1;
+        this.density = (Math.random() * 40) + 5;
     }
 
     draw() {
@@ -40,11 +40,39 @@ class Particle {
         ctx.closePath();
         ctx.fill();
     }
+
+    update() {
+        // move particles according to mouse, distance & density
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+        let forceDirectionX = dx / distance;
+        let forceDirectionY = dy / distance;
+        let maxDistance = mouse.radius;
+        let force = (maxDistance - distance) / maxDistance;
+        let directionX = forceDirectionX * force * this.density;
+        let directionY = forceDirectionY * force * this.density;
+
+        if (distance < mouse.radius) {
+            this.x -= directionX;
+            this.y -= directionY;
+        } else {
+            if (this.x !== this.baseX) {
+                let dx = this.x - this.baseX;
+                this.x -= dx / 10;
+            }
+
+            if (this.y !== this.baseY) {
+                let dy = this.y - this.baseY;
+                this.y -= dy / 10;
+            }
+        }
+    }
 }
 
 function init() {
     particleArray = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 500; i++) {
         let x = Math.random() * canvas.width;
         let y = Math.random() * canvas.height;
         particleArray.push(new Particle(x, y));
@@ -56,6 +84,7 @@ function animate() {
 
     for (let i = 0; i < particleArray.length; i++) {
         particleArray[i].draw();
+        particleArray[i].update();
     }
 
     requestAnimationFrame(animate);

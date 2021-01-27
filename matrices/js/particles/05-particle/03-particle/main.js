@@ -21,8 +21,8 @@ window.addEventListener('mousemove', function(event) {
 });
 
 ctx.fillStyle = 'white';
-ctx.font = '30px Verdana';
-ctx.fillText('A', 0, 40);
+ctx.font = '20px Verdana';
+ctx.fillText('Sahvith', 0, 40);
 const textCoordinates = ctx.getImageData(0, 0, 100, 100);
 
 class Particle {
