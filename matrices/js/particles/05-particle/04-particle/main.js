@@ -21,7 +21,7 @@ window.addEventListener('mousemove', function(event) {
 });
 
 ctx.fillStyle = 'white';
-ctx.font = '20px Verdana';
+ctx.font = '24px Verdana';
 ctx.fillText('Sahvith', 0, 40);
 const textCoordinates = ctx.getImageData(0, 0, 100, 100);
 
@@ -94,8 +94,30 @@ function animate() {
         particleArray[i].draw();
         particleArray[i].update();
     }
+    connect();
 
     requestAnimationFrame(animate);
+}
+
+function connect() {
+    let opacity = 1;
+    for (let a = 0; a < particleArray.length; a++) {
+        for (let b = a; b < particleArray.length; b++) {
+            let dx = particleArray[a].x - particleArray[b].x;
+            let dy = particleArray[a].y - particleArray[b].y; 
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < 25) {
+                opacity = 1 - (distance / 25);
+                ctx.strokeStyle = `rgba(255, 0, 0, ${opacity})`;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(particleArray[a].x, particleArray[a].y);
+                ctx.lineTo(particleArray[b].x, particleArray[b].y);
+                ctx.stroke();
+            }
+        }
+    }
 }
 
 init();
