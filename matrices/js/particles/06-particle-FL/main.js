@@ -5,15 +5,15 @@ window.onload = function () {
     document.body.appendChild(canvas);    
     const ctx = canvas.getContext('2d');
     
-    canvas.width = 960;
-    canvas.height = 540;
+    canvas.width = 720;
+    canvas.height = 405;
 
     ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height);
     const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     let particleArray = [];
-    const numberOfParticles = 10000;
+    const numberOfParticles = 15000;
 
     let mappedImage = [];
     for (let y = 0; y < canvas.height; y++) {
