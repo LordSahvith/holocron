@@ -13,7 +13,7 @@ window.onload = function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     let particleArray = [];
-    const numberOfParticles = 15000;
+    const numberOfParticles = 5000;
 
     let mappedImage = [];
     for (let y = 0; y < canvas.height; y++) {
@@ -88,7 +88,7 @@ window.onload = function () {
 
     function animate() {
         ctx.globalAlpha = 0.05;
-        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillStyle = 'rgba(0, 0, 0, 0)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.globalAlpha = 0.2;
 
