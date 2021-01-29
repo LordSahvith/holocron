@@ -71,6 +71,7 @@ window.onload = function () {
 
         draw() {
             ctx.beginPath();
+            // ctx.fillStyle = 'white';
             ctx.fillStyle = `rgba(${mappedImage[this.position1][this.position2][1]},
                                   ${mappedImage[this.position1][this.position2][2]},
                                   ${mappedImage[this.position1][this.position2][3]},
