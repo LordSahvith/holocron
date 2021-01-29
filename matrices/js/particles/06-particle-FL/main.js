@@ -10,9 +10,10 @@ window.onload = function () {
 
     ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height);
     const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     let particleArray = [];
-    const numberOfParticles = 5000;
+    const numberOfParticles = 10000;
 
     let mappedImage = [];
     for (let y = 0; y < canvas.height; y++) {
@@ -23,14 +24,18 @@ window.onload = function () {
             const blue = pixels.data[(y * 4 * pixels.width) + (x * 4 + 2)];
             const brightness = calculateRelativeBrightness(red, green, blue);
             const cell = [
-                cellBrightness = brightness
+                cellBrightness = brightness,
+                cellRed = red,
+                cellGreen = green,
+                cellBlue = blue
             ];
             row.push(cell);
         }
+        // console.log(row);
         mappedImage.push(row);
     }
 
-    console.log(mappedImage);
+    // console.log(mappedImage);
 
     function calculateRelativeBrightness(red, green, blue) {
         return Math.sqrt(
@@ -54,7 +59,6 @@ window.onload = function () {
         update() {
             this.position1 = Math.floor(this.y);
             this.position2 = Math.floor(this.x);
-            // console.log(mappedImage[this.position1][this.position2][0]);
             this.speed = mappedImage[this.position1][this.position2][0];
             let movement = (2.5 - this.speed) + this.velocity;
 
@@ -67,7 +71,10 @@ window.onload = function () {
 
         draw() {
             ctx.beginPath();
-            ctx.fillStyle = 'white';
+            ctx.fillStyle = `rgba(${mappedImage[this.position1][this.position2][1]},
+                                  ${mappedImage[this.position1][this.position2][2]},
+                                  ${mappedImage[this.position1][this.position2][3]},
+                                  ${mappedImage[this.position1][this.position2][0]})`;
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             ctx.fill();
         }
@@ -80,13 +87,14 @@ window.onload = function () {
     }
 
     function animate() {
-        ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height);
         ctx.globalAlpha = 0.05;
         ctx.fillStyle = 'rgb(0, 0, 0)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
+        ctx.globalAlpha = 0.2;
+
         for (let i = 0; i < particleArray.length; i++) {
             particleArray[i].update();
+            ctx.globalAlpha = particleArray[i].speed * 0.5;
             particleArray[i].draw();
         }
         requestAnimationFrame(animate);
