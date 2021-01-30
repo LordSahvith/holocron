@@ -1,45 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comonent - Navbar</title>
+
+
     <link rel="stylesheet" href="../../bare-bones/css/components/navbar.css">
 </head>
 
-<nav class="bb-navbar">
-    <div class="bb-navbar-contents">
-        <div class="bb-navbar-contents-logo">
-            <a class="" href="#">Logo</a>
-        </div>
-        <div class="bb-navbar-contents-mobileIcon bb-mobileIcon">
-            <!-- <span style="font-size:30px;cursor:pointer">&#9776;</span> -->
-            <div class="toggle-button">
-                <div class="menu-bar menu-bar-top"></div>
-                <div class="menu-bar menu-bar-middle"></div>
-                <div class="menu-bar menu-bar-bottom"></div>
-              </div>
-        </div>
-        <!-- <div class="bb-navbar-contents-left">
-            <div>
-                <ul class="">
-                    <li class=""><a href="#">About</a></li>
-                    <li>
-                        <a href="#">Projects</a>
-                        <div class="">
-                            <ul class="">
-                                <li class=""><a href="#">Career</a></li>
-                                <li><a href="#">Freelance</a></li>
-                                <li><a href="#">Personal</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+<body>
+
+    <nav class="bb-navbar">
+        <div class="bb-navbar-contents">
+            <div class="bb-navbar-contents-logo">
+                <a class="" href="#">Logo</a>
             </div>
-        </div> -->
-        <!-- <div class="bb-navbar-contents-right">
-            <div>
-                <ul class="">
-                    <li><a href="#">Arcade</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
+            <div class="bb-navbar-contents-links">
+                <div class="bb-navbar-contents-links-left">
+                    <div>
+                        <ul class="">
+                            <li class=""><a href="#">About</a></li>
+                            <li>
+                                <a href="#">Projects</a>
+                                <div class="">
+                                    <ul class="">
+                                        <li class=""><a href="#">Career</a></li>
+                                        <li><a href="#">Freelance</a></li>
+                                        <li><a href="#">Personal</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="bb-navbar-contents-links-right">
+                    <div>
+                        <ul class="">
+                            <li><a href="#">Arcade</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div> -->
-    </div>
-</nav>
+            <div class="bb-navbar-contents-mobileIcon bb-mobileIcon">
+                <div class="toggle-button">
+                    <div class="menu-bar menu-bar--top"></div>
+                    <div class="menu-bar menu-bar--middle"></div>
+                    <div class="menu-bar menu-bar--bottom"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script src="../../bare-bones/js/components/navbar.js"></script>
+
+</body>
+
+</html>

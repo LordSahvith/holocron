@@ -1,6 +1,9 @@
-// out: ../../css/components/navbar.css, compress: false, sourceMap: true
+// out: ../../css/components/navbar.css, compress: true, sourceMap: true
 @import "../base/_import.less";
 
+/* * * * * 
+* NAVBAR *
+* * * *  */
 .bb-navbar {
     display: flex;
     align-items: center;
@@ -15,15 +18,34 @@
         align-items: center;
         width: 100%;
         max-width: 100%;
+        padding: 4px 16px;
 
-        &-logo {
-            
-        }
+        &-links {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 0;
+            height: 100%;
+            padding-top: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: all 0.5s ease;
 
-        &-mobileIcon {
+            &.isOpen {
+                width: 100%;
+                overflow-x: unset;
+            }
         }
     }
 }
+
+/* * * * * * * * * 
+* NAVBAR OVERLAY *
+* * * * * * * *  */
+
+/* * * * * *  * 
+* MOBILE ICON *
+* * * * * * * */
 
 .bb-mobileIcon {
     display: flex;
@@ -35,14 +57,29 @@
         justify-content: center;
         width: 44px;
         height: 40px;
-        // top: 22px;
-        // right: 25px;
-        // padding: 4px;
-        // transform: translate(-22px, -20px);
-        // z-index: 15;
 
         &:hover {
             cursor: pointer;
+        }
+
+        &.isOpen {
+            .menu-bar {        
+                &--top {
+                    transform: rotate(45deg) translate(8px, 8px);
+                    transition: .5s;
+                }
+        
+                &--middle {
+                    transform: translate(200%);
+                    transition: .1s ease-in;
+                    opacity: 0;
+                }
+        
+                &--bottom {
+                    transform: rotate(-45deg) translate(8px, -7px);
+                    transition: .5s;
+                }
+            }
         }
     }
 
@@ -53,74 +90,19 @@
         background-color: #FFF;
         z-index: 15;
         transition: .5s;
+
+        &--top {
+            border-bottom: none;
+        }
+
+        &--middle {
+            margin-top: 7px;
+            margin-bottom: 7px;
+        }
+
+        &--bottom {
+            border-top: none;
+            top: 22px;
+        }
     }
 }
-
-/* ===== MOBILE HAMBURGER ICON ============ */
-
-// .mobile-icon {
-//     position: relative;
-//     transition: all .4s;
-//   }
-  
-//   .toggle-button {
-//     position: fixed;
-//     width: 44px;
-//     height: 40px;
-//     top: 22px;
-//     right: 25px;
-//     transform: translate(-22px, -20px);
-//     padding: 4px;
-//     transition: .25s;
-//     z-index: 15;
-//   }
-  
-//   .toggle-button:hover {
-//     cursor: pointer;
-//   }
-  
-//   .mobile-icon:hover .menu-bar {      
-//     background-color: #4dbb04;
-//   }
-  
-//   .toggle-button .menu-bar {
-//     position: absolute;
-//     border-radius: 2px;
-//     height: 4px;
-//     width: 42px;
-//     background-color: #FFF;
-//     z-index: 15;
-//     transition: .5s;
-//   }
-  
-  .toggle-button .menu-bar-top {
-    border-bottom: none;
-    top: 0;
-  }
-  
-  .toggle-button .menu-bar-middle {
-    margin-top: 7px;
-    margin-bottom: 7px;
-    top: 4px;
-  }
-  
-  .toggle-button .menu-bar-bottom {
-    border-top: none;
-    top: 22px;
-  }
-  
-  .button-open .menu-bar-top {
-    transform: rotate(45deg) translate(8px, 8px);
-    transition: .5s;
-  }
-  
-  .button-open .menu-bar-middle {
-    transform: translate(200%);
-    transition: .1s ease-in;
-    opacity: 0;
-  }
-  
-  .button-open .menu-bar-bottom {
-    transform: rotate(-45deg) translate(8px, -7px);
-    transition: .5s;
-  }
