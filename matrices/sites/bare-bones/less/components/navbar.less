@@ -1,4 +1,4 @@
-// out: ../../css/components/navbar.css, compress: true, sourceMap: true
+// out: ../../css/components/navbar.css, compress: false, sourceMap: true
 @import "../base/_import.less";
 
 /* * * * * 
@@ -13,12 +13,21 @@
     background-color: rgba(0, 0, 0, 0.1);
 
     &-contents {
-        display: flex;
+        display: grid;
+        grid-template-areas: 'logo icon';
         justify-content: space-between;
         align-items: center;
         width: 100%;
         max-width: 100%;
         padding: 4px 16px;
+
+        &-logo {
+            grid-area: logo;
+        }
+
+        &-mobileIcon {
+            grid-area: icon;
+        }
 
         &-links {
             position: fixed;
@@ -38,10 +47,6 @@
         }
     }
 }
-
-/* * * * * * * * * 
-* NAVBAR OVERLAY *
-* * * * * * * *  */
 
 /* * * * * *  * 
 * MOBILE ICON *
