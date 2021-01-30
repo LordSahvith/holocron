@@ -1,7 +1,9 @@
-// out: ../../css/components/navbar.css, compress: true, sourceMap: true
+// out: ../../css/components/navbar.css, compress: false, sourceMap: true
 @import "../base/_import.less";
 
 .bb-navbar {
+    display: flex;
+    align-items: center;
     width: 100%;
     max-width: 100%;
     height: 70px;
@@ -9,6 +11,116 @@
 
     &-contents {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+
+        &-logo {
+            
+        }
+
+        &-mobileIcon {
+        }
     }
 }
+
+.bb-mobileIcon {
+    display: flex;
+    transition: all .4s ease;
+
+    .toggle-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 44px;
+        height: 40px;
+        // top: 22px;
+        // right: 25px;
+        // padding: 4px;
+        // transform: translate(-22px, -20px);
+        // z-index: 15;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .menu-bar {
+        border-radius: 2px;
+        height: 4px;
+        width: 42px;
+        background-color: #FFF;
+        z-index: 15;
+        transition: .5s;
+    }
+}
+
+/* ===== MOBILE HAMBURGER ICON ============ */
+
+// .mobile-icon {
+//     position: relative;
+//     transition: all .4s;
+//   }
+  
+//   .toggle-button {
+//     position: fixed;
+//     width: 44px;
+//     height: 40px;
+//     top: 22px;
+//     right: 25px;
+//     transform: translate(-22px, -20px);
+//     padding: 4px;
+//     transition: .25s;
+//     z-index: 15;
+//   }
+  
+//   .toggle-button:hover {
+//     cursor: pointer;
+//   }
+  
+//   .mobile-icon:hover .menu-bar {      
+//     background-color: #4dbb04;
+//   }
+  
+//   .toggle-button .menu-bar {
+//     position: absolute;
+//     border-radius: 2px;
+//     height: 4px;
+//     width: 42px;
+//     background-color: #FFF;
+//     z-index: 15;
+//     transition: .5s;
+//   }
+  
+  .toggle-button .menu-bar-top {
+    border-bottom: none;
+    top: 0;
+  }
+  
+  .toggle-button .menu-bar-middle {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    top: 4px;
+  }
+  
+  .toggle-button .menu-bar-bottom {
+    border-top: none;
+    top: 22px;
+  }
+  
+  .button-open .menu-bar-top {
+    transform: rotate(45deg) translate(8px, 8px);
+    transition: .5s;
+  }
+  
+  .button-open .menu-bar-middle {
+    transform: translate(200%);
+    transition: .1s ease-in;
+    opacity: 0;
+  }
+  
+  .button-open .menu-bar-bottom {
+    transform: rotate(-45deg) translate(8px, -7px);
+    transition: .5s;
+  }
