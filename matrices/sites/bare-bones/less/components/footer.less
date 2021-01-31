@@ -4,7 +4,7 @@
 /* * * * *  * 
 * VARIABLES *
 * * * * * * */
-@mobile-menu-link-color: @global-inverse-color;
+@footer-menu-link-color: @global-inverse-color;
 
 
 /* * * * * 
@@ -12,5 +12,16 @@
 * * * *  */
 
 .bb-footer {
-    
+    background: #ccc;
+    // padding: 8px;
+
+    &-links {
+        li {
+            list-style: none;
+        }
+
+        a {
+            color: @footer-menu-link-color;
+        }
+    }
 }

@@ -1,0 +1,347 @@
+// out: false
+
+/* * * * *  * 
+* VARIABLES *
+* * * * * * */
+
+@theme-body-background: @global-background;
+@theme-body-font-family: @global-font-family;
+@theme-body-font-weight: normal;
+@theme-body-font-size: @global-font-size;
+@theme-body-line-height: @global-line-height;
+@theme-body-color: @global-color;
+
+@theme-link-color: @global-link-color;
+@theme-link-text-decoration: none;
+@theme-link-hover-color: @global-link-hover-color;
+@theme-link-hover-text-decoration: underline;
+
+@theme-strong-font-weight: bolder;
+@theme-code-font-size: @global-small-font-size;
+@theme-code-font-family: Consolas, monaco, monospace;
+@theme-code-color: @global-danger-background;
+@theme-em-color: @global-danger-background;
+@theme-ins-background: #ffd;
+@theme-ins-color: @global-color;
+@theme-mark-background: #ffd;
+@theme-mark-color: @global-color;
+@theme-quote-font-style: italic;
+@theme-small-font-size: 80%;
+
+@theme-margin-vertical: @global-margin;
+
+@theme-heading-font-family: @global-font-family;
+@theme-heading-font-weight: normal;
+@theme-heading-color: @global-emphasis-color;
+@theme-heading-text-transform: none;
+@theme-heading-margin-top: @global-medium-margin;
+@theme-h1-font-size-m: @global-2xlarge-font-size;
+@theme-h1-font-size: @theme-h1-font-size-m * 0.85;
+@theme-h1-line-height: 1.2;
+@theme-h2-font-size-m: @global-xlarge-font-size;
+@theme-h2-font-size: @theme-h2-font-size-m * 0.85;
+@theme-h2-line-height: 1.3;
+@theme-h3-font-size: @global-large-font-size;
+@theme-h3-line-height: 1.4;
+@theme-h4-font-size: @global-medium-font-size;
+@theme-h4-line-height: 1.4;
+@theme-h5-font-size: @global-font-size;
+@theme-h5-line-height: 1.4;
+@theme-h6-font-size: @global-small-font-size;
+@theme-h6-line-height: 1.4;
+
+@theme-list-padding-left: 30px;
+
+@theme-hr-margin-vertical: @global-margin;
+@theme-hr-border-width: @global-border-width;
+@theme-hr-border: @global-border;
+
+@theme-blockquote-font-size: @global-medium-font-size;
+@theme-blockquote-line-height: 1.5;
+@theme-blockquote-font-style: italic;
+@theme-blockquote-margin-vertical: @global-margin;
+@theme-blockquote-footer-margin-top: @global-small-margin;
+@theme-blockquote-footer-font-size: @global-small-font-size;
+@theme-blockquote-footer-line-height: 1.5;
+
+@theme-pre-font-size: @global-small-font-size;
+@theme-pre-line-height: 1.5;
+@theme-pre-font-family: @theme-code-font-family;
+@theme-pre-color: @global-color;
+
+@theme-selection-background: #39f;
+@theme-selection-color: @global-inverse-color;
+
+
+
+/* ========================================================================
+   Component: Base
+ ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: @theme-heading-font-family;
+    font-size: @global-font-size;
+    font-weight: @theme-heading-font-weight;
+    line-height: @global-line-height;
+    -webkit-text-size-adjust: 100%;
+    background: @global-background;
+    color: @global-color;
+}
+
+/* Links
+ ========================================================================== */
+
+a {
+    color: @global-link-color;
+    text-decoration: @theme-link-text-decoration;
+    cursor: pointer;
+
+    &:active,
+    &:hover {
+        outline: none;
+    }
+
+    &:hover {
+        color: @global-link-hover-color;
+        text-decoration: @theme-link-hover-text-decoration;
+    }
+}
+
+
+/* Text-level semantics
+ ========================================================================== */
+
+q {
+    font-style: @theme-quote-font-style;
+}
+
+small {
+    font-size: @global-small-font-size;
+}
+
+
+/* Embedded content
+========================================================================== */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+canvas,
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+iframe {
+    border: 0;
+}
+
+
+/* Block elements
+ ========================================================================== */
+
+p,
+ul,
+ol,
+dl,
+pre,
+address,
+fieldset,
+figure {
+    margin: 0 0 @theme-margin-vertical 0;
+}
+
+*+p,
+*+ul,
+*+ol,
+*+dl,
+*+pre,
+*+address,
+*+fieldset,
+*+figure {
+    margin-top: @theme-margin-vertical;
+}
+
+
+/* Headings
+ ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 @theme-margin-vertical 0;
+    font-family: @theme-heading-font-family;
+    font-weight: @theme-heading-font-weight;
+    color: @theme-heading-color;
+    text-transform: @theme-heading-text-transform;
+}
+
+*+h1,
+*+h2,
+*+h3,
+*+h4,
+*+h5,
+*+h6 {
+    margin-top: @theme-heading-margin-top;
+}
+
+h1 {
+    font-size: @theme-h1-font-size;
+    line-height: @theme-h1-line-height;
+}
+
+h2 {
+    font-size: @theme-h2-font-size;
+    line-height: @theme-h2-line-height;
+}
+
+h3 {
+    font-size: @theme-h3-font-size;
+    line-height: @theme-h3-line-height;
+}
+
+h4 {
+    font-size: @theme-h4-font-size;
+    line-height: @theme-h4-line-height;
+}
+
+h5 {
+    font-size: @theme-h5-font-size;
+    line-height: @theme-h5-line-height;
+}
+
+h6 {
+    font-size: @theme-h6-font-size;
+    line-height: @theme-h6-line-height;
+}
+
+/* Tablet landscape and bigger */
+@media (min-width: @breakpoint-medium) {
+    h1 {
+        font-size: @theme-h1-font-size-m;
+    }
+
+    h2 {
+        font-size: @theme-h2-font-size-m;
+    }
+}
+
+
+/* Lists
+ ========================================================================== */
+
+ul,
+ol {
+    padding-left: @theme-list-padding-left;
+}
+
+ul>li>ul,
+ul>li>ol,
+ol>li>ol,
+ol>li>ul {
+    margin: 0;
+}
+
+
+/* Description lists
+ ========================================================================== */
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 0;
+}
+
+
+/* Address
+ ========================================================================== */
+
+address {
+    font-style: normal;
+}
+
+
+/* Blockquotes
+ ========================================================================== */
+
+blockquote {
+    margin: 0 0 @theme-blockquote-margin-vertical 0;
+    font-size: @theme-blockquote-font-size;
+    line-height: @theme-blockquote-line-height;
+    font-style: @theme-blockquote-font-style;
+}
+
+*+blockquote {
+    margin-top: @theme-blockquote-margin-vertical;
+}
+
+blockquote p:last-of-type {
+    margin-bottom: 0;
+}
+
+blockquote footer {
+    margin-top: @theme-blockquote-footer-margin-top;
+    font-size: @theme-blockquote-footer-font-size;
+    line-height: @theme-blockquote-footer-line-height;
+}
+
+
+/* Preformatted text
+ ========================================================================== */
+
+pre {
+    font: @theme-pre-font-size e("/") @theme-pre-line-height @theme-pre-font-family;
+    color: @theme-pre-color;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    overflow: auto;
+}
+
+pre code {
+    font-family: @theme-pre-font-family;
+}
+
+
+/* Selection pseudo-element
+ ========================================================================== */
+
+::selection {
+    background: @theme-selection-background;
+    color: @theme-selection-color;
+    text-shadow: none;
+}
+
+
+/* HTML5 elements
+ ========================================================================== */
+
+details,
+main {
+    display: block;
+}
+
+summary {
+    display: list-item;
+}
+
+template {
+    display: none;
+}
