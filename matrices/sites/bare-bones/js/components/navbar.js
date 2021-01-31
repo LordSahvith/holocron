@@ -12,10 +12,6 @@ function isMenuOpen() {
     return mobileOverlay.classList.contains('isOpen');
 }
 
-function isMenuOpen() {
-    return mobileOverlay.classList.contains('isOpen');
-}
-
 function menuController() {
     if (window.innerWidth >= 640) {
         for (let i = 0; i < accordionsArray.length; i++) {
