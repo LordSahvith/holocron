@@ -16,9 +16,7 @@ class Accordion {
     }
 
     isOpen() {
-        if (this.button.classList.contains('isOpen')) {
-            this.toggle();
-        }
+        return this.button.classList.contains('isOpen');
     }
 
     log() {

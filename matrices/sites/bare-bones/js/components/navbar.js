@@ -19,7 +19,9 @@ function isMenuOpen() {
 function menuController() {
     if (window.innerWidth >= 640) {
         for (let i = 0; i < accordionsArray.length; i++) {
-            accordionsArray[i].isOpen();
+            if (accordionsArray[i].isOpen()) {
+                accordionsArray[i].toggle();
+            }
         }
         if (isMenuOpen()) {
             toggleMobile();
