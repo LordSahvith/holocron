@@ -1,5 +1,12 @@
-// out: ../../css/components/navbar.css, compress: false, sourceMap: true
+// out: ../../css/components/, compress: false, sourceMap: true
 @import "../base/_import.less";
+@import "mobile-icon.less";
+
+/* * * * *  * 
+* VARIABLES *
+* * * * * * */
+@mobile-menu-link-color: @global-inverse-color;
+
 
 /* * * * * 
 * NAVBAR *
@@ -40,6 +47,20 @@
             overflow: hidden;
             transition: all 0.5s ease;
 
+            li {
+                list-style: none;
+                padding-bottom: 8px;
+
+                &:last-child {
+                    padding-bottom: 0;
+                }
+            }
+
+            a {
+                color: @mobile-menu-link-color;
+                font-size: 18px;
+            }
+
             &.isOpen {
                 width: 100%;
                 overflow-x: unset;
@@ -48,66 +69,23 @@
     }
 }
 
-/* * * * * *  * 
-* MOBILE ICON *
-* * * * * * * */
 
-.bb-mobileIcon {
-    display: flex;
-    transition: all .4s ease;
 
-    .toggle-button {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 44px;
-        height: 40px;
-
-        &:hover {
-            cursor: pointer;
-        }
+.bb-accordion {
+    &-button {
+        margin-left: 16px;
+        width: 12px;
+        height: 12px;
+        transform: rotate(45deg);
+    }
+    
+    &-contents {
+        height: 0;
+        overflow: hidden;
 
         &.isOpen {
-            .menu-bar {        
-                &--top {
-                    transform: rotate(45deg) translate(8px, 8px);
-                    transition: .5s;
-                }
-        
-                &--middle {
-                    transform: translate(200%);
-                    transition: .1s ease-in;
-                    opacity: 0;
-                }
-        
-                &--bottom {
-                    transform: rotate(-45deg) translate(8px, -7px);
-                    transition: .5s;
-                }
-            }
-        }
-    }
-
-    .menu-bar {
-        border-radius: 2px;
-        height: 4px;
-        width: 42px;
-        background-color: #FFF;
-        z-index: 15;
-        transition: .5s;
-
-        &--top {
-            border-bottom: none;
-        }
-
-        &--middle {
-            margin-top: 7px;
-            margin-bottom: 7px;
-        }
-
-        &--bottom {
-            border-top: none;
-            top: 22px;
+            height: 100%;
+            overflow: unset;
         }
     }
 }
