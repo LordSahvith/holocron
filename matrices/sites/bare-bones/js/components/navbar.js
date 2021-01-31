@@ -14,9 +14,9 @@ function isMenuOpen() {
 
 function menuController() {
     if (window.innerWidth >= 640) {
-        for (let i = 0; i < accordionsArray.length; i++) {
-            if (accordionsArray[i].isOpen()) {
-                accordionsArray[i].toggle();
+        for (let i = 0; i < menuListsArray.length; i++) {
+            if (menuListsArray[i].isOpen()) {
+                menuListsArray[i].toggle();
             }
         }
         if (isMenuOpen()) {

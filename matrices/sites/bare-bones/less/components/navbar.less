@@ -27,6 +27,10 @@
         max-width: 100%;
         padding: 4px 16px;
 
+        @media screen and (min-width: @breakpoint-small) {
+            display: flex;
+        }
+
         &-logo {
             grid-area: logo;
         }
@@ -67,6 +71,23 @@
             &.isOpen {
                 width: 100%;
                 overflow-x: unset;
+            }
+
+            @media screen and (min-width: @breakpoint-small) {
+                position: static;
+                overflow: unset;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                background: none;
+
+                ul {
+                    display: flex;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    max-width: 100%;
+                }
             }
         }
     }

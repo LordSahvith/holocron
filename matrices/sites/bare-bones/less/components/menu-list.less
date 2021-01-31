@@ -1,0 +1,68 @@
+// out: ../../css/components/, compress: false, sourceMap: true
+@import "../base/_import.less";
+
+/* * * * *  * 
+* VARIABLES *
+* * * * * * */
+
+
+.bb-menuList {
+    position: relative;
+    &-button {
+        padding: 0 8px;
+        cursor: pointer;
+
+        &.isOpen {
+            .arrow.down {
+                transform: rotate(-135deg) translateY(-3px);
+            }
+        }
+    }
+
+    &-contents {
+        height: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        z-index: -1;
+
+        ul {
+            height: 0;
+            margin: 0;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        @media screen and (min-width: @breakpoint-small) {
+            position: fixed;
+            background-color: #ccc;
+            margin-left: -8px;
+            z-index: 10;
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+                padding: 0 16px;
+            }
+        }
+
+        &.isOpen {
+            height: 100px;
+            overflow: unset;
+
+            @media screen and (min-width: @breakpoint-small) {
+                height: 130px;
+            }
+
+            ul {
+                height: 10px;
+                opacity: 1;
+
+                @media screen and (min-width: @breakpoint-small) {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
