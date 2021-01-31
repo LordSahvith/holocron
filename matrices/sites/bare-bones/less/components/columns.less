@@ -16,24 +16,36 @@
     padding: 8px;
 
     &-2 &-item,
-    &-3 &-item {
+    &-3 &-item,
+    &-4 &-item {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         align-items: center;
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
     }
 
-    &-2 {
-        grid-template-columns: 1fr 1fr;
+    &-2,
+    &-3,
+    &-4 {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
     }
 
+    &-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+
     &-3 {
         grid-template-columns: 1fr 1fr 1fr;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+    }
+
+    &-4 {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
     &-1-2 {
