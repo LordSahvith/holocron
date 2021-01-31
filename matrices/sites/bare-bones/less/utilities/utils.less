@@ -8,27 +8,31 @@
     white-space: nowrap;
 }
 
-.textCenter {
-    text-align: center;
+.text {
+    &Center {
+        text-align: center;
+    }
 }
 
-.flexContainer {
-    display: flex;
-}
+.flex {
+    &Container {
+        display: flex;
+    }
 
-.flexCol {
-    flex-direction: column;
-}
+    &Col {
+        flex-direction: column;
+    }
 
-.flexCentered {
-    justify-content: center;
-    align-items: center;
-}
+    &Centered {
+        justify-content: center;
+        align-items: center;
 
-.flexCenteredMain {
-    justify-content: center;
-}
+        &Main {
+            justify-content: center;
+        }
 
-.flexCenteredCross {
-    align-items: center;
+        &Cross {
+            align-items: center;
+        }
+    }
 }
