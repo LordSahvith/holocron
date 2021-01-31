@@ -14,7 +14,27 @@
     display: grid;
     grid-template-columns: 1fr;
     padding: 8px;
-    border-bottom: 1px solid black;
+
+    &-2 &-item,
+    &-3 &-item {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    &-2 {
+        grid-template-columns: 1fr 1fr;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    &-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
 
     &-1-2 {
         @media screen and (min-width: @breakpoint-small) {
