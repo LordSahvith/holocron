@@ -13,7 +13,7 @@
 
 <body>
 
-    <?php include 'main-nav.html'; ?>
+    <?php include 'main-nav-logo-left.html'; ?>
 
     <script src="../../js/utils.js"></script>
     <script src="../../js/components/navbar.js"></script>

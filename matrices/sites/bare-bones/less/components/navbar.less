@@ -18,6 +18,10 @@
     height: 70px;
     background-color: rgba(0, 0, 0, 0.1);
 
+    @media screen and (min-width: @breakpoint-small) {
+        justify-content: center;
+    }
+
     &-contents {
         display: grid;
         grid-template-areas: 'logo icon';
@@ -29,6 +33,7 @@
 
         @media screen and (min-width: @breakpoint-small) {
             display: flex;
+            max-width: 900px;
         }
 
         &-logo {
