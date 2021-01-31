@@ -15,6 +15,12 @@ class Accordion {
         toggle(this.content);
     }
 
+    isOpen() {
+        if (this.button.classList.contains('isOpen')) {
+            this.toggle();
+        }
+    }
+
     log() {
         console.log(this.button, this.content);
     }

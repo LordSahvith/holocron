@@ -4,6 +4,27 @@ const mobileOverlay = document.querySelector('.bb-navbar-contents-links');
 mobileButton.addEventListener('click', toggleMobile);
 
 function toggleMobile() {
-    toggle(this);
+    toggle(mobileButton);
     toggle(mobileOverlay);
 }
+
+function isMenuOpen() {
+    return mobileOverlay.classList.contains('isOpen');
+}
+
+function isMenuOpen() {
+    return mobileOverlay.classList.contains('isOpen');
+}
+
+function menuController() {
+    if (window.innerWidth >= 640) {
+        for (let i = 0; i < accordionsArray.length; i++) {
+            accordionsArray[i].isOpen();
+        }
+        if (isMenuOpen()) {
+            toggleMobile();
+        }
+    }
+}
+
+window.onresize = menuController;
