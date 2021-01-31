@@ -1,0 +1,43 @@
+// out: ../../css/components/, compress: false, sourceMap: true
+@import "../base/_import.less";
+
+/* * * * *  * 
+* VARIABLES *
+* * * * * * */
+
+
+.bb-accordion {
+    &-button {
+        margin-left: 8px;
+
+        &.isOpen {
+            .arrow.down {
+                transform: rotate(-135deg) translateY(-3px);
+            }
+        }
+    }
+
+    &-contents {
+        height: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        z-index: -1;
+
+        ul {
+            height: 0;
+            margin: 0;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        &.isOpen {
+            height: 100px;
+            overflow: unset;
+
+            ul {
+                height: 10px;
+                opacity: 1;
+            }
+        }
+    }
+}

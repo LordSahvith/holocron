@@ -1,0 +1,32 @@
+// out: ../../css/utilities/, compress: false, sourceMap: true
+@import "../base/_import.less";
+
+/* * * * *  * 
+* VARIABLES *
+* * * * * * */
+@arrow-color: @global-inverse-color;
+
+.arrow {
+    border: solid @arrow-color;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin: 3px;
+    transition: all 0.4s ease;
+}
+
+.right {
+    transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+}
+
+.up {
+    transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+}

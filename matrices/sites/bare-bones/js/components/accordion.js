@@ -11,6 +11,7 @@ class Accordion {
     }
 
     toggle() {
+        toggle(this.button);
         toggle(this.content);
     }
 
@@ -23,15 +24,11 @@ function createAccordions(accordion) {
     accordionsArray.push(new Accordion(accordion));
 }
 
-function toggleAccordion(accordion) {
-    accordion.toggle();
-}
-
-function init() {
+function setEventListeners() {
     for (let i = 0; i < accordionsArray.length; i++) {
-        accordionsArray[i].button.addEventListener('click', () => toggleAccordion(accordionsArray[i]));
+        accordionsArray[i].button.addEventListener('click', () => accordionsArray[i].toggle());
     }
 }
 
 accordions.forEach(accordion => createAccordions(accordion));
-init();
+setEventListeners();

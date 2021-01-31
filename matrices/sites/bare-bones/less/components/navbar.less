@@ -1,6 +1,5 @@
 // out: ../../css/components/, compress: false, sourceMap: true
 @import "../base/_import.less";
-@import "mobile-icon.less";
 
 /* * * * *  * 
 * VARIABLES *
@@ -47,6 +46,10 @@
             overflow: hidden;
             transition: all 0.5s ease;
 
+            ul {
+                margin-bottom: 8px;
+            }
+
             li {
                 list-style: none;
                 padding-bottom: 8px;
@@ -65,27 +68,6 @@
                 width: 100%;
                 overflow-x: unset;
             }
-        }
-    }
-}
-
-
-
-.bb-accordion {
-    &-button {
-        margin-left: 16px;
-        width: 12px;
-        height: 12px;
-        transform: rotate(45deg);
-    }
-    
-    &-contents {
-        height: 0;
-        overflow: hidden;
-
-        &.isOpen {
-            height: 100%;
-            overflow: unset;
         }
     }
 }

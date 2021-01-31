@@ -7,6 +7,7 @@
     <title>Comonent - Navbar</title>
 
 
+    <link rel="stylesheet" href="../css/bare-bones.css">
     <link rel="stylesheet" href="../css/components/navbar.css">
 </head>
 
@@ -15,21 +16,23 @@
     <nav class="bb-navbar">
         <div class="bb-navbar-contents">
             <div class="bb-navbar-contents-logo">
-                <a class="" href="#"><img src="https://via.placeholder.com/70?text=Logo" alt="Logo"></a>
+                <a href="#"><img src="https://via.placeholder.com/70?text=Logo" alt="Logo"></a>
             </div>
-            <div class="bb-navbar-contents-links isOpen">
+            <div class="bb-navbar-contents-links ">
                 <div class="bb-navbar-contents-links-left">
                     <div>
-                        <ul class="">
-                            <li class="">
+                        <ul>
+                            <li>
                                 <a href="#">About</a>
                             </li>
                             <li class="bb-accordion">
-                                <a href="#">Projects</a>
-                                <span class="bb-accordion-button toggle-botton">></span>
+                                <div class="noWrap">
+                                    <a href="#">Projects</a>
+                                    <span class="bb-accordion-button toggle-button"><i class="arrow down"></i></span>
+                                </div>
                                 <div class="bb-accordion-contents">
-                                    <ul class="">
-                                        <li class=""><a href="#">Career</a></li>
+                                    <ul>
+                                        <li><a href="#">Career</a></li>
                                         <li><a href="#">Freelance</a></li>
                                         <li><a href="#">Personal</a></li>
                                     </ul>
@@ -40,7 +43,7 @@
                 </div>
                 <div class="bb-navbar-contents-links-right">
                     <div>
-                        <ul class="">
+                        <ul>
                             <li><a href="#">Arcade</a></li>
                             <li><a href="#">Contact</a></li>
                         </ul>
