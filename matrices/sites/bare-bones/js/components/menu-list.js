@@ -1,12 +1,14 @@
 const menuListIdentifier = '.bb-menuList';
 const menuListButton = '.bb-menuList-button';
 const menuListContent = '.bb-menuList-contents';
+const arrowButton = '.arrow.down';
 const menuLists = document.querySelectorAll(menuListIdentifier);
 let menuListsArray = [];
 
 class MenuList {
     constructor(menuList) {
         this.button = menuList.querySelector(menuListButton);
+        this.arrow = menuList.querySelector(arrowButton);
         this.content = menuList.querySelector(menuListContent);
     }
 
@@ -20,7 +22,7 @@ class MenuList {
     }
 
     log() {
-        console.log(this.button, this.content);
+        console.log(this.button, this.arrow, this.content);
     }
 }
 
@@ -36,3 +38,11 @@ function setEventListeners() {
 
 menuLists.forEach(menuList => createMenuLists(menuList));
 setEventListeners();
+
+window.addEventListener('click', function(e) {
+    for (let i = 0; i < menuListsArray.length; i++) {
+        if (e.target !== menuListsArray[i].button && menuListsArray[i].isOpen()) {
+            menuListsArray[i].toggle();
+        }
+    }
+});
