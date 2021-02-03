@@ -18,7 +18,7 @@ class MenuList {
     }
 
     isOpen() {
-        return this.button.classList.contains('isOpen');
+        return this.menu.classList.contains('isOpen');
     }
 
     log() {
