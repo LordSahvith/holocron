@@ -13,8 +13,22 @@ class MenuList {
 
     toggle() {
         toggle(this.menu);
-        toggle(this.button);
-        toggle(this.content);
+    }
+
+    open(e) {
+        for (let i = 0; i < menuListsArray.length; i++) {
+            if (e.target === menuListsArray[i].menu) {
+                this.toggle();
+            }
+        }
+    }
+
+    close(e) {
+        for (let i = 0; i < menuListsArray.length; i++) {
+            if ((e.target !== menuListsArray[i].menu || e.target !== menuListsArray[i].content) && menuListsArray[i].isOpen()) {
+                menuListsArray[i].toggle();
+            }
+        }
     }
 
     isOpen() {
@@ -22,7 +36,7 @@ class MenuList {
     }
 
     log() {
-        console.log(this.button, this.content);
+        console.log(this.menu, this.button, this.content);
     }
 }
 
@@ -33,34 +47,18 @@ function createMenuLists(menuList) {
 function setEventListeners() {
     for (let i = 0; i < menuListsArray.length; i++) {
         menuListsArray[i].button.addEventListener('click', () => menuListsArray[i].toggle());
-        menuListsArray[i].menu.addEventListener('mouseover', (e) => toggleOpen(e));
-        menuListsArray[i].menu.addEventListener('mouseleave', (e) => toggleClosed(e));
+        menuListsArray[i].menu.addEventListener('mouseover', (e) => menuListsArray[i].open(e));
+        menuListsArray[i].menu.addEventListener('mouseleave', (e) => menuListsArray[i].close(e));
     }
+
+    window.addEventListener('click', function (e) {
+        for (let i = 0; i < menuListsArray.length; i++) {
+            if (e.target !== menuListsArray[i].button && menuListsArray[i].isOpen()) {
+                menuListsArray[i].toggle();
+            }
+        }
+    });
 }
 
 menuLists.forEach(menuList => createMenuLists(menuList));
 setEventListeners();
-
-window.addEventListener('click', function (e) {
-    for (let i = 0; i < menuListsArray.length; i++) {
-        if (e.target !== menuListsArray[i].button && menuListsArray[i].isOpen()) {
-            menuListsArray[i].toggle();
-        }
-    }
-});
-
-function toggleOpen(e) {
-    for (let i = 0; i < menuListsArray.length; i++) {
-        if (e.target === menuListsArray[i].menu) {
-            menuListsArray[i].toggle();
-        }
-    }
-}
-
-function toggleClosed(e) {
-    for (let i = 0; i < menuListsArray.length; i++) {
-        if ((e.target !== menuListsArray[i].menu || e.target !== menuListsArray[i].content) && menuListsArray[i].isOpen()) {
-            menuListsArray[i].toggle();
-        }
-    }
-}
