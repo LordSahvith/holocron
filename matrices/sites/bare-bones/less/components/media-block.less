@@ -1,6 +1,11 @@
 // out: ../../css/components/, compress: false, sourceMap: true
 @import "../base/_import.less";
 
+/* * * * *  * 
+* VARIABLES *
+* * * * * * */
+@primary-cta-color: @global-muted-color;
+
 .bb-mediaBlock {
     display: grid;
     grid-template-columns: 1fr;
@@ -29,6 +34,7 @@
 
     &-copy {
         padding: 16px;
+
         @media screen and (min-width: @breakpoint-small) {
             grid-column: 1 e("/") 2;
             grid-row: 1 e("/") 2;
@@ -42,8 +48,34 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    text-align: center;
                 }
             }
+        }
+    }
+
+    &-copyOnly {
+        .bb-mediaBlock-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            @media screen and (min-width: @breakpoint-small) {
+                align-items: center;
+                text-align: center;
+            }
+        }
+    }
+
+    &-cta {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            padding: 8px 12px;
+            background: @primary-cta-color;
         }
     }
 }

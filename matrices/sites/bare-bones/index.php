@@ -20,6 +20,7 @@
                 <ul>
                     <li><a href="components/navigation/main-nav.php">Navigation</a></li>
                     <li><a href="components/hero/hero.php">Hero</a></li>
+                    <li><a href="components/media-block/media-block.php">Media Block</a></li>
                     <li><a href="components/columns/col.php">Columns</a></li>
                     <li><a href="components/footer/footer.php">Footer</a></li>
                 </ul>
