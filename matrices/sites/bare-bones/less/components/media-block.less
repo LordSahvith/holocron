@@ -1,0 +1,49 @@
+// out: ../../css/components/, compress: false, sourceMap: true
+@import "../base/_import.less";
+
+.bb-mediaBlock {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    &-image {
+        background: black;
+
+        @media screen and (min-width: @breakpoint-small) {
+            grid-column: 1 e("/") 2;
+            grid-row: 1 e("/") 2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            margin: 0 auto;
+            max-height: initial;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &-copy {
+        padding: 16px;
+        @media screen and (min-width: @breakpoint-small) {
+            grid-column: 1 e("/") 2;
+            grid-row: 1 e("/") 2;
+        }
+    }
+
+    &-fullCopy {
+        &--centered {
+            @media screen and (min-width: @breakpoint-small) {
+                .bb-mediaBlock-copy {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
