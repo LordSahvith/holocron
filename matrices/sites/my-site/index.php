@@ -23,7 +23,7 @@
         </div>
 
         <div class="bb-mediaBlock-cta">
-            <a href="#">Lorem Ipsum</a>
+            <a class="bb-button" href="#">Lorem Ipsum</a>
         </div>
     </section>
 </main>

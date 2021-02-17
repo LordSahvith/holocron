@@ -1,0 +1,45 @@
+// out: ../../css/components/, compress: false, sourceMap: true
+@import "../base/_import.less";
+
+/* * * * *  * 
+* VARIABLES *
+* * * * * * */
+@button-color: @global-muted-color;
+@button-color-inverse: @global-inverse-color;
+@button-font-size: @global-font-size;
+@button-line-height: @global-line-height;
+@button-font-family: @global-font-family;
+@button-link-color: @global-link-color;
+@button-link-text-decoration: none;
+@button-link-hover-color: @global-link-hover-color;
+@button-link-hover-text-decoration: underline;
+
+.bb-button {
+    padding: 10px 12px;
+    font-family: @button-font-family;
+    font-size: @button-font-size;
+    line-height: normal;
+    text-decoration: none;
+    border: none;
+    background: @button-color;
+    color: @button-color-inverse;
+    transition: color .2s, background .2s;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: none;
+        background: darken(@button-color, 10%);
+        color: darken(@button-color-inverse, 10%);
+    }
+
+    &--link {
+        background: none;
+        padding: 0;
+        color: @button-link-color;
+
+        &:hover {
+            color: @button-link-hover-color;
+            text-decoration: @button-link-hover-text-decoration;
+        }
+    }
+}
