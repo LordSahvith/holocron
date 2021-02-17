@@ -47,6 +47,12 @@ function createMenuLists(menuList) {
 function setEventListeners() {
     for (let i = 0; i < menuListsArray.length; i++) {
         menuListsArray[i].button.addEventListener('click', () => menuListsArray[i].toggle());
+        menuListsArray[i].button.addEventListener('keydown', (e) => {
+            let keyPressed = e.key || e.which;
+            if (keyPressed === 'Enter' || keyPressed === 13) {
+                menuListsArray[i].toggle();
+            }
+        });
         menuListsArray[i].menu.addEventListener('mouseover', (e) => menuListsArray[i].open(e));
         menuListsArray[i].menu.addEventListener('mouseleave', (e) => menuListsArray[i].close(e));
     }
