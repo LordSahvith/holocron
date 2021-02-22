@@ -10,6 +10,13 @@
     display: grid;
     grid-template-columns: 1fr;
 
+    &-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
     &-image {
         background: black;
 
@@ -38,12 +45,14 @@
         max-width: 800px;
         margin: 0 auto;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
         @media screen and (min-width: @breakpoint-small) {
             grid-column: 1 e("/") 2;
             grid-row: 1 e("/") 2;
+            text-align: center;
         }
     }
 
@@ -60,20 +69,11 @@
         }
     }
 
-    &-copyOnly {
-        padding: 16px;
-
-        .bb-mediaBlock-copy {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
-            @media screen and (min-width: @breakpoint-small) {
-                align-items: center;
-                text-align: center;
+    &-copyBelowImage {
+        @media screen and (min-width: @breakpoint-small) {
+            .bb-mediaBlock-copy {
+                grid-column: 1 e("/") 2;
+                grid-row: 2 e("/") 3;
             }
         }
     }
@@ -83,7 +83,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 }
