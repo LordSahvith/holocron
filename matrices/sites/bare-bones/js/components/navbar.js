@@ -2,6 +2,12 @@ const mobileButton = document.querySelector('.bb-mobileIcon .toggle-button');
 const mobileOverlay = document.querySelector('.bb-navbar-contents-links');
 
 mobileButton.addEventListener('click', toggleMobile);
+mobileButton.addEventListener('keydown', (e) => {
+    let keyPressed = e.key || e.which;
+    if (keyPressed === 'Enter' || keyPressed === 13) {
+        toggleMobile();
+    }
+});
 
 function toggleMobile() {
     toggle(mobileButton);
