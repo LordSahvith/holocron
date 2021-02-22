@@ -52,9 +52,7 @@
         </div>
 
         <div class="bb-mediaBlock-copy">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, enim corrupti perspiciatis eveniet
-                voluptate quidem quis tempora, debitis amet ipsam voluptatum impedit quo, quam fugit excepturi. Et hic
-                fugit maxime? Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, amet.</p>
+            <p>Lorem ipsum</p>
         </div>
 
         <div class="bb-mediaBlock-cta">

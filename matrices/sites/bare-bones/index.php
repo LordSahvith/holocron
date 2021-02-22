@@ -17,13 +17,14 @@
                 <a href="http://holocron.local/"><img src="https://via.placeholder.com/70?text=Logo" alt="Logo"></a>
             </div>
             <div class="bb-navbar-contents-links">
-                <ul>
+                <ul> <!-- TODO: add lists for "Elements" & "Components" : need to update height of dropdown -->
                     <li><a href="components/button/button.php">Button</a></li>
-                    <li><a href="components/navigation/main-nav.php">Navigation</a></li>
-                    <li><a href="components/hero/hero.php">Hero</a></li>
-                    <li><a href="components/media-block/media-block.php">Media Block</a></li>
+                    <li><a href="components/card/card.php">Card</a></li>
                     <li><a href="components/columns/col.php">Columns</a></li>
                     <li><a href="components/footer/footer.php">Footer</a></li>
+                    <li><a href="components/hero/hero.php">Hero</a></li>
+                    <li><a href="components/media-block/media-block.php">Media Block</a></li>
+                    <li><a href="components/navigation/main-nav.php">Navigation</a></li>
                 </ul>
             </div>
             <div class="bb-navbar-contents-mobileIcon bb-mobileIcon">
