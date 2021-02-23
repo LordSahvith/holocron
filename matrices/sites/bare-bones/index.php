@@ -37,9 +37,10 @@
         </div>
     </nav>
 
-    <script src="js/utils.js"></script>
+    <script src="js/utils/dom.js"></script>
+    <script type="module" src="js/components/toggle.js"></script>
     <script src="js/components/navbar.js"></script>
-    <script src="js/components/menu-list.js"></script>
+    <script type="module" src="js/components/menu-list.js"></script>
 
 </body>
 

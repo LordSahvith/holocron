@@ -25,7 +25,9 @@ class MenuList {
 
     close(e) {
         for (let i = 0; i < menuListsArray.length; i++) {
-            if ((e.target !== menuListsArray[i].menu || e.target !== menuListsArray[i].content) && menuListsArray[i].isOpen()) {
+            if ((e.target !== menuListsArray[i].menu ||
+                e.target !== menuListsArray[i].content) &&
+                menuListsArray[i].isOpen()) {
                 menuListsArray[i].toggle();
             }
         }
