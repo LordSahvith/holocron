@@ -1,0 +1,38 @@
+// out: ../../css/components/, compress: false, sourceMap: true
+@import "../base/_import.less";
+
+/* * * * *  * 
+* VARIABLES *
+* * * * * * */
+
+
+/* * *  *  
+* MODAL *
+* * * * */
+
+.bb-carousel {
+    display: grid;
+    grid-template-areas: "image image close"
+        "prev image next"
+        "dots dots dots";
+
+    &-images {
+        grid-area: image;
+    }
+
+    .bb-button--close {
+        grid-area: close;
+    }
+
+    &-prev {
+        grid-area: prev;
+    }
+
+    &-next {
+        grid-area: next;
+    }
+
+    &-dots {
+        grid-area: dots;
+    }
+}

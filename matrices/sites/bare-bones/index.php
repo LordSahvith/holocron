@@ -24,6 +24,7 @@
                     <li><a href="components/footer/footer.php">Footer</a></li>
                     <li><a href="components/hero/hero.php">Hero</a></li>
                     <li><a href="components/media-block/media-block.php">Media Block</a></li>
+                    <li><a href="components/modal/modal.php">Modal</a></li>
                     <li><a href="components/navigation/main-nav.php">Navigation</a></li>
                 </ul>
             </div>
@@ -38,9 +39,8 @@
     </nav>
 
     <script src="js/utils/dom.js"></script>
-    <script type="module" src="js/components/toggle.js"></script>
     <script src="js/components/navbar.js"></script>
-    <script type="module" src="js/components/menu-list.js"></script>
+    <script src="js/components/menu-list.js"></script>
 
 </body>
 
