@@ -1,3 +1,3 @@
-function toggle(el) {
+export function toggle(el) {
     el.classList.toggle('isOpen');
 }

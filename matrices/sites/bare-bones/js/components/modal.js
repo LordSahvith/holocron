@@ -1,22 +1,18 @@
+import { Toggle } from './modules/toggle.js';
+
 const modals = document.querySelectorAll("[modal]");
 const modalButtons = document.querySelectorAll("[modal-button]");
 
 let modalsArray = [];
 let modalButtonsArray = [];
 
-class Modal {
+class Modal extends Toggle {
     constructor(modal, button) {
+        super(modal);
         this.modal = modal;
         this.button = button;
     }
 
-    toggle() {
-        toggle(this.modal);
-    }
-
-    log() {
-        console.log(this.modal);
-    }
 }
 
 function createModals(modal) {

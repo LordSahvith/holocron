@@ -1,18 +1,17 @@
+import { Toggle } from './modules/toggle.js';
+
 const menuListIdentifier = '.bb-menuList';
 const menuListButton = '.bb-menuList-button';
 const menuListContent = '.bb-menuList-contents';
 const menuLists = document.querySelectorAll(menuListIdentifier);
 let menuListsArray = [];
 
-class MenuList {
+class MenuList extends Toggle {
     constructor(menuList) {
+        super(menuList);
         this.menu = menuList;
         this.button = this.menu.querySelector(menuListButton);
         this.content = this.menu.querySelector(menuListContent);
-    }
-
-    toggle() {
-        toggle(this.menu);
     }
 
     open(e) {
@@ -31,10 +30,6 @@ class MenuList {
                 menuListsArray[i].toggle();
             }
         }
-    }
-
-    isOpen() {
-        return this.menu.classList.contains('isOpen');
     }
 
     log() {

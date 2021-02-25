@@ -16,7 +16,7 @@
     <?php include 'modal.html'; ?>
 
     <script src="../../js/utils.js"></script>
-    <script src="../../js/components/modal.js"></script>
+    <script type="module" src="../../js/components/modal.js"></script>
 
 </body>
 
