@@ -1,4 +1,4 @@
-import { Toggle } from './modules/toggle.js';
+import { Toggle } from './modules/Toggle.js';
 
 const menuListIdentifier = '.bb-menuList';
 const menuListButton = '.bb-menuList-button';
@@ -17,7 +17,7 @@ class MenuList extends Toggle {
     open(e) {
         for (let i = 0; i < menuListsArray.length; i++) {
             if (e.target === menuListsArray[i].menu) {
-                this.toggle();
+                this.toggle('isOpen');
             }
         }
     }
@@ -27,7 +27,7 @@ class MenuList extends Toggle {
             if ((e.target !== menuListsArray[i].menu ||
                 e.target !== menuListsArray[i].content) &&
                 menuListsArray[i].isOpen()) {
-                menuListsArray[i].toggle();
+                menuListsArray[i].toggle('isOpen');
             }
         }
     }
@@ -47,7 +47,7 @@ function setEventListeners() {
         menuListsArray[i].button.addEventListener('keydown', (e) => {
             let keyPressed = e.key || e.which;
             if (keyPressed === 'Enter' || keyPressed === 13) {
-                menuListsArray[i].toggle();
+                menuListsArray[i].toggle('isOpen');
             }
         });
         menuListsArray[i].menu.addEventListener('mouseover', (e) => menuListsArray[i].open(e));
@@ -57,7 +57,7 @@ function setEventListeners() {
     window.addEventListener('click', function (e) {
         for (let i = 0; i < menuListsArray.length; i++) {
             if (e.target !== menuListsArray[i].button && menuListsArray[i].isOpen()) {
-                menuListsArray[i].toggle();
+                menuListsArray[i].toggle('isOpen');
             }
         }
     });
