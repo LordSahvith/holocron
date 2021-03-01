@@ -1,4 +1,5 @@
 import { Toggle } from './modules/Toggle.js';
+import { Aria } from './modules/Aria.js';
 
 const menuListIdentifier = '.bb-menuList';
 const menuListButton = '.bb-menuList-button';
@@ -6,7 +7,7 @@ const menuListContent = '.bb-menuList-contents';
 const menuLists = document.querySelectorAll(menuListIdentifier);
 let menuListsArray = [];
 
-class MenuList extends Toggle {
+class MenuList extends Toggle, Aria {
     constructor(menuList) {
         super(menuList);
         this.menu = menuList;
