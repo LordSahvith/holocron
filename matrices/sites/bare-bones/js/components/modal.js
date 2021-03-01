@@ -1,29 +1,35 @@
 import { Toggle } from './modules/toggle.js';
 
 const modals = document.querySelectorAll("[modal]");
-const modalButtons = document.querySelectorAll("[modal-button]");
 
 let modalsArray = [];
-let modalButtonsArray = [];
 
 class Modal extends Toggle {
-    constructor(modal, button) {
+    constructor(modal, buttonOpen) {
         super(modal);
         this.modal = modal;
-        this.button = button;
+        this.buttonClose = modal.querySelector('.bb-button--close');
+        this.buttonOpen = buttonOpen;
     }
 
+    log() {
+        console.log(this.modal, this.buttonOpen);
+    }
 }
 
-function createModals(modal) {
-    modalsArray.push(new Modal(modal));
+function createModals(modal, buttonOpen) {
+    modalsArray.push(new Modal(modal, buttonOpen));
 }
 
 function setEventListeners() {
     for (let i = 0; i < modalsArray.length; i++) {
-        modalsArray[i].addEventListener('click', () => modalsArray[i].toggle());
+        modalsArray[i].buttonOpen.addEventListener('click', () => modalsArray[i].toggle());
+        modalsArray[i].buttonClose.addEventListener('click', () => modalsArray[i].toggle());
     }
 }
 
-modals.forEach(modal => createModals(modal));
-// setEventListeners();
+modals.forEach(modal => {
+    let buttonOpen = document.querySelector(`[data-modal-id="${modal.id}"]`);
+    createModals(modal, buttonOpen);
+});
+setEventListeners();

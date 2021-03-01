@@ -9,7 +9,7 @@ mobileButton.addEventListener('keydown', (e) => {
     }
 });
 
-// TODO: turn into class and create toggle class to extend
+// TODO: turn into class and extend toggle
 function toggleMobile() {
     toggle(mobileButton);
     toggle(mobileOverlay);
