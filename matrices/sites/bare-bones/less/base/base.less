@@ -1,5 +1,8 @@
 // out: false
 
+@global-link-color: blue;
+@global-text-decoration: unerline;
+
 /*
     reset everything
 */
@@ -24,7 +27,7 @@ html {
     body width, color
 */
 body {
-
+    
 }
 
 h1 {
@@ -53,5 +56,12 @@ a {
     color: @global-link-color;
     text-decoration: @global-text-decoration;
     cursor: pointer;
-    
+
+    &:hover {
+        color: darken(@global-link-color, 10%);
+    }
+
+    &:visited {
+        color: darken(@global-link-color, 8%);
+    }
 }
