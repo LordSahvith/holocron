@@ -6,7 +6,9 @@
 /*
     reset everything
 */
-* {
+*,
+html, 
+body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -19,15 +21,15 @@ html {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    background: #ffffff;
-    color: #222222;
+    background: @global-background;
+    color: @global-color;
 }
 
 /*
     body width, color
 */
 body {
-    
+
 }
 
 h1 {
@@ -64,4 +66,24 @@ a {
     &:visited {
         color: darken(@global-link-color, 8%);
     }
+
+    &:active {}
+}
+
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+img,
+canvas,
+video {
+
+    max-width: 100%;
+    height: auto;
 }

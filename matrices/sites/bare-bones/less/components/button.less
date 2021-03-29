@@ -1,0 +1,30 @@
+// out: false;
+
+/* VARIABLES */
+@button-primary-color: @global-primary-color;
+@button-color: @global-color;
+
+
+.bb-button,
+a.bb-button {
+    padding: 12px 14px;
+    background: @button-primary-color;
+    border: none;
+    text-decoration: none;
+    color: @button-color;
+    cursor: pointer;
+    transition: color .2s ease, background .2s ease;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background: darken(@button-primary-color, 10%);
+        color: darken(@button-color, 10%);
+    }
+
+    &:focus,
+    &:active {
+        border: none;
+        outline: none;
+    }
+}
