@@ -13,7 +13,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // padding-bottom: 8px;
+
+    @media screen and (min-width: @breakpoint-md) {
+        align-items: center;
+        text-align: center;
+    }
 
     &--left {
         align-items: flex-start;
@@ -23,11 +27,23 @@
         align-items: center;
     }
 
+    &-image {
+        padding-bottom: 16px;
+    }
+
     &-copy {
-        // padding: 16px 0 8px;
+        padding: 0 16px 16px;
+
+        & > * {
+            margin-bottom: 8px;
+        }
+
+        & > *:last-child {
+            margin-bottom: 0;
+        }
     }
 
     &-cta {
-        // padding: 8px 0 16px;
+        padding: 0 16px 16px;
     }
 }
