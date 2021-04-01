@@ -22,27 +22,82 @@
     &-3,
     &-4,
     &-5 {
-        @media screen and (min-width: @breakpoint-md) {
+        @media screen and (min-width: @breakpoint-sm) {
             display: grid;
             grid-gap: 12px;
         }
     }
 
     &-2 {
-        @media screen and (min-width: @breakpoint-md) {
+        @media screen and (min-width: @breakpoint-sm) {
             grid-template-columns: 1fr 1fr;
         }
     }
 
     &-3 {
+        @media screen and (min-width: @breakpoint-sm) {
+            grid-template-columns: 1fr 1fr;
+
+            .bb-col-item:last-child {
+                grid-column-start: 1;
+                grid-column-end: span 3;
+            }
+        }
+
         @media screen and (min-width: @breakpoint-md) {
             grid-template-columns: 1fr 1fr 1fr;
+
+            .bb-col-item:last-child {
+                grid-row-start: 1;
+                grid-row-end: 1;
+                grid-column-start: 2;
+                grid-column-end: 3;
+            }
         }
     }
 
     &-4 {
+        @media screen and (min-width: @breakpoint-sm) {
+            grid-template-columns: 1fr 1fr;
+        }
         @media screen and (min-width: @breakpoint-md) {
             grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+    }
+
+    &-5 {
+        @media screen and (min-width: @breakpoint-sm) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+
+            .bb-col-item:last-child {
+                grid-row-start: 3;
+                grid-row-end: 3;
+                grid-column-start: 1;
+                grid-column-end: 3;
+            }
+        }
+
+        @media screen and (min-width: @breakpoint-md) {
+            grid-template-columns: 1fr 1fr 1fr;
+
+            .bb-col-item:last-child {
+                grid-row-start: unset;
+                grid-row-end: unset;
+                grid-column-start: unset;
+                grid-column-end: unset;
+            }
+        }
+
+        @media screen and (min-width: @breakpoint-lg) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+            .bb-col-item:last-child {
+                grid-row-start: unset;
+                grid-row-end: unset;
+                grid-column-start: unset;
+                grid-column-end: unset;
+            }
         }
     }
 }
