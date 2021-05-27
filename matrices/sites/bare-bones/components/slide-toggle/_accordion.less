@@ -1,0 +1,30 @@
+// out: ../../../css/components/, compress: false, sourceMap: true
+
+.cwg-accordion{
+    &-title {
+        cursor: pointer;
+        transition: font-weight .2s ease;
+
+        &:focus {
+            font-weight: 600;
+            box-shadow: none;
+        }
+    }
+
+    &:not(.isOpen) {
+        .cwg-accordion-content {
+            display: none;
+        }
+    }
+
+    &-content {
+        transition: height .25s ease;
+        overflow: hidden;
+    }
+    
+    a {
+        &:focus {
+            color: darken(@cricutPrimary, 5%);
+        }
+    }
+}
