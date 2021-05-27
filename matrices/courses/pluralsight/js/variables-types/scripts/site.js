@@ -90,11 +90,7 @@ function loadApplication() {
 
     if (la != undefined) {
 
-        var isEmployed = la.Factors[0];
-        var hasKids = la.Factors[1];
-        var hasLoans = la.Factors[2];
-        var hasCreditcards = la.Factors[3];
-
+        var [isEmployed, hasKids, hasLoans, hasCreditcards] = la.Factors;
 
         document.getElementById("inputName").value = la.ApplicantName;
         document.getElementById("inputDoBMonth").value = la.ApplicantDateOfBirth.getMonth() + 1;
