@@ -102,3 +102,39 @@ let carObj3 = {id3: 9002, style3: "sports deluxe"}; // id's need to match? it's 
 let id3, style3;
 ({id3, style3} = carObj3); 
 console.log(id3, style3); // 9002, "sports deluxe"
+
+
+/* * * * * * *  *
+* SPREAD SYNTAX *
+* * * * * * * * */
+// note: spread is opposite of rest \\
+
+function startCars(car1, car2, car3) {
+    console.log(car1, car2, car3);
+}
+
+let carIds7 = [4, 8, 12];
+startCars(...carIds7); // 4  8  12
+
+let carCodes = "abc";
+startCars(carCodes); // abc undefined undefined
+startCars(...carCodes); // a  b  c -- strings are iterables
+
+function startCarsAgain(car1, car2, car3, ...others) { // rest - used to store remaining items in an array
+    console.log(others);
+}
+
+let carIds8 = [4, 16, 84, 336, 1344];
+startCarsAgain(...carIds8); // [336, 1344] -- spread - used to "spread" an array across parameters
+
+let rest = [1, 2, 3];
+let spread = [...rest];
+
+console.log(spread); // [1, 2, 3]
+
+sendCars(...spread); // 1  2  3  -- sendCars() is spreading across the rest inside sendCars()
+
+let item1, item2, rest2;
+rest.push(4);
+[item1, item2, ...rest2] = rest;
+console.log(item1, item2, rest2); // 1  2  [3, 4]
