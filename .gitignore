@@ -20,4 +20,4 @@ nbproject
 /magento/app/code/Cryozonic/StripePayments/lib/stripe-php/
 
 **/bare-bones/css/
-**/bootstrap/
+**/bootstrap
