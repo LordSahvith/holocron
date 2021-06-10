@@ -83,3 +83,22 @@ console.log(car1, car2, theRest); // 1  6  [8, 10]
 let carIds6 = [6, 7, 9, 11];
 [car5, car6, ...theRest] = carIds6; 
 console.log(car5, car6, theRest); // 6  7  [9, 11]
+
+
+/* * * * * * * * * * *  *
+* DESTRUCTURING OBJECTS *
+* * * * * * * * * * * * */
+let carObj = {id: 9001, style: "sports"};
+let {id, style} = carObj;
+console.log(id, style); // 9001, "sports"
+
+let carObj2 = {id: 9002, style: "sports deluxe"};
+let id2, style2;
+// {id2, style2} = carObj2; // error - Unexpected token '=' -- JS thinks this is a block
+({id2, style2} = carObj2); 
+console.log(id2, style2); // undefined, undefined
+
+let carObj3 = {id3: 9002, style3: "sports deluxe"}; // id's need to match? it's weird but that's the only way to get the correct values vs undefined
+let id3, style3;
+({id3, style3} = carObj3); 
+console.log(id3, style3); // 9002, "sports deluxe"
