@@ -18,6 +18,7 @@ console.log("var carId4 before initialization:", carId4); // undefined (not erro
 var carId4 = 44;
 console.log("var carId4 after initialization:", carId4); // 44
 
+
 // BLOCK SCOPE \\
 if (true) {
     let carId5 = 6;
@@ -30,3 +31,21 @@ if (true) {
     console.log("var carId6 in block:", carId6); // 17
 }
 console.log("var carId6 after block:", carId6); // 17 - var has no block scope
+
+/* * * * * * * *  *
+* REST PARAMETERS *
+* * * * * * * * * */
+function sendCars(...allCarIds) {
+    allCarIds.forEach(id => console.log(id));
+}
+
+// sendCars(carId3, carId4, carId5); // error - carId5 is not defined
+sendCars(carId3, carId4, carId6); // 4  44  17
+
+function sendCarsOnDay(day, ...allCarIds) {
+    console.log(day);
+    allCarIds.forEach(id => console.log(id));
+}
+
+// sendCars(carId3, carId4, carId5); // error - carId5 is not defined
+sendCars("Monday", 1, 2, 3); // Monday  1  2  3
