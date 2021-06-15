@@ -62,9 +62,62 @@ console.log(+unaryVar5); // 1 - converts to number
 console.log(-unaryVar6); // -1 - flips sign, -5 becomes 5 or 5 becomes -5
 
 
-/* * * * * * * * *  *
-* LOGICAL OPERATORS *
-* * * * * * * * * * */
-console.log("----------------  LOGICAL OPERATORS ----------------");
+/* * * * * * * * * * * * * * * *
+* LOGICAL (BOOLEANS) OPERATORS *
+* * * * * * * * * * * * * * *  */
+console.log("----------------  LOGICAL (BOOLEANS) OPERATORS ----------------");
 
+let let1 = "string";
+let let2 = 44;
 
+if (typeof(let1) === "string" && let2 === 44) { // both must pass
+    console.log("passed both");
+}
+
+if (typeof(let1) === "string" || let2 === 46) { // one or more must pass
+    console.log("passed at least one");
+}
+
+if (let2 === 46 || typeof(let1) === "string" && let2 === 44) { // && has higher precedence and will execute first
+    console.log("passed");
+}
+
+if (let2 === 46 || typeof(let1) === "string" && let2 === 46) { // && has higher precedence and will execute first
+    console.log("passed");
+} else {
+    console.log("failed");
+}
+
+if ((let2 === 46 || typeof(let1) === "string") && let2 === 44) { // order of operations () has higher precedence and will execute first
+    console.log("passed");
+}
+
+if ((let2 === 46 || typeof(let1) === "string") && let2 === 46) { // order of operations () has higher precedence and will execute first
+    console.log("passed");
+} else {
+    console.log("failed");
+}
+
+let obj1 = null;
+let obj2 = {name: "default"};
+
+console.log(obj1 || obj2) // {name: "default"}
+console.log(obj1 && obj2) // null
+
+let obj3 = {name: "Sahvith"};
+let obj4 = {name: "default"};
+
+console.log(obj3 || obj4) // {name: "Sahvith"}
+console.log(obj3 && obj4) // {name: "default"}
+
+let car = null;
+
+console.log(car); // null
+console.log(!car); // true
+
+if (!car) {
+    car = {};
+}
+
+console.log(car); // {}
+console.log(!car); // false
