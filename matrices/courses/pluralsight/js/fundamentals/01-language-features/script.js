@@ -5,9 +5,9 @@
 // const carId2 = 100; // perfect
 // carId = 5; // throws error - can't reassign const variables
 
-/* * * * *  *
+/* * * * * * *
 * LET vs VAR *
-* * * * * * */
+* * * * * *  */
 
 // HOISTING \\
 // console.log("let carId3 before initialization:", carId3); // error - Cannot access 'carId3' before initialization
@@ -138,3 +138,53 @@ let item1, item2, rest2;
 rest.push(4);
 [item1, item2, ...rest2] = rest;
 console.log(item1, item2, rest2); // 1  2  [3, 4]
+
+
+/* * * *  *
+* TYPE OF *
+* * * * * */
+
+console.log(typeof(1));            // number
+console.log(typeof(true));         // boolean
+console.log(typeof("Sahvith"));    // string
+console.log(typeof(function(){})); // function
+console.log(typeof({}));           // object
+console.log(typeof(null));         // object -- roots to C days when null was a null object
+console.log(typeof(undefined));    // undefined
+console.log(typeof(NaN));          // number -- trying to do a numberic operation that failed
+
+
+/* * * * * * * * * *
+* TYPE CONVERSIONS *
+* * * * * * * * *  */
+
+let foo = 44;
+
+// convert to string
+foo.toString(); // "44" as a string
+
+// convert string to integer
+Number.parseInt("44"); // 44 as a number
+
+// convert string to number
+Number.parseFloat("44.99"); // 44.99 as a number
+
+
+/* * * * * * * * *  *
+* CONTROLLING LOOPS *
+* * * * * * * * * * */
+
+let i = 0;
+for (; i < 12; i++) {
+    if (i === 8) {
+        break; // exits for loop
+    }
+}
+console.log(i); // 8
+
+for (let j = 0; j < 4; j++) {
+    if (j === 2) {
+        continue; // skips to end of for without executing any additional code
+    }
+    console.log(j); // 0 1 3
+}
