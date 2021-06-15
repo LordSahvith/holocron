@@ -175,9 +175,18 @@ console.log(quiz /= 3); // 3 - divides 3 from current value and returns
 console.log(quiz *= 4); // 12 - mulitplies current value by 4 and returns
 console.log(quiz %= 5); // 2 - divides 5 from the current value and returns what's left over
 
+// BIT SHIFTING \\
 console.log(quiz <<= 1); // 4 - shift to the left 1 bit -- equivalent to multiplying by 2
 console.log(quiz >>= 1); // 2 - shift to the right 1 bit -- equivalent to dividing by 2
 
 let quiz2 = 24;
 console.log(quiz2 <<= 1); // 48 - shift to the left 1 bit -- equivalent to multiplying by 2
 console.log(quiz2 >>= 1); // 24 - shift to the right 1 bit -- equivalent to dividing by 2
+
+
+/* * * * * * * * * * * *
+* OPERATOR PRECEDENCE *
+* * * * * * * * * * *  */
+console.log("----------------  OPERATOR PRECEDENCE ----------------");
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table
