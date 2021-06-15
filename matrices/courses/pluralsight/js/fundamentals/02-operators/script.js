@@ -121,3 +121,24 @@ if (!car) {
 
 console.log(car); // {}
 console.log(!car); // false
+
+
+/* * * * * * * * * * * *
+* RELATIONAL OPERATORS *
+* * * * * * * * * * *  */
+console.log("----------------  RELATIONAL OPERATORS ----------------");
+
+let string1 = "Zoo";
+let string2 = "alphabet";
+
+if (string1 < string2) { // true - goes of ascii value which uppercase letters come before lowercase
+    console.log(true);
+} else {
+    console.log(false);
+}
+
+if (string1.toUpperCase() < string2.toUpperCase()) { // false - convert strings to either all uppercase or lowercase before checking
+    console.log(true);
+} else {
+    console.log(false);
+}
