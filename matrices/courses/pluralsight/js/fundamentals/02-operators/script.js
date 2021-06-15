@@ -142,3 +142,42 @@ if (string1.toUpperCase() < string2.toUpperCase()) { // false - convert strings 
 } else {
     console.log(false);
 }
+
+
+/* * * * * * * * * * *  *
+* CONDITIONAL OPERATORS *
+* * * * * * * * * * * * */
+console.log("----------------  CONDITIONAL OPERATORS ----------------");
+
+console.log((4 < 44) ? "yes" : "no"); // yes
+
+let test = null;
+console.log(!test ? {test: "one"} : test); // {test: "one"}
+
+let test2 = {};
+console.log(!test2 ? {test: "two"} : test2); // {}
+
+let test3 = null;
+let test4 = {test: "three"};
+console.log(test3 ? {} : test4); // {test: "three"}
+
+
+/* * * * * * * * * * * *
+* ASSIGNMENT OPERATORS *
+* * * * * * * * * * *  */
+console.log("----------------  ASSIGNMENT OPERATORS ----------------");
+
+let quiz = 1;
+
+console.log(quiz += 10); // 11 - adds 10 to current value and returns
+console.log(quiz -= 2); // 9 - subtracts 2 from current value and returns
+console.log(quiz /= 3); // 3 - divides 3 from current value and returns
+console.log(quiz *= 4); // 12 - mulitplies current value by 4 and returns
+console.log(quiz %= 5); // 2 - divides 5 from the current value and returns what's left over
+
+console.log(quiz <<= 1); // 4 - shift to the left 1 bit -- equivalent to multiplying by 2
+console.log(quiz >>= 1); // 2 - shift to the right 1 bit -- equivalent to dividing by 2
+
+let quiz2 = 24;
+console.log(quiz2 <<= 1); // 48 - shift to the left 1 bit -- equivalent to multiplying by 2
+console.log(quiz2 >>= 1); // 24 - shift to the right 1 bit -- equivalent to dividing by 2
