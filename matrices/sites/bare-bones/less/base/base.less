@@ -14,6 +14,10 @@
 @theme-link-color: @global-link-color;
 @theme-text-decoration: @global-text-decoration;
 
+/* WIDTHS */
+@theme-max-width: @breakpoint-xxl;
+
+
 /*
     reset everything
 */
@@ -40,7 +44,7 @@ html {
     body width, color
 */
 body {
-    max-width: @breakpoint-xxl;
+    max-width: @theme-max-width;
     margin: 0 auto;
 }
 
