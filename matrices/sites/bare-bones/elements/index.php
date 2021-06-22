@@ -35,6 +35,7 @@
     <br>
     <br>
 
+    <p>Ordered List:</p>
     <ol>
         <li>List Item 1</li>
         <li>List Item 2</li>
@@ -42,6 +43,9 @@
         <li>List Item 4</li>
     </ol>
 
+    <br>
+
+    <p>Unordered List:</p>
     <ul>
         <li>List Item 1</li>
         <li>List Item 2</li>
@@ -51,10 +55,7 @@
 
     <br>
 
-
-    <div style="width: 50%; margin: 0 auto;">
     <img src="../assets/images/red-mobile.jpg" alt="">
-    </div>
 
     <br>
     <br>
@@ -89,7 +90,7 @@
     <br>
     <br>
 
-    <div style="width: 50%; margin: 0 auto;">
+    <div style="display: flex; justify-content: center;">
         <canvas id="myCanvas" style="background: #000;"></canvas>
     </div>
 

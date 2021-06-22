@@ -81,6 +81,7 @@ p {
 a {
     color: @theme-link-color;
     text-decoration: @theme-text-decoration;
+    transition: color .4s ease-in-out;
 
     &:hover {
         color: darken(@theme-link-color, 10%);
@@ -103,7 +104,8 @@ button {
 */
 ol,
 ul {
-    margin-left: 1em;
+    margin-left: calc(1em + 26px);
+    text-align: left;
 }
 
 img,
