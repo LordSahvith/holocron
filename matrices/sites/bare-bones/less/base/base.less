@@ -1,7 +1,11 @@
 // out: false
 
+/* FONTS */
+@theme-font-family-main: @global-font-family-main;
+@theme-font-family-sub: @global-font-family-sub;
+
 /* COLORS */
-@theme-primary-color: @global-primary-color; 
+@theme-primary-color: @global-primary-color;
 @theme-color: @global-color;
 @theme-color-inverse: @global-color-inverse;
 @theme-background: @global-background;
@@ -10,15 +14,11 @@
 @theme-link-color: @global-link-color;
 @theme-text-decoration: @global-text-decoration;
 
-/* FONTS */
-@theme-font-family-main: @global-font-family-main;
-@theme-font-family-sub: @global-font-family-sub;
-
 /*
     reset everything
 */
 *,
-html, 
+html,
 body {
     padding: 0;
     margin: 0;
@@ -40,7 +40,8 @@ html {
     body width, color
 */
 body {
-
+    max-width: @breakpoint-xxl;
+    margin: 0 auto;
 }
 
 h1 {
@@ -61,6 +62,14 @@ h6 {
     font-size: 1em;
 }
 
+p,
+a,
+li,
+button,
+input {
+    font-family: @theme-font-family-sub;
+}
+
 p {
     font-size: 1em;
 }
@@ -68,7 +77,6 @@ p {
 a {
     color: @theme-link-color;
     text-decoration: @theme-text-decoration;
-    cursor: pointer;
 
     &:hover {
         color: darken(@theme-link-color, 10%);
@@ -80,28 +88,34 @@ a {
     }
 }
 
-p,
 a,
-li,
-button,
-input {
-    font-family: @theme-font-family-sub;
+button {
+    cursor: pointer;
 }
 
+/* 
+    sets left margin to same size as
+    font for text decoration to show
+*/
+ol,
+ul {
+    margin-left: 1em;
+}
 
-audio,
-canvas,
-iframe,
 img,
-svg,
-video {
+video,
+canvas,
+audio,
+iframe,
+svg {
     vertical-align: middle;
 }
 
 img,
+video,
 canvas,
-video {
-
+iframe {
+    width: 100%;
     max-width: 100%;
     height: auto;
 }
