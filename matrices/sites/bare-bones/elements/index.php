@@ -66,6 +66,7 @@
     <br>
     <br>
 
+    <!-- TODO: use own video -->
     <video controls autoplay>
         <source src="../assets/videos/big-buck.mp4" type="video/mp4">
         <source src="../assets/videos/big-buck.ogg" type="video/ogg">
@@ -75,12 +76,223 @@
     <br>
     <br>
 
-        <canvas id="myCanvas" style="background: #000;"></canvas>
+    <!-- TODO: use own audio -->
+    <audio controls>
+        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+        <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
 
     <br>
     <br>
 
+    <canvas id="myCanvas" style="background: #000;"></canvas>
+
+    <br>
+    <br>
+
+    <!-- TODO: use own video -->
     <iframe src="https://www.youtube.com/embed/5gcjGuKVcbM" title="YouTube video player"></iframe>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="firstName">First name:</label><br>
+        <input type="text" id="firstName" name="firstName"><br>
+        <label for="lastName">Last name:</label><br>
+        <input type="text" id="lastName" name="lastName">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <br>
+
+    <p>Choose side:</p>
+    <form>
+        <input type="radio" id="sith" name="fav_side" value="Sith">
+        <label for="sith">Sith</label><br>
+        <input type="radio" id="jedi" name="fav_side" value="Jedi">
+        <label for="jedi">Jedi</label><br>
+        <input type="radio" id="grey" name="fav_side" value="Grey">
+        <label for="grey">Grey</label>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <br>
+
+    <form>
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        <label for="vehicle1"> I have a bike</label><br>
+        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+        <label for="vehicle2"> I have a car</label><br>
+        <input type="checkbox" id="vehicle3" name="vehicle3" value="Feet">
+        <label for="vehicle3"> I have feet</label>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <br>
+
+    <label for="cars">Choose a car:</label>
+    <select id="cars" name="cars">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="fiat">Fiat</option>
+        <option value="audi">Audi</option>
+    </select>
+
+    <br>
+    <br>
+
+    <label for="cars2">Choose a car:</label>
+    <select id="cars2" name="cars2" size="4" multiple>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="fiat">Fiat</option>
+        <option value="audi">Audi</option>
+    </select>
+
+    <br>
+    <br>
+
+    <textarea name="message" rows="10" cols="30" placeholder="The cat was playing in the garden."></textarea>
+
+    <br>
+    <br>
+
+    <form>
+        <fieldset>
+            <legend>Personalia:</legend>
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" value="Lord"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" value="Sahvith"><br><br>
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <input list="browsers">
+        <datalist id="browsers">
+            <option value="Internet Explorer">
+            <option value="Firefox">
+            <option value="Chrome">
+            <option value="Opera">
+            <option value="Safari">
+        </datalist>
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="favcolor">Select your favorite color:</label>
+        <input type="color" id="favcolor" name="favcolor">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" name="birthday">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="bdaymonth">Birthday (month and year):</label>
+        <input type="month" id="bdaymonth" name="bdaymonth">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="birthdaytime">Birthday (date and time):</label>
+        <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" name="email">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="myfile">Select a file:</label>
+        <input type="file" id="myfile" name="myfile">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="quantity">Quantity (between 1 and 5):</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="5">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="vol">Volume (between 0 and 50):</label>
+        <input type="range" id="vol" name="vol" min="0" max="50">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="gsearch">Search Google:</label>
+        <input type="search" id="gsearch" name="gsearch">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="phone">Enter your phone number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="appt">Select a time:</label>
+        <input type="time" id="appt" name="appt">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="homepage">Add your homepage:</label>
+        <input type="url" id="homepage" name="homepage">
+    </form>
+
+    <br>
+    <br>
+
+    <form>
+        <label for="week">Select a week:</label>
+        <input type="week" id="week" name="week">
+    </form>
+
+    <br>
+    <br>
 
 </body>
 
