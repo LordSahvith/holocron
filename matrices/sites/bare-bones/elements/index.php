@@ -51,7 +51,10 @@
 
     <br>
 
+
+    <div style="width: 50%; margin: 0 auto;">
     <img src="../assets/images/red-mobile.jpg" alt="">
+    </div>
 
     <br>
     <br>
@@ -86,7 +89,9 @@
     <br>
     <br>
 
-    <canvas id="myCanvas" style="background: #000;"></canvas>
+    <div style="width: 50%; margin: 0 auto;">
+        <canvas id="myCanvas" style="background: #000;"></canvas>
+    </div>
 
     <br>
     <br>
