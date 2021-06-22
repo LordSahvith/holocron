@@ -176,6 +176,7 @@
     <br>
     <br>
 
+    <p>Datalist:</p>
     <form>
         <input list="browsers">
         <datalist id="browsers">
