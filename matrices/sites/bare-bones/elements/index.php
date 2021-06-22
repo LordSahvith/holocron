@@ -12,25 +12,25 @@
 
 <body>
 
-    <h1>Heading 1 - &lt;h1&gt;</h1>
-    <h2>Heading 2 - &lt;h2&gt;</h2>
-    <h3>Heading 3 - &lt;h3&gt;</h3>
-    <h4>Heading 4 - &lt;h4&gt;</h4>
-    <h5>Heading 5 - &lt;h5&gt;</h5>
-    <h6>Heading 6 - &lt;h6&gt;</h6>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
 
     <br>
 
-    <p>Paragraph - &lt;p&gt;</p>
+    <p>Paragraph, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nobis ea, ex labore esse provident dolore nesciunt a aperiam qui sed cupiditate, sunt repudiandae nihil hic exercitationem temporibus. Accusamus, ex.</p>
 
     <br>
 
-    <a href="#">Link - &lt;a&gt;</a>
+    <a href="#">Link</a>
 
     <br>
     <br>
 
-    <button>Button - &lt;button&gt;</button>
+    <button>Button</button>
 
     <br>
     <br>
@@ -62,9 +62,9 @@
 
     <picture>
         <source media="(min-width: 992px)" srcset="../assets/images/red-desktop.jpg">
-        <source media="(min-width: 641px)" srcset="../assets/images/red-tablet-v2.jpg">
+        <source media="(min-width: 641px)" srcset="../assets/images/v2/red-tablet.jpg">
         <source media="(max-width: 640px)" srcset="../assets/images/red-mobile.jpg">
-        <img src="../images/red-desktop.jpg" alt="">
+        <img src="../assets/images/red-desktop.jpg" alt="">
     </picture>
 
     <br>
