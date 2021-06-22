@@ -1,7 +1,18 @@
 // out: false
 
-@global-link-color: blue;
-@global-text-decoration: unerline;
+/* COLORS */
+@theme-primary-color: @global-primary-color; 
+@theme-color: @global-color;
+@theme-color-inverse: @global-color-inverse;
+@theme-background: @global-background;
+
+/* LINKS */
+@theme-link-color: @global-link-color;
+@theme-text-decoration: @global-text-decoration;
+
+/* FONTS */
+@theme-font-family-main: @global-font-family-main;
+@theme-font-family-sub: @global-font-family-sub;
 
 /*
     reset everything
@@ -18,11 +29,11 @@ body {
     set font styles
 */
 html {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: @theme-font-family-main;
     font-size: 14px;
     line-height: 1.5;
-    background: @global-background;
-    color: @global-color;
+    background: @theme-background;
+    color: @theme-color;
 }
 
 /*
@@ -55,19 +66,26 @@ p {
 }
 
 a {
-    color: @global-link-color;
-    text-decoration: @global-text-decoration;
+    color: @theme-link-color;
+    text-decoration: @theme-text-decoration;
     cursor: pointer;
 
     &:hover {
-        color: darken(@global-link-color, 10%);
+        color: darken(@theme-link-color, 10%);
     }
 
-    &:visited {
-        color: darken(@global-link-color, 8%);
+    &:visited,
+    &:active {
+        color: darken(@theme-link-color, 8%);
     }
+}
 
-    &:active {}
+p,
+a,
+li,
+button,
+input {
+    font-family: @theme-font-family-sub;
 }
 
 

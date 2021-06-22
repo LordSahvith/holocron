@@ -18,7 +18,7 @@
             </div>
             <div class="bb-navbar-contents-links">
                 <ul> <!-- TODO: add lists for "Elements" & "Components" : need to update height of dropdown -->
-                    <li><a href="components/button/button.php">Elements</a></li>
+                    <li><a href="elements/index.php">Elements</a></li>
                     <!-- <li><a href="components/button/button.php">Button</a></li>
                     <li><a href="components/card/card.php">Card</a></li>
                     <li><a href="components/columns/col.php">Columns</a></li>
