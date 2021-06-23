@@ -3,6 +3,13 @@
 /* FONTS */
 @theme-font-family-main: @global-font-family-main;
 @theme-font-family-sub: @global-font-family-sub;
+@theme-font-size: @global-font-size;
+@theme-line-height: @global-line-height; // 24px
+@theme-2xlarge-font-size: @global-2xlarge-font-size; // 42px
+@theme-xlarge-font-size: @global-xlarge-font-size; // 32px
+@theme-large-font-size: @global-large-font-size; // 24px
+@theme-medium-font-size: @global-medium-font-size; // 20px
+@theme-small-font-size: @global-small-font-size; // 14px
 
 /* COLORS */
 @theme-primary-color: @global-primary-color;
@@ -18,9 +25,10 @@
 @theme-max-width: @breakpoint-xxl;
 
 
-/*
-    reset everything
-*/
+
+/* reset everything
+*************************************/
+
 *,
 html,
 body {
@@ -34,54 +42,111 @@ body {
 */
 html {
     font-family: @theme-font-family-main;
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: @theme-font-size;
+    line-height: @theme-line-height;
     background: @theme-background;
     color: @theme-color;
 }
 
-/*
-    body width, color
-*/
 body {
     max-width: @theme-max-width;
     margin: 0 auto;
 }
 
+
+/* Text elements
+*************************************/
+
 h1 {
-    font-size: 2em;
+    font-size: @theme-2xlarge-font-size;
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: @theme-xlarge-font-size;
 }
 
 h3 {
-    font-size: 1.2em;
+    font-size: @theme-large-font-size;
 }
 
 h4,
 h5,
 h6 {
-    font-size: 1.1em;
+    font-size: @theme-medium-font-size;
+}
+
+h1+*,
+h2+*,
+h3+*,
+h4+*,
+h5+*,
+h6+* {
+    margin-top: 1.2em;
 }
 
 p,
 a,
 li,
+dt,
+dd,
 button,
-input {
+input,
+pre,
+address,
+fieldset,
+figure {
     font-family: @theme-font-family-sub;
+    font-size: @theme-small-font-size;
 }
 
-p {
-    font-size: 1em;
+*+p,
+*+pre,
+*+address,
+*+fieldset,
+*+figure {
+    margin-top: 0.85em;
 }
+
+*+ul,
+*+ol,
+*+dl {
+    margin: 0.5em 0 0.85em;
+}
+
+ol,
+ul,
+dl {
+    text-align: left;
+}
+
+ol,
+ul {
+    margin-left: @theme-2xlarge-font-size; /* for text decoration */
+}
+
+dl {
+    margin-left: @theme-xlarge-font-size; /* for text decoration */
+}
+
+dd {
+    margin-left: @theme-medium-font-size; /* for text decoration */
+
+    &::before {
+        content: "- ";
+    }
+}
+
+li {
+    margin-top: 4px;
+}
+
+
+/* Links | Buttons
+*************************************/
 
 a {
     color: @theme-link-color;
     text-decoration: @theme-text-decoration;
-    transition: color .4s ease-in-out;
 
     &:hover {
         color: darken(@theme-link-color, 10%);
@@ -96,21 +161,12 @@ a {
 a,
 button {
     cursor: pointer;
+    transition: color .4s ease-in-out, background .4s ease-in-out;
 }
 
-/* 
-    sets left margin to same size as
-    font for text decoration to show
-*/
-ol,
-ul {
-    margin-left: calc(1em + 26px);
-    text-align: left;
-}
 
-li {
-    margin-top: 4px;
-}
+/* Media
+*************************************/
 
 img,
 video,
@@ -129,4 +185,8 @@ iframe {
     max-width: 100%;
     height: auto;
     object-fit: cover;
+}
+
+iframe {
+    border: 0;
 }

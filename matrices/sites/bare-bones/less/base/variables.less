@@ -3,9 +3,16 @@
 /* FONTS */
 @global-font-family-main: Arial, Helvetica, sans-serif;
 @global-font-family-sub: Calibri, Geneva, "Times New Roman", serif;
+@global-font-size: 16px;
+@global-line-height: 1.5; // 24px
+@global-2xlarge-font-size: 2.625rem; // 42px
+@global-xlarge-font-size: 2rem; // 32px
+@global-large-font-size: 1.5rem; // 24px
+@global-medium-font-size: 1.25rem; // 20px
+@global-small-font-size: 0.875rem; // 14px
 
 /* COLORS */
-@global-primary-color: #dddddd; 
+@global-primary-color: #dddddd;
 @global-color: #222222;
 @global-color-inverse: #ffffff;
 @global-background: #ffffff;
@@ -20,3 +27,8 @@
 @breakpoint-lg: 1024px;
 @breakpoint-xl: 1400px;
 @breakpoint-xxl: 1600px;
+
+@breakpoint-xs-max: (@breakpoint-sm - 1);
+@breakpoint-sm-max: (@breakpoint-md - 1);
+@breakpoint-md-max: (@breakpoint-lg - 1);
+@breakpoint-lg-max: (@breakpoint-xxl - 1);

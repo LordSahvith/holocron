@@ -19,21 +19,12 @@
     <h5>Heading 5</h5>
     <h6>Heading 6</h6>
 
-    <br>
-
     <p>Paragraph, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nobis ea, ex labore esse provident dolore nesciunt a aperiam qui sed cupiditate, sunt repudiandae nihil hic exercitationem temporibus. Accusamus, ex.</p>
-
-    <br>
+    <p>Paragraph, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit nobis ea, ex labore esse provident dolore nesciunt a aperiam qui sed cupiditate, sunt repudiandae nihil hic exercitationem temporibus. Accusamus, ex.</p>
 
     <a href="#">Link</a>
 
-    <br>
-    <br>
-
     <button>Button</button>
-
-    <br>
-    <br>
 
     <p>Ordered List:</p>
     <ol>
@@ -43,8 +34,6 @@
         <li>List Item 4</li>
     </ol>
 
-    <br>
-
     <p>Unordered List:</p>
     <ul>
         <li>List Item 1</li>
@@ -52,6 +41,14 @@
         <li>List Item 3</li>
         <li>List Item 4</li>
     </ul>
+
+    <p>Description List:</p>
+    <dl>
+        <dt>Coffee</dt>
+        <dd>black hot drink</dd>
+        <dt>Milk</dt>
+        <dd>white cold drink</dd>
+    </dl>
 
     <br>
 
