@@ -3,7 +3,7 @@
 /* FONTS */
 @theme-font-family-main: @global-font-family-main;
 @theme-font-family-sub: @global-font-family-sub;
-@theme-font-size: @global-font-size;
+@theme-font-size: @global-font-size; // 16px
 @theme-line-height: @global-line-height; // 24px
 @theme-2xlarge-font-size: @global-2xlarge-font-size; // 42px
 @theme-xlarge-font-size: @global-xlarge-font-size; // 32px
@@ -81,7 +81,7 @@ h3+*,
 h4+*,
 h5+*,
 h6+* {
-    margin-top: 1.2em;
+    margin-top: 1em;
 }
 
 p,
@@ -104,13 +104,13 @@ figure {
 *+address,
 *+fieldset,
 *+figure {
-    margin-top: 0.85em;
+    margin-top: @theme-small-font-size;
 }
 
 *+ul,
 *+ol,
 *+dl {
-    margin: 0.5em 0 0.85em;
+    margin: 0.5em 0 @theme-small-font-size;
 }
 
 ol,
@@ -121,15 +121,18 @@ dl {
 
 ol,
 ul {
-    margin-left: @theme-2xlarge-font-size; /* for text decoration */
+    margin-left: @theme-2xlarge-font-size;
+    /* for text decoration */
 }
 
 dl {
-    margin-left: @theme-xlarge-font-size; /* for text decoration */
+    margin-left: @theme-xlarge-font-size;
+    /* for text decoration */
 }
 
 dd {
-    margin-left: @theme-medium-font-size; /* for text decoration */
+    margin-left: @theme-medium-font-size;
+    /* for text decoration */
 
     &::before {
         content: "- ";
@@ -138,6 +141,26 @@ dd {
 
 li {
     margin-top: 4px;
+}
+
+table {
+    width: 100%;
+}
+
+tr {
+    transition: background .2s ease-in-out;
+
+    &:hover {
+        background-color: darken(@theme-color-inverse, 8%);
+    }
+
+    &:nth-child(even) {
+        background-color: @theme-primary-color;
+
+        &:hover {
+            background-color: darken(@theme-primary-color, 8%);
+        }
+    }
 }
 
 
