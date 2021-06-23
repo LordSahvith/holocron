@@ -1,5 +1,9 @@
 // out: false
 
+
+/* VARIABLES
+***************************************************************/
+
 /* FONTS */
 @theme-font-family-main: @global-font-family-main;
 @theme-font-family-sub: @global-font-family-sub;
@@ -24,9 +28,22 @@
 /* WIDTHS */
 @theme-max-width: @breakpoint-xxl;
 
+/**************************************************************/
 
 
-/* reset everything
+/**************************************************************/
+/*
+  TABLE OF CONTENTS
+  1. Reset
+  2. html | body
+  3. Text elements
+  4. Links | Buttons
+  5. Media
+*/
+/**************************************************************/
+
+
+/* 1. Reset
 *************************************/
 
 *,
@@ -37,9 +54,10 @@ body {
     box-sizing: border-box;
 }
 
-/*
-    set font styles
-*/
+
+
+/* 2. html | body
+*************************************/
 html {
     font-family: @theme-font-family-main;
     font-size: @theme-font-size;
@@ -54,7 +72,7 @@ body {
 }
 
 
-/* Text elements
+/* 3. Text elements
 *************************************/
 
 h1 {
@@ -164,7 +182,7 @@ tr {
 }
 
 
-/* Links | Buttons
+/* 4. Links | Buttons
 *************************************/
 
 a {
@@ -188,7 +206,7 @@ button {
 }
 
 
-/* Media
+/* 5. Media
 *************************************/
 
 img,
