@@ -3,39 +3,46 @@
 /* * * * *  * 
 * VARIABLES *
 * * * * * * */
+@card-center: center;
+
+@card-spacing-lg: 16px;
+@card-spacing-md: @card-spacing-lg / 2;
 
 
 /* * * * 
 * CARD *
 * * *  */
 
-.bb-card {
+.card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: @card-center;
 
     @media screen and (min-width: @breakpoint-md) {
-        align-items: center;
-        text-align: center;
+        align-items: @card-center;
+        text-align: @card-center;
     }
 
     &--left {
         align-items: flex-start;
+        text-align: left;
     }
 
     &--center {
-        align-items: center;
+        align-items: @card-center;
+        text-align: @card-center;
     }
 
     &-image {
-        padding-bottom: 16px;
+        padding-bottom: @card-spacing-lg;
     }
 
     &-copy {
-        padding: 0 16px 16px;
+        padding: 0 @card-spacing-lg @card-spacing-lg;
 
         & > * {
-            margin-bottom: 8px;
+            margin-bottom: @card-spacing-md;
+            ;
         }
 
         & > *:last-child {
@@ -44,6 +51,6 @@
     }
 
     &-cta {
-        padding: 0 16px 16px;
+        padding: 0 @card-spacing-lg @card-spacing-lg;
     }
 }
