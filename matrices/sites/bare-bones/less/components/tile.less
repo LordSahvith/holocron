@@ -1,0 +1,32 @@
+// out: false
+
+/* * * * *  * 
+* VARIABLES *
+* * * * * * */
+@tile-spacing-md: 14px;
+@tile-center: center;
+
+
+/* * * * 
+* TILE *
+* * * */
+.tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: @tile-center;
+    width: 100%;
+    max-width: 100%;
+    padding: @tile-spacing-md;
+
+    @media screen and (min-width: @breakpoint-md) {
+        text-align: @tile-center;
+    }
+
+    &--center {
+        text-align: @tile-center;
+    }
+
+    &-copy {
+        margin-top: @tile-spacing-md;
+    }
+}
