@@ -5,17 +5,17 @@
 * * * * * * */
 @import "../base/variables.less";
 
+/* FONTS */
 @button-primary-color: @global-primary-color;
 @button-color: @global-color;
-
 @button-line-height: @global-line-height;
 
-@button-shading-percentage: 8%;
-@button-shading-percentage-half: @button-shading-percentage / 2;
-
-@button-border-thickness: 2px;
-
-@button-transition-duration: .2s;
+/* ASTHETICS */
+@button-shading-percentage: @theme-shading-percentage;
+@button-shading-percentage-half: calc(@button-shading-percentage / 2);
+@button-border-thickness: @theme-border-thickness;
+@button-transition-duration: @theme-transition-duration;
+@button-border-radius: @theme-border-radius;
 
 
 /* * * * * 
@@ -71,6 +71,6 @@ a.btn {
     }
 
     &-pill {
-        border-radius: 24px;
+        border-radius: @button-border-radius;
     }
 }

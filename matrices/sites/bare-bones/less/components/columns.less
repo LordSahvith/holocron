@@ -3,51 +3,91 @@
 /* * * * *  * 
 * VARIABLES *
 * * * * * * */
+@col-1: 1fr;
+@col-2: 1fr 1fr;
+@col-3: 1fr 1fr 1fr;
+@col-4: 1fr 1fr 1fr 1fr;
+@col-5: 1fr 1fr 1fr 1fr 1fr;
+@col-6: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+@grid-gap: 12px;
 
 
 /* * * *  *
 * COLUMNS *
 * * * * * */
-
-.bb-col {
+.col {
     padding: 8px 16px;
 
     &-flex {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+
+        &--space-between {
+            justify-content: space-between;
+        }
+
+        &--center {
+            justify-content: center;
+        }
+
+        &--start {
+            justify-content: flex-start;
+        }
+
+        &--end {
+            justify-content: flex-end;
+        }
+
+        &--align-baseline {
+            align-items: baseline;
+        }
+
+        &--align-start {
+            align-items: flex-start;
+        }
+
+        &--align-end {
+            align-items: flex-end;
+        }
+
+        &--align-stretch {
+            align-items: stretch;
+        }
     }
 
     &-2,
     &-3,
     &-4,
-    &-5 {
+    &-5,
+    &-6 {
         @media screen and (min-width: @breakpoint-sm) {
             display: grid;
-            grid-gap: 12px;
+            grid-gap: @grid-gap;
         }
     }
 
     &-2 {
         @media screen and (min-width: @breakpoint-sm) {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: @col-2;
         }
     }
 
     &-3 {
         @media screen and (min-width: @breakpoint-sm) {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: @col-2;
 
-            .bb-col-item:last-child {
+            *:last-child {
                 grid-column-start: 1;
                 grid-column-end: span 3;
             }
         }
 
         @media screen and (min-width: @breakpoint-md) {
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: @col-3;
 
-            .bb-col-item:last-child {
+            *:last-child {
                 grid-row-start: 1;
                 grid-row-end: 1;
                 grid-column-start: 2;
@@ -58,19 +98,20 @@
 
     &-4 {
         @media screen and (min-width: @breakpoint-sm) {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: @col-2;
         }
+
         @media screen and (min-width: @breakpoint-md) {
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: @col-4;
         }
     }
 
     &-5 {
         @media screen and (min-width: @breakpoint-sm) {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
+            grid-template-columns: @col-2;
+            grid-template-rows: @col-2;
 
-            .bb-col-item:last-child {
+            *:last-child {
                 grid-row-start: 3;
                 grid-row-end: 3;
                 grid-column-start: 1;
@@ -79,9 +120,9 @@
         }
 
         @media screen and (min-width: @breakpoint-md) {
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: @col-3;
 
-            .bb-col-item:last-child {
+            *:last-child {
                 grid-row-start: unset;
                 grid-row-end: unset;
                 grid-column-start: unset;
@@ -90,14 +131,29 @@
         }
 
         @media screen and (min-width: @breakpoint-lg) {
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: @col-5;
+            grid-template-rows: @col-1;
 
-            .bb-col-item:last-child {
+            *:last-child {
                 grid-row-start: unset;
                 grid-row-end: unset;
                 grid-column-start: unset;
                 grid-column-end: unset;
             }
+        }
+    }
+
+    &-6 {
+        @media screen and (min-width: @breakpoint-sm) {
+            grid-template-columns: @col-2;
+        }
+
+        @media screen and (min-width: @breakpoint-md) {
+            grid-template-columns: @col-3;
+        }
+
+        @media screen and (min-width: @breakpoint-lg) {
+            grid-template-columns: @col-6;
         }
     }
 }

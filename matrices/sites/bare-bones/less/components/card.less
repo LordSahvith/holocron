@@ -6,7 +6,7 @@
 @card-center: center;
 
 @card-spacing-lg: 16px;
-@card-spacing-md: @card-spacing-lg / 2;
+@card-spacing-md: calc(@card-spacing-lg / 2);
 
 
 /* * * * 
@@ -32,12 +32,8 @@
         text-align: @card-center;
     }
 
-    &-image {
-        padding-bottom: @card-spacing-lg;
-    }
-
     &-copy {
-        padding: 0 @card-spacing-lg @card-spacing-lg;
+        padding: @card-spacing-lg;
 
         & > * {
             margin-bottom: @card-spacing-md;

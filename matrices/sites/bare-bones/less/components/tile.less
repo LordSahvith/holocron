@@ -6,6 +6,12 @@
 @tile-spacing-md: 14px;
 @tile-center: center;
 
+@tile-primary-color: @global-primary-color;
+@tile-color: @global-color;
+
+@tile-shading-percentage: @theme-shading-percentage;
+@tile-border-radius: calc(@theme-border-radius / 3.5);
+
 
 /* * * * 
 * TILE *
@@ -17,6 +23,8 @@
     width: 100%;
     max-width: 100%;
     padding: @tile-spacing-md;
+    border: 2px solid darken(@tile-primary-color, @tile-shading-percentage);
+    border-radius: @tile-border-radius;
 
     @media screen and (min-width: @breakpoint-md) {
         text-align: @tile-center;
