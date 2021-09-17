@@ -3,6 +3,10 @@ const ctx = canvas.getContext('2d');
 
 const image1 = new Image();
 
+const inputSlider = document.querySelector('#resolution');
+const inputLabel = document.querySelector('#resolutionLabel');
+inputSlider.addEventListener('change', handleSlider);
+
 class Cell {
     constructor(x, y, symbol, color) {
         this.x = x;
@@ -36,18 +40,18 @@ class AsciiEffect {
     
     #convertToSymbol(colorValue) {
         if (colorValue > 250) return '@';
-        else if (colorValue < 240) return '*';
-        else if (colorValue < 220) return '+';
-        else if (colorValue < 200) return '#';
-        else if (colorValue < 180) return '&';
-        else if (colorValue < 160) return '%';
-        else if (colorValue < 140) return '_';
-        else if (colorValue < 120) return ':';
-        else if (colorValue < 100) return '$';
-        else if (colorValue < 80) return '/';
-        else if (colorValue < 60) return '-';
-        else if (colorValue < 40) return 'X';
-        else if (colorValue < 20) return 'W';
+        else if (colorValue > 240) return '*';
+        else if (colorValue > 220) return '+';
+        else if (colorValue > 200) return '#';
+        else if (colorValue > 180) return '&';
+        else if (colorValue > 160) return '%';
+        else if (colorValue > 140) return '_';
+        else if (colorValue > 120) return ':';
+        else if (colorValue > 100) return '$';
+        else if (colorValue > 80) return '/';
+        else if (colorValue > 60) return '-';
+        else if (colorValue > 40) return 'X';
+        else if (colorValue > 20) return 'W';
         else return '';
     }
 
@@ -69,16 +73,43 @@ class AsciiEffect {
                     const color = `rgb(${red}, ${green}, ${blue})`;
                     const symbol = this.#convertToSymbol(averageColorValue);
 
-                    if (total > 200 ) {
+                    if (total > 10 ) {
                         this.#imageCellArray.push(new Cell(x, y, symbol, color));
                     }
                 }
             }
         }
+
+        console.log(this.#imageCellArray);
+    }
+
+    #drawAscii() {
+        this.#ctx.clearRect(0, 0, this.#width, this.#height);
+
+        for (let i = 0; i < this.#imageCellArray.length; i++) {
+            this.#imageCellArray[i].draw(this.#ctx);
+        }
+    }
+
+    draw(cellSize) {
+        this.#scanImage(cellSize);
+        this.#drawAscii();
     }
 }
 
 let effect;
+
+function handleSlider() {
+    if (inputSlider.value === 1) {
+        inputLabel.innerHTML = 'Original Image';
+        ctx.drawImage(image1, 0, 0, canvas.width. canvas.height);
+    } else {
+        inputLabel.innerHTML = `Resolution: ${inputSlider.value} px`;
+        ctx.font = parseInt(inputSlider.value) * 1.2 + 'px Verdana';
+        effect.draw(parseInt(inputSlider.value));
+    }
+}
+
 image1.onload = function initialize() {
     canvas.width = image1.width;
     canvas.height = image1.height;

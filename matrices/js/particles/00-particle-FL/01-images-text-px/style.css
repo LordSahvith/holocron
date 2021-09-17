@@ -23,11 +23,11 @@ body {
 }
 
 .controls > input {
-    width: 75%;
+    width: 60%;
 }
 
 .controls > label {
-    width: 25%;
+    width: 35%;
     color: white;
     font-size: 15px;
 }
