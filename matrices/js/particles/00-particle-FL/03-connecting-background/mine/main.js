@@ -160,7 +160,7 @@ function explode() {
 // create particle array
 function init() {
     particlesArray = [];
-    let numberOfParticles = (canvas.height * canvas.width) / 8000;
+    let numberOfParticles = (canvas.height * canvas.width) / 6000;
     for (let i = 0; i < numberOfParticles * 2; i++) {
         let size = (Math.random() * 5) + 1;
         let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
