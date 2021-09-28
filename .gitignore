@@ -19,4 +19,4 @@ nbproject
 .DS_Store
 /magento/app/code/Cryozonic/StripePayments/lib/stripe-php/
 
-stream-videos/css/
+*/stream-videos/**/css
