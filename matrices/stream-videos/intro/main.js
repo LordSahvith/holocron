@@ -5,7 +5,7 @@ function startTimer() {
 
     // UPDATE COUNTDOWN EVERY 1 SECOND
     let countDown = setInterval(function () {
-        timer.innerHTML = --countDownDuration;
+        timer.innerHTML = countDownDuration--;
 
         if (countDownDuration <= 0) {
             clearInterval(countDown);
