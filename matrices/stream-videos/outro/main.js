@@ -9,7 +9,7 @@ function startTimer() {
 
         if (countDownDuration <= 0) {
             clearInterval(countDown);
-            timer.innerHTML = "Game Time!";
+            timer.innerHTML = "Until Next Time!";
         }
     }, 250);
 }
