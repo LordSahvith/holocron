@@ -1,7 +1,29 @@
-const canvas1 = document.querySelector('#canvas1');
-const ctx1 = canvas1.getContext('2d');
-canvas1.width = window.innerWidth;
-canvas1.height = window.innerHeight;
+function startTimer() {
+    let countDownDuration = 666;
+    let timer = document.querySelector('#countDownTimer');
+    timer.innerHTML = countDownDuration;
+
+    // UPDATE COUNTDOWN EVERY 1 SECOND
+    let countDown = setInterval(function () {
+        timer.innerHTML = --countDownDuration;
+
+        if (countDownDuration <= 0) {
+            clearInterval(countDown);
+            timer.innerHTML = "Game Time!";
+        }
+    }, 250);
+}
+
+window.onload = function() {
+    startTimer();
+};
+
+// PARTICLE \\
+
+const canvas = document.querySelector('#canvas1');
+const ctx1 = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 let particlesArray1;
 
@@ -26,11 +48,11 @@ class Particle {
 
     // check particle postion, check mouse1 position, move the particle, draw the particle
     update() {
-        // check if particel is still within canvas1
-        if (this.x > canvas1.width || this.x < 0) {
+        // check if particel is still within canvas
+        if (this.x > canvas.width || this.x < 0) {
             this.directionX = -this.directionX;
         }
-        if (this.y > canvas1.height || this.y < 0) {
+        if (this.y > canvas.height || this.y < 0) {
             this.directionY = -this.directionY;
         }
 
@@ -52,7 +74,7 @@ function connect() {
             let distance = ((particlesArray1[a].x - particlesArray1[b].x) * (particlesArray1[a].x - particlesArray1[b].x)) +
                 ((particlesArray1[a].y - particlesArray1[b].y) * (particlesArray1[a].y - particlesArray1[b].y));
 
-            if (distance < (canvas1.width / 7) * (canvas1.height / 7)) {
+            if (distance < (canvas.width / 7) * (canvas.height / 7)) {
                 opacityValue = 1 - (distance / 20000);
                 ctx1.strokeStyle = `rgba(207, 0, 0, ${opacityValue})`;
                 ctx1.lineWidth = 1;
@@ -84,7 +106,7 @@ function explode() {
 // create particle array
 function init() {
     particlesArray1 = [];
-    let numberOfParticles = (canvas1.height * canvas1.width) / 6000;
+    let numberOfParticles = (canvas.height * canvas.width) / 6000;
     for (let i = 0; i < numberOfParticles * 2; i++) {
         let size = (Math.random() * 5) + 1;
         let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);

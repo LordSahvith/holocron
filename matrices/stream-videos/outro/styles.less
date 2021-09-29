@@ -24,13 +24,15 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
 
     &-wrapper {
         display: grid;
-        grid-template-areas: 'social starting'
-            'feed feed';
-        grid-template-columns: 1fr 3fr;
-        grid-template-rows: 1fr 460px;
+        grid-template-areas: 'social'
+            'feed'
+            'starting';
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 300px 3fr;
         width: 100vw;
         height: 100vh;
         max-width: 1080px;
@@ -40,16 +42,15 @@ body {
         .social-links {
             grid-area: social;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
-            padding-top: 60px;
+            width: 100%;
 
             .links-wrapper {
                 display: flex;
-                flex-direction: column;
                 justify-content: space-evenly;
-                align-items: flex-start;
-                height: 33.333%;
+                align-items: center;
+                width: 100%;
             }
 
             a {
@@ -79,18 +80,27 @@ body {
             align-items: center;
 
             .title-wrapper {
-                position: relative;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
 
                 #title1 {
-                    position: absolute;
-                    transform: translate(-55%, -33.333%);
                     font-size: 120px;
-                    line-height: 85px;
+                    line-height: 120px;
                     color: #cf0000;
+                    text-align: center;
+                    order: 2;
+                }
+
+                p {
+                    font-size: 24px;
+                    order: 1;
+                    color: #ffffff;
+                    padding-bottom: 40px;
                 }
 
                 #countDownTimer {
-                    position: absolute;
                     bottom: -40px;
                     right: -33px;
                     font-size: 90px;
@@ -101,7 +111,7 @@ body {
 
         .chat-feed {
             grid-area: feed;
-            padding: 0 140px 160px;
+            padding: 0 140px 0px;
 
             .feed-area {
                 border: 2px solid #cf0000;
