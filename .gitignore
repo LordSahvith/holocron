@@ -20,3 +20,5 @@ nbproject
 /magento/app/code/Cryozonic/StripePayments/lib/stripe-php/
 
 */stream-videos/**/css
+**/bare-bones/css/
+**/bootstrap
