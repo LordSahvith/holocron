@@ -1,0 +1,124 @@
+// out: css/, compress: true, sourceMap: true
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    font-family: 'papyrus';
+}
+
+#canvas1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.intro {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    &-wrapper {
+        display: grid;
+        grid-template-areas: 'social starting'
+            'feed feed';
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 1fr 510px;
+        width: 100vw;
+        height: 100vh;
+        max-width: 1080px;
+        margin-left: auto;
+        margin-right: auto;
+
+        .social-links {
+            grid-area: social;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-top: 60px;
+
+            .links-wrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: flex-start;
+                height: 33.333%;
+                margin-right: -80px;
+                padding-right: 60px;
+                border-right: 1px solid hsla(0, 100%, 55%, 0.7);
+
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                color: #ffffff;
+                text-decoration: none;
+                font-size: 20px;
+
+                &:hover {
+                    color: darken(#ffffff, 5%);
+                    cursor: pointer;
+                }
+
+                svg {
+                    width: 40px;
+                    height: 40px;
+                    padding-right: 5px;
+                }
+            }
+        }
+
+        .starting-soon {
+            grid-area: starting;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .title-wrapper {
+                position: relative;
+
+                #title1 {
+                    position: absolute;
+                    transform: translate(-55%, -33.333%);
+                    font-size: 120px;
+                    line-height: 85px;
+                    color: #cf0000;
+                }
+
+                #countDownTimer {
+                    position: absolute;
+                    bottom: -40px;
+                    right: -33px;
+                    font-size: 90px;
+                    color: #ffffff;
+
+                    &.game-time {
+                        position: static;
+                        font-size: 45px;
+                    }
+                }
+            }
+        }
+
+        .chat-feed {
+            grid-area: feed;
+            padding: 0 140px 200px;
+            margin-top: -40px;
+
+            .feed-area {
+                border: 2px solid #cf0000;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+        }
+    }
+}
