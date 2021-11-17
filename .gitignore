@@ -24,3 +24,6 @@ nbproject
 **/bootstrap
 
 **/examples/
+!**/examples/Practice/
+!**/examples/practice/
+!**/examples/mine/
