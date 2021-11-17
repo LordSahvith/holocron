@@ -2,7 +2,7 @@
 *.css.map
 *.DS_Store
 examples/
-**/examples
+**/examples/
 node_modules/
 package-lock.json
 
