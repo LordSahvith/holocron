@@ -24,6 +24,10 @@ nbproject
 **/bootstrap
 
 **/examples/
+!**/examples/README.md
+!**/examples/readme.md
+!**/examples/.gitignore
+!**/examples/package.json
 !**/examples/Practice/
 !**/examples/practice/
 !**/examples/mine/
