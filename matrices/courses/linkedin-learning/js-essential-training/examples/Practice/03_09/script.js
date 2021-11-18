@@ -23,4 +23,11 @@ const backpack = {
     this.strapLength.left = lengthLeft;
     this.strapLength.right = lengthRight;
   },
+  updateProperty: function (property, value) {
+    this[property] = value;
+  }
 };
+
+console.log("before:", backpack.name);
+backpack.updateProperty("name", "Backpack of today.");
+console.log("after:", backpack.name);
