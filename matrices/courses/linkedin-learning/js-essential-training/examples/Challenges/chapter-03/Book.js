@@ -23,9 +23,9 @@ class Book {
     turnPage() {
         this.currentPage++;
         console.log("Page turned.");
-        
+
         if (this.currentPage >= this.pageCount) {
-            console.log("You finished the book!");
+            console.log(`You finished the ${this.name}!`);
         }
     }
 };
