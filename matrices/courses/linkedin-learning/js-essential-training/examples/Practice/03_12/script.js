@@ -7,7 +7,7 @@
  * - Test the objecs by calling their properties and using their methods in the console.
  */
 
-import GameConsole from "./GameConsole.js";
+import GameConsole from "./GameConsole.js"; // VS code does NOT append .js when autocompleting and will through an error
 
 const xbox = new GameConsole(
     "Xbox One X",
