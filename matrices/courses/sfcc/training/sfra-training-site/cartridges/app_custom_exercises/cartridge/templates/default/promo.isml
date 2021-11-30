@@ -4,6 +4,7 @@
 
     <div class="jumbotron">
         <h1>Hello Promo</h1>
+        <p>${pdict.param2}</p>
     </div>
 
     <div class="row">
@@ -17,7 +18,7 @@
         <div class="col-sm-6 bg-info">
             <div class="p-4">
                 <iscomment>6-3: add localinclude for promodescription here </iscomment>
-                <isinclude template="promodescription" sf-toolkit="on" />
+                <isinclude template="promodescription" />
             </div>
         </div>
 
