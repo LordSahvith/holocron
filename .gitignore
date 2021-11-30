@@ -22,3 +22,7 @@ nbproject
 */stream-videos/**/css
 **/bare-bones/css/
 **/bootstrap
+
+
+**/sfcc/training/*
+!**/sfcc/training/sfra-training-site/

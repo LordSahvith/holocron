@@ -1,0 +1,9 @@
+
+<!-- Availability -->
+<div class="availability row product-availability" data-ready-to-order="${product.readyToOrder}" data-available="${product.available}">
+    <isinclude template="product/components/availability" />
+</div>
+
+<!-- Displays the stock information from the model decorator -->
+Total in Stock:  ${product.stockInformation}
+       
