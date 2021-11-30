@@ -25,6 +25,9 @@
         <div class="col-sm-6 bg-success">
             <div class="p-4">
                 <iscomment>6-5: add remote include here</iscomment>
+                <isinclude url="${URLUtils.url('Basket-Start')}" />
+                <iscomment> cartridges/app_custom_exercises/cartridge/controllers/Basket.js::7 route </iscomment>
+
             </div>
         </div>
 
