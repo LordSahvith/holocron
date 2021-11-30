@@ -6,4 +6,3 @@
 
 <!-- Displays the stock information from the model decorator -->
 Total in Stock:  ${product.stockInformation}
-       

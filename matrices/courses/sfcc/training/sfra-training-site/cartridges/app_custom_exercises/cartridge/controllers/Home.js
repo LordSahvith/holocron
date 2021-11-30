@@ -25,7 +25,7 @@ server.prepend('Show', function (req, res, next) {
  * If the query string has ?promo=1, then it appends the route with different data. 
  */
 //TODO modify the Show Route by using server.append
-server.append("Show", function (req, res, next) {
+server.append("Show", function (req, res, next) { // append/prepend is for routes, not controllers
 
 	if (req.querystring.promo == 1) {
 		// This example shows an alternative to getting the view data like you did in prepend

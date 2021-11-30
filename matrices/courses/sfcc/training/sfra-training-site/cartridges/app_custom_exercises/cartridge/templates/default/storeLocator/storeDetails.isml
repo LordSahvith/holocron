@@ -26,7 +26,12 @@
             </isif>
         </p>
         <!---add an isif condition to display the store email--->
-
+        <p>
+            <isif condition="${store.email}">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span><a class="storelocator-email" href="mailto:${store.email}">${store.email}</a></span>
+            </isif>
+        </p>
     </address>
 </div>
 

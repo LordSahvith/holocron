@@ -1,6 +1,7 @@
 'use strict';
 
 //Define a variable that requires the stockInformation decorator
+var stockInformation = require("*/cartridge/models/product/decorators/stockInformation");
 var base = module.superModule;
 
 /**
@@ -11,10 +12,10 @@ var base = module.superModule;
  * @returns {Object} - Decorated product model
  */
 function fullProduct(product, apiProduct, options) {
-    
     //use base.call to use the model from the base cartridge to get the OOTB attributes
-
+    base.call(this, product, apiProduct, options);
     //call the decorator function to add the stock information to the product json object from the api product
+    stockInformation(product, apiProduct);
     return product;
 }
 
