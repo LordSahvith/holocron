@@ -14,7 +14,6 @@
     </div>
 
     <div class="row">
-
         <div class="col-sm-6 bg-info">
             <div class="p-4">
                 <iscomment>6-3: add localinclude for promodescription here </iscomment>
@@ -30,9 +29,7 @@
 
             </div>
         </div>
-
     </div>
 
     <iscomment>6-2: close decorator here</iscomment>
-
 </isdecorate>
