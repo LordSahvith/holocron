@@ -3,7 +3,7 @@
 <isdecorate template="common/layout/page">
 
     <div class="jumbotron">
-        <h1>Hello Promo</h1>
+        <h1>${Resource.msg('title.promo','mymessage',null)}</h1>
         <p>${pdict.param2}</p>
     </div>
 
