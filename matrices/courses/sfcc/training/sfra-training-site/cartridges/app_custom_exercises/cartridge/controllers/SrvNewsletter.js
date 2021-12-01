@@ -5,6 +5,7 @@ var newsletterForm = server.forms.getForm("srvnewsletter");
 //8-1 Define a variable named HookMgr that requires the HookMgr class
 
 //7-7 require "Logger" from dw.system package
+var Logger = require('dw/system/Logger');
 
 server.get("Start", function (req, res, next) {
   newsletterForm.clear();
@@ -33,6 +34,7 @@ server.post("HandleForm", function (req, res, next) {
   if (validateEmail(newsletterForm.email.value)) {
     //7-7 create a variable called "logger" with log file prefix as "NewsLogs" and logging
     //7-7 category as "newsletter"
+    var logger = Logger.getLogger("NewsLogs", "newsletter");
 
     //7-2  start the transaction using appropriate method
     Transaction.begin();
@@ -48,11 +50,13 @@ server.post("HandleForm", function (req, res, next) {
       Transaction.commit();
       //8-1 call app.email hook, specify the extensionPoint and function
       //7-7 log a debug message that signup was successful
+      logger.debug("\nInput params received: \nfirstName: {0}\n lastName: {1}\n email: {2}", newsletterForm.fname.value, newsletterForm.lname.value, newsletterForm.email.value);
     } catch (e) {
       // 7-2  undo the transaction using appropriate method
       Transaction.rollback();
 
       //7-7 log an error message "Problem with subscription: {0}", e.causeMessage
+      logger.error("Problem with subscription: {0}", e.causeMessage);
 
       // 7-2 Create error.message.email.invalid.value  string which is exernalized in forms.properties file
       //fill in the ?? in the code below
