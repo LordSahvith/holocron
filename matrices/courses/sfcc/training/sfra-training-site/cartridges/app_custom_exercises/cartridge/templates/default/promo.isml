@@ -10,6 +10,7 @@
     <div class="row">
         <div class="col-sm-12 bg-primary">
             <iscomment>6-7: add content slot here</iscomment>
+            <isslot id="my-promo" context="global" description="promo landing page slot" />
         </div>
     </div>
 
@@ -24,9 +25,7 @@
         <div class="col-sm-6 bg-success">
             <div class="p-4">
                 <iscomment>6-5: add remote include here</iscomment>
-                <isinclude url="${URLUtils.url('Basket-Start')}" />
-                <iscomment> cartridges/app_custom_exercises/cartridge/controllers/Basket.js::7 route </iscomment>
-
+                <isinclude url="${URLUtils.url('Basket-Start')}" /> <iscomment> route - cartridges/app_custom_exercises/cartridge/controllers/Basket.js::7 </iscomment>
             </div>
         </div>
     </div>
