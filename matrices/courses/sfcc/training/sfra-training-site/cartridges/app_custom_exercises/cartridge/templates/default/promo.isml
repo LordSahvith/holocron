@@ -18,7 +18,8 @@
         <div class="col-sm-6 bg-info">
             <div class="p-4">
                 <iscomment>6-3: add localinclude for promodescription here </iscomment>
-                <isinclude template="promodescription" />
+                <iscomment> <isinclude template="promodescription" /> </iscomment>
+                <isinclude url="${URLUtils.url('PDescription-Show')}" /> 
             </div>
         </div>
 
