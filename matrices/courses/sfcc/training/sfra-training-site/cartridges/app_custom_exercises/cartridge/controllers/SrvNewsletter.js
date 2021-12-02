@@ -2,7 +2,9 @@
 
 var server = require("server");
 var newsletterForm = server.forms.getForm("srvnewsletter");
+
 //8-1 Define a variable named HookMgr that requires the HookMgr class
+var HookMgr = require('dw/system/HookMgr');
 
 //7-7 require "Logger" from dw.system package
 var Logger = require('dw/system/Logger');
@@ -48,7 +50,10 @@ server.post("HandleForm", function (req, res, next) {
       });
       // 7-2  commit the transaction using appropriate method
       Transaction.commit();
+
       //8-1 call app.email hook, specify the extensionPoint and function
+      HookMgr.callHook('app.email', 'send', newsletterForm.email.value);
+
       //7-7 log a debug message that signup was successful
       logger.debug("\nInput params received: \nfirstName: {0}\n lastName: {1}\n email: {2}", newsletterForm.fname.value, newsletterForm.lname.value, newsletterForm.email.value);
     } catch (e) {

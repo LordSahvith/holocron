@@ -1,1 +1,5 @@
-thanks
+<isdecorate template="common/layout/page">
+
+    <h1>thanks</h1>
+
+</isdecorate>
