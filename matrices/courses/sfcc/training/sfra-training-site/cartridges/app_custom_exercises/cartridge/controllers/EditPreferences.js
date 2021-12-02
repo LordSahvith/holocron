@@ -47,11 +47,12 @@ csrfProtection.validateRequest,
 		// Persist the data. You will need to update the profile within a Transaction.
 		//Hint:  customer.profile.custom.interestApparel=preferencesForm.interestApparel.value;
         Transaction.begin();
-		//redirect user to Account-Show  (use res.redirect(...))
         customer.profile.custom.interestApparel=preferencesForm.interestApparel.value;
         customer.profile.custom.interestElectronics=preferencesForm.interestElectronics.value;
         customer.profile.custom.newsletter=preferencesForm.newsletter.value;
+        Transaction.commit();
 
+		//redirect user to Account-Show  (use res.redirect(...))
         res.redirect(URLUtils.url('Account-Show'));
 
 		next();
