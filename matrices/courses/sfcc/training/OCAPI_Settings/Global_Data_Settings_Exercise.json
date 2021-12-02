@@ -13,7 +13,7 @@
         },
         {
           "resource_id": "/customer_lists/*/customers/*",
-          "methods": ["get"],
+          "methods": ["get", "put", "patch", "delete"],
           "read_attributes": "(**)",
           "write_attributes": "(**)"
         },
