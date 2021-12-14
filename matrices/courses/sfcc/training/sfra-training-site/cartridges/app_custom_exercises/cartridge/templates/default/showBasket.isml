@@ -1,0 +1,13 @@
+<h2>Everything's on Sale</h2>
+
+<isif condition="${pdict.Basket}">
+    <isloop items="${pdict.Basket.allProductLineItems}" var="productLineItem" status="loopstatus">
+        <iscomment>display the contents of the basket using isloop and pdict</iscomment>
+
+        <p>${loopstatus.count}. ${productLineItem.productName}</p>
+
+        <iscomment>close the loop</iscomment>
+    </isloop>
+<iselse/>
+    <h3>Your Cart is empty. Please add an item.</h3>
+</isif>

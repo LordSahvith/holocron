@@ -1,0 +1,15 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+			"name": "Sandbox - FileSystem",
+			"uri": "ccfs://current-sandbox"
+		}
+    ],
+    "settings": {
+		"typescript.enablePromptUseWorkspaceTsdk": true,
+		"/Applications/Visual Studio Code.app/Contents/Resources/app/extensions/node_modules/typescript/lib"
+	}
+}

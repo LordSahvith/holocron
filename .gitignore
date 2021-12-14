@@ -36,3 +36,9 @@ nbproject
 !**/examples/LICENSE
 !**/examples/CONTRIBUTING.MD
 !**/examples/.gitignore
+
+**/sfcc/training/*
+!**/sfcc/training/OCAPI_Exercise_Postman/
+!**/sfcc/training/OCAPI_Settings/
+!**/sfcc/training/sfra-training-site/
+!**/sfcc/training/tooling/

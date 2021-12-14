@@ -1,0 +1,518 @@
+{
+	"info": {
+		"_postman_id": "816bb0f1-ae4c-483b-9782-0b3a8350ea82",
+		"name": "OCAPI Exercise",
+		"description": "A few useful OCAPI calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Oauth2 get Client token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6b6b423b-8a97-4fec-952e-75116a942aac",
+								"exec": [
+									"var tokenData = JSON.parse(responseBody);",
+									"",
+									"if(tokenData.access_token!==null && tokenData.token_type!==null ){",
+									"    postman.setEnvironmentVariable(\"Authorization_key\", tokenData.token_type + \" \" + tokenData.access_token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": true,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Origin",
+								"value": "{{origin_url}}",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://account.demandware.com/dw/oauth2/access_token",
+							"protocol": "https",
+							"host": [
+								"account",
+								"demandware",
+								"com"
+							],
+							"path": [
+								"dw",
+								"oauth2",
+								"access_token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request Auth Guest",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5a13d28f-b4e3-4b40-b796-bd1834e001b2",
+								"exec": [
+									"postman.setEnvironmentVariable(\"Authorization_key\", postman.getResponseHeader(\"Authorization\"));",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-dw-client-id",
+								"value": "{{clientid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin_url}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\" : \"guest\"\n}"
+						},
+						"url": {
+							"raw": "{{shop_url}}/customers/auth",
+							"host": [
+								"{{shop_url}}"
+							],
+							"path": [
+								"customers",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request Auth Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "575e4989-9c64-4a2a-ac04-f17cf5b97ab2",
+								"exec": [
+									"postman.setEnvironmentVariable(\"Authorization_key\", postman.getResponseHeader(\"Authorization\"));",
+									"",
+									"var customerData = JSON.parse(responseBody);",
+									"",
+									"if(customerData.customer_id!==null){",
+									"    postman.setEnvironmentVariable(\"customer_id\", customerData.customer_id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "astro@coldmail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "Train!23",
+									"type": "string"
+								},
+								{
+									"key": "saveHelperData",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "showPassword",
+									"value": true,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-dw-client-id",
+								"value": "{{clientid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin_url}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\" : \"credentials\"\n}"
+						},
+						"url": {
+							"raw": "{{shop_url}}/customers/auth",
+							"host": [
+								"{{shop_url}}"
+							],
+							"path": [
+								"customers",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Shop",
+			"item": [
+				{
+					"name": "Get Categories",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-dw-client-id",
+								"value": "{{clientid}}"
+							}
+						],
+						"url": {
+							"raw": "{{shop_url}}/categories/root?levels=2",
+							"host": [
+								"{{shop_url}}"
+							],
+							"path": [
+								"categories",
+								"root"
+							],
+							"query": [
+								{
+									"key": "levels",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-dw-client-id",
+								"value": "{{clientid}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization_key}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin_url}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{shop_url}}/orders/",
+							"host": [
+								"{{shop_url}}"
+							],
+							"path": [
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8683fca8-8668-4637-89af-21474bc6ee63",
+								"exec": [
+									"pm.test(\"Response Format: JSON\", function () {",
+									"    var jsonData = pm.response.json();",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Origin",
+								"value": "{{origin_url}}"
+							},
+							{
+								"key": "x-dw-client-id",
+								"value": "{{clientid}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization_key}}"
+							}
+						],
+						"url": {
+							"raw": "{{shop_url}}/customers/{{customer_id}}",
+							"host": [
+								"{{shop_url}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Data",
+			"item": [
+				{
+					"name": "Get Site",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization_key}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin_url}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{data_url}}/sites/{{site_id}}",
+							"host": [
+								"{{data_url}}"
+							],
+							"path": [
+								"sites",
+								"{{site_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization_key}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin_url}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{data_url}}/customer_lists/RefArch/customers/",
+							"host": [
+								"{{data_url}}"
+							],
+							"path": [
+								"customer_lists",
+								"RefArch",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post New Customer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization_key}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin_url}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"birthday\": \"2001-01-01\",\r\n  \"company_name\": \"\",\r\n  \"creation_date\": \"2020-04-10T15:20:23.383Z\",\r\n  \"credentials\": {\r\n    \"enabled\": true,\r\n    \"locked\": true,\r\n    \"login\": \"fill in value\"\r\n  },\r\n  \"email\": \"codey@codemail.com\",\r\n  \"first_name\": \"fill in value\",\r\n  \"gender\": 1,\r\n  \"last_name\": \"fill in value\",\r\n  \"preferred_locale\": \"en_US\"\r\n}"
+						},
+						"url": {
+							"raw": "{{data_url}}/customer_lists/RefArch/customers/",
+							"host": [
+								"{{data_url}}"
+							],
+							"path": [
+								"customer_lists",
+								"RefArch",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Old Customer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization_key}}"
+							},
+							{
+								"key": "Origin",
+								"value": "{{origin_url}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-dw-http-method-override",
+								"value": "PATCH",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"birthday\": \"2003-04-01\"\r\n}"
+						},
+						"url": {
+							"raw": "{{data_url}}/customer_lists/RefArch/customers/N00000001",
+							"host": [
+								"{{data_url}}"
+							],
+							"path": [
+								"customer_lists",
+								"RefArch",
+								"customers",
+								"N00000001"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
