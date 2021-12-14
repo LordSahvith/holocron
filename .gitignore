@@ -1,8 +1,8 @@
 **/follow-along-code
 *.css.map
 *.DS_Store
-examples/
-**/examples
+examples/*
+**/examples/*
 node_modules/
 package-lock.json
 
@@ -22,3 +22,17 @@ nbproject
 */stream-videos/**/css
 **/bare-bones/css/
 **/bootstrap
+
+!**/examples/assets/
+!**/examples/Practice/
+!**/examples/practice/
+!**/examples/Challenges/
+!**/examples/challenges/
+!**/examples/mine/
+!**/examples/README.md
+!**/examples/readme.md
+!**/examples/package.json
+!**/examples/NOTICE
+!**/examples/LICENSE
+!**/examples/CONTRIBUTING.MD
+!**/examples/.gitignore
