@@ -1,0 +1,7 @@
+ <html>
+ <body>
+   <h1>${pdict.param1}</h1>
+   <h2>${pdict.param2}</h2>
+   <p>pdict stands for Pipeline Dictionary.</p>   
+ </body>
+ </html>
