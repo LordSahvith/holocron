@@ -7,5 +7,7 @@
       "path": "E:\\Users\\Owner\\Documents\\coding\\games"
     }
   ],
-  "settings": {}
+"settings": {
+    "liveServer.settings.multiRootWorkspaceName": "holocron"
+}
 }

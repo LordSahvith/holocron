@@ -1,8 +1,8 @@
 **/follow-along-code
 *.css.map
 *.DS_Store
-examples/
-**/examples
+examples/*
+**/examples/*
 node_modules/
 package-lock.json
 
@@ -23,6 +23,19 @@ nbproject
 **/bare-bones/css/
 **/bootstrap
 
+!**/examples/assets/
+!**/examples/Practice/
+!**/examples/practice/
+!**/examples/Challenges/
+!**/examples/challenges/
+!**/examples/mine/
+!**/examples/README.md
+!**/examples/readme.md
+!**/examples/package.json
+!**/examples/NOTICE
+!**/examples/LICENSE
+!**/examples/CONTRIBUTING.MD
+!**/examples/.gitignore
 
 **/sfcc/training/*
 !**/sfcc/training/OCAPI_Exercise_Postman/
