@@ -1,4 +1,4 @@
-let fs = require('fs');
+let fs = require("fs");
 
 let htmlFile = `<!DOCTYPE html>
 <html lang="en">
@@ -16,26 +16,34 @@ let htmlFile = `<!DOCTYPE html>
 </html>
 `;
 
-fs.writeFile(__dirname + '/index.html', htmlFile, function(error) {
-    if(error) {
-        console.log(error);
-    } else {
-        console.log('html file built.');
-    }
+fs.writeFile(__dirname + "/index.html", htmlFile, function (error) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("html file built.");
+
+    // fs.open(__dirname + "/index.html", "r+", function (err, f) {
+    //   if (err) {
+    //     return console.error(err);
+    //   }
+    //   console.log(f);
+    //   console.log("File opened!!");
+    // });
+  }
 });
 
-fs.writeFile(__dirname + '/style.scss', '', function(error) {
-    if(error) {
-        console.log(error);
-    } else {
-        console.log('sass file built.');
-    }
+fs.writeFile(__dirname + "/style.scss", "", function (error) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("sass file built.");
+  }
 });
 
-fs.writeFile(__dirname + '/main.js', '', function(error) {
-    if(error) {
-        console.log(error);
-    } else {
-        console.log('js file built.');
-    }
+fs.writeFile(__dirname + "/main.js", "", function (error) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("js file built.");
+  }
 });
