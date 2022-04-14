@@ -1,0 +1,16 @@
+.wrapper {
+    width: 70%;
+}
+
+header,
+footer {
+    background-color: purple;
+    color: white;
+    padding: 30px;
+}
+
+.content {
+    border: 1px solid black;
+    padding: 30px;
+    margin: 10px 0;
+}
