@@ -2,6 +2,16 @@
 * GLOBAL STYLES *
 * * * * * * * * */
 
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
 body {
     color: #343434;
     margin: 0;
@@ -77,6 +87,21 @@ header {
 
 .projects .btn:hover {
     opacity: 0.8;
+}
+
+.project-item {
+    overflow: hidden;
+    border-bottom: 1px dashed #343434;
+    padding: 25px 0;
+}
+
+.project-item img {
+    float: left;
+    margin-right: 20px;
+}
+
+.project-item h3 {
+    margin-top: 0;
 }
 
 
