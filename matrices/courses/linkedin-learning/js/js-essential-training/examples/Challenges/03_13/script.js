@@ -3,7 +3,7 @@ import Book from "./Book.js";
 const ACBrotherhood = new Book(
     "Assassin's Creed Brotherhood",
     "Paperback",
-    385,
+    525,
     329,
     "Reading"
 );
