@@ -8,22 +8,16 @@
  * - Test your objects in the browser console by accessing the entire object and its specific properties.
  */
 
-const gameConsole = {
-    name: "Xbox One X",
-    color: "black",
-    power: "AC",
-    usbPorts: "3",
-    game: {
-        name: "Red Dead Redemption 2",
-        isDisc: false,
-        size: "95gb"
-    },
-    isRunning: false,
-    startGame: function () {
-        this.isRunning = true;
-        this.startUpMessage(this.game);
-    },
-    startUpMessage: function (game) {
-        console.log(game.name, "has started.");
+const ACBrotherhoodBook = {
+    type: "paper back",
+    pageNum: 535
+};
+
+const bookshelf = {
+    shelfCount: 4,
+    books: {
+        ACBrotherhoodBook
     }
 };
+
+console.log(bookshelf);

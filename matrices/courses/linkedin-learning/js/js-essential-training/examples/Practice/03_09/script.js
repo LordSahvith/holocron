@@ -16,6 +16,7 @@ const backpack = {
     left: 26,
     right: 26,
   },
+  lidOpen: false,
   toggleLid: function (lidStatus) {
     this.lidOpen = lidStatus;
   },
@@ -23,11 +24,16 @@ const backpack = {
     this.strapLength.left = lengthLeft;
     this.strapLength.right = lengthRight;
   },
-  updateProperty: function (property, value) {
-    this[property] = value;
+
+  changeColor: function (color) {
+      this.color = color;
+  },
+
+  changePocketNum: function (pocketNum) {
+      this.pocketNum = pocketNum;
+  },
+
+  changeName: function(name) {
+      this.name = name;
   }
 };
-
-console.log("before:", backpack.name);
-backpack.updateProperty("name", "Backpack of today.");
-console.log("after:", backpack.name);
