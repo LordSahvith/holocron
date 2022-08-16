@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let Keyword</title>
+
+    <style>
+        #boxVar,
+        #boxLet {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #boxVar>div,
+        #boxLet>div {
+            height: 5em;
+            width: 5em;
+        }
+
+        #boxVar>div {
+            background-color: purple;
+        }
+
+        #boxLet>div {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Using Let</h1>
+
+    <h2>Box w/Var (*NOTE: onclick for var always displays the last item count.)</h2>
+    <div id="boxVar"></div>
+    <h2>Box w/Let</h2>
+    <div id="boxLet"></div>
+
+    <script>
+        var divVar;
+        var boxVar = document.getElementById('boxVar');
+        var divLet;
+        var boxLet = document.getElementById('boxLet');
+        var paragraph;
+
+        for (var i = 0; i < 5; i++) {
+            divVar = document.createElement('div');
+            divVar.onclick = function () {
+                alert('This is box #' + i);
+            }
+
+            paragraph = document.createElement('p');
+            paragraph.innerHTML = 'box #' + i;
+            divVar.appendChild(paragraph);
+
+            boxVar.appendChild(divVar);
+        }
+
+        for (let i = 0; i < 5; i++) {
+            divLet = document.createElement('div');
+            divLet.onclick = function () {
+                alert('This is box #' + i);
+            }
+
+            paragraph = document.createElement('p');
+            paragraph.innerHTML = 'box #' + i;
+            divLet.appendChild(paragraph);
+
+            boxLet.appendChild(divLet);
+        }
+    </script>
+
+</body>
+
+</html>
