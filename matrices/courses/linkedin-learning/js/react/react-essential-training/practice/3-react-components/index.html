@@ -14,18 +14,33 @@
 </body>
 
 <script type="text/babel">
-    let name = 'Savith';
-    let hobby = 'coding';
-    let something = 'something';
+    function Header() {
+        return (
+            <header>
+                <h1>Lord Savith's Realm</h1>
+            </header>
+        );
+    }
+
+    function Main() {
+        return (
+            <section>
+                <p>You're in our world now!</p>
+            </section>
+        );
+    }
+
+    function App() {
+        return (
+            <div>
+                <Header />
+                <Main />
+            </div>
+        );
+    }
 
     ReactDOM.render(
-        <ul>
-            <li>{name}</li>
-            <li>{hobby}</li>
-            <li>{something}</li>
-            <li>{something.toLocaleUpperCase()}</li>
-            <li>{something.length}</li>
-        </ul>,
+        <App />,
         document.getElementById('example1')
     );
 </script>
