@@ -9,13 +9,14 @@
 </head>
 
 <body>
-    <div id="intro"></div>
+    <div id="example1"></div>
+    <div id="example2"></div>
 </body>
 
 <script type="text/javascript">
     let ul = React.createElement(
         'ul',
-        {style: {color: 'red'}},
+        { style: { color: 'red' } },
         React.createElement('li', null, 'Monday'),
         React.createElement('li', null, 'Tuesday'),
         React.createElement('li', null, 'Wednesday'),
@@ -27,7 +28,15 @@
 
     ReactDOM.render(
         ul,
-        document.getElementById('intro')
+        document.getElementById('example1')
+    );
+
+    ReactDOM.render(
+        <ul>
+            <li>test</li>
+            <li>case</li>
+        </ul>,
+        document.getElementById('example2')
     );
 </script>
 
