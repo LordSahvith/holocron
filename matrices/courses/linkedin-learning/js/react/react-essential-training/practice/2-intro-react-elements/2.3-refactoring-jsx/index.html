@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <title>React ⚛️</title>
+</head>
+
+<body>
+    <div id="intro"></div>
+</body>
+
+<script type="text/javascript">
+    let ul = React.createElement(
+        'ul',
+        {style: {color: 'red'}},
+        React.createElement('li', null, 'Monday'),
+        React.createElement('li', null, 'Tuesday'),
+        React.createElement('li', null, 'Wednesday'),
+        React.createElement('li', null, 'Thursday'),
+        React.createElement('li', null, 'Friday'),
+        React.createElement('li', null, 'Saturday'),
+        React.createElement('li', null, 'Sunday')
+    );
+
+    ReactDOM.render(
+        ul,
+        document.getElementById('intro')
+    );
+</script>
+
+</html>
