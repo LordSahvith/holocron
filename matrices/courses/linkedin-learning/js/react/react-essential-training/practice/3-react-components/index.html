@@ -14,27 +14,37 @@
 </body>
 
 <script type="text/babel">
-    function Header() {
+    function Header(props) {
+        console.log(props);
         return (
             <header>
-                <h1>Lord Savith's Realm</h1>
+                <h1>{props.name}'s Realm</h1>
             </header>
         );
     }
 
-    function Main() {
+    function Main(props) {
         return (
             <section>
-                <p>You're in our world now!</p>
+                <p>You're in our {props.adjective} world now!</p>
             </section>
+        );
+    }
+
+    function Footer(props) {
+        return (
+            <footer>
+                <p>Copyright {props.year}</p>
+            </footer>
         );
     }
 
     function App() {
         return (
             <div>
-                <Header />
-                <Main />
+                <Header name='Lord Savith' />
+                <Main adjective='crazy' />
+                <Footer year={new Date().getFullYear()} />
             </div>
         );
     }
