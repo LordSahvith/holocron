@@ -27,6 +27,11 @@
         return (
             <section>
                 <p>You're in our {props.adjective} world now!</p>
+                <ul>
+                    {props.worlds.map((world) => (
+                        <li>{world}</li>
+                    ))}
+                </ul>
             </section>
         );
     }
@@ -43,11 +48,19 @@
         return (
             <div>
                 <Header name='Lord Savith' />
-                <Main adjective='crazy' />
+                <Main adjective='crazy' worlds={worlds} />
                 <Footer year={new Date().getFullYear()} />
             </div>
         );
     }
+
+const worlds = [
+    'Assassin\'s Creed',
+    'Spider-Man',
+    'Batman',
+    'Star Wars',
+    'Naruto'
+];
 
     ReactDOM.render(
         <App />,
