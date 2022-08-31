@@ -47,11 +47,11 @@
 
     function App() {
         return (
-            <div>
+            <React.Fragment>
                 <Header name='Lord Savith' />
                 <Main adjective='crazy' worlds={worldObjects} />
                 <Footer year={new Date().getFullYear()} />
-            </div>
+            </React.Fragment>
         );
     }
 
