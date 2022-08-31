@@ -27,6 +27,7 @@
         return (
             <section>
                 <p>You're in our {props.adjective} world now!</p>
+                <img height={200} src='../imgs/world.jpeg' alt='earth from space.' />
                 <ul>
                     {props.worlds.map((world) => (
                         <li key={world.id}>{world.title}</li>
