@@ -29,7 +29,7 @@
                 <p>You're in our {props.adjective} world now!</p>
                 <ul>
                     {props.worlds.map((world) => (
-                        <li>{world}</li>
+                        <li key={world.id}>{world.title}</li>
                     ))}
                 </ul>
             </section>
@@ -48,19 +48,24 @@
         return (
             <div>
                 <Header name='Lord Savith' />
-                <Main adjective='crazy' worlds={worlds} />
+                <Main adjective='crazy' worlds={worldObjects} />
                 <Footer year={new Date().getFullYear()} />
             </div>
         );
     }
 
-const worlds = [
-    'Assassin\'s Creed',
-    'Spider-Man',
-    'Batman',
-    'Star Wars',
-    'Naruto'
-];
+    const worlds = [
+        'Assassin\'s Creed',
+        'Spider-Man',
+        'Batman',
+        'Star Wars',
+        'Naruto'
+    ];
+
+    const worldObjects = worlds.map((world, i) => ({
+        id: i,
+        title: world
+    }));
 
     ReactDOM.render(
         <App />,
