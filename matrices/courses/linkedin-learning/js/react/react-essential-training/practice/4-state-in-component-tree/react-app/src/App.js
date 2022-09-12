@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
         <input id="check" type="checkbox" value={checked} onChange={setChecked} />
-        <label for="check">{checked ? "checked" : "not checked"}</label>
+        <label htmlFor="check">{checked ? "checked" : "not checked"}</label>
     </div>
   );
 }
