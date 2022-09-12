@@ -1,9 +1,12 @@
 import './App.css';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 function App() {
     const [emotion, setEmotion] = useState('happy');
-    console.log(emotion);
+
+    useEffect(() => {
+        console.log(`It's ${emotion} right now`);
+    }, [emotion]); // dependency array defines when this should run
 
   return (
     <div className="App">
