@@ -1,0 +1,45 @@
+{
+  "name": "Text - Fine Print",
+  "description": "Fine Print Text",
+  "group": "commerce_assets",
+  "attribute_definition_groups": [
+    {
+      "id": "finePrint",
+      "name": "Text copy",
+      "description": "Text to be displayed",
+      "attribute_definitions": [
+        {
+          "id": "text",
+          "name": "Text",
+          "type": "markup",
+          "required": true
+        },
+        {
+          "id": "orderedListStyling",
+          "name": "Ordered List Styling",
+          "description": "Numbered - 1, 2, 3; Symbol - *, **, †, ‡, and then §. Default is Numbered",
+          "type": "enum",
+          "values": [
+            "Unstyled",
+            "Numbered",
+            "Symbol"
+          ],
+          "required": false
+        },
+        {
+          "id": "unorderedListStyling",
+          "name": "Unordered List Styling",
+          "description": "Default is Bullet.",
+          "type": "enum",
+          "values": [
+            "Unstyled",
+            "Bullet",
+            "Circle"
+          ],
+          "required": false
+        }
+      ]
+    }
+  ],
+  "region_definitions": []
+}

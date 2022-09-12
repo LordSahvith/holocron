@@ -1,0 +1,52 @@
+@import '../../abstracts/index';
+
+.page-designer {
+
+    //TODO: Remove this custom styling for the Horizontal Gallery when the layout no longer is broken.
+    .gallery-wrapper {
+        .experience-commerce_assets-paragraphtext {
+            &.gallery-text {
+                margin-bottom: 32px;
+            }
+
+            .paragraph-text__content-heading {
+                padding-bottom: 0;
+
+                .experience-commerce_assets-text:first-child {
+                    padding-bottom: 0;
+                }
+            }
+
+            .paragraph-text__content-body {
+                .experience-body {
+                    display: flex;
+                    flex-flow: wrap row;
+                    gap: 1rem;
+
+                    .experience-buttons-links {
+                        width: auto !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .pd-legal-text {
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .fineprint {
+        font-size: $font-size-sm;
+        color: $mid-grey;
+
+        a {
+            @include cwg-animated-underline(false);
+
+            &::after {
+                bottom: -3px;
+            }
+        }
+    }
+}

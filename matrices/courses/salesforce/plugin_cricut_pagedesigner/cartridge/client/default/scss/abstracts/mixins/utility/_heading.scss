@@ -1,0 +1,9 @@
+@mixin heading-hero {
+    font-size: $font-size-hero-mobile;
+    line-height: 1.1;
+    font-weight: $font-weight-bold;
+
+    @include media-breakpoint-up(lg) {
+        font-size: $font-size-hero;
+    }
+}

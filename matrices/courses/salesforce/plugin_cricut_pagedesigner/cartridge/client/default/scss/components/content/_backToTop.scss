@@ -1,0 +1,74 @@
+.pd-backToTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 75px;
+    right: 20px;
+    height: 45px;
+    width: 45px;
+    border-radius: 100%;
+    border: none;
+    background: transparent;
+    background-color: #00c08b;
+    transform: translateY(25px);
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.4s;
+    @include z-index(modal);
+
+    &:not(.fadeIn) {
+        pointer-events: none;
+    }
+
+    &:hover {
+        background-color: #02a879;
+    }
+
+    img {
+        filter: brightness(5);
+        transform: translateY(-1px);
+    }
+
+    &--black {
+        background-color: $black;
+        color: $white100;
+
+        &:hover {
+            background-color: darken($black, 5%);
+        }
+    }
+
+    &--forrest {
+        background-color: $forrest;
+        color: $shamrock;
+
+        &:hover {
+            background-color: darken($forrest, 5%);
+        }
+    }
+
+    &--shamrock {
+        background-color: $shamrock;
+        color: $forrest;
+
+        &:hover {
+            background-color: darken($shamrock, 5%);
+        }
+    }
+
+    &--white {
+        background-color: $white100;
+        color: $black;
+
+        &:hover {
+            background-color: darken($white100, 5%);
+        }
+    }
+
+    &.fadeIn {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

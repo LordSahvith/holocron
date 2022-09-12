@@ -1,0 +1,39 @@
+{
+    "name": "Editorial Gallery - Group of 1",
+    "description": "This is a layout container component with 1 region.",
+    "group": "commerce_layouts",
+    "attribute_definition_groups": [
+        {
+        "id": "widthOption",
+        "name": "Width Option",
+        "description": "Width option for the editorial gallery",
+        "attribute_definitions": [
+                {
+                    "id": "fullWidth",
+                    "name": "Full width",
+                    "description": "Expand the editorial gallery to the max container width (up to 2048px)",
+                    "type": "boolean",
+                    "required": false,
+                    "default_value": false
+                }
+            ]
+        }
+    ],
+    "region_definitions": [
+        {
+            "id":"editorialGalleryGroup1Header",
+            "name":"Header Region",
+            "component_type_exclusions": [],
+            "max_components": 1
+        },
+        {
+            "id":"editorialGalleryGroup1Region1",
+            "name":"Editorial Gallery - Region 1",
+            "component_type_exclusions": [],
+            "default_component_constructors": [
+                { "type_id": "commerce_assets.editorialGalleryItem", "name": "Region 1"}
+            ],
+            "max_components": 1
+        }
+    ]
+}

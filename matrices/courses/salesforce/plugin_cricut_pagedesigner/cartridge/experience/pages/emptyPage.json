@@ -1,0 +1,13 @@
+{
+    "name":"Empty Page",
+    "description":"Empty Page for things like modal content",
+    "region_definitions":[
+      {
+        "id":"main",
+        "name":"Main Region",
+        "component_type_exclusions": [
+          { "type_id": "commerce_assets.campaignBanner" }
+        ]
+      }
+    ]
+}

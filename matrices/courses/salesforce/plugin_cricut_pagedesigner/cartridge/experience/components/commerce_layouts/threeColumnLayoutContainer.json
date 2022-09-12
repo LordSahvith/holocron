@@ -1,0 +1,23 @@
+{
+    "name": "Cricut 3x1 Column Layout",
+    "description": "This container will create a three column layout",
+    "group": "commerce_layouts",
+    "attribute_definition_groups": [],
+    "region_definitions": [
+        {
+            "id":"threeColumnLayoutColumnOne",
+            "name":"First Column",
+            "component_type_exclusions": []
+        },
+        {
+            "id":"threeColumnLayoutColumnTwo",
+            "name":"Second Column",
+            "component_type_exclusions": []
+        },
+        {
+            "id":"threeColumnLayoutColumnThree",
+            "name":"Third Column",
+            "component_type_exclusions": []
+        }
+    ]
+}

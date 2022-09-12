@@ -1,0 +1,19 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/components/pd-avatar.css');
+    assets.addCss('/css/components/pd-tag.css');
+</isscript>
+
+<div class="tag-container">
+    <div class="tag${pdict.small ? ' tag--small' : ''}${pdict.transparent ? ' tag--transparent' : ''}">
+        <div class="tag-image">
+            <div class="">
+                <isprint value="${pdict.regions.avatar.render()}" encoding="off" />
+            </div>
+        </div>
+        <div class="tag-text">
+            <p class="text-heading">${pdict.head}</p>
+            <p class="text-subheading">${pdict.subhead}</p>
+        </div>
+    </div>
+</div>

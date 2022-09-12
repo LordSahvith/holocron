@@ -1,0 +1,18 @@
+<isinclude template="/components/modules" sf-toolkit="off" />
+
+<isdecorate template="common/layout/pdPage">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addCss('/css/pd-homePage.css');
+        assets.addJs('/js/homePage.js');
+    </isscript>
+
+    <isinclude template="/components/header/homePageHeader" />
+    <div role="main" id="maincontent">
+        <isprint value="${pdict.regions.promobanner.render()}" encoding="off" />
+
+        <div class="pd-home-page home-page__content pd-clp">
+            <isprint value="${pdict.regions.main.render()}" encoding="off" />
+        </div>
+    </div>
+</isdecorate>

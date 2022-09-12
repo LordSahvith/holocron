@@ -1,0 +1,231 @@
+@import '../../../abstracts/index';
+
+.page-designer {
+    .bright-dark-section {
+        background-color: $black;
+        padding-top: 30px;
+        margin-top: -1px;
+
+        section {
+            .billboard {
+                margin-bottom: 0;
+                padding-bottom: 120px;
+            }
+        }
+    }
+
+    .billboard-flexible-height {
+        margin-left: auto;
+        margin-right: auto;
+
+        .billboard-content {
+            position: relative;
+            border-radius: 4px;
+            color: $white;
+            background-color: $white;
+            overflow: hidden;
+        }
+
+        .billboard-content-grid-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+
+            .grid-container {
+                padding: 70px 0;
+            }
+
+            picture {
+                display: block;
+
+                img {
+                    display: block;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        &.overlapping {
+            .billboard-content-grid-container {
+                .grid-container {
+                    position: absolute;
+                    width: 100%;
+                }
+
+                picture {
+                    img {
+                        min-height: 625px;
+                    }
+                }
+            }
+
+            &.bottom {
+                .billboard-content-grid-container {
+                    .grid-container {
+                        bottom: 0;
+                    }
+                }
+            }
+        }
+
+        .billboard-title {
+            margin-bottom: 24px;
+            font-size: $font-size-hero;
+            line-height: 1.1;
+        }
+
+        .pill-button {
+            margin: 24px auto 0;
+        }
+
+        &.text-black {
+            .billboard-content {
+                color: $black;
+            }
+        }
+
+        &.text-serif {
+            p,
+            h2,
+            h3 {
+                font-family: $font-Gascogne;
+            }
+        }
+
+        &.background-fog {
+            .billboard-content {
+                background-color: $gray500;
+            }
+
+            .desktop-cut,
+            .mobile-cut {
+                background-color: $gray500;
+
+                path {
+                    fill: $gray500;
+                }
+            }
+        }
+
+        &.background-black {
+            .billboard-content {
+                background-color: $black;
+            }
+
+            .desktop-cut,
+            .mobile-cut {
+                background-color: $black;
+
+                path {
+                    fill: $black;
+                }
+            }
+        }
+
+        .title-container {
+            grid-column: 3 / 11;
+        }
+
+        .text-container {
+            grid-column: 4 / 10;
+            position: relative;
+            z-index: 1;
+
+            p {
+                font-size: $font-size-xl;
+            }
+        }
+
+        &.billboard-wider-text {
+            .billboard-title {
+                margin-bottom: 32px;
+            }
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+        .billboard-flexible-height {
+            &.billboard-wider-text {
+                max-width: none;
+            }
+        }
+    }
+
+    /* stylelint-disable */
+    @media screen and (min-width: 1025px) {
+        .billboard-flexible-height {
+            &.billboard-wider-text {
+                .text-container {
+                    grid-column: 3 / 11;
+                }
+            }
+        }
+    }
+    /* stylelint-enable */
+
+    @media screen and (max-width: $breakpoint-md) {
+        .billboard-flexible-height {
+            .billboard-title {
+                margin-bottom: 16px;
+            }
+
+            .billboard-content-grid-container {
+                .grid-container {
+                    padding: 40px 0;
+                }
+            }
+
+            .title-container,
+            .text-container {
+                grid-column: 2 / 8;
+            }
+
+            &.overlapping {
+                .billboard-content-grid-container {
+                    picture {
+                        img {
+                            min-height: 550px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+        .billboard-flexible-height {
+            max-width: calc(100% - 60px);
+
+            .billboard-title {
+                margin-bottom: 8px;
+            }
+
+            .pill-button {
+                margin-top: 16px;
+            }
+
+            .billboard-content-grid-container {
+                .grid-container {
+                    padding: 30px 0;
+                }
+            }
+
+            .title-container,
+            .text-container {
+                grid-column: 1 / 5;
+                padding: 0 30px;
+            }
+
+            &.overlapping {
+                .billboard-content-grid-container {
+                    picture {
+                        img {
+                            min-height: 580px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

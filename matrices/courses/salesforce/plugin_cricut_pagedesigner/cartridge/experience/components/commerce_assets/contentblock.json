@@ -1,0 +1,147 @@
+{
+  "name": "Content Block",
+  "description": "General Content block",
+  "group": "commerce_assets",
+  "attribute_definition_groups": [
+    {
+      "id": "layout",
+      "name": "Content Layout",
+      "description": "The type of layout for the content.",
+      "attribute_definitions": [
+        {
+          "id": "contenttype",
+          "name": "Content Type",
+          "description": "Content Type used.",
+          "type": "enum",
+          "values": [
+            "picture",
+            "content"
+          ],
+          "required": true,
+          "default_value": "content"
+        }
+      ]
+    },
+    {
+      "id": "blockimage",
+      "name": "Content Block Background Image",
+      "description": "The visual display of the content block.",
+      "attribute_definitions": [
+        {
+          "id": "imageMobile",
+          "name": "Mobile Image",
+          "type": "image",
+          "required": false
+        },
+        {
+          "id": "imageTablet",
+          "name": "Tablet Image",
+          "type": "image",
+          "required": false
+        },
+        {
+          "id": "imageDesktop",
+          "name": "Desktop Image",
+          "type": "image",
+          "required": false
+        },
+        {
+          "id": "backgroundcolor",
+          "name": "Background Color",
+          "description": "Content Block Background Color.",
+          "type": "enum",
+          "values": [
+            "white",
+            "gray800"
+          ],
+          "required": false,
+          "default_value": "white"
+        }
+      ]
+    },
+    {
+      "id": "textoverlay",
+      "name": "Text Overlay",
+      "description": "The heading overlay text on top of the banner image.",
+      "attribute_definitions": [
+        {
+          "id": "heading",
+          "name": "Heading",
+          "type": "string",
+          "required": false
+        },
+        {
+          "id": "subheading",
+          "name": "Sub Heading",
+          "type": "string",
+          "required": false
+        },
+        {
+          "id": "textposition",
+          "name": "Text Position",
+          "description": "Text alignment of text.",
+          "type": "enum",
+          "values": [
+            "left",
+            "center",
+            "right"
+          ],
+          "required": false,
+          "default_value": "center"
+        },
+        {
+          "id": "textcolor",
+          "name": "Text Color",
+          "description": "Text color options from the style guide.",
+          "type": "enum",
+          "values": [
+            "black",
+            "white",
+            "green02"
+          ],
+          "required": false,
+          "default_value": "black"
+        },
+        {
+          "id": "cta",
+          "name": "Category Link ",
+          "type": "category",
+          "required": false
+        },
+        {
+          "id": "ctatext",
+          "name": "CTA Text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "id": "ctastyle",
+          "name": "CTA Style",
+          "description": "CTA Style Guide styles.",
+          "type": "enum",
+          "values": [
+            "primary",
+            "secondary",
+            "tertiary"
+          ],
+          "required": false,
+          "default_value": "primary"
+        },
+        {
+          "id": "vposition",
+          "name": "Vartical Position",
+          "description": "The vertical position of the overlay content.",
+          "type": "enum",
+          "values": [
+            "start",
+            "center",
+            "end"
+          ],
+          "required": false,
+          "default_value": "center"
+        }
+      ]
+    }
+  ],
+  "region_definitions": []
+}

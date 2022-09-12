@@ -1,0 +1,49 @@
+{
+    "name": "Add to cart button",
+    "description": "Add to cart button for a given PID",
+    "group": "buttons",
+    "attribute_definition_groups": [
+        {
+            "id":"productId",
+            "name": "Product ID",
+            "description":"The product ID to be used with the add to cart button",
+            "attribute_definitions": [
+                    {
+                        "id":"product",
+                        "type": "product",
+                        "name": "Product",
+                        "description": "Select the product SKU for the add to cart button",
+                        "required": true
+                    }
+                ]
+            },
+            {
+            "id": "button",
+            "name": "Button",
+            "description": "Button attributes",
+            "attribute_definitions": [
+                {
+                    "id": "btnColor",
+                    "name": "Button Color",
+                    "description": "Choose button color.",
+                    "type": "enum",
+                    "values": [
+                        "black",
+                        "forrest",
+                        "shamrock",
+                        "white"
+                    ],
+                    "required": false,
+                    "default_value": "black"
+                },
+                {
+                    "id": "buttonAriaLabel",
+                    "name": "aria-label (for ADA compliance)",
+                    "type": "string",
+                    "required": false
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}

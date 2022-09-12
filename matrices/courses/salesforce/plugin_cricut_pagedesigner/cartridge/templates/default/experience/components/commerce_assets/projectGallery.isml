@@ -1,0 +1,23 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/components/pd-gallery.css');
+    assets.addJs('/js/components/projectGallery.js');
+</isscript>
+
+<section class="projectGallery">
+    <div class="projectGallery-content">
+        <h2 class="projectGallery-title">${pdict.headline}</h2>
+        <div class="projectGallery-slides">
+            <isprint value="${pdict.regions.slidesContainer.render()}" encoding="off" />
+            <button class="projectGallery-previous slick-prev" aria-label="Previous"<isprint value="${pdict.gaEventPrevArrow}">
+                <isinclude template="svg/gallery-arrow-small.isml" />
+            </button>
+            <button class="projectGallery-next slick-next" aria-label="Next"<isprint value="${pdict.gaEventNextArrow}" encoding="off" />>
+                <isinclude template="svg/gallery-arrow-small.isml" />
+            </button>
+        </div>
+        <div class="scrollbar-container">
+            <div class="scrollbar"></div>
+        </div>
+    </div>
+</section>

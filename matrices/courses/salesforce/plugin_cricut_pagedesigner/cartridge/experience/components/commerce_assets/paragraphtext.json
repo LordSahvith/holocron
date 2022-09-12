@@ -1,0 +1,52 @@
+{
+    "name": "Paragraph Text",
+    "description": "Paragraph Text",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "textoverlay",
+            "name": "Content Overlay",
+            "description": "The title and body content.",
+            "attribute_definitions": [
+                {
+                    "id": "hposition",
+                    "name": "Horizontal Position",
+                    "description": "The horizontal position of the overlay content.",
+                    "type": "enum",
+                    "values": ["left", "center", "right"],
+                    "required": false,
+                    "default_value": "left"
+                },
+                {
+                    "id": "vposition",
+                    "name": "Vartical Position",
+                    "description": "The vertical position of the overlay content.",
+                    "type": "enum",
+                    "values": ["top", "center", "bottom"],
+                    "required": false,
+                    "default_value": "center"
+                },
+                {
+                    "id":"containerWidth",
+                    "name": "Container width",
+                    "description": "Whether to use a standard width or narrow width in the container",
+                    "type": "enum",
+                    "values": ["standard", "narrow"],
+                    "required":true,
+                    "default_value":"standard"
+                }
+            ]
+        }
+    ],
+    "region_definitions": [
+        {
+            "id": "heading",
+            "name": "Heading Region",
+            "max_components": 2
+        },
+        {
+            "id": "body",
+            "name": "Body Region"
+        }
+    ]
+}

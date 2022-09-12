@@ -1,0 +1,29 @@
+{
+    "name": "Gallery product card", 
+    "description": "Gallery cards with a product from the catelog.",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id":"productGroup",
+            "name": "Products to feature",
+            "description":"Select which products to show",
+            "attribute_definitions": [
+                {
+                    "id":"product",
+                    "type": "product",
+                    "name": "Product", 
+                    "description": "Product to feature", 
+                    "required": true
+                },
+                {
+                    "id":"overrideImage",
+                    "type": "image",
+                    "name": "Override image", 
+                    "description": "Select an override image, if desired.", 
+                    "required": false
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}

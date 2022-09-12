@@ -1,0 +1,48 @@
+{
+    "name": "Gallery detailed card", 
+    "description": "Gallery cards to show images with supplementary copy",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id":"cardDetails",
+            "name": "Card details",
+            "description":"Information you wish to show on the card",
+            "attribute_definitions": [
+                {
+                    "id":"product",
+                    "type": "product",
+                    "name": "Product", 
+                    "required": false
+                },
+                {
+                    "id":"productImage",
+                    "type": "image",
+                    "name": "Product image override",
+                    "description": "Used to override the Product Image from Catalog.",
+                    "required": false
+                },
+                {
+                    "id":"headerText",
+                    "type": "string",
+                    "name": "Header text",
+                    "description": "Used to override the Prodcut Name from Catalog.",
+                    "required": false
+                },
+                {
+                    "id":"bodyText",
+                    "type": "string",
+                    "name": "Body text",
+                    "description": "Copy to show when 'See more' is clicked."
+                },
+                {
+                    "id":"specialAttributes",
+                    "type": "string",
+                    "name": "Special HTML attributes",
+                    "description": "Any additional HTML attributes that need to be included on the card. NOTE this can break things if not handled carefully.",
+                    "required": false
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}

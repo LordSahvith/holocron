@@ -1,0 +1,8 @@
+<div class="projectGallery-slide">
+    <div class="projectGallery-slide-img">
+        <isprint value="${pdict.regions.media.render()}" encoding="off" />
+    </div>
+    <isif condition="${pdict.caption}">
+    <h6 class="projectGallery-slide-title">${pdict.caption}</h6>
+    </isif>
+</div>

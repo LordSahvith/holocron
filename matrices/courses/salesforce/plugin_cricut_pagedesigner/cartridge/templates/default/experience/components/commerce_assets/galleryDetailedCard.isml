@@ -1,0 +1,23 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addJs('/js/galleryDetailedCard.js');
+</isscript>
+
+<div class="gallery-slide shopping-gallery-slide" <isprint value="${pdict.specialAttributes}" encoding="off" /> >
+    <span class="js-info-toggle">
+        <div class="shopping-gallery-inner with-info">
+            <div class="shopping-gallery-image">
+                <img src="${pdict.productImage}" alt="" />
+            </div>
+            <div class="product-slide-text">
+                <p class="p-bold">${pdict.headerText}</p>
+                <div class="product-additional-info">
+                    <p class="small">${pdict.bodyText}</p>
+                </div>
+            </div>
+        </div>
+        <div class="product-info-toggle small-bold" data-closed="${Resource.msg('label.close', 'common', null)}" data-open="${Resource.msg('label.moreinfo', 'common', null)}">
+            ${Resource.msg('label.moreinfo', 'common', null)}
+        </div>
+    </span>
+</div>

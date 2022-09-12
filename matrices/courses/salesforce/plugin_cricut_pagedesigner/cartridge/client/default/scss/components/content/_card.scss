@@ -1,0 +1,15 @@
+.card {
+    img {
+        display: block;
+        width: 100%;
+    }
+
+    .card-body {
+        padding: $spacer-7 0 0;
+        margin-bottom: 0;
+
+        .card-title {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "name": "Avatar",
+    "description": "Avatar",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+      {
+        "id": "image",
+        "name": "Avatar",
+        "description": "Avatar to be shown",
+        "attribute_definitions": [
+          {
+            "id": "img",
+            "name": "Image",
+            "description": "If an image is desired over an SVG, link to the image here. Image should be at least 45x45px.",
+            "type": "image",
+            "required": false
+          },
+          {
+            "id": "imgAlt",
+            "name": "Image Alt Text",
+            "description": "Add if image is not described by adjacent text.",
+            "type": "string",
+            "required": false,
+            "default_value": ""
+          },
+          {
+            "id": "swatch",
+            "name": "SVG Swatch",
+            "description": "SVG to use if not using image.",
+            "type": "enum",
+            "values": [
+              "Green 1",
+              "Green 2",
+              "Corn and Orchid",
+              "Salmon and Indigo",
+              "Indigo and Sky"
+            ],
+            "required": true
+          }
+        ]
+      }
+    ],
+    "region_definitions": []
+  }

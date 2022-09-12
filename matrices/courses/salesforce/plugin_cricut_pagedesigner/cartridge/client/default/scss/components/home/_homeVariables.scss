@@ -1,0 +1,4 @@
+$link-trasition: transform 0.4s cubic-bezier(0.58, 0.3, 0.005, 1);
+$nav-dropdown-out-transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), visibility 0s 0.8s linear;
+$nav-dropdown-in-transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), visibility 0s 0s linear;
+$nav-dropdown-in-transition-mobile: max-height 0.7s cubic-bezier(0.19, 1, 0.22, 1);

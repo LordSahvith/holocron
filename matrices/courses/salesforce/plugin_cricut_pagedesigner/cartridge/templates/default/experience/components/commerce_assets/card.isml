@@ -1,0 +1,19 @@
+
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/components/pd-card.css');
+</isscript>
+<div class="card bg-transparent border-0">
+    <isif condition="${pdict.regions.media.region.size != 0}">
+        <isprint value="${pdict.regions.media.setClassName('card-img-top' + pdict.textCenter).setTagName('div').render()}" encoding="off" />
+    </isif>
+    <isif condition="${pdict.regions.cardTitle.region.size != 0 && pdict.regions.cardBody.region.size != 0}">
+        <div class="card-body px-0 bg-transparent${pdict.textCenter}">
+            <isprint value="${pdict.regions.cardTitle.setClassName('card-title').setTagName('div').render()}" encoding="off" />
+            <isprint value="${pdict.regions.cardBody.setClassName('card-text').setTagName('div').render()}" encoding="off" />
+        </div>
+    </isif>
+    <isif condition="${pdict.regions.cardLink.region.size != 0}">
+        <isprint value="${pdict.regions.cardLink.setClassName('card-footer bg-transparent border-0 p-0' + pdict.textCenter).setTagName('div').render()}" encoding="off" />
+    </isif>
+</div>

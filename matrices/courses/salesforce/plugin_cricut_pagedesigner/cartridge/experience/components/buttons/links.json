@@ -1,0 +1,95 @@
+{
+    "name": "Link",
+    "description": "Links to be used inside content.",
+    "group": "buttons",
+    "attribute_definition_groups": [
+        {
+            "id": "link",
+            "name": "Link",
+            "description": "Link attributes",
+            "attribute_definitions": [
+                {
+                    "id": "type",
+                    "name": "Link Type",
+                    "description": "Choose link type. Primary is default.",
+                    "type": "enum",
+                    "values": [
+                        "primary",
+                        "secondary",
+                        "tertiary",
+                        "tertiary-reversed"
+                    ],
+                    "required": false,
+                    "default_value": "primary"
+                },
+                {
+                    "id": "btncolor",
+                    "name": "Link Color",
+                    "description": "Choose link color.",
+                    "type": "enum",
+                    "values": [
+                        "black",
+                        "forrest",
+                        "shamrock",
+                        "white"
+                    ],
+                    "required": false,
+                    "default_value": "black"
+                },
+                {
+                    "id": "text",
+                    "name": "Link Text",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "linkAriaLabel",
+                    "name": "aria-label (for ADA compliance)",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "id": "url",
+                    "name": "Link URL or Component ID",
+                    "description": "Choose/Enter link or component ID to scroll to.",
+                    "type": "url",
+                    "required": true
+                },
+                {
+                    "id": "blank",
+                    "name": "Open In New Tab",
+                    "description": "Does the link take you outside of cricut.com?",
+                    "type": "boolean",
+                    "required": false,
+                    "default_value": false
+                }
+            ]
+        },
+        {
+          "id": "gaEvents",
+          "name": "GA Events",
+          "description": "Set GA Attribute Data",
+          "attribute_definitions": [
+            {
+                "id": "category",
+                "name": "Category",
+                "type": "string",
+                "required": false
+            },
+            {
+                "id": "action",
+                "name": "Action",
+                "type": "string",
+                "required": false
+            },
+            {
+                "id": "label",
+                "name": "Label",
+                "type": "string",
+                "required": false
+            }
+          ]
+        }
+    ],
+    "region_definitions": []
+}

@@ -1,0 +1,23 @@
+.page-designer {
+    .hh-promo-banner {
+        padding: $spacer-3;
+        font-size: $font-size-md;
+        font-weight: $font-weight-regular;
+        line-height: 1;
+        text-align: center;
+
+        a {
+            text-decoration: underline;
+        }
+
+        &--black {
+            background-color: $black;
+            color: $white;
+        }
+
+        &--shamrock {
+            background-color: $shamrock;
+            color: $forrest;
+        }
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "name": "Card Component",
+    "description": "Card component used in the grid and tile layout",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "linkPosition",
+            "name": "Text Alignment",
+            "attribute_definitions": [
+                {
+                    "id": "centerLinkPosition",
+                    "name": "Center Text",
+                    "type": "boolean",
+                    "required": false
+                }
+            ]
+        }
+    ],
+    "region_definitions": [
+        {
+            "id": "media",
+            "name": "Media",
+            "max_components": 1,
+            "default_component_constructors": [
+                {
+                    "type_id": "commerce_assets.imageResponsive",
+                    "name": "Image - Responsive"
+                }
+            ]
+        },
+        {
+            "id": "cardTitle",
+            "name": "Card Title",
+            "max_components": 1,
+            "default_component_constructors": [
+                {
+                    "type_id": "commerce_assets.text",
+                    "name": "Text"
+                }
+            ]
+        },
+        {
+            "id": "cardBody",
+            "name": "Card Body",
+            "max_components": 1,
+            "default_component_constructors": [
+                {
+                    "type_id": "commerce_assets.text",
+                    "name": "Text"
+                }
+            ]
+        },
+        {
+            "id": "cardLink",
+            "name": "Card Footer",
+            "max_components": 1,
+            "default_component_constructors": [
+                {
+                    "type_id": "buttons.links",
+                    "name": "Link"
+                }
+            ]
+        }
+    ]
+}

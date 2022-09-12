@@ -1,0 +1,13 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/components/pd-buttons.css');
+    assets.addJs('/js/components/addToCart.js');
+</isscript>
+
+<input type="hidden" class="add-to-cart-url" value="${URLUtils.url('Cart-AddProduct')}" />
+<input type="hidden" class="quantity-select" value="1" />
+<button class="add-to-cart-global pd-button${pdict.buttonColor}"
+    data-pid="${pdict.productId}"<isprint value="${pdict.buttonAriaLabel}" encoding="off" />>
+    ${Resource.msg('button.addtocart', 'common', null)}
+</button>
+

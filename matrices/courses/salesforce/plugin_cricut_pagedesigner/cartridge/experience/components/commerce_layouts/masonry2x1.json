@@ -1,0 +1,74 @@
+{
+    "name": "Masonry 2 columns x 1 row",
+    "description": "This is a layout component of 2 row by 1 column for mobile and 1 row by 2 columns for desktop/tablet.",
+    "group": "commerce_layouts",
+    "attribute_definition_groups": [
+        {
+            "id": "contentorder",
+            "name": "Content Order",
+            "description": "What order the block is in for mobile/desktop.",
+            "attribute_definitions": [
+                {
+                    "id": "order1",
+                    "name": "Content Block 1 Mobile Order",
+                    "description": "What order the content is from Mobile up.",
+                    "type": "enum",
+                    "values": [
+                        "1",
+                        "2"
+                    ],
+                    "required": true,
+                    "default_value": "1"
+                },
+                {
+                    "id": "order1Desktop",
+                    "name": "Content Block 1 Desktop Order",
+                    "description": "What order the content is from Mobile up.",
+                    "type": "enum",
+                    "values": [
+                        "1",
+                        "2"
+                    ],
+                    "required": true,
+                    "default_value": "1"
+                },
+                {
+                    "id": "order2",
+                    "name": "Content Block 2 Mobile Order",
+                    "description": "What order the content is from Mobile up.",
+                    "type": "enum",
+                    "values": [
+                        "1",
+                        "2"
+                    ],
+                    "required": true,
+                    "default_value": "2"
+                },
+                {
+                    "id": "order2Desktop",
+                    "name": "Content Block 2 Desktop Order",
+                    "description": "What order the content is from Mobile up.",
+                    "type": "enum",
+                    "values": [
+                        "1",
+                        "2"
+                    ],
+                    "required": true,
+                    "default_value": "2"
+                }
+            ]
+        }
+    ],
+    "region_definitions": [
+        {
+            "id":"column1",
+            "name":"Column 1",
+            "component_type_exclusions": []
+        },
+        {
+            "id":"column2",
+            "name":"Column 2",
+            "component_type_exclusions": []
+        }
+    ]
+}

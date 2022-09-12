@@ -1,0 +1,15 @@
+<div class="hh-header-top__wrapper">
+    <div class="hh-header-top">
+        <div class="hh-login">
+            <isinclude url="${URLUtils.url('PDAccount-HomeHeader')}" />
+        </div>
+        <div class="hh-language-selector">
+            <div class="header-shop-related">
+                <isinclude url="${URLUtils.url('Page-Locale')}" />
+            </div>
+        </div>
+        <div class="accessibility-notice">
+            <a href="${URLUtils.url('Search-Show', 'cgid', 'legal')}#accessibility">${Resource.msg('global.accessibility', 'common', null)}</a>
+        </div>
+    </div>
+</div>

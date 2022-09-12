@@ -1,0 +1,25 @@
+<isscript>
+  var assets = require('*/cartridge/scripts/assets.js');
+  assets.addCss('/css/experience/components/pd_layouts/pdPlusGrid.css');
+  assets.addCss('/css/experience/components/pd_assets/html-markup.css');
+</isscript>
+
+<iscomment> HTML Markup Component </iscomment>
+<div class="html-markup-outer <isif condition="${pdict.boxPosition !== ''}">d-flex ${pdict.boxPosition}</isif> position-relative w-100 <isif condition="${pdict.backgroundPatterns !== 'undefined'}">${pdict.backgroundPatterns}</isif> ${pdict.txtAlignment}" 
+  <isif condition="${pdict.styleBGColor}"> <isprint value="${pdict.styleBGColor}" encoding="off" /></isif>>
+
+  <div class="position-relative" <isif condition="${pdict.styleTxtColor}"> <isprint value="${pdict.styleTxtColor}" encoding="off" /></isif>>
+
+    <iscomment> HTML Markup Placed here </iscomment>
+    <isif condition="${pdict.placeHTML !== ''}">
+      <isprint value="${pdict.placeHTML}" encoding="off" />
+    </isif>
+
+    <iscomment> If checkbox checked then Button will be shown </iscomment>
+    <isif condition="${pdict.isLinkActive === true}">
+      <div class="btn-wrap mt-3">
+        <a class="btn <isif condition="${pdict.btnClassName !== '' }">${pdict.btnClassName}</isif>" <isif condition="${pdict.btnExternal === true}">target="_blank"</isif> href="${pdict.btnURL}">${pdict.btnText}</a>
+      </div>
+    </isif>
+  </div>
+</div>

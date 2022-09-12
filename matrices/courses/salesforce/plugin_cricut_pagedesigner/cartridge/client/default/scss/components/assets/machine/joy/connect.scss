@@ -1,0 +1,127 @@
+@import '../../../../abstracts/index';
+
+.joy-connect {
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background-color: inherit;
+    margin-block-start: 60px;
+    margin-block-end: 60px;
+
+    .wrapper {
+        max-width: 1440px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 30px;
+        position: relative;
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, calc((100% - (3 * 24px)) / 4));
+            grid-template-rows: auto;
+            column-gap: 24px;
+
+            @include media-breakpoint-up(md) {
+                grid-template-columns: repeat(12, calc((100% - (11 * 24px)) / 12));
+            }
+        }
+    }
+
+    .connect-title {
+        grid-column: 1 / 5;
+        margin-bottom: 20px;
+    }
+
+    .connect-copy {
+        grid-column: 1 / 5;
+        margin-bottom: 50px;
+    }
+
+    .connect-visuals {
+        position: relative;
+        height: 0;
+        padding-bottom: 70%;
+    }
+
+    .right-visual {
+        position: absolute;
+        height: 90%;
+        left: 61%;
+        top: -1%;
+        will-change: transform, opacity;
+    }
+
+    .left-visual {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: -5%;
+        will-change: transform, opacity;
+        max-width: 700px;
+        width: 53vw;
+        object-fit: contain;
+    }
+
+    .rings {
+        position: absolute;
+        height: 41%;
+        top: 25%;
+        left: 48%;
+
+        &.desktop {
+            display: none;
+
+            @include media-breakpoint-up(md) {
+                display: block;
+            }
+        }
+
+        &.mobile {
+            display: block;
+
+            @include media-breakpoint-up(md) {
+                display: none;
+            }
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        .wrapper {
+            padding: 0 40px;
+        }
+
+        .connect-title {
+            grid-column: 2 / 8;
+        }
+
+        .connect-copy {
+            grid-column: 2 / 8;
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        margin-block-start: 120px;
+        margin-block-end: 120px;
+
+        .wrapper {
+            padding: 0 40px;
+        }
+
+        .connect-title {
+            grid-column: 3 / 11;
+            margin-bottom: 31px;
+        }
+
+        .connect-copy {
+            grid-column: 4 / 10;
+            margin-bottom: 70px;
+        }
+
+        .right-visual {
+            height: 68%;
+            left: 61%;
+            top: 11%;
+        }
+    }
+}
