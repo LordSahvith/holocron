@@ -23,6 +23,8 @@ nbproject
 **/bare-bones/css/
 **/bootstrap
 
+!**/frameworks/bootstrap/
+
 !**/examples/assets/
 !**/examples/Practice/
 !**/examples/practice/
@@ -42,5 +44,3 @@ nbproject
 !**/sfcc/training/OCAPI_Settings/
 !**/sfcc/training/sfra-training-site/
 !**/sfcc/training/tooling/
-
-!**/frameworks/bootstrap/
