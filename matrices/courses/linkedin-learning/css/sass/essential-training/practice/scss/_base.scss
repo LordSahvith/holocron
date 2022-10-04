@@ -1,6 +1,7 @@
-$bg: #999;
+@use "variables";
 
 body {
+    background: variables.$bg;
     min-height: 100vh;
     max-width: 1280px;
     margin: 0 auto;
