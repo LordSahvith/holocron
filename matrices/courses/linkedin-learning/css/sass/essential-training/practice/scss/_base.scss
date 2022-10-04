@@ -1,6 +1,7 @@
 @use "variables";
 
 body {
+    box-sizing: border-box;
     background: variables.$bg;
     min-height: 100vh;
     max-width: 1280px;

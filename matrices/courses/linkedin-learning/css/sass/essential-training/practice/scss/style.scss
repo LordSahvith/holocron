@@ -8,3 +8,30 @@ h1 {
 p {
     color: var.$secondary;
 }
+
+.container {
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.btns {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    .btn {
+        border: none;
+        padding: 8px 12px;
+        margin: 0 8px;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #444
+        }
+    }
+
+    .container & {
+        justify-content: end;
+    }
+}
