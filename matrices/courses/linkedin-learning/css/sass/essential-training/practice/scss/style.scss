@@ -1,5 +1,6 @@
 @use "variables" as var;
 @use "base";
+@use "mixins/btn";
 
 h1 {
     color: var.$primary;
@@ -20,15 +21,7 @@ p {
     align-items: center;
 
     .btn {
-        border: none;
-        padding: 8px 12px;
-        margin: 0 8px;
-        transition: background-color 0.2s ease;
-
-        &:hover {
-            cursor: pointer;
-            background-color: #444
-        }
+        @include btn.btn(#aaa);
     }
 
     .container & {
