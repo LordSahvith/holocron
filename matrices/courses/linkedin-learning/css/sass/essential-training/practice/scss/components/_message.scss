@@ -1,0 +1,19 @@
+.message {    
+    width: 80vw;
+    max-width: 800px;
+    margin: 24px auto;
+    padding: 24px;
+    text-align: left;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+
+    h2 {
+        color: #fff;
+        font-size: 48px;
+        margin: 12px 0;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}

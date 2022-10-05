@@ -30,6 +30,5 @@ p {
     }
 }
 
-.message {
-    @include message.message;
-}
+@include message.message;
+@include message.message("-info", #333);
