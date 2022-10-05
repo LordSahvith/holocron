@@ -3,6 +3,15 @@
 @use "mixins/button" as btn;
 @use "mixins/message";
 
+/* comments */
+/* regular css -- published */
+/* multi-line 
+    -- published */
+// JS style -- unpublished
+/*! forced publish */
+$testVar: 'is pretty cool';
+/* interpolation: #{$testVar} */
+
 h1 {
     color: var.$primary;
 }
