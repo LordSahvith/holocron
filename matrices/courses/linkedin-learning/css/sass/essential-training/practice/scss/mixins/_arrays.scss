@@ -1,7 +1,7 @@
 @use "../components/button";
 
 $myList1: primary, secondary, warning;
-$myList2: [red, purple, black];
+$myList2: (red, purple, black);
 /*! 
     ARRAY FUNCTIONS
     length: #{length($myList1)}
@@ -31,4 +31,12 @@ $buttons: -primary blue white, -secondary green black;
 
 @each $name, $bg, $color in $buttons {
     @include button($name, $bg, $color);
+}
+
+$font-size: (3rem, 2.5rem, 2rem);
+
+@for $i from 1 through length($font-size) {
+    h#{$i} {
+        font-size: nth($font-size, $i);
+    }
 }
