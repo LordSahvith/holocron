@@ -1,6 +1,7 @@
 @use "variables" as var;
 @use "base";
 @use "mixins/button" as btn;
+@use "mixins/message";
 
 h1 {
     color: var.$primary;
@@ -27,4 +28,8 @@ p {
     .container & {
         justify-content: end;
     }
+}
+
+.message {
+    @include message.message;
 }

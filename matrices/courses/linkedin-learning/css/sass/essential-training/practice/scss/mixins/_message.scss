@@ -1,0 +1,30 @@
+@mixin message ($msgColor: #666, $infoColor: #333) {
+    background-color: $msgColor;
+    width: 80vw;
+    max-width: 800px;
+    margin: 24px auto;
+    padding: 24px;
+    text-align: left;
+    border: 1px solid lighten($color: $msgColor, $amount: 25%);
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+
+    h2 {
+        color: #fff;
+        font-size: 48px;
+        margin: 12px 0;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: lighten($color: $msgColor, $amount: 10%);
+    }
+
+    &-info {
+        background-color: $infoColor;
+
+        &:hover {
+            background-color: lighten($color: $infoColor, $amount: 10%);
+        }
+    }
+}
