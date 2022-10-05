@@ -2,7 +2,7 @@
 
 @mixin message ($name: "", $msgColor: #666) {
     .message#{$name} {
-        @extend .message;
+        @extend %message;
         background-color: $msgColor;
         border: 1px solid lighten($color: $msgColor, $amount: 25%);
     
