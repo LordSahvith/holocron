@@ -1,3 +1,5 @@
+@use "../components/button";
+
 $myList1: primary, secondary, warning;
 $myList2: [red, purple, black];
 /*! 
@@ -12,3 +14,21 @@ $myList2: [red, purple, black];
     is-bracketed: #{is-bracketed($myList2)}
     list-separator: #{list-separator($myList2)} 
 */
+
+@mixin button($name: "", $bg: #444, $color: #fff) {
+    .button#{$name} {
+        @extend .btn;
+        background-color: $bg;
+        color: $color;
+    
+        &:hover {
+            background-color: darken($color: $bg, $amount: 10%);
+        }
+    }
+}
+
+$buttons: -primary blue white, -secondary green black;
+
+@each $name, $bg, $color in $buttons {
+    @include button($name, $bg, $color);
+}
