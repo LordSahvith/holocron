@@ -1,0 +1,14 @@
+$myList1: primary, secondary, warning;
+$myList2: [red, purple, black];
+/*! 
+    ARRAY FUNCTIONS
+    length: #{length($myList1)}
+    nth: #{nth($myList1, 2)}
+    set-nth: #{set-nth($myList1, 2, dark)}
+    index: #{index($myList2, black)}
+    append: #{append($myList1, danger, comma)}
+    join: #{join($myList1, $myList2, space)}
+    zip: #{zip($myList1, $myList2)}
+    is-bracketed: #{is-bracketed($myList2)}
+    list-separator: #{list-separator($myList2)} 
+*/
