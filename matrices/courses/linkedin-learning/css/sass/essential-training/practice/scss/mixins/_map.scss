@@ -9,14 +9,14 @@ $colorList: (
 
 /* #{map.get($colorList, "primary")} */
 
-@mixin btn($name: "", $bg: #444, $color: #fff, $oval: false) {
+@mixin btn($name: "", $bg: #444, $color: #fff, $pill: false) {
     .btn#{$name} {
         @extend .btn;
         background-color: $bg;
         color: $color;
 
-        @if $oval {
-            border-radius: 100%;
+        @if $pill {
+            border-radius: 20px;
         } @else {
             border-radius: 0;
         }
@@ -42,4 +42,4 @@ $buttons: (
     @include btn($key, $values...);
 }
 
-@include btn("-circle", red, $oval: true);
+@include btn("-pill", red, $pill: true);
