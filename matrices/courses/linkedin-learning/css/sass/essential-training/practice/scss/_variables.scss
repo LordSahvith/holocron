@@ -1,3 +1,11 @@
+@use "sass:color";
+
 $bg: #333;
 $primary: #d40000;
 $secondary: #fff;
+$color: red;
+
+/* #{color.adjust($color, $lightness: -20, $alpha: 0.4)} */
+/* #{transparentize($color, 0.9)} */
+/* #{lighten($color, 30%)} */
+/* #{darken($color, 20%)} */
