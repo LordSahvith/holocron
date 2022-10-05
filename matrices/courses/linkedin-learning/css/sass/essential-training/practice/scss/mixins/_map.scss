@@ -9,11 +9,17 @@ $colorList: (
 
 /* #{map.get($colorList, "primary")} */
 
-@mixin btn($name: "", $bg: #444, $color: #fff) {
+@mixin btn($name: "", $bg: #444, $color: #fff, $oval: false) {
     .btn#{$name} {
         @extend .btn;
         background-color: $bg;
         color: $color;
+
+        @if $oval {
+            border-radius: 100%;
+        } @else {
+            border-radius: 0;
+        }
     
         &:hover {
             background-color: darken($color: $bg, $amount: 10%);
@@ -35,3 +41,5 @@ $buttons: (
 @each $key, $values in $buttons {
     @include btn($key, $values...);
 }
+
+@include btn("-circle", red, $oval: true);
