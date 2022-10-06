@@ -1,0 +1,125 @@
+.gallery-slide {
+    &.shopping-gallery-slide {
+        background-color: #fff;
+    }
+
+    &.open .shopping-gallery-inner {
+        transform: translate3d(0, -150px, 0);
+    }
+
+    &.open .product-additional-info {
+        opacity: 1;
+        transition: opacity 0.15s 0.05s ease-out;
+    }
+
+    &:hover .shopping-gallery-inner.with-info img,
+    &:focus .shopping-gallery-inner.with-info img {
+        transform: scale(0.8);
+    }
+
+    &.open .shopping-gallery-inner.with-info img {
+        transform: scale(1);
+    }
+
+    .hide-element {
+        display: none;
+    }
+
+    .shopping-gallery-inner {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        padding: 24px;
+        will-change: transform;
+        transition: transform 0.25s ease-out;
+
+        &.with-info {
+            padding: 24px 24px 51px;
+            cursor: pointer;
+        }
+    }
+
+    .shopping-gallery-image {
+        flex-grow: 1;
+        text-align: center;
+        position: relative;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            will-change: transform;
+        }
+    }
+
+    .product-info-toggle {
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        text-transform: lowercase;
+    }
+
+    p.small {
+        font-size: 15px;
+    }
+}
+
+.shopping-gallery {
+    .gallery-slides-inner > * {
+        height: 284px;
+
+        @include media-breakpoint-up(md) {
+            height: 400px;
+        }
+    }
+
+    &.gallery-black {
+        .shopping-gallery-slide {
+            background-color: #171717;
+        }
+
+        .gallery-slides-inner {
+            p {
+                color: $white;
+            }
+        }
+    }
+
+    .product-slide-text {
+        position: relative;
+    }
+
+    .product-additional-info {
+        opacity: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transition: opacity 0.15s ease-out;
+    }
+
+    .product-info-toggle {
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+    }
+}
+
+.p-tag {
+    font-family: $font-Euclid;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.small-bold {
+    font-family: $font-Euclid;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
+}

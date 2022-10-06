@@ -1,0 +1,19 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/components/pd-editorialGallery.css');
+    assets.addJs('/js/components/editorialGallery.js');
+</isscript>
+
+<div class="${pdict.sectionclass}">
+    <div class="editorial-gallery-group-title">
+        <isprint value="${pdict.regions.editorialGalleryGroup2Header.render()}" encoding="off" />
+    </div>
+    <div class="editorial-gallery-items">
+        <div class="layout2-large">
+            <isprint value="${pdict.regions.editorialGalleryGroup2Region1.render()}" encoding="off" />
+        </div>
+        <div class="layout2-small">
+            <isprint value="${pdict.regions.editorialGalleryGroup2Region2.render()}" encoding="off" />
+        </div>
+    </div>
+</div>

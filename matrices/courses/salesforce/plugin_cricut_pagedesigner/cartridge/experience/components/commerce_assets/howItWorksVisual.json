@@ -1,0 +1,27 @@
+{
+    "name": "How It Works - Visual",
+    "description": "Image with star svgs",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "visualContent",
+            "name": "Video Content Text",
+            "description": "The image for the visual section.",
+            "attribute_definitions": [
+                {
+                    "id": "imgSrc",
+                    "name": "Image",
+                    "type": "image",
+                    "required": false
+                },
+                {
+                    "id": "imgAlt",
+                    "name": "Image Alt text",
+                    "type": "string",
+                    "required": false
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}

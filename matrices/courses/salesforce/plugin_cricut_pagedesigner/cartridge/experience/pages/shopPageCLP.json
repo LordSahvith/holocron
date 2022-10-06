@@ -1,0 +1,32 @@
+{
+    "name":"Shop CLP Page",
+    "description":"Shop CLP Page Type",
+    "attribute_definition_groups": [
+      {
+        "id": "productList",
+        "name": "Settings",
+        "description": "Product List Settings",
+        "attribute_definitions": [
+          {
+            "id": "category",
+            "name": "Category",
+            "type": "category",
+            "required": true,
+            "dynamic_lookup":{
+                "aspect_attribute_alias": "category"
+            }
+          }
+        ]
+      }
+    ],
+    "region_definitions":[
+      {
+        "id":"main",
+        "name":"Main Region",
+        "component_type_exclusions": [
+          { "type_id": "commerce_assets.campaignBanner" }
+        ]
+      }
+    ],
+    "supported_aspect_types": ["plp"]
+}

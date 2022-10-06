@@ -1,0 +1,71 @@
+{
+    "name": "Promotional Banner",
+    "description": "Under nav promotional banner",
+    "group": "banners",
+    "attribute_definition_groups": [
+        {
+            "id": "promotion",
+            "name": "Promotion callout text and link",
+            "description": "Configuration for the promotional banner text and link.",
+            "attribute_definitions": [
+                {
+                    "id": "bannerColor",
+                    "name": "Banner Color",
+                    "description": "Available Banner colors.",
+                    "type": "enum",
+                    "values": [
+                        "black",
+                        "shamrock"
+                    ],
+                    "required": true,
+                    "default_value": "black"
+                },
+                {
+                    "id": "bannerText",
+                    "name": "Banner Text",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "bannerLinkText",
+                    "name": "Link Text",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "id": "url",
+                    "name": "Link URL",
+                    "description": "Choose/Enter link",
+                    "type": "url",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "id": "gaEvents",
+            "name": "GA Events",
+            "description": "Set GA Attribute Data",
+            "attribute_definitions": [
+              {
+                  "id": "category",
+                  "name": "Category",
+                  "type": "string",
+                  "required": false
+              },
+              {
+                  "id": "action",
+                  "name": "Action",
+                  "type": "string",
+                  "required": false
+              },
+              {
+                  "id": "label",
+                  "name": "Label",
+                  "type": "string",
+                  "required": false
+              }
+            ]
+          }
+    ],
+    "region_definitions": []
+}

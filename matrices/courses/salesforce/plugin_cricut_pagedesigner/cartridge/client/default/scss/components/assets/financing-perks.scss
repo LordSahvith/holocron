@@ -1,0 +1,79 @@
+@import '~base/abstracts/index';
+@import '../../abstracts/index';
+
+.perks {
+    display: grid;
+    margin: 3rem auto;
+    width: calc(100% - 6rem);
+    max-width: 900px;
+
+    @include media-breakpoint-up(sm) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: $spacer-7;
+        margin: 6rem auto;
+    }
+}
+
+.perk {
+    display: flex;
+    flex: 0 1 $spacer-8;
+    margin-top: $spacer-6;
+    margin-bottom: $spacer-6;
+
+    @include media-breakpoint-up(sm) {
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        text-align: center;
+    }
+
+    &-icon {
+        margin-right: $spacer-7;
+
+        @include media-breakpoint-up(sm) {
+            margin-right: 0;
+        }
+
+        img {
+            width: $spacer-8;
+            height: auto;
+            max-width: none;
+        }
+    }
+
+    &-title {
+        font-size: $h6-font-size;
+        line-height: $spacer-6;
+        margin-bottom: $spacer-2;
+    }
+
+    &-body {
+        p {
+            font-size: $font-size-md;
+            line-height: $spacer-6;
+            max-width: 240px;
+            margin: 0 auto;
+        }
+    }
+}
+
+.experience-buttons-modal {
+    text-align: center;
+    margin-top: $spacer-8;
+    margin-bottom: $spacer-9;
+}
+
+.pd-legal-text {
+    margin: 3rem auto;
+    width: calc(100% - 6rem);
+    max-width: 900px;
+}
+
+.page-designer .pd-legal-text .copy-text ul {
+    padding-left: 0;
+    color: $black;
+
+    li {
+        margin-bottom: 0;
+    }
+}

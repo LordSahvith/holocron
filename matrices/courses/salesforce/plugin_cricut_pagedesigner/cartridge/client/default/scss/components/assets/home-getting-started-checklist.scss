@@ -1,0 +1,59 @@
+@import '../../abstracts/index';
+
+.page-designer {
+    .getting-started-checklist {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacer-8 $spacer-5;
+
+        &__title {
+            @include heading-h5;
+
+            margin-block-end: $spacer-2;
+        }
+
+        &__body {
+            .checklist-checkmark {
+                display: flex;
+                flex-direction: column;
+                row-gap: 0.5em;
+                margin-block-end: $spacer-2;
+                font-size: $font-size-md;
+                line-height: 24px;
+                list-style: none;
+
+                li {
+                    background: url("data:image/svg+xml,%3Csvg width='11' height='9' viewBox='0 0 11 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.80933 9L3.48973e-05 4.96598L1.31048 3.57823L5.11977 7.61224L3.80933 9Z' fill='black'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.1106 8.68365L11.0001 1.38775L9.68962 -1.19792e-05L2.80015 7.2959L4.1106 8.68365Z' fill='black'/%3E%3C/svg%3E") no-repeat left 0.475em;
+                    background-size: 0.75em;
+                    padding-left: 1.4em;
+                }
+            }
+
+            p:where(:not(:last-child)) {
+                margin-block-end: $spacer-2;
+            }
+
+            a {
+                @include cwg-animated-underline(false);
+
+                font-size: $font-size-md;
+                line-height: 24px;
+            }
+        }
+
+        @include media-breakpoint-up(md) {
+            grid-template-columns: repeat(2, 1fr);
+
+            &__title {
+                margin-bottom: $spacer-4;
+            }
+
+            &__body {
+                .checklist-checkmark,
+                p:where(:not(:last-child)) {
+                    margin-block-end: $spacer-4;
+                }
+            }
+        }
+    }
+}

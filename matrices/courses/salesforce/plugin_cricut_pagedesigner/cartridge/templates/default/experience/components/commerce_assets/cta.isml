@@ -1,0 +1,5 @@
+<isif condition="${pdict.cta}" >
+    <a href="${pdict.cta}" class="btn btn-cta-${pdict.ctastyle}">
+        ${pdict.ctatext}
+    </a>
+</isif>

@@ -1,0 +1,8 @@
+<div class="bundlesWrapper">
+    <div class="bundles bundles-three">
+        <isprint value="${pdict.regions.heading.setClassName('bundlesHeading').render()}" encoding="off"/>
+        <div class="bundles-groups">
+            <isprint value="${pdict.regions.bundleProductsRegion.render()}" encoding="off"/>
+        </div>
+    </div>
+</div>

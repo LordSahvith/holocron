@@ -1,0 +1,3 @@
+<section class="bundlesContainer">
+    <isprint value="${pdict.regions.bundleProductLayouts.render()}" encoding="off"/>
+</section>

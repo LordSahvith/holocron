@@ -1,0 +1,28 @@
+{
+    "name": "Grid layout for Tile / Card components",
+    "description": "This is a layout component of 3 columns * X rows on desktop, 2 columns * X rows on tablet, and 1 column * X rows on mobile",
+    "group": "commerce_layouts",
+    "attribute_definition_groups": [
+        {
+            "id": "gridHeaderCopy",
+            "name": "Header Copy",
+            "description": "Header copy for the grid and tile / card layout",
+            "attribute_definitions": [
+                {
+                    "id": "titleCopy",
+                    "name": "Title Copy",
+                    "description": "Optional copy to display above this layout",
+                    "type": "string",
+                    "required": false
+                }
+            ]
+        }
+    ],
+    "region_definitions": [
+        {
+            "id":"cards",
+            "name":"Cards",
+            "component_type_exclusions": []
+        }
+    ]
+}

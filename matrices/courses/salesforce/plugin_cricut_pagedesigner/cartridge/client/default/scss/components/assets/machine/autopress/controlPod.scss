@@ -1,0 +1,164 @@
+@import '../../../../abstracts/index';
+
+.page-designer {
+    .vulcan-control-pod {
+        position: relative;
+        margin-bottom: 0;
+        height: 150vh;
+
+        .wrapper {
+            max-width: 1440px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 30px;
+
+            @include media-breakpoint-up(md) {
+                padding: 0 40px;
+            }
+
+            @include media-breakpoint-up(lg) {
+                padding: 0 40px;
+            }
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, calc((100% - (3 * 24px)) / 4));
+            grid-template-rows: auto;
+            column-gap: 24px;
+
+            @include media-breakpoint-up(sm) {
+                grid-template-columns: repeat(12, calc((100% - (11 * 24px)) / 12));
+            }
+        }
+    }
+
+    /* stylelint-disable */
+    @media screen and (min-width: 641px) {
+        .vulcan-control-pod {
+            height: 200vh;
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        .vulcan-control-pod {
+            margin-bottom: inherit;
+        }
+    }
+
+    .vulcan-control-pod .wrapper {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+    }
+
+    .vulcan-control-pod h2 {
+        margin-bottom: 16px;
+    }
+
+    .vulcan-control-pod .grid-container {
+        align-items: center;
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 641px) {
+        .vulcan-control-pod .grid-container {
+            grid-template-rows: auto;
+        }
+    }
+
+    .vulcan-control-pod .pinned-scene {
+        height: 100vh;
+    }
+
+    .vulcan-control-pod .vulcan-control-video-container {
+        grid-column: 1 / 5;
+        align-self: end;
+        margin-bottom: 16px;
+        position: relative;
+        padding-bottom: 100%;
+    }
+
+    @media screen and (min-width: 641px) {
+        .vulcan-control-pod .vulcan-control-video-container {
+            grid-column: 2 / 8;
+            align-self: auto;
+            margin-bottom: 0;
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        .vulcan-control-pod .vulcan-control-video-container {
+            grid-column: 1 / 8;
+        }
+    }
+
+    .vulcan-control-pod .vulcan-control-video-container video {
+        position: absolute;
+        top: 34%;
+        left: 34%;
+        max-width: 35.5%;
+    }
+
+    .vulcan-control-pod .control-pod-image {
+        position: absolute;
+        width: 100%;
+    }
+
+    .vulcan-control-pod .vulcan-control-text-section {
+        grid-row-start: 2;
+        grid-column: 1 / 5;
+        position: relative;
+        text-align: center;
+        align-self: start;
+        transform: translateY(-15vw);
+    }
+
+    .vulcan-control-pod .vulcan-control-text-section .vulcan-control-text {
+        position: absolute;
+        width: 100%;
+    }
+
+    .vulcan-control-pod .vulcan-control-text-section .vulcan-control-text.control-text {
+        position: relative;
+    }
+
+    @media screen and (min-width: 641px) {
+        .vulcan-control-pod .vulcan-control-text-section {
+            grid-column: 2 / 8;
+        }
+
+        .vulcan-control-pod .vulcan-control-text-section p {
+            max-width: 410px;
+            margin: 0 auto;
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        .vulcan-control-pod .vulcan-control-text-section {
+            text-align: left;
+            grid-row-start: 1;
+            grid-column: 8 / 13;
+            align-self: auto;
+            transform: none;
+        }
+
+        .vulcan-control-pod .vulcan-control-text-section .vulcan-control-text {
+            left: 0;
+            width: 100%;
+        }
+
+        .vulcan-control-pod .vulcan-control-text-section p {
+            max-width: none;
+        }
+
+        .vulcan-control-pod .vulcan-control-text-section .control-pod-image {
+            left: -7.4%;
+        }
+
+        .vulcan-control-pod .vulcan-control-text-section .vulcan-control-video-container video {
+            left: 26%;
+        }
+    }
+    /* stylelint-enable */
+}

@@ -1,0 +1,164 @@
+@import '../../../../abstracts/index';
+
+.page-designer {
+    .vulcan-t-shirts {
+        .wrapper {
+            max-width: 1440px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 30px;
+
+            @include media-breakpoint-up(md) {
+                padding: 0 40px;
+            }
+
+            @include media-breakpoint-up(lg) {
+                padding: 0 40px;
+            }
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, calc((100% - (3 * 24px)) / 4));
+            grid-template-rows: auto;
+            column-gap: 24px;
+
+            @include media-breakpoint-up(sm) {
+                grid-template-columns: repeat(12, calc((100% - (11 * 24px)) / 12));
+            }
+        }
+    }
+
+    /* stylelint-disable */
+    .vulcan-t-shirts {
+        position: relative;
+    }
+
+    @media screen and (min-width: 1025px) {
+        .vulcan-t-shirts {
+            height: 175vh;
+        }
+
+        .vulcan-t-shirts .wrapper {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+        }
+    }
+
+    .vulcan-t-shirts .pinned-scene {
+        position: relative;
+    }
+
+    @media screen and (min-width: 1025px) {
+        .vulcan-t-shirts .pinned-scene {
+            height: 100vh;
+        }
+    }
+
+    .vulcan-t-shirts .shirt-text {
+        grid-column: 1 / 5;
+        align-self: center;
+        grid-row-start: 1;
+    }
+
+    .vulcan-t-shirts .shirt-title {
+        margin-bottom: 24px;
+    }
+
+    .vulcan-t-shirts .shirt-wrapper {
+        position: relative;
+        top: 0;
+        width: 100%;
+        overflow: hidden;
+        padding: 0 30px 30px 30px;
+    }
+
+    @media screen and (min-width: 641px) {
+        .vulcan-t-shirts .shirt-wrapper {
+            padding: 0 40px 40px 40px;
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        .vulcan-t-shirts .shirt-wrapper {
+            position: absolute;
+            height: 175vh;
+            padding: 0;
+        }
+    }
+
+    .vulcan-t-shirts .shirts {
+        grid-column: 6 / 13;
+        display: grid;
+        grid-template-columns: repeat(3, calc((100% - (2 * 1%)) / 3));
+        grid-template-rows: auto;
+        column-gap: 1%;
+        width: 100vw;
+        max-width: 1070px;
+    }
+
+    .vulcan-t-shirts .shirt-col {
+        will-change: transform;
+    }
+
+    .vulcan-t-shirts .shirt-image {
+        will-change: opacity;
+        transition: opacity 0.3s linear, transform 0.3s ease-out;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .vulcan-t-shirts .shirt-text {
+            grid-column: 2 / 8;
+            text-align: center;
+            will-change: transform;
+        }
+
+        .vulcan-t-shirts .shirts {
+            grid-column: 1 / 9;
+            width: auto;
+            max-width: none;
+        }
+
+        .vulcan-t-shirts .shirt-left-col picture:first-child .shirt-image,
+        .vulcan-t-shirts .shirt-right-col picture:last-child .shirt-image {
+            display: none;
+        }
+
+        .vulcan-t-shirts .shirt-copy {
+            margin-bottom: 70px;
+        }
+
+        .vulcan-t-shirts.reversed .shirt-text {
+            grid-row-start: 2;
+        }
+
+        .vulcan-t-shirts.reversed .shirts {
+            grid-row-start: 1;
+        }
+
+        .vulcan-t-shirts.reversed .shirt-title {
+            margin-bottom: 0;
+            margin-top: 24px;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        .vulcan-t-shirts .shirts {
+            grid-column-end: 5;
+        }
+
+        .vulcan-t-shirts .shirt-text {
+            grid-column: 1 / 5;
+        }
+
+        .vulcan-t-shirts .shirt-title {
+            margin-bottom: 16px;
+        }
+
+        .vulcan-t-shirts .shirt-copy {
+            margin-bottom: 35px;
+        }
+    }
+    /* stylelint-enable */
+}

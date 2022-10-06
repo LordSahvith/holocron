@@ -1,0 +1,16 @@
+<div class="gallery-slide text-only-slide" style="background-color: ${pdict.backgroundColor}">
+    <div class="horizontal-gallery-cut ${pdict.cutColor} ${pdict.hideElement}">
+        <isprint value="${pdict.cut}" encoding="off" />
+    </div>
+    <isif condition="${pdict.testimonial != null}">
+    <p class="text-only ${pdict.textSizeClass}">${pdict.testimonial}</p>
+    </isif>
+    <isif condition="${pdict.testimonialContentExists}">
+    <isprint value="${pdict.regions.testimonialContent.render()}" encoding="off" />
+    </isif>
+    <isif condition="${pdict.tagExists}">
+    <div class="gallery-tag-container">
+        <isprint value="${pdict.regions.tag.render()}" encoding="off" />
+    </div>
+    </isif>
+</div>

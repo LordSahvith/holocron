@@ -1,0 +1,18 @@
+<div class="two-prices col-12">
+    <div class="row content-pad">
+        <div class="col-12">
+            <isset name="price" value="${pdict.product.price}" scope="page" />
+            <h6><isinclude template="product/components/pricing/main" /></h6>
+        </div>
+        <p class="font-size-sm">${Resource.msg('peryear', 'access', null)}</p>
+        
+        <input type="hidden" class="add-to-cart-url" value="${URLUtils.url('Cart-AddProduct')}">
+        <input type="hidden" class="quantity-select" value="1">
+        <button class="add-to-cart-global pd-button pd-button--black"
+            data-pid="${pdict.product.id}">
+            ${Resource.msg('button.addtocart', 'common', null)}
+        </button>
+
+        <p class="font-size-sm color--green02 m-0">${Resource.msg('premium.monthly', 'access', null)}</p>
+    </div>
+</div>

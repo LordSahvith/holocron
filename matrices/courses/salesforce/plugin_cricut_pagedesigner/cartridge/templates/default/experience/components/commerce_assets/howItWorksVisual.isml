@@ -1,0 +1,9 @@
+<div class="how-visual">
+    <isif condition="${pdict.imgSrc}">
+        <picture>
+            <source srcset="${pdict.imgSrcWith2x}" />
+            <img src="${pdict.imgSrc}" alt="${pdict.imgAlt}">
+        </picture>
+    </isif>
+    <isinclude template="svg/stars-circles-particle" />
+</div>

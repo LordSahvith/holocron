@@ -1,0 +1,40 @@
+.page-designer {
+    .copy-text {
+        ul,
+        ol {
+            padding-left: $spacer-7;
+            margin-bottom: $spacer-3;
+
+            li {
+                margin-bottom: $spacer;
+            }
+        }
+
+        ul {
+            list-style: disc;
+        }
+
+        ol {
+            list-style: decimal;
+        }
+
+        p {
+            + * {
+                margin-top: $spacer-3;
+            }
+        }
+    }
+
+    .fineprint {
+        font-size: $font-size-sm;
+        color: $mid-grey;
+
+        a {
+            @include cwg-animated-underline(false);
+
+            &::after {
+                bottom: -3px;
+            }
+        }
+    }
+}

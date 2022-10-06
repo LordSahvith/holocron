@@ -1,0 +1,8 @@
+<div class="hh-promo-banner${pdict.bannerColor}">
+    <span class="hh-promo-banner__text">${pdict.text}</span>
+    <isif condition="${pdict.url}">
+        <a href="${pdict.url}" class="hh-promo-banner__link"<isprint value="${pdict.gaEvent}" encoding="off" />>
+            ${pdict.linkText}
+        </a>
+    </isif>
+</div>

@@ -1,0 +1,81 @@
+@import '../../../../abstracts/index';
+
+.joy-long-cut {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    background-color: inherit;
+
+    .wrapper {
+        padding: 0 30px;
+        max-width: 1440px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+
+    .long-cut-text {
+        grid-column: 1 / 5;
+        align-self: center;
+        margin-bottom: 65px;
+        text-align: center;
+    }
+
+    .long-cut-title {
+        margin-bottom: 20px;
+        font-size: 32px;
+        line-height: 42px;
+    }
+
+    .long-cut-copy {
+        max-width: 636px;
+        margin: 0 auto;
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .long-cut-image {
+        max-width: none;
+        max-height: calc(100vh - 72px);
+    }
+
+    @include media-breakpoint-up(md) {
+        .wrapper {
+            padding: 0 40px;
+        }
+
+        .long-cut-text {
+            grid-column: 2 / 8;
+            margin-block-end: 85px;
+        }
+
+        .long-cut-title {
+            margin-bottom: 32px;
+            font-size: 42px;
+        }
+
+        .long-cut-copy {
+            font-size: 19px;
+            line-height: 1.5;
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        .wrapper {
+            padding: 0 70px;
+        }
+
+        .long-cut-text {
+            grid-column: 3 / 11;
+        }
+
+        .long-cut-title {
+            font-size: 68px;
+            line-height: 1.1;
+        }
+
+        .long-cut-copy {
+            font-size: 20px;
+        }
+    }
+}

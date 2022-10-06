@@ -1,0 +1,95 @@
+/**************************************
+Helper Name: Animated Underline
+
+Description: adds animated underline to the specified parent's child span/div element
+
+Classes: List of classes and modifiers
+    * parent {any block}:
+        - .cwg-animated-underline()
+    * children:
+        - span or div
+
+This Component uses the following:
+    * Helpers:
+        - colors
+    * Components:
+**********************************/
+$underline-color: currentColor;
+
+// adds underline to element to activate by hover
+// standard is hidden until hover and then it goves left to right; passing false will make the underline visible and disappear on hover
+
+@mixin cwg-animated-underline-after ($standard : true) {
+    content: "";
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $underline-color;
+    transition: transform 0.4s cubic-bezier(0.58, 0.3, 0.005, 1);
+
+    @if $standard {
+        transform: scale3d(0, 1, 1);
+        transform-origin: 100% 50%;
+    }
+
+    @else {
+        transform: scale3d(1, 1, 1);
+        transform-origin: 0% 50%;
+    }
+}
+
+// adds underline to element to activate by hover
+// standard is hidden until hover and then it goves left to right; passing false will make the underline visible and disappear on hover
+
+@mixin cwg-animated-underline-after-hover ($standard : true) {
+    transition: transform 0.4s cubic-bezier(0.58, 0.3, 0.005, 1);
+
+    @if $standard {
+        transform: scale3d(1, 1, 1);
+        transform-origin: 0% 50%;
+    }
+
+    @else {
+        transform: scale3d(0, 1, 1);
+        transform-origin: 100% 50%;
+    }
+}
+
+@mixin cwg-animated-underline ($standard : true) {
+    text-decoration: none;
+    position: relative;
+
+    &::after {
+        @include cwg-animated-underline-after($standard);
+    }
+
+    &:hover,
+    &:focus {
+        &::after {
+            @include cwg-animated-underline-after-hover($standard);
+        }
+    }
+}
+
+@mixin cwg-animated-underline-with-target ($targetElement, $standard : true) {
+    text-decoration: none;
+
+    #{$targetElement} {
+        position: relative;
+
+        &::after {
+            @include cwg-animated-underline-after($standard);
+        }
+    }
+
+    &:hover,
+    &:focus {
+        #{$targetElement} {
+            &::after {
+                @include cwg-animated-underline-after-hover($standard);
+            }
+        }
+    }
+}

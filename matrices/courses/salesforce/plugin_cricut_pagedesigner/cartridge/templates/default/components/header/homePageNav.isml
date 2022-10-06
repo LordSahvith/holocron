@@ -1,0 +1,36 @@
+<ul class="hh-navigation" role="menu">
+    <isloop items="${pdict.categories}" var="category">
+        <isif condition="${!category.subCategories}">
+            <li class="hh-nav-item" role="menuitem">
+                <div class="hh-nav-dropdown-toggle">
+                    <a href="${category.url}" class="hh-nav-link" tabindex="0" data-breadcrumbs="${category.breadcrumbs || []}">
+                        ${category.name}
+                    </a>
+                </div>
+            </li>
+        <iselse/>
+            <li class="hh-nav-item js-hh-nav-item" role="menuitem">
+                <div class="hh-nav-dropdown-toggle js-hh-sub-category">
+                    <span class="hh-nav-link" tabindex="0" role="button" aria-controls="menu-${category.id}" aria-haspopup="true" aria-expanded="false">
+                        ${category.name}
+                    </span>
+                    <isinclude template="svg/chevronDown" />
+                </div>
+                <div class="hh-nav-item-dropdown js-hh-nav-item-dropdown" id="menu-${category.id}" role="menu">
+                    <isloop items="${category.subCategories}" var="subCategory">
+                        <div class="hh-nav-dropdown-item" role="menuitem">
+                            <a class="hh-nav-dropdown-link" href="${subCategory.url}" data-breadcrumbs="${category.breadcrumbs || []}">
+                                <div class="hh-dropdown-nav-image">
+                                    <isif condition="${subCategory.custom.navigationImage}">
+                                        <img src="${subCategory.custom.navigationImage.URL}" alt="" />
+                                    </isif>
+                                </div>
+                                <p>${subCategory.name}</p>
+                            </a>
+                        </div>
+                    </isloop>
+                </div>
+            </li>
+        </isif>
+    </isloop>
+</ul>

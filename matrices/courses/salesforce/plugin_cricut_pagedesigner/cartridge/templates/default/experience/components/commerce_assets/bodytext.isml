@@ -1,0 +1,11 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/components/pd-bodytext.css');
+</isscript>
+
+<div class="body-text color--${pdict.textcolor} ${pdict.fontsize} 
+    ${pdict.linkcolor ? ' link-color-green' : ''}
+    ${pdict.margintop === '' ? '' : pdict.margintop + '--top'}
+    ${pdict.marginbottom === '' ? '' : pdict.marginbottom + '--bottom'}">
+    <isprint value="${pdict.content}" encoding="off" />
+</div>

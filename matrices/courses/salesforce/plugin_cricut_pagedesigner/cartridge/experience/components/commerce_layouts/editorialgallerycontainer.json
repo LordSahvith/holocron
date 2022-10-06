@@ -1,0 +1,39 @@
+{
+    "name": "Editorial Gallery - Multi Group Container",
+    "description": "This is a container component for use when multiple Editorial Galleries Groups are to be shown using a load more button. The first Editorial Gallery Group will be shown by default.",
+    "group": "commerce_layouts",
+    "attribute_definition_groups": [
+        {
+          "id": "gaEvents",
+          "name": "GA Events",
+          "description": "Set GA Attribute Data",
+          "attribute_definitions": [
+            {
+                "id": "category",
+                "name": "Category",
+                "type": "string",
+                "required": false
+            },
+            {
+                "id": "action",
+                "name": "Action",
+                "type": "string",
+                "required": false
+            },
+            {
+                "id": "label",
+                "name": "Label",
+                "type": "string",
+                "required": false
+            }
+          ]
+        }
+    ],
+    "region_definitions": [
+        {
+            "id":"editorialGalleryGroupsRegion",
+            "name":"Editorial Gallery Groups Region",
+            "component_type_exclusions": []
+        }
+    ]
+}

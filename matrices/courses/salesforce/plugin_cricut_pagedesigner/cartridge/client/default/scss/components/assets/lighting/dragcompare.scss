@@ -1,0 +1,168 @@
+@import '../../../abstracts/index';
+
+.page-designer {
+    .bright360-drag-compare {
+        color: $white;
+        padding-bottom: 96px;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+
+        --x: 50%;
+
+        .wrapper {
+            max-width: $breakpoint-xxl;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 30px;
+
+            @include media-breakpoint-up(md) {
+                padding: 0 40px;
+            }
+
+            @include media-breakpoint-up(lg) {
+                padding: 0 70px;
+            }
+        }
+
+        .grid-container {
+            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(4, calc((100% - (3 * 24px)) / 4));
+            grid-template-rows: auto;
+            column-gap: 24px;
+
+            @include media-breakpoint-up(sm) {
+                grid-template-columns: repeat(12, calc((100% - (11 * 24px)) / 12));
+            }
+        }
+    }
+
+    .bright360-drag-compare .compare-title {
+        margin-bottom: 32px;
+        font-size: $font-size-hero;
+        line-height: 1.1;
+    }
+
+    .bright360-drag-compare .compare-text {
+        grid-column: 1 / 5;
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: $font-size-xl;
+    }
+
+    .bright360-drag-compare .comparison-container {
+        position: relative;
+        font-size: 0;
+        line-height: 0;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .bright360-drag-compare .comparison-container h6 {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .bright360-drag-compare .comparison-container img {
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .bright360-drag-compare .left-section {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, var(--x) 0%, var(--x) 100%, 0% 100%);
+    }
+
+    .bright360-drag-compare .left-section h6 {
+        right: auto;
+        left: 16px;
+    }
+
+    .bright360-drag-compare .left-section,
+    .bright360-drag-compare .right-section,
+    .bright360-drag-compare .comparison-controls {
+        pointer-events: none;
+    }
+
+    .bright360-drag-compare .comparison-controls {
+        position: absolute;
+        z-index: 2;
+        width: 6px;
+        height: 100%;
+        top: 0;
+        left: calc(50% - 3px);
+        left: calc(var(--x) - 3px);
+        background-color: $white;
+    }
+
+    .bright360-drag-compare .drag-circle {
+        position: absolute;
+        width: 32px;
+        left: calc(50% - 16px);
+        top: calc(50% - 16px);
+    }
+
+    .bright360-drag-compare .comparison-range {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+        .bright360-drag-compare .comparison-wrapper {
+            padding: 0;
+        }
+
+        .bright360-drag-compare .comparison-container h6 {
+            right: 30px;
+        }
+
+        .bright360-drag-compare .left-section h6 {
+            left: 30px;
+        }
+
+        .bright360-drag-compare h6 {
+            font-size: 14px;
+            line-height: 21px;
+        }
+    }
+    /* stylelint-disable */
+    @media screen and (min-width: 641px) {
+        .bright360-drag-compare {
+            padding-bottom: 120px;
+            margin-top: -1px;
+        }
+
+        .bright360-drag-compare .compare-text {
+            grid-column: 2 / 8;
+        }
+
+        .bright360-drag-compare .drag-circle {
+            width: 64px;
+            left: calc(50% - 32px);
+            top: calc(50% - 32px);
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        .bright360-drag-compare {
+            margin-top: 0;
+        }
+
+        .bright360-drag-compare .compare-text {
+            grid-column: 3 / 11;
+        }
+
+        .bright360-drag-compare .compare-title {
+            margin-bottom: 24px;
+        }
+    }
+    /* stylelint-enable */
+}

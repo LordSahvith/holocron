@@ -1,0 +1,2 @@
+<iscomment> include app_cricut template for base PDP </iscomment>
+<isinclude template="product/bundleDetailsContent" />
