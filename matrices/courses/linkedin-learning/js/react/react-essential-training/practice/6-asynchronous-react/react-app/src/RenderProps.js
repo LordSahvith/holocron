@@ -21,7 +21,15 @@ function List({ data, renderItem, renderEmpty }) {
 
 function RenderProps() {
     return (
-        <List data={tahoe_peaks} renderEmpty={<p>This list is empty.</p>} renderItem={(item) => (<>{item.name} - {item.elevation} ft.</>)} />
+        <List
+            data={tahoe_peaks}
+            renderEmpty={<p>This list is empty.</p>}
+            renderItem={(item) => (
+                <>
+                    {item.name} - {item.elevation} ft.
+                </>
+            )}
+        />
     );
 }
 
