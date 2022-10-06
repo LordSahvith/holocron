@@ -24,6 +24,7 @@ function App() {
 
             <h2>Current secondary emotion is {secondary}.</h2>
             <button onClick={() => setSecondary('grateful')}>Grateful</button>
+            <button onClick={() => setSecondary('tired')}>Tired</button>
 
             <div>
                 <input
