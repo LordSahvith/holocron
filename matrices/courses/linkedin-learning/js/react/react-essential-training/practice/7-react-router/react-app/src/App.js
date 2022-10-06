@@ -1,5 +1,5 @@
 import './App.css';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 function CreateNav() {
     return (
@@ -10,6 +10,9 @@ function CreateNav() {
                 </li>
                 <li>
                     <Link to="/about">About</Link>
+                </li>
+                <li>
+                    <Link to="/about/history">History</Link>
                 </li>
                 <li>
                     <Link to="/contact">Contact</Link>
@@ -33,6 +36,7 @@ export function About() {
         <div>
             <CreateNav />
             <h1>About Us</h1>
+            <Outlet />
         </div>
     );
 }
@@ -42,6 +46,14 @@ export function Contact() {
         <div>
             <CreateNav />
             <h1>Contact Us</h1>
+        </div>
+    );
+}
+
+export function History() {
+    return (
+        <div>
+            <h1>Our History</h1>
         </div>
     );
 }
