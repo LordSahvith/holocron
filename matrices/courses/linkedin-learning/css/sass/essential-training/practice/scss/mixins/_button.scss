@@ -1,0 +1,10 @@
+@use "../components/button";
+
+@mixin btn ($color: #eee, $hover: #444) { 
+    @extend .btn;   
+    background-color: $color;
+
+    &:hover {
+        background-color: $hover;
+    }
+}
