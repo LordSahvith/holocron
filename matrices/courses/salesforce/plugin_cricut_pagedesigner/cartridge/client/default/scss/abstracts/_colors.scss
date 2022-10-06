@@ -1,0 +1,27 @@
+// colors
+$stone: #bebebe;
+$green-primary: #00a977;
+$forrest: #0a3728;
+$shamrock: #b9dcc8;
+$sand: #f0e6cd;
+$sky: #a5cdeb;
+$mid-grey: #949494;
+$salmon: #eb786e;
+
+// CSS Accessible color classes
+$colors: (
+    stone: $stone,
+    mid-grey: $mid-grey
+);
+
+@mixin color-modifiers ($attribute) {
+    @each $name, $hex in $colors {
+        &--#{$name} {
+            #{$attribute}: $hex;
+        }
+    }
+}
+
+.color {
+    @include color-modifiers('color');
+}

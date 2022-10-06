@@ -1,0 +1,18 @@
+<isinclude template="/components/modules" sf-toolkit="off" />
+
+<isdecorate template="common/layout/pdPage">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets.js');
+        assets.addCss('/css/pd-shopPage.css');
+        pdict.action = 'Home-ShowShop';
+    </isscript>
+
+    <isinclude template="/components/header/pageHeader" />
+    <div role="main" id="maincontent">
+        <h1 class="sr-only">${Resource.msg('global.storename', 'common', null)}</h1>
+
+        <div class="home-page__content">
+            <isprint value="${pdict.regions.main.render()}" encoding="off" />
+        </div>
+    </div>
+</isdecorate>

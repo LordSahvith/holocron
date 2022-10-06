@@ -1,0 +1,15 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/components/pd-paragraphtext.css');
+</isscript>
+
+<section class="paragraph-text ${pdict.containerWidth}">
+    <div class="paragraph-text__content${pdict.vposition}${pdict.hposition}${pdict.textpos}">
+        <div class="paragraph-text__content-heading">
+            <isprint value="${pdict.regions.heading.render()}" encoding="off" />
+        </div>
+        <div class="paragraph-text__content-body">
+            <isprint value="${pdict.regions.body.render()}" encoding="off" />
+        </div>
+    </div>
+</section>

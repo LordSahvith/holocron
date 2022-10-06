@@ -1,0 +1,22 @@
+{
+    "name": "Content Asset",
+    "description": "Insert a Content Asset",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+      {
+        "id": "caid",
+        "name": "Content Asset ID",
+        "description": "Content Asset ID to included",
+        "attribute_definitions": [
+          {
+            "id": "aid",
+            "name": "Asset ID",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    ],
+    "region_definitions": []
+  }
+  

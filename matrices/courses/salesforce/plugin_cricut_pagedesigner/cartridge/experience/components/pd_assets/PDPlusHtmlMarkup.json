@@ -1,0 +1,129 @@
+{
+    "name": "PD Plus HTML Markup",
+    "description": "HTML Markup component",
+    "group": "pd_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "HTML_Markup",
+            "name": "HTML Markup Component",
+            "description": "This component will display custom HTML Markup.",
+            "attribute_definitions": [
+                {
+                    "id": "placeHTML",
+                    "name": "Display Custom HTML",
+                    "description": "Display Custom HTML",
+                    "type": "text",
+                    "required": false
+                },
+                {
+                    "id": "bgColor",
+                    "name": "Set Background Color",
+                    "description": "Set Background Color",
+                    "required": false,
+                    "type": "custom",
+                    "editor_definition": {
+                        "type": "themer.colorpicker"
+                    }
+                },
+                {
+                    "id": "txtColor",
+                    "name": "Set Text Color",
+                    "description": "Set Text Color",
+                    "required": false,
+                    "type": "custom",
+                    "editor_definition": {
+                        "type": "themer.colorpicker"
+                    }
+                },
+                {
+                    "id": "backgroundPatterns",
+                    "name": "Set background patterns behind text",
+                    "description": "Set background patterns behind text",
+                    "type": "enum",
+                    "values": [
+                        "pattern-1",
+                        "pattern-2",
+                        "pattern-3",
+                        "pattern-4",
+                        "pattern-5",
+                        "pattern-6",
+                        "pattern-7",
+                        "pattern-8",
+                        "pattern-9",
+                        "pattern-10",
+                        "pattern-11",
+                        "pattern-12",
+                        "pattern-13",
+                        "pattern-14",
+                        "pattern-15",
+                        "pattern-16"
+                    ],
+                    "required": false
+                },
+                {
+                    "id": "txtAlignment",
+                    "name": "Text Alignment",
+                    "description": "Align the text in left, center, right or justified.",
+                    "type": "enum",
+                    "values": [
+                        "text-left",
+                        "text-center",
+                        "text-right"
+                    ],
+                    "default_value": "text-left",
+                    "required": false
+                },
+                {
+                    "id": "boxPosition",
+                    "name": "Box Position",
+                    "description": "Align HTML Markup on top, center, bottom.",
+                    "type": "enum",
+                    "values": [
+                        "align-items-start",
+                        "align-items-center",
+                        "align-items-end",
+                        "align-items-baseline",
+                        "align-items-stretch"
+                    ],
+                    "default_value": "align-items-start",
+                    "required": false
+                },
+                {
+                    "id": "btnClassName",
+                    "name": "Specify the button classes",
+                    "description": "Set Button class names i.e. btn-primary, btn-secondary, btn-success, btn-danger, btn-warning or Custom CSS Class Name",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "id": "isLinkActive",
+                    "name": "Display Button",
+                    "type": "boolean",
+                    "required": false
+                },
+                {
+                    "id": "btnURL",
+                    "name": "Place Button URL",
+                    "description": "Place Button URL",
+                    "type": "url",
+                    "required": false
+                },
+                {
+                    "id": "btnText",
+                    "name": "Place Button Text",
+                    "description": "Place Button Text",
+                    "type": "string",
+                    "required": false
+                },
+                {
+                    "id": "btnExternal",
+                    "name": "Open in New Tab",
+                    "description": "Open in New Tab",
+                    "type": "boolean",
+                    "required": false
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}

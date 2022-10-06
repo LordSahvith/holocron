@@ -1,0 +1,69 @@
+{
+    "name": "Horizontal Gallery",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+      {
+        "id": "theme",
+        "attribute_definitions": [
+          {
+            "id": "colorTheme",
+            "name": "horizontal gallery color theme",
+            "type": "enum",
+            "values": [
+              "default",
+              "linen",
+              "black"
+            ],
+            "required": true,
+            "default_value": "default"
+          }
+        ]
+      },
+      {
+        "id": "gaEvents",
+        "name": "Arrow GA Events",
+        "description": "Set GA Attribute Data to be applied to the Gallery slider arrow buttons",
+        "attribute_definitions": [
+          {
+              "id": "category",
+              "name": "Category",
+              "type": "string",
+              "required": false
+          },
+          {
+              "id": "action",
+              "name": "Action",
+              "type": "string",
+              "required": false
+          },
+          {
+              "id": "label",
+              "name": "Label",
+              "type": "string",
+              "required": false
+          }
+        ]
+      }
+    ],
+    "region_definitions": [
+      {
+        "id":"slides",
+        "name":"Slides",
+        "component_type_exclusions": [
+          { "type_id": "commerce_layouts.carousel" },
+          { "type_id": "commerce_assets.horizontalGallery" },
+          { "type_id": "commerce_layouts.mobileGrid1r1c" },
+          { "type_id": "commerce_layouts.mobileGrid2r1c" },
+          { "type_id": "commerce_layouts.mobileGrid2r2c" },
+          { "type_id": "commerce_layouts.mobileGrid2r3c" },
+          { "type_id": "commerce_layouts.mobileGrid3r1c" },
+          { "type_id": "commerce_layouts.mobileGrid3r2c" },
+          { "type_id": "commerce_layouts.popularCategories" },
+          { "type_id": "einstein.einsteinCarousel" },
+          { "type_id": "einstein.einsteinCarouselCategory" },
+          { "type_id": "einstein.einsteinCarouselProduct" },
+          { "type_id": "commerce_layouts.mobileGridLookBook" }
+        ]
+      }
+    ]
+  }

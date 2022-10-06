@@ -1,0 +1,227 @@
+@import '../../../../abstracts/index';
+
+.page-designer {
+    .easypress-toggle {
+        overflow: hidden;
+        margin: $spacer-11 0;
+
+        .cricut-toggle {
+            width: 190px;
+            height: 80px;
+            border-radius: 500px;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 60px;
+
+            .toggle-input,
+            .toggle-name {
+                pointer-events: none;
+                opacity: 0.0001;
+                position: absolute;
+            }
+
+            .toggle-label {
+                background-color: #d4d4d4;
+                cursor: pointer;
+                display: block;
+                height: 100%;
+                transition: background-color 0.2s;
+            }
+
+            .toggle-switch {
+                position: absolute;
+                top: 6px;
+                left: 8px;
+                width: 68px;
+                height: 68px;
+                background-color: #494949;
+                border-radius: 100px;
+                color: #fff;
+                display: grid;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(105px);
+                transition: background-color 0.3s, transform 0.3s;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+            }
+
+            .toggle-input {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+
+            .toggle-input {
+                &:checked {
+                    + .toggle-label {
+                        background-color: #b9dcc8;
+                    }
+
+                    + .toggle-label {
+                        .toggle-switch {
+                            background-color: #0a3728;
+                            transform: translateX(0);
+                        }
+                    }
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .switch-text {
+                font-size: 15px;
+                line-height: 22.5px;
+                margin-left: -2px;
+            }
+        }
+
+        .toggle-with-arrow {
+            display: flex;
+
+            .cricut-toggle {
+                margin-right: 0;
+
+                + svg {
+                    display: none;
+                }
+
+                @include media-breakpoint-up(md) {
+                    margin-right: 20px;
+
+                    + svg {
+                        display: block;
+                    }
+                }
+
+                @include media-breakpoint-up(lg) {
+                    margin-right: 90px;
+                }
+            }
+        }
+
+        .wrapper {
+            max-width: 1440px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 30px;
+
+            @include media-breakpoint-up(md) {
+                padding: 0 40px;
+            }
+
+            @include media-breakpoint-up(lg) {
+                padding: 0 40px;
+            }
+        }
+
+        .grid-container {
+            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(4, calc((100% - (3 * 24px)) / 4));
+            grid-template-rows: auto;
+            column-gap: 24px;
+
+            @include media-breakpoint-up(sm) {
+                grid-template-columns: repeat(12, calc((100% - (11 * 24px)) / 12));
+            }
+
+            @include media-breakpoint-down(sm) {
+                display: flex;
+                flex-direction: column;
+
+                .toggle-text {
+                    order: 2;
+                    margin-top: $spacer-8;
+                    margin-bottom: 0;
+                }
+
+                .toggle-visuals {
+                    order: 1;
+                }
+            }
+        }
+
+        .toggle-text {
+            grid-row-start: 1;
+            grid-column: 1 / 6;
+        }
+
+        .toggle-title {
+            margin-bottom: 24px;
+        }
+
+        .easypress-info {
+            margin-top: 20px;
+        }
+
+        .toggle-with-arrow {
+            margin-top: 45px;
+        }
+
+        .toggle-visuals {
+            height: 0;
+            padding-bottom: 100%;
+            position: relative;
+            grid-column: 6 / 13;
+        }
+
+        .toggle-visual {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-height: 100%;
+        }
+
+        .second-text > *,
+        .second-visual {
+            display: none;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .first-visual {
+            max-width: 608px;
+        }
+
+        .second-visual {
+            transform: scale(1.2);
+            max-width: 341px;
+        }
+
+        @include media-breakpoint-down(sm) {
+            .toggle-text {
+                grid-column: 1 / 5;
+                margin-bottom: 40px;
+            }
+
+            .toggle-visuals {
+                grid-column: 1 / 5;
+                grid-row-start: 2;
+            }
+        }
+
+        @include media-breakpoint-down(xs) {
+            .toggle-text {
+                grid-column-end: 5;
+                margin-bottom: 60px;
+            }
+
+            .toggle-visuals {
+                grid-column-end: 5;
+            }
+
+            .toggle-title {
+                margin-bottom: 16px;
+            }
+
+            .easypress-toggle .toggle-with-arrow {
+                margin-top: 28px;
+            }
+        }
+    }
+}

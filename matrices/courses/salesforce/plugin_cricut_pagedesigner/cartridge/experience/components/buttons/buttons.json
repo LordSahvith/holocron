@@ -1,0 +1,80 @@
+{
+    "name": "Button",
+    "description": "Buttons to be used inside content.",
+    "group": "buttons",
+    "attribute_definition_groups": [
+        {
+            "id": "button",
+            "name": "Button",
+            "description": "Button attributes",
+            "attribute_definitions": [
+                {
+                    "id": "type",
+                    "name": "Button Type",
+                    "description": "Choose button type. Primary is default.",
+                    "type": "enum",
+                    "values": [
+                        "primary",
+                        "secondary",
+                        "tertiary",
+                        "tertiary-reversed"
+                    ],
+                    "required": false,
+                    "default_value": "primary"
+                },
+                {
+                    "id": "btncolor",
+                    "name": "Button Color",
+                    "description": "Choose button color.",
+                    "type": "enum",
+                    "values": [
+                        "black",
+                        "forrest",
+                        "shamrock",
+                        "white"
+                    ],
+                    "required": false,
+                    "default_value": "black"
+                },
+                {
+                    "id": "text",
+                    "name": "Button Text",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "buttonAriaLabel",
+                    "name": "aria-label (for ADA compliance)",
+                    "type": "string",
+                    "required": false
+                }
+            ]
+        },
+        {
+          "id": "gaEvents",
+          "name": "GA Events",
+          "description": "Set GA Attribute Data",
+          "attribute_definitions": [
+            {
+                "id": "category",
+                "name": "Category",
+                "type": "string",
+                "required": false
+            },
+            {
+                "id": "action",
+                "name": "Action",
+                "type": "string",
+                "required": false
+            },
+            {
+                "id": "label",
+                "name": "Label",
+                "type": "string",
+                "required": false
+            }
+          ]
+        }
+    ],
+    "region_definitions": []
+}

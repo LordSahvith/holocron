@@ -1,0 +1,29 @@
+{
+    "name": "Textural Content Text",
+    "description": "Full Width Video or Image with scrolling text.",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "videoContentText",
+            "name": "Video Content Text",
+            "description": "The text for textural videos.",
+            "attribute_definitions": [
+                {
+                    "id": "texturalContent",
+                    "name": "Textural Video Text",
+                    "type": "string",
+                    "required": true
+                },
+                {
+                    "id": "contentColor",
+                    "name": "Content White?",
+                    "description": "Black is default",
+                    "type": "boolean",
+                    "required": false,
+                    "default_value": false
+                }
+            ]
+        }
+    ],
+    "region_definitions": []
+}

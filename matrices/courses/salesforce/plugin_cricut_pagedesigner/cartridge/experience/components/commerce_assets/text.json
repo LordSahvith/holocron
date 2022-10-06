@@ -1,0 +1,142 @@
+{
+    "name": "Text",
+    "description": "Text for copy or body",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+      {
+        "id": "text",
+        "name": "Text copy",
+        "description": "Text to be placed in as body or copy",
+        "attribute_definitions": [
+          {
+              "id": "text",
+              "name": "Text",
+              "type": "string",
+              "required": false
+          },
+          {
+            "id": "texttype",
+            "name": "HTML Tag",
+            "description": "Text Tag Type for SEO.",
+            "type": "enum",
+            "values": [
+              "h1",
+              "h2",
+              "h3",
+              "h4",
+              "h5",
+              "h6",
+              "p",
+              "span"
+            ],
+            "required": false,
+            "default_value": "span"
+          },
+          {
+            "id": "fontface",
+            "name": "Font Face",
+            "description": "Font Face for the text.",
+            "type": "enum",
+            "values": [
+              "Euclid",
+              "Graphik",
+              "Gascogne"
+            ],
+            "required": false,
+            "default_value": "Euclid"
+          },
+          {
+            "id": "fontsize",
+            "name": "Font Size",
+            "description": "Font size for the text.",
+            "type": "enum",
+            "values": [
+              "small",
+              "medium",
+              "large",
+              "x-large",
+              "h5",
+              "h4",
+              "h3",
+              "h2",
+              "h1",
+              "hero"
+            ],
+            "required": false
+          },
+          {
+            "id": "textcolor",
+            "name": "Font Color",
+            "description": "Font color options from the style guide.",
+            "type": "enum",
+            "values": [
+              "black",
+              "white",
+              "green02",
+              "mid-grey"
+            ],
+            "required": false,
+            "default_value": "black"
+          }
+        ]
+      },
+      {
+        "id": "margins",
+        "name": "Margins",
+        "description": "Enabled Margins.",
+        "attribute_definitions": [
+          {
+            "id": "margintop",
+            "name": "Add Top Margins",
+            "description": "Enable Top Margins on this element.",
+            "type": "enum",
+            "values": [
+              "0px",
+              "4px",
+              "8px",
+              "10px",
+              "12px",
+              "15px",
+              "16px",
+              "18px",
+              "20px",
+              "24px",
+              "30px",
+              "48px",
+              "64px",
+              "70px",
+              "none"
+            ],
+            "default_value": "none",
+            "required": false
+          },
+          {
+            "id": "marginbottom",
+            "name": "Add Bottom Margins",
+            "description": "Enable Bottom Margins on this element.",
+            "type": "enum",
+            "values": [
+              "0px",
+              "4px",
+              "8px",
+              "10px",
+              "12px",
+              "15px",
+              "16px",
+              "18px",
+              "20px",
+              "24px",
+              "30px",
+              "48px",
+              "64px",
+              "70px",
+              "none"
+            ],
+            "default_value": "none",
+            "required": false
+          }
+        ]
+      }
+    ],
+    "region_definitions": []
+  }

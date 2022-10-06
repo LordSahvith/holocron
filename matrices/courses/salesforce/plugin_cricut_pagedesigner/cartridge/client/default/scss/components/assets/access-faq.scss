@@ -1,0 +1,14 @@
+@import '../../abstracts/index';
+@import '../../components/content/copyText';
+
+.page-designer {
+    .access-faq {
+        margin: 0 auto;
+        background-color: $white;
+        padding: $spacer-9;
+
+        .question {
+            margin-bottom: $spacer-3;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/components/pd-billboards.css');
+</isscript>
+
+<div class="pd-billboard--twoup${pdict.margins}">
+    <div class="pd-billboard--twoup__content">
+        <div class="pd-billboard--twoup__container">
+            <isprint value="${pdict.regions.billboardOne.render()}" encoding="off" />
+        </div>
+        <div class="pd-billboard--twoup__container">
+            <isprint value="${pdict.regions.billboardTwo.render()}" encoding="off" />
+        </div>
+    </div>
+</div>

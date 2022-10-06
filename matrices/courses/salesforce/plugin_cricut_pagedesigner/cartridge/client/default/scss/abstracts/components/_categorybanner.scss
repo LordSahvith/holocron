@@ -1,0 +1,21 @@
+.category-banner {
+    &__wrapper {
+        @include make-container();
+        @include make-container-max-widths();
+    }
+
+    &__img {
+        width: 100%;
+        display: block;
+    }
+
+    &__content {
+        padding-top: $spacer-8;
+        padding-bottom: 0;
+        text-align: center;
+    }
+
+    &__title + &__text {
+        margin-top: $spacer-5;
+    }
+}

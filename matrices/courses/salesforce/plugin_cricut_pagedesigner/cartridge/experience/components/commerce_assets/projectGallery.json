@@ -1,0 +1,52 @@
+{
+    "name": "Project Gallery",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+      {
+        "id": "sectionHeading",
+        "name": "Section Heading",
+        "description": "The title and body content.",
+        "attribute_definitions": [
+            {
+                "id": "headline",
+                "name": "Headline",
+                "description": "The headline of the project gallery section.",
+                "type": "string",
+                "required": false
+            }
+        ]
+    },
+    {
+      "id": "gaEvents",
+      "name": "GA Events",
+      "description": "Set GA Attribute Data",
+      "attribute_definitions": [
+        {
+            "id": "category",
+            "name": "Category",
+            "type": "string",
+            "required": false
+        },
+        {
+            "id": "action",
+            "name": "Action",
+            "type": "string",
+            "required": false
+        },
+        {
+            "id": "label",
+            "name": "Label",
+            "type": "string",
+            "required": false
+        }
+      ]
+    }
+  ],
+    "region_definitions": [
+      {
+        "id":"slidesContainer",
+        "name":"Slides Container",
+        "component_type_exclusions": []
+      }
+    ]
+  }

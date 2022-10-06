@@ -1,0 +1,4 @@
+<div class="how-text">
+    <h3>${pdict.headerText}</h3>
+    <p>${pdict.bodyText}</p>
+</div>

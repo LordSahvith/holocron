@@ -1,0 +1,19 @@
+{
+    "name":"Homesite Page",
+    "description":"Homesite Page Type",
+    "region_definitions":[
+      {
+        "id":"promobanner",
+        "name":"Promotional Banner Region",
+        "component_type_exclusions": []
+      },
+      {
+        "id":"main",
+        "name":"Main Region",
+        "component_type_exclusions": [
+          { "type_id": "commerce_assets.campaignBanner" },
+          { "type_id": "commerce_assets.promoBanner" }
+        ]
+      }
+    ]
+}

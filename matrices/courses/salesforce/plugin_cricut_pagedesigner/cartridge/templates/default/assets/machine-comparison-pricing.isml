@@ -1,0 +1,2 @@
+<isset name="price" value="${pdict.product.price}" scope="page" />
+<isinclude template="product/components/pricing/main" />

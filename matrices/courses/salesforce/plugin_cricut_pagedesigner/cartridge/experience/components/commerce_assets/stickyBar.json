@@ -1,0 +1,36 @@
+{
+    "name": "Sticky Bar",
+    "description": "Sticky Bar at bottom of page",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "stickyBarContent",
+            "name": "Title",
+            "description": "Button attributes",
+            "attribute_definitions": [
+                {
+                    "id": "stickyBarTitle",
+                    "name": "Title",
+                    "type": "string",
+                    "required": false,
+                    "default_value": ""
+                }
+            ]
+        }
+    ],
+    "region_definitions": [
+        {
+            "id": "buttons",
+            "name": "Center Links",
+            "max_components": 2
+        },
+        {
+            "id": "shopButton",
+            "name": "Shop Links",
+            "max_components": 1,
+            "default_component_constructors": [
+              { "type_id": "buttons.links", "name": "Link"}
+            ]
+        }
+    ]
+}

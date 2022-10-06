@@ -1,0 +1,39 @@
+{
+    "name": "How It Works",
+    "description": "How it works sections.",
+    "group": "commerce_assets",
+    "attribute_definition_groups": [
+        {
+            "id": "howItWorksContent",
+            "name": "How It Works Content",
+            "description": "The How It Works data",
+            "attribute_definitions": []
+        }
+    ],
+    "region_definitions": [
+        {
+          "id":"heading",
+          "name":"Heading Region",
+          "max_components": 1,
+          "default_component_constructors": [
+            { "type_id": "commerce_assets.text", "name": "Text"}
+          ]
+        },
+        {
+          "id":"visuals",
+          "name":"Visuals Region",
+          "max_components": 3,
+          "default_component_constructors": [
+            { "type_id": "commerce_assets.howItWorksVisual", "name": "How It Works - Visual"}
+          ]
+        },
+        {
+          "id":"texts",
+          "name":"Texts Region",
+          "max_components": 3,
+          "default_component_constructors": [
+            { "type_id": "commerce_assets.howItWorksText", "name": "How It Works - Text"}
+          ]
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+<div class="gallery-slide image-slide">
+    <img src="${pdict.featuredImage}" 
+        alt="">
+    <div class="gallery-tag-container">
+        <isprint value="${pdict.regions.tag.render()}" encoding="off" />
+    </div>
+</div>

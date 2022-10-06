@@ -1,0 +1,7 @@
+<${pdict.texttype} class="color--${pdict.textcolor} ${pdict.fontsize}
+    ${pdict.margintop === '' ? '' : pdict.margintop + '--top'} 
+    ${pdict.marginbottom === '' ? '' : pdict.marginbottom  + '--bottom'} 
+    ${pdict.texttype === 'span' ? ' d-inline-block' : ''} 
+    ${pdict.fontface}">
+    ${pdict.text}
+</${pdict.texttype}>

@@ -1,0 +1,12 @@
+{
+    "name": "Font Picker",
+    "description": "Pick the type of font",
+    "resources": {
+        "scripts": [
+            "/js/experience/editors/fontPicker/fontPicker.js"
+        ],
+        "styles": [
+            "/css/experience/editors/fontPicker.css"
+        ]
+    }
+}

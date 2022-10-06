@@ -1,0 +1,11 @@
+@import '../../abstracts/index';
+@import '../../components/content/copyText';
+
+.page-designer {
+    .pd-legal-text {
+        ul,
+        ol {
+            list-style: none;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<div class="two-prices col-12 col-lg-6">
+    <div class="row content-pad">
+        <div class="col-12">
+            <isset name="price" value="${pdict.product.price}" scope="page" />
+            <h6><isinclude template="product/components/pricing/main" /></h6>
+        </div>
+        <p class="font-size-sm">${Resource.msg('permonth', 'access', null)}</p>
+
+        <a href="${URLUtils.url('Search-Show', 'cgid', 'cricut-access')}" aria-label="Learn more about Cricut Access monthly subscription" class="pd-button pd-button--black" target="_self" data-ga-event="{&quot;eventCategory&quot;:&quot;Shop&quot;,&quot;eventAction&quot;:&quot;Click&quot;,&quot;eventLabel&quot;:&quot;apps-cricut-access-monthly&quot;,&quot;eventNonInteractionHit&quot;:&quot;FALSE&quot;,&quot;event&quot;:&quot;gaEvent&quot;}">
+            ${Resource.msg('learnmore', 'access', null)}
+        </a>
+
+    </div>
+</div>

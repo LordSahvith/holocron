@@ -1,0 +1,39 @@
+<div class="masonry__${pdict.contenttype} justify-content-${pdict.vposition}">
+    <isif condition="${pdict.contenttype === 'picture'}">
+        <picture class="masonry__link-picture">
+            <source media="(min-width: 769px)" srcset="${pdict.imageDesktop}" />
+            <source media="(min-width: 544px)" srcset="${pdict.imageTablet}" />
+            <source media="(max-width: 543px)" srcset="${pdict.imageMobile}" />
+            <img alt="" class="masonry__link-image" src="${pdict.imageDesktop}" />
+        </picture>
+        <div class="masonry__overlay justify-content-${pdict.vposition}">
+            <isif condition="${pdict.heading != 'undefined'}">
+                <div class="masonry__heading color--${pdict.textcolor} text-${pdict.textposition}">
+                    <h3 class="masonry__title">${pdict.heading}</h3>
+                </div>
+            </isif>
+            <isif condition="${pdict.subHeading != 'undefined'}">
+                <div class="masonry__text color--${pdict.textcolor} text-${pdict.textposition}">
+                    ${pdict.subHeading}
+                </div>
+            </isif>
+            <isif condition="${pdict.cta}" >
+                <div class="masonry__actions text-${pdict.textposition}">
+                    <a class="masonry__btn btn-cta-${pdict.ctastyle}" href="${pdict.cta}">${pdict.ctatext}</a>
+                </div>
+            </isif>
+        </div>
+    <iselse/>
+        <div class="masonry__heading color--${pdict.textcolor} text-${pdict.textposition}">
+            <h3 class="masonry__title">${pdict.heading}</h3>
+        </div>
+        <div class="masonry__text color--${pdict.textcolor} text-${pdict.textposition}">
+            ${pdict.subHeading}
+        </div>
+        <div class="masonry__actions text-${pdict.textposition}">
+            <isif condition="${pdict.cta}" >
+                <a class="masonry__btn btn-cta-${pdict.ctastyle}" href="${pdict.cta}">${pdict.ctatext}</a>
+            </isif>
+        </div>
+    </isif>
+</div>

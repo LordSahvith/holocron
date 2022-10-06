@@ -1,0 +1,45 @@
+<isscript>
+    var assets = require('*/cartridge/scripts/assets.js');
+    assets.addCss('/css/components/pd-texturalvideo.css');
+    assets.addCss('/css/components/pd-buttons.css');
+    assets.addJs('/js/components/texturalVideo.js');
+</isscript>
+
+<section class="textural-video${pdict.imageOnly ? ' textural-image' : ''}">
+    <div class="video-sticky">
+        <div class="video-container">
+            <isif condition="${!pdict.imageOnly}">
+                <video ${pdict.videoPoster}${pdict.videoId}${pdict.videoSrc}${pdict.videoSrcMobile} playsinline autoplay muted loop>
+                    <source src="" type="video/mp4" />
+                </video>
+            <iselse/>
+                <isif condition="${pdict.imageDesktop}">
+                    <picture>
+                        <source media="(min-width: 1025px)" srcset="${pdict.desktopSrc}" />
+                        <isif condition="${pdict.mobileSrc}">
+                            <source media="(max-width: 576px)" srcset="${pdict.mobileSrc}" />
+                        </isif>
+                        <img alt="" class="pd-textural__img" src="${pdict.imageDesktop}" />
+                    </picture>
+                </isif>
+            </isif>
+        </div>
+        <div class="text-content">
+            <isprint value="${pdict.regions.textContent.render()}" encoding="off" />
+        </div>
+        <isif condition="${!pdict.imageOnly}">
+            <div class="video-controls">
+                <button data-toggle="texturalVideo" class="pd-button pd-button--play-pause" aria-label="play"<isprint value="${pdict.gaEvent}" encoding="off" />>
+                    <div class="icon-wrapper">
+                        <svg width="100%" viewbox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g class="play-pause-icon">
+                                <line x1="15.5" y1="12" x2="15.5" y2="25" stroke="black"></line>
+                                <line x1="20.5" y1="12" x2="20.5" y2="25" stroke="black"></line>
+                            </g>
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </isif>
+    </div>
+</section>

@@ -1,0 +1,17 @@
+{
+    "name": "Product Bundle - Featured",
+    "description": "This is a featured bundle container that will hold 1 Bundle Product Tile.",
+    "group": "commerce_layouts",
+    "attribute_definition_groups": [],
+    "region_definitions": [
+        {
+            "id":"bundleProductRegion",
+            "name":"Featured Product Region",
+            "component_type_exclusions": [],
+            "default_component_constructors": [
+                { "type_id": "commerce_assets.bundleProductTile", "name": "Featured Product Tile"}
+            ],
+            "max_components": 1
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+<isif condition="${pdict.name === null}">
+    <a class="user__login user__login--link header-link" data-automation-id="signInLink" href="${URLUtils.https('Login-Show')}" role="button">
+        <span class="user__login-msg">${Resource.msg('link.header.signin', 'account', null)}</span>
+    </a>
+<iselse/>
+    <a class="user__login user__login--link header-link" data-automation-id="signInLink" href="${URLUtils.https('Account-Show')}" role="button">
+        <span class="user__login-msg">${Resource.msgf('label.account.hi', 'account', null, pdict.name)}</span>
+    </a>
+</isif>
