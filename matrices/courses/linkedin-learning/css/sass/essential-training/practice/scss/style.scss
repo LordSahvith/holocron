@@ -1,0 +1,45 @@
+@use "variables" as var;
+@use "base";
+@use "mixins/button" as btn;
+@use "mixins/message";
+@use "mixins/arrays";
+@use "mixins/map";
+
+/* comments */
+/* regular css -- published */
+/* multi-line 
+    -- published */
+// JS style -- unpublished
+/*! forced publish */
+$testVar: 'is pretty cool';
+/* interpolation: #{$testVar} */
+
+h1 {
+    color: var.$primary;
+}
+
+p {
+    color: var.$secondary;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.btns {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    .btn {
+        @include btn.btn(#ddd, #888);
+    }
+
+    .container & {
+        justify-content: end;
+    }
+}
+
+@include message.message;
+@include message.message("-info", #333);

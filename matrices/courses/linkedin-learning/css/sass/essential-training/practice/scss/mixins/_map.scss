@@ -1,0 +1,45 @@
+@use "sass:map";
+@use "../components/button";
+
+$colorList: (
+    "primary": red,
+    "secondary": blue,
+    "accent": yellow
+);
+
+/* #{map.get($colorList, "primary")} */
+
+@mixin btn($name: "", $bg: #444, $color: #fff, $pill: false) {
+    .btn#{$name} {
+        @extend .btn;
+        background-color: $bg;
+        color: $color;
+
+        @if $pill {
+            border-radius: 20px;
+        } @else {
+            border-radius: 0;
+        }
+    
+        &:hover {
+            background-color: darken($color: $bg, $amount: 10%);
+        }
+    }
+}
+
+$buttons: (
+    "-primary": (
+        RoyalBlue,
+        #3ab5e9
+    ),
+    "-secondary": (
+        green,
+        yellow
+    )
+);
+
+@each $key, $values in $buttons {
+    @include btn($key, $values...);
+}
+
+@include btn("-pill", red, $pill: true);

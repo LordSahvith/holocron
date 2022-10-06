@@ -1,0 +1,13 @@
+@use "../components/message";
+
+@mixin message ($name: "", $msgColor: #666) {
+    .message#{$name} {
+        @extend %message;
+        background-color: $msgColor;
+        border: 1px solid lighten($color: $msgColor, $amount: 25%);
+    
+        &:hover {
+            background-color: lighten($color: $msgColor, $amount: 10%);
+        }
+    }
+}
