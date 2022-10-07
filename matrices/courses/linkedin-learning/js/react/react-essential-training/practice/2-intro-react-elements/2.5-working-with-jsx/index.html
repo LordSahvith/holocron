@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>React ⚛️</title>
+</head>
+
+<body>
+    <div id="example1"></div>
+</body>
+
+<script type="text/babel">
+    let name = 'Savith';
+    let hobby = 'coding';
+    let something = 'something';
+
+    ReactDOM.render(
+        <ul>
+            <li>{name}</li>
+            <li>{hobby}</li>
+            <li>{something}</li>
+            <li>{something.toLocaleUpperCase()}</li>
+            <li>{something.length}</li>
+        </ul>,
+        document.getElementById('example1')
+    );
+</script>
+
+</html>

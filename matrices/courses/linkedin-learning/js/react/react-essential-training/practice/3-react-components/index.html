@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>React ⚛️</title>
+</head>
+
+<body>
+    <div id="example1"></div>
+</body>
+
+<script type="text/babel">
+    function Header(props) {
+        console.log(props);
+        return (
+            <header>
+                <h1>{props.name}'s Realm</h1>
+            </header>
+        );
+    }
+
+    function Main(props) {
+        return (
+            <section>
+                <p>You're in our {props.adjective} world now!</p>
+                <img height={200} src='../imgs/world.jpeg' alt='earth from space.' />
+                <ul>
+                    {props.worlds.map((world) => (
+                        <li key={world.id}>{world.title}</li>
+                    ))}
+                </ul>
+            </section>
+        );
+    }
+
+    function Footer(props) {
+        return (
+            <footer>
+                <p>Copyright {props.year}</p>
+            </footer>
+        );
+    }
+
+    function App() {
+        return (
+            <React.Fragment>
+                <Header name='Lord Savith' />
+                <Main adjective='crazy' worlds={worldObjects} />
+                <Footer year={new Date().getFullYear()} />
+            </React.Fragment>
+        );
+    }
+
+    const worlds = [
+        'Assassin\'s Creed',
+        'Spider-Man',
+        'Batman',
+        'Star Wars',
+        'Naruto'
+    ];
+
+    const worldObjects = worlds.map((world, i) => ({
+        id: i,
+        title: world
+    }));
+
+    ReactDOM.render(
+        <App />,
+        document.getElementById('example1')
+    );
+</script>
+
+</html>
