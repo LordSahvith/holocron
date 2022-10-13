@@ -35,3 +35,14 @@ SELECT COUNT(*) FROM Country WHERE Population > 100000000 AND Continent = 'Europ
 
 SELECT COUNT(*) FROM Country;
 SELECT COUNT(LifeExpectancy) FROM Country;
+
+-- 07 Inserting Data
+-- test.db
+
+SELECT * FROM customer;
+
+INSERT INTO customer (name, city, state)
+    VALUES ('Lord Savith', '123 Dromund St', 'Dromund Kaas City', 'Dromund Kaas', 666); 
+
+INSERT INTO customer (name, city, state)
+    VALUES ('Spider-Man', 'Queens', 'NY'); 
