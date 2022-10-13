@@ -16,3 +16,11 @@ SELECT Name, Continent, Region FROM Country WHERE Continent = 'Europe';
 SELECT Name, Continent, Region FROM Country WHERE Continent = 'Europe' ORDER BY Name;
 SELECT Name, Continent, Region FROM Country WHERE Continent = 'Europe' ORDER BY Name LIMIT 5;
 SELECT Name, Continent, Region FROM Country WHERE Continent = 'Europe' ORDER BY Name LIMIT 5 OFFSET 5;
+
+-- 05 Selecting Columns
+-- world.db
+
+SELECT * FROM Country;
+SELECT Name, Continent, Region FROM Country;
+SELECT Name AS Country, Continent, Region FROM Country;
+SELECT Name AS Country, Region, Continent FROM Country;
