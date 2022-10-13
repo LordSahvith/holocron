@@ -1,0 +1,10 @@
+-- 03 The SELECT statement
+-- world.db
+
+SELECT 'Hello, World';
+SELECT 'Hello, World' AS Result;
+SELECT * FROM Country;
+SELECT * FROM Country ORDER BY Name;
+SELECT Name, LifeExpectancy FROM Country ORDER BY Name;
+SELECT Name, LifeExpectancy AS "Life Expectancy" FROM Country ORDER BY Name;
+
