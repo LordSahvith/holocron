@@ -46,3 +46,11 @@ INSERT INTO customer (name, city, state)
 
 INSERT INTO customer (name, city, state)
     VALUES ('Spider-Man', 'Queens', 'NY'); 
+
+-- 08 Updating Data
+-- test.db
+
+SELECT * FROM customer;
+UPDATE customer SET address = '123 Swing Avenue', zip = '98056' WHERE id = 5;
+UPDATE customer SET address = '2603 S Washington St', zip = '98056' WHERE id = 5;
+UPDATE customer SET address = NULL, zip = NULL WHERE id = 5;
