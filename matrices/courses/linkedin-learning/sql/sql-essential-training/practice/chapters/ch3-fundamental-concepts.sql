@@ -31,3 +31,11 @@ INSERT INTO test DEFAULT VALUES;
 INSERT INTO test ( a, b, c ) SELECT id, name, description from item;
 
 SELECT * FROM test;
+
+-- 04 DELETE FROM
+-- test.db
+
+SELECT * FROM test;
+DELETE FROM test WHERE a = 3;
+SELECT * FROM test WHERE a = 1;
+DELETE FROM test WHERE a = 1;
