@@ -67,3 +67,16 @@ INSERT INTO test ( b, c ) VALUES ( 'one', 'two' );
 INSERT INTO test ( a, c ) VALUES ( 1, 'two' );
 INSERT INTO test ( a, b ) VALUES ( 1, 'two' );
 DROP TABLE IF EXISTS test;
+
+-- 06 Constraints
+-- test.db
+
+DROP TABLE IF EXISTS test;
+CREATE TABLE test ( a TEXT, b TEXT, c TEXT );
+INSERT INTO test ( a, b ) VALUES ( 'one', 'two' );
+SELECT * FROM test;
+
+CREATE TABLE test ( a TEXT, b TEXT, c TEXT NOT NULL );
+CREATE TABLE test ( a TEXT, b TEXT, c TEXT DEFAULT 'panda' );
+CREATE TABLE test ( a TEXT UNIQUE, b TEXT, c TEXT DEFAULT 'panda' );
+CREATE TABLE test ( a TEXT UNIQUE NOT NULL, b TEXT, c TEXT DEFAULT 'panda' );
