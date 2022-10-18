@@ -125,3 +125,32 @@ SELECT Name, Continent, Population FROM Country
   WHERE Name LIKE '%island%' ORDER BY Name;
 SELECT Name, Continent, Population FROM Country 
  WHERE Continent IN ( 'Europe', 'Asia' ) ORDER BY Name;
+
+-- 10 SELECT DISTINCT
+-- world.db
+
+SELECT Continent FROM Country;
+SELECT DISTINCT Continent FROM Country;
+Using the SELECT DISTINCT statement, you will get only unique results. 
+
+-- test.db
+
+DROP TABLE IF EXISTS test;
+CREATE TABLE test ( a int, b int );
+INSERT INTO test VALUES ( 1, 1 );
+INSERT INTO test VALUES ( 2, 1 );
+INSERT INTO test VALUES ( 3, 1 );
+INSERT INTO test VALUES ( 4, 1 );
+INSERT INTO test VALUES ( 5, 1 );
+INSERT INTO test VALUES ( 1, 2 );
+INSERT INTO test VALUES ( 1, 2 );
+INSERT INTO test VALUES ( 1, 2 );
+INSERT INTO test VALUES ( 1, 2 );
+INSERT INTO test VALUES ( 1, 2 );
+SELECT * FROM test;
+
+SELECT DISTINCT a FROM test;
+SELECT DISTINCT b FROM test;
+SELECT DISTINCT a, b FROM test;
+
+DROP TABLE IF EXISTS test;
