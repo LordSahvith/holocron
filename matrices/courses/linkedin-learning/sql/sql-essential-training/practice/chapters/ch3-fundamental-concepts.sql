@@ -154,3 +154,13 @@ SELECT DISTINCT b FROM test;
 SELECT DISTINCT a, b FROM test;
 
 DROP TABLE IF EXISTS test;
+
+-- 11 ORDER BY
+-- world.db
+
+SELECT Name FROM Country;
+SELECT Name FROM Country ORDER BY Name;
+SELECT Name FROM Country ORDER BY Name DESC;
+SELECT Name FROM Country ORDER BY Name ASC;
+SELECT Name, Continent FROM Country ORDER BY Continent, Name;
+SELECT Name, Continent, Region FROM Country ORDER BY Continent DESC, Region, Name;
