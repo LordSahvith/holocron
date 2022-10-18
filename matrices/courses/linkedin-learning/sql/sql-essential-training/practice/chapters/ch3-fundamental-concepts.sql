@@ -95,3 +95,18 @@ ALTER TABLE test ADD d TEXT;
 ALTER TABLE test ADD e TEXT DEFAULT 'panda';
 
 DROP TABLE IF EXISTS test;
+
+-- 08 ID
+-- test.db
+
+DROP TABLE IF EXISTS test;
+CREATE TABLE test (
+  id INTEGER PRIMARY KEY, -- SQLite syntax (each version is different)
+  a INTEGER,
+  b TEXT
+);
+INSERT INTO test (a, b) VALUES ( 10, 'a' );
+INSERT INTO test (a, b) VALUES ( 11, 'b' );
+INSERT INTO test (a, b) VALUES ( 12, 'c' );
+SELECT * FROM test;
+DROP TABLE IF EXISTS test;
