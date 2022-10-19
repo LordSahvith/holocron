@@ -3,6 +3,7 @@ import './assets/sass/style.scss'
 const CARD_API = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?name=';
 const FULL_CARD_DATA = document.querySelector('.fullCardData');
 const MATCHING_SET = document.querySelector('.matchingSet');
+const COMPLETE_DATA = document.querySelector('.completeData');
 
 let cardName = document.querySelector('#cardName');
 let cardId = document.querySelector('#cardId');
@@ -12,8 +13,6 @@ let fullCardData = {};
 let cardSetMatchData = {};
 
 function formatDisplay() {
-    console.log('full data:', fullCardData);
-    console.log('set data:', cardSetMatchData);
     let completeData = {
         name: fullCardData[0].name,
         type: fullCardData[0].type,
@@ -28,6 +27,14 @@ function formatDisplay() {
         price: cardSetMatchData.set_price ? cardSetMatchData.set_price : null
     };
     console.log('complete data: ', completeData);
+
+    COMPLETE_DATA.innerHTML = `
+    <p>name: ${completeData.name}</p>
+    <p>type: ${completeData.type}</p>
+    <p>description: ${completeData.description}</p>
+    <p>attack: ${completeData.attack}</p>
+    <p>defense: ${completeData.defense}</p>
+    `;
 }
 
 function printToScreen(data, targetEl) {
