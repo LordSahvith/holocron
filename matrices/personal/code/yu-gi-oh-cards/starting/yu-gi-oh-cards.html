@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yu-Gi-Oh Cards</title>
+</head>
+
+<body>
+
+    <h1>Yu-Gi-Oh Cards</h1>
+
+    <label for="cardName">Enter Card Name</label>
+    <br>
+    <input id="cardName" type="text" placeholder="card name">
+    <br>
+    <br>
+    <label for="cardName">Enter Card ID</label>
+    <br>
+    <input id="cardId" type="text" placeholder="card id">
+    <br>
+    <br>
+    <input type="submit" id="cardNameButton">
+
+    <div class="display">
+        <h2>Full Card Data</h2>
+        <div class="fullCardData"></div>
+
+        <h2>Matching Set</h2>
+        <div class="matchingSet"></div>
+    </div>
+
+    <script src="./modules/displayInfo.js"></script>
+    <script src="./modules/card.js"></script>
+    <script src="./main.js"></script>
+
+</body>
+
+</html>
