@@ -24,31 +24,57 @@
     <br>
     <input type="submit" id="cardNameButton">
 
-    <pre class="dispaly"></pre>
+    <div class="display">
+        <h2>Full Card Data</h2>
+        <div class="fullCardData"></div>
+
+        <h2>Matching Set</h2>
+        <div class="matchingSet"></div>
+    </div>
 
     <script>
-        'use strict'
+        'use strict';
 
         const CARD_API = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?name=';
-        const CARD_INFO = document.querySelector('.display');
+        const MATCHING_SET = document.querySelector('.matchingSet');
+        const FULL_CARD_DATA = document.querySelector('.fullCardData');
         let cardName = document.querySelector('#cardName');
         let cardId = document.querySelector('#cardId');
         let cardNameButton = document.querySelector('#cardNameButton');
 
-        function getCardSets(cardData) {
-            let cardSets = cardData.map((card) => card.card_sets);
-            return cardSets;
+        let fullCardData = {};
+        let cardSetMatchData = {};
+        
+        function getCardData(data) {
+            fullCardData = data;
+            printToScreen(fullCardData, FULL_CARD_DATA);
+            return fullCardData;
         }
 
-        function getCardIdInfo(cardSets) {
-            let matchingSet = {};
-
-            for (let i = 0; i < cardSets.length; i++) {
-                if (cardSets[i].set_code.toLowerCase() === cardId.value) {
-                    matchingSet = cardSets[i];
+        function getCardSetData(data) {
+            let cardSets = data.map((card) => card.card_sets);
+            return cardSets;
+        }
+        
+        function getCardSetCodeData(data) {
+            for (let i = 0; i < data[0].length; i++) {
+                if (data[0][i].set_code.toLowerCase() === cardId.value) {
+                    cardSetMatchData = data[0][i];
                 }
             }
-            console.log('matching: ', matchingSet);
+            printToScreen(cardSetMatchData, MATCHING_SET);
+            return cardSetMatchData;
+        }        
+
+        function printToScreen(data, targetEl) {
+            let cardHTML = `
+            <pre>
+                <code>
+                    ${JSON.stringify(data)}
+                </code>
+            </pre>
+            `;
+            targetEl.innerHTML = cardHTML;
         }
 
         function getCardInfo() {
@@ -58,8 +84,9 @@
                 console.log('url: ', CARD_API + cardText);
                 fetch(CARD_API + cardText)
                     .then((cardData) => cardData.json())
-                    .then(cardData => getCardSets(cardData.data))
-                    .then(cardSets => getCardIdInfo(cardSets[0]));
+                    .then((cardData) => getCardData(cardData.data))
+                    .then((cardData) => getCardSetData(cardData))
+                    .then((cardSets) => getCardSetCodeData(cardSets));
             }
         }
 
