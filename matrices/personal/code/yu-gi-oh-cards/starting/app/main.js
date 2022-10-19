@@ -34,6 +34,12 @@ function formatDisplay() {
     <p>description: ${completeData.description}</p>
     <p>attack: ${completeData.attack}</p>
     <p>defense: ${completeData.defense}</p>
+    <p>level: ${completeData.level}</p>
+    <p>race: ${completeData.race}</p>
+    <p>attribute: ${completeData.attribute}</p>
+    <p>code: ${completeData.code}</p>
+    <p>rarity: ${completeData.rarity}</p>
+    <p>price: ${completeData.price}</p>
     `;
 }
 
