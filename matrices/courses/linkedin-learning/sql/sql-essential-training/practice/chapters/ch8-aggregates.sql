@@ -42,3 +42,13 @@ SELECT a.title AS Album, COUNT(t.track_number) as Tracks
   HAVING Tracks >= 10
   ORDER BY Tracks DESC, Album
 ;
+
+-- 02 Aggregate functions
+-- world.db
+
+SELECT COUNT(*) FROM Country;
+SELECT COUNT(Population) FROM Country;
+SELECT AVG(Population) FROM Country;
+SELECT Region, AVG(Population) FROM Country GROUP BY Region;
+SELECT Region, MIN(Population), MAX(Population) FROM Country GROUP BY Region;
+SELECT Region, SUM(Population) FROM Country GROUP BY Region;
