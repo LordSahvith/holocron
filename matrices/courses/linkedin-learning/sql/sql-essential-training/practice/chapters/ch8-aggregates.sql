@@ -52,3 +52,10 @@ SELECT AVG(Population) FROM Country;
 SELECT Region, AVG(Population) FROM Country GROUP BY Region;
 SELECT Region, MIN(Population), MAX(Population) FROM Country GROUP BY Region;
 SELECT Region, SUM(Population) FROM Country GROUP BY Region;
+
+-- 03 DISTINCT Aggregates
+-- world.db
+
+SELECT COUNT(HeadOfState) FROM Country;
+SELECT HeadOfState FROM Country ORDER BY HeadOfState;
+SELECT COUNT(DISTINCT HeadOfState) FROM Country;
