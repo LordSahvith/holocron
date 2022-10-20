@@ -17,7 +17,10 @@
     <div class="container mt-4">
         <div class="jumbotron">
             <h1 class="display-4 mb-3">Send Message</h1>
-            <input type="text" class="form-control mb-3" placeholder="name">
+            <input id="name" type="text" class="form-control mb-3"
+                placeholder="name">
+            <textarea id="message" type="text" class="form-control mb-3"
+                placeholder="message"></textarea>
             <button id="send" class="btn btn-success">Send</button>
         </div>
 
@@ -27,8 +30,7 @@
     </div>
 
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
         crossorigin="anonymous"></script>
     <script
         src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
@@ -42,7 +44,11 @@
     <script>
         $(() => {
             $('#send').click(() => {
-                addMessages({name: 'Savith', message: 'Hello world.'});
+                let message = {
+                    name: $('#name').val(),
+                    message: $('#message').val()
+                };
+                postMessage(message);
             });
 
             getMessages();
@@ -59,6 +65,10 @@
                 // }, this);
                 data.forEach(addMessages); // same as above
             });
+        }
+
+        function postMessage(message) {
+            $.post('http://localhost:3000/messages', message);
         }
     </script>
 </body>
