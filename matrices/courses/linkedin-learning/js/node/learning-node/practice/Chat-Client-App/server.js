@@ -9,7 +9,7 @@ app.use(express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const dbURL = 'mongodb+srv://lordsavith:Darthbane4@learning-node.dxjvxu6.mongodb.net/test';
+const dbURL = 'mongodb+srv://lordsavith:test@learning-node.dxjvxu6.mongodb.net/test';
 
 const Message = mongoose.model('Message', {
     name: String,
