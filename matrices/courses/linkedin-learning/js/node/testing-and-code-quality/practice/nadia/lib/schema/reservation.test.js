@@ -5,10 +5,10 @@ describe('combineDateTime', () => {
         const date = '2017/06/10';
         const time = '06:02 AM';
 
-        const expected = 'FAIL-06010T06:02:00.000Z';
+        const expected = '2017-06-10T06:02:00.000Z';
         const acutal = Reservation.combineDateTime(date, time);
 
-        expected(acutal).toBe(expected);
+        expect(acutal).toBe(expected);
     });
 
     it('should return null on a bad date and time', () => {
