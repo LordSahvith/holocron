@@ -18,6 +18,38 @@ describe('fetch', () => {
     });
 });
 
+describe('save', () => {
+    let reservations;;
+
+    const mockDebug = jest.fn();
+    const mockInsert = jest.fn().mockResolvedValue([1]);
+
+    beforeAll(() => {
+        jest.mock('debug', () => () => mockDebug);
+        jest.mock('./knex', () => () => ({
+            insert: mockInsert
+        }));
+
+        reservations = require('./reservations');
+    });
+
+    afterAll(() => {
+        jest.unmock('debug');
+        jest.unmock('./knex');
+    });
+
+    it('should resolve with the id upon success', async () => {
+        const value = { foo: 'bar' }; // dummy value for comparison
+        const expected = [1];
+
+        const actual = await reservations.save(value);
+
+        expect(actual).toStrictEqual(expected);
+        expect(mockDebug).toBeCalledTimes(1);
+        expect(mockInsert).toBeCalledWith(value);
+    });
+});
+
 describe('validate', () => {
     let reservations;
 
