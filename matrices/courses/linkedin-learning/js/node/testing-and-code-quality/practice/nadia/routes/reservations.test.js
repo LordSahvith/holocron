@@ -15,7 +15,7 @@ afterAll(() => {
 
 describe('GET', () => {
     it('should return the reservations form', async () => {
-        const response = await app.get('./reservations')
+        const response = await app.get('/reservations')
             .expect('Content-Type', /html/)
             .expect(200);
 
