@@ -18,7 +18,7 @@ function fetch() {
  * @return {Promise<number>} Newly created reservation ID.
  */
 function create(reservation) {
-  return validate(reservation)
+  return module.exports.validate(reservation) // avoids require caching by using the mocked version
     .then(save)
     .then(result => result[0])
 }

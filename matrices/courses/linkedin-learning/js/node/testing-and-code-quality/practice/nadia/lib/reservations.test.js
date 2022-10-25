@@ -28,3 +28,23 @@ describe('validate', () => {
             .rejects.toBeInstanceOf(Error);
     });
 });
+
+describe('create', () => {
+    it('should reject if validation fails', async () => {
+        // store the original
+        const original = reservations.validate;
+
+        const error = new Error('fail');
+
+        // mock the function
+        reservations.validate = jest.fn(() => Promise.reject(error));
+
+        await expect(reservations.create())
+            .rejects.toBe(error);
+
+        expect(reservations.validate).toBeCalledTimes(1);
+
+        // restore function
+        reservations.validate = original;
+    });
+});
