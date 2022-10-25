@@ -19,7 +19,7 @@ describe('fetch', () => {
 });
 
 describe('save', () => {
-    let reservations;;
+    let reservations;
 
     const mockDebug = jest.fn();
     const mockInsert = jest.fn().mockResolvedValue([1]);
@@ -100,11 +100,9 @@ describe('validate', () => {
 describe('create', () => {
     let reservations;
 
-    beforeAll(() => {
-        reservations = require('./reservations');
-    });
-
     it('should reject if validation fails', async () => {
+        reservations = require('./reservations');
+
         // store the original
         const original = reservations.validate;
 
@@ -123,6 +121,8 @@ describe('create', () => {
     });
 
     it('should reject if validation fails using spyOn', async () => {
+        reservations = require('./reservations');
+
         const mock = jest.spyOn(reservations, 'validate');
 
         const error = new Error('fail');
@@ -138,5 +138,37 @@ describe('create', () => {
 
         // Restore
         mock.mockRestore();
+    });
+
+    it('should create a reservation if there are no validation issues', async () => {
+        // prepare to require
+        const expectedInsertId = 1;
+
+        const mockInsert = jest.fn().mockResolvedValue([expectedInsertId]);
+
+        jest.mock('./knex', () => () => ({
+            insert: mockInsert
+        }));
+
+        reservations = require('./reservations');
+
+        // mock validation
+        const mockValidation = jest.spyOn(reservations, 'validate');
+        mockValidation.mockImplementation((value) => Promise.resolve(value));
+
+        // prepare test data
+        const reservation = { foo: 'bar' };
+
+        // execute and check
+        await expect(reservations.create(reservation))
+            .resolves.toStrictEqual(expectedInsertId);
+
+        expect(reservations.validate).toHaveBeenCalledTimes(1);
+        expect(mockValidation).toBeCalledWith(reservation);
+        expect(mockValidation).toBeCalledTimes(1);;
+
+        // restore
+        mockValidation.mockRestore();
+        jest.unmock('./knex');
     });
 });
