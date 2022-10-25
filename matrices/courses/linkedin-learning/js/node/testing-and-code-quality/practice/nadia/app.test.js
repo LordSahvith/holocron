@@ -8,6 +8,7 @@ describe('errors', () => {
 
     beforeAll(() => {
         jest.mock('morgan', () => () => mockMorgan);
+        jest.mock('./routes', () => (req, res, next) => next());
     });
 
     beforeEach(() => {
@@ -17,6 +18,7 @@ describe('errors', () => {
 
     afterAll(() => {
         jest.unmock('morgan');
+        jest.unmock('./routes');
         process.env = OLD_ENV;
     });
 
