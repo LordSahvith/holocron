@@ -46,7 +46,7 @@ module.exports = class Reservation {
   validate(callback) {
     const { error, value } = Joi.object({
       datetime: Joi.date().iso().required().raw(),
-      party: Joi.number().min(1).max(7).required(),
+      party: Joi.number().min(1).max(8).required(),
       name: Joi.string().max(255).required(),
       email: Joi.string().email().required(),
       phone: Joi.string().max(50).allow(''),
