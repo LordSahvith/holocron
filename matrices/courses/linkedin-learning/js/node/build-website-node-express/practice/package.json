@@ -11,6 +11,7 @@
     "author": "Daniel Khan",
     "license": "MIT",
     "dependencies": {
+        "ejs": "^3.1.8",
         "express": "^4.18.2"
     },
     "devDependencies": {
