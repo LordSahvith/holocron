@@ -14,7 +14,10 @@ module.exports = (params) => {
         }
     });
 
-    router.post('/', (request, response) => response.send('Feedback form posted'));
+    router.post('/', (request, response) => {
+        console.log(request.body);
+        return response.send('Feedback form posted')
+    });
 
     return router;
 }

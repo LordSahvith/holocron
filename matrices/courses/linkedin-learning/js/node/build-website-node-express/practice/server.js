@@ -3,6 +3,8 @@ const path = require('path');
 const cookieSession = require('cookie-session');
 const createError = require('http-errors');
 
+const bodyParser = require('body-parser');
+
 const FeedbackService = require('./services/FeedbackService');
 const SpeakerService = require('./services/SpeakerService');
 
@@ -13,6 +15,8 @@ const routes = require('./routes');
 
 const app = express();
 
+app.locals.siteName = 'ROUX Meetups';
+
 const port = 3000;
 
 app.set('trust proxy', 1);
@@ -22,10 +26,10 @@ app.use(cookieSession({
     keys: ['123abc', '456efg']
 }));
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
-
-app.locals.siteName = 'ROUX Meetups';
 
 app.use(express.static(path.join(__dirname, './static')));
 
