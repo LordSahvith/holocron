@@ -10,7 +10,11 @@ module.exports = (params) => {
         response.render('layout', { pageTitle: 'Speakers', template: 'speakers', speakers });
     });
 
-    router.get('/:shortname', (request, response) => response.send(`Detail page of ${request.params.shortname}`));
+    router.get('/:shortname', async (request, response) => {
+        const speaker = await speakersService.getSpeaker(request.params.shortname);
+        console.log(speaker);
+        response.render('layout', { pageTitle: 'Speaker', template: 'speaker-detail', speaker });
+    });
 
     return router;
 }
