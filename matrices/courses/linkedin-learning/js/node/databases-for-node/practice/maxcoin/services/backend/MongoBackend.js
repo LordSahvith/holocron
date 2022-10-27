@@ -5,19 +5,19 @@ const CoinAPI = require('../CoinAPI');
 
 class MongoBackend {
 
-  constructor() {
-    this.coinAPI = new CoinAPI();
-  }
+    constructor() {
+        this.coinAPI = new CoinAPI();
+    }
 
-  async connect() {}
+    async connect() { }
 
-  async disconnect() {}
+    async disconnect() { }
 
-  async insert() {}
+    async insert() { }
 
-  async getMax() {}
+    async getMax() { }
 
-  async max() {}
+    async max() { }
 }
 
 module.exports = MongoBackend;
