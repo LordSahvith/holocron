@@ -1,5 +1,11 @@
-import config, { nodeEnv, logStars } from './config';
+import http from 'http';
 
-console.log(config, nodeEnv);
+const server = http.createServer((req, res) => {
+    res.write('hello HTTP!\n');
+    setTimeout(() => {
+        res.write('I can stream!\n');
+        res.end();
+    }, 200);
+});
 
-logStars('Function call');
+server.listen(8080);
