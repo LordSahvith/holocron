@@ -7,6 +7,14 @@ class App extends React.Component {
         pageHeader: 'Name Contests'
     };
 
+    componentDidMount() {
+        // AJAX: ie, timers, listeners
+    }
+
+    componentWillUnmount() {
+        // clean timers, listeners
+    }
+
     render() {
         return (
             <div className='App'>
