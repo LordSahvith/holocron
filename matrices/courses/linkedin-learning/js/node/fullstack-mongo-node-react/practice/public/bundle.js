@@ -38,7 +38,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App */ \"./src/components/App.js\");\n\n\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null)), document.getElementById('root'));\n\n//# sourceURL=webpack://practice/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _testData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./testData */ \"./src/testData.json\");\n/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App */ \"./src/components/App.js\");\n\n\n\nconsole.log(_testData__WEBPACK_IMPORTED_MODULE_2__);\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n  contests: _testData__WEBPACK_IMPORTED_MODULE_2__.contests\n})), document.getElementById('root'));\n\n//# sourceURL=webpack://practice/./src/index.js?");
 
 /***/ }),
 
@@ -191,6 +191,17 @@ eval("/**\n * @license React\n * scheduler.development.js\n *\n * Copyright (c) 
 
 "use strict";
 eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs/scheduler.development.js */ \"./node_modules/scheduler/cjs/scheduler.development.js\");\n}\n\n\n//# sourceURL=webpack://practice/./node_modules/scheduler/index.js?");
+
+/***/ }),
+
+/***/ "./src/testData.json":
+/*!***************************!*\
+  !*** ./src/testData.json ***!
+  \***************************/
+/***/ ((module) => {
+
+"use strict";
+eval("module.exports = JSON.parse('{\"contests\":[{\"id\":1,\"categoryName\":\"Business/Company\",\"contestName\":\"Cognitive Building Bricks\"},{\"id\":2,\"categoryName\":\"Magazine/Newsletter\",\"contestName\":\"Educating people about sustainable food production\"},{\"id\":3,\"categoryName\":\"Software Component\",\"contestName\":\"Big Data Analytics for Cash Circulation\"},{\"id\":4,\"categoryName\":\"Website\",\"contestName\":\"Free programming books\"}]}');\n\n//# sourceURL=webpack://practice/./src/testData.json?");
 
 /***/ })
 
