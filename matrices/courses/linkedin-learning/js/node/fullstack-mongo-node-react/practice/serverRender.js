@@ -6,12 +6,15 @@ import App from './src/components/App';
 import config from './config';
 import axios from 'axios';
 
-const serverRender = async () => {
-    await axios.get(`${config.serverUrl}/api/contests`)
-        .then(res => {
-            return ReactDOMServer.renderToString(
-                <App initialContests={res.data.contests} />
-            );
+const serverRender = () => {
+    const request = axios.get(`${config.serverUrl}/api/contests`);
+        return request.then(res => {
+            return {
+                initialMarkup: ReactDOMServer.renderToString(
+                    <App initialContests={res.data.contests} />
+                ),
+                initialData: res.data
+            };
         });
 }
 
