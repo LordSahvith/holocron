@@ -5,10 +5,7 @@ import App from './components/App';
 
 ReactDOM.render(
     <React.StrictMode>
-        <App initialContests={window.initialData.contests} />
+        <App initialData={window.initialData} />
     </React.StrictMode>,
     document.getElementById('root')
 );
-
-
-
