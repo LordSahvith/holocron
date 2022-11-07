@@ -1,23 +1,33 @@
 import express from 'express';
-import data from '../src/testData';
+import { MongoClient } from 'mongodb';
+import assert from 'assert';
+import config from '../config';
+
+let mdb;
+MongoClient.connect(config.mongodbUri, (err, client) => {
+    assert.equal(null, err);
+
+    mdb = client.db('Fullstack-node-react');
+});
 
 const router = express.Router();
-const contests = data.contests.reduce((obj, contest) => {
-    obj[contest.id] = contest;
-    return obj;
-}, {});
 
 router.get('/contests', (req, res) => {
-    res.send({
-        contests: contests
-    });
+    let contests = {};
+    mdb.collection('contests').find({})
+        .each((err, contest) => {
+            assert.equal(null, err);
+
+            if (!contest) {
+                res.send(contests);
+                return;
+            }
+
+            contests[contest.id] = contest;
+        });
 });
 
 router.get('/contests/:contestId', (req, res) => {
-    let contest = contests[req.params.contestId];
-    contest.description = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt culpa odit vel animi cum velit quo, ex illo corrupti! Enim beatae iste atque quae saepe reiciendis obcaecati veniam eius dicta.';
-
-    res.send(contest);
 });
 
 export default router;
