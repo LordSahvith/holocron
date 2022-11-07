@@ -1,0 +1,12 @@
+{
+    "bpi": {
+        "2020-09-03": 11302.8875,
+        "2020-09-04": 10292.5983,
+        "2020-09-05": 10439.5
+    },
+    "disclaimer": "This data was produced from the CoinDesk Bitcoin Price Index. BPI value data returned as USD.",
+    "time": {
+      "updated": "Nov 7, 2022 00:03:00 UTC",
+      "updatedISO": "2022-11-07T00:03:00+00:00"
+    }
+  }
