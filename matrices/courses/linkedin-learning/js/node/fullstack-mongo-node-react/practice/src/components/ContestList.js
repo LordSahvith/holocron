@@ -12,7 +12,7 @@ const ContestList = ({ contests, onContestClick }) => {
     );
 };
 
-ContestList.PropTypes = {
+ContestList.propTypes = {
     contests: PropTypes.object,
     onContestClick: PropTypes.func.isRequired
 }
