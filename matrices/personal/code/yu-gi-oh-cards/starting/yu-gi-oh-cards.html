@@ -6,31 +6,151 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yu-Gi-Oh Cards</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        .card {
+            margin: 1em 0;
+            padding: 1em;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+        }
+
+        .cards-table {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            margin: 1em 0;
+        }
+
+        .cards-table span {
+            min-width: 25%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        @media screen and (min-width: 768px) {
+            .cards-table {
+                flex-direction: row;
+            }
+
+            .cards-table span {
+                border-bottom: none;
+                border-right: 1px solid #ddd;
+            }
+
+            .cards-table span:last-child {
+                border-right: none;
+            }
+        }
+
+        .cards-table span:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Yu-Gi-Oh Cards</h1>
+    <div class="container">
+        <h1>Yu-Gi-Oh Cards</h1>
 
-    <label for="cardName">Enter Card Name</label>
-    <br>
-    <input id="cardName" type="text" placeholder="card name">
-    <br>
-    <br>
-    <label for="cardName">Enter Card ID</label>
-    <br>
-    <input id="cardId" type="text" placeholder="card id">
-    <br>
-    <br>
-    <input type="submit" id="cardNameButton">
+        <form class="card-form">
+            <div class="form-group">
+                <label for="cardName">Card Name</label>
+                <input type="text" class="form-control" id="cardName">
+            </div>
+            <div class="form-group">
+                <label for="cardSetCode">Card Set Code</label>
+                <input type="password" class="form-control" id="cardSetCode">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="cardFirstEdition">
+              <label class="form-check-label" for="cardFirstEdition">First Edition?</label>
+            </div>
+            <button type="submit" class="btn btn-primary" id="cardNameButton">Submit</button>
+        </form>
 
-    <div class="display">
+        <div class="cards-wrapper">
+            <h2>Card Info</h2>
+
+            <div class="cards-table">
+                <span class="card-type"><strong>Title</strong>: Yami</span>
+                <span class="card-type"><strong>Type</strong>: Spell Card</span>
+                <span class="card-race"><strong>Race</strong>: Field</span>
+                <span class="card-description"><strong>Description</strong>: All Fiend and Spellcaster monsters on the field gain 200
+                    ATK/DEF,
+                    also all Fairy monsters on the field lose 200 ATK/DEF.</span>
+            </div>
+
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">
+                        <h3>Castle of Dark Illusions</h3>
+                        <small class="card-setcode">MRD-073</small>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-level"><strong>Level</strong>: 4</div>
+                        <div class="card-type"><strong>Type</strong>: Flip Effect Monster</div>
+                        <div class="card-race"><strong>Race</strong>: Fiend</div>
+                        <div class="attribute"><strong>Attribute</strong>: Dark</div>
+                        <div class="card-description"><strong>Description</strong>: FLIP: All Zombie-Type monsters gain 200 ATK and DEF.
+                            During each of your next 4 Standby Phases, each of those Zombie-Type monsters gains 200 more
+                            ATK and DEF. These effects last as long as this card is face-up on the field.</div>
+                        <div class="card-atk"><strong>Attack</strong>: 920</div>
+                        <div class="card-def"><strong>Defense</strong>: 1930</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <h3>Yami</h3>
+                    </div>
+                    <div class="card-info">
+                        <div class="card-type"><strong>Type</strong>: Spell Card</div>
+                        <div class="card-race"><strong>Race</strong>: Field</div>
+                        <div class="card-description"><strong>Description</strong>: All Fiend and Spellcaster monsters on the field gain
+                            200 ATK/DEF,
+                            also all Fairy monsters on the field lose 200 ATK/DEF.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- "name": "Yami",
+    "type": "Spell Card",
+    "desc": "All Fiend and Spellcaster monsters on the field gain 200 ATK/DEF, also all Fairy monsters on the field lose
+    200 ATK/DEF.",
+    "race": "field"
+
+    "name": "Castle of Dark Illusions",
+    "type": "Flip Effect Monster",
+    "desc": "FLIP: All Zombie-Type monsters gain 200 ATK and DEF. During each of your next 4 Standby Phases, each of
+    those Zombie-Type monsters gains 200 more ATK and DEF. These effects last as long as this card is face-up on the
+    field.",
+    "atk": 920,
+    "def": 1930,
+    "level": 4,
+    "race": "Fiend",
+    "attribute": "DARK", -->
+
+    <!-- <div class="display">
         <h2>Full Card Data</h2>
         <div class="fullCardData"></div>
 
         <h2>Matching Set</h2>
         <div class="matchingSet"></div>
-    </div>
+    </div> -->
 
     <!-- <script src="./modules/displayInfo.js"></script>
     <script src="./modules/card.js"></script> -->

@@ -1,5 +1,5 @@
 let cardName = document.querySelector('#cardName');
-let cardId = document.querySelector('#cardId');
+let cardId = document.querySelector('#cardSetCode');
 let cardNameButton = document.querySelector('#cardNameButton');
 
 cardNameButton.addEventListener('click', getCardInfo);
