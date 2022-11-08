@@ -29,8 +29,8 @@ class MongoBackend {
     async disconnect() {
         if (this.client) {
             return this.client.close;
-        } 
-        
+        }
+
         return false;
     }
 
@@ -48,7 +48,9 @@ class MongoBackend {
         return this.collection.insertMany(documents);
     }
 
-    async getMax() { }
+    async getMax() {
+        return this.collection.findOne({}, { sort: { value: -1 } });
+    }
 
     async max() {
         console.info('Connecting to MongoDB...\r');
@@ -69,11 +71,21 @@ class MongoBackend {
         console.timeEnd('mongodb-insert');
 
         console.info(`Inserted ${insertResult.result} documents into MongoDB`);
-        
+
+        console.info('Querying MongoDB...');
+        console.time('mongodb-find');
+        const doc = await this.getMax();
+        console.timeEnd('mongodb-find');
+
         console.info('Disonnecting from MongoDB...\r');
         console.time('mongodb-disconnect');
         await this.disconnect();
         console.timeEnd('mongodb-disconnect');
+
+        return {
+            date: doc.date,
+            value: doc.value
+        }
     }
 }
 
