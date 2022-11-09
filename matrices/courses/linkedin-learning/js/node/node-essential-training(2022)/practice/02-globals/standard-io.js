@@ -1,28 +1,30 @@
-process.stdout.write('Hello\n\n');
+process.stdout.write('Hello\n');
 
 const questions = [
     'What is your name?',
     'What would you rather be doing?',
-    'What is your preferred programming language'
+    'What is your preferred programming language?'
 ];
 const answers = [];
 
-// function ask(i) {
-//     process.stdout.write(`\n\n\n ${questions[i]}`);
-//     process.stdout.write(` > `);
-// }
-
-const ask = (i) => {
-    process.stdout.write(`\n\n\n ${questions[i]}`);
+const ask = (i = 0) => {
+    process.stdout.write(`\n\n ${questions[i]}`);
     process.stdout.write(` > `);
 };
 
-// process.stdin.on('data', function (data) {
-//     process.stdout.write(data.toString().trim());
-// });
+ask();
 
 process.stdin.on('data', (data) => {
-    process.stdout.write(data.toString().trim());
+    answers.push(data.toString().trim());
+
+    if (answers.length < questions.length) {
+        ask(answers.length);
+    } else {
+        process.exit();
+    }
 });
 
-ask(answers.length);
+process.on('exit', () => {
+    process.stdout.write('\n\n');
+    process.stdout.write(`Go ${answers[1]} ${answers[0]} you can finish writing ${answers[2]} later.`)
+});
