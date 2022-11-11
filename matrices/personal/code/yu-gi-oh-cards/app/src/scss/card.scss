@@ -1,0 +1,43 @@
+.card {
+    margin: 1em 0;
+    padding: 1em;
+
+    &-title {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.cards-table {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+    }
+
+    span {
+        min-width: 25%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+
+        @media screen and (min-width: 768px) {
+            border-bottom: none;
+            border-right: 1px solid #ddd;
+        }
+
+        &:last-child {
+            border-bottom: none;
+
+            @media screen and (min-width: 768px) {
+                border-right: none;
+            }
+        }
+    }
+}
