@@ -27,6 +27,11 @@ app.get('/next', (request, response, next) => {
     response.send('This is a route with a second callback.');
 });
 
+// GET - redirect method
+app.get('/redirect', (request, response) => {
+    response.redirect('/');
+});
+
 // GET with routing parameters
 // ex. use: /class/:{param} -> http://localhost:3000/class/4 -> { {param}: '4' }
 // ex. output: /class/:userId -> http://localhost:3000/class/4 -> { userId: '4' }
