@@ -5,7 +5,7 @@
     "main": "app.js",
     "scripts": {
         "start": "nodemon --experimental-json-modules --exec babel-node app.js --ignore public/",
-        "scss": "sass --watch client/scss/card.scss public/css/card.css"
+        "scss": "sass --watch client/scss/styles.scss public/css/styles.css"
     },
     "author": "Lord Savith",
     "license": "ISC",
