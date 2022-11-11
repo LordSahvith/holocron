@@ -48,7 +48,7 @@ app.get('/download', (request, response) => {
 // route chaining
 app.route('/class')
     .get((request, response) => {
-        response.send('Retrieve class info');
+        response.send(['Retrieve class info', studentData]);
     })
     .post((request, response) => {
         response.send('Create class info');
