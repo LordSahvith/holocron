@@ -22,9 +22,19 @@ app.use(express.static('public'));
 // ex: ./public/images/* -> http://localhost:3000/images/mountains_2.jpeg
 // app.use('/images', express.static('images'));
 
+// using express.json and express.urlencoded
+// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // route for root '/' - get(path, handler)
 app.get('/', (request, response) => {
     response.json(studentData);
+});
+
+// POST - express.json and express.urlencoded
+app.post('/item', (request, response) => {
+    console.log(request.body);
+    response.send(request.body);
 });
 
 // GET with next()
