@@ -4,7 +4,7 @@
     "description": "My Yu-Gi-Oh App",
     "main": "app.js",
     "scripts": {
-        "start": "nodemon --experimental-json-modules --exec babel-node app.js --ignore public/",
+        "start": "nodemon --experimental-json-modules --exec babel-node app.js -e js,hbs --ignore public/",
         "scss": "sass --watch client/scss/styles.scss public/css/styles.css"
     },
     "author": "Lord Savith",
