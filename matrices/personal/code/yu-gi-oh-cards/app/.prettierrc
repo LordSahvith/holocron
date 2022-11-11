@@ -1,0 +1,13 @@
+{
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+        {
+            "files": "*.hbs",
+            "options": {
+                "singleQuote": false
+            }
+        }
+    ]
+}

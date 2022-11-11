@@ -2,6 +2,7 @@ import express from 'express';
 import config from './config';
 import path from 'path';
 import hbs from 'hbs';
+import hbsPartialLoader from './utils/hbsPartialLoader';
 
 // routes
 import indexRouter from './routes/indexRouter';
@@ -12,7 +13,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-hbs.registerPartials(path.join(__dirname, 'views/partials'));
+hbsPartialLoader();
 
 app.use(express.static(path.join(__dirname, 'public')));
 
