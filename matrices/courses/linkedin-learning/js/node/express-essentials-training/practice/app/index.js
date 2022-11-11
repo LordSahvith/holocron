@@ -111,6 +111,16 @@ app.delete('/delete', (request, response) => {
     response.send('This is a DELETE request at /delete');
 });
 
+// ERROR - gracefully handle http errors
+// app.use((err, req, res, next) => {
+//     if (res.statusCode !== 200) {
+//         console.error('STACK TRACE: ', err.stack);
+//         res.send('Something is broken!');
+//     }
+
+//     next();
+// });
+
 // starts server
 app.listen(PORT, () => {
     console.log(`Express Server running on port:${PORT} `);
