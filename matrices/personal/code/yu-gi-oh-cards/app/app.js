@@ -13,9 +13,9 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-hbsPartialLoader();
-
 app.use(express.static(path.join(__dirname, 'public')));
+
+hbsPartialLoader();
 
 app.use('/', indexRouter);
 
