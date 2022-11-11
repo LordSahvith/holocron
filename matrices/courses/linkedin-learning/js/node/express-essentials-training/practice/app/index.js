@@ -6,6 +6,14 @@ import data from './data/mock.json' assert { type: 'json' };
 const app = express();
 const PORT = 3000;
 
+// using the public 'static' folder at root
+app.use(express.static('public'));
+
+// I feel this is redundant since you'd need to do this for each folder
+// when above seems to dynamically use the folder name within /public/*
+// ex: ./public/images/* -> http://localhost:3000/images/mountains_2.jpeg
+// app.use('/images', express.static('images'));
+
 // router for root '/' - get(path, handler)
 app.get('/', (request, response) => {
     response.json(data);
