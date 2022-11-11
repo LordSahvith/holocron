@@ -1,12 +1,9 @@
 {
 	"folders": [
-    {
-      "path": "."
-    },
-    {
-      "path": "E:\\Users\\Owner\\Documents\\coding\\games"
-    }
-  ],
+        {
+            "path": "."
+        }
+    ],
 "settings": {
     "liveServer.settings.multiRootWorkspaceName": "holocron"
 }
