@@ -65,8 +65,10 @@ app.route('/class')
 // ex. output: /class/:userId -> http://localhost:3000/class/4 -> { userId: '4' }
 app.route('/class/:userId')
     .get((request, response) => {
+        // Middleware: access the routing parameters
         const student = getStudentInfo(request.params);
 
+        // everything above this line is Middleware
         // send response data
         response.send(student);
     })
