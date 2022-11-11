@@ -1,35 +1,51 @@
-// package.json "type": "module" allows for "import" syntax over "require"
+// "import" syntax comes from package.json "type": "module" to allow over "require"
 import express from 'express';
 // assert type needed for experimental json
-import data from './data/mock.json' assert { type: 'json' };
+import studentData from './data/mockStudents.json' assert { type: 'json' };
 
 const app = express();
 const PORT = 3000;
 
-// using the public 'static' folder at root
+// route using the public 'static' folder at root
 app.use(express.static('public'));
 
 // I feel this is redundant since you'd need to do this for each folder
-// when above seems to dynamically use the folder name within /public/*
+// when above seems to dynamically use the folder name within /{folder}/*
 // ex: ./public/images/* -> http://localhost:3000/images/mountains_2.jpeg
 // app.use('/images', express.static('images'));
 
-// router for root '/' - get(path, handler)
+// route for root '/' - get(path, handler)
 app.get('/', (request, response) => {
-    response.json(data);
+    response.json(studentData);
 });
 
-// router for create '/create' - post(path, handler)
+// GET with routing parameters
+// ex. use: /class/:{param} -> http://localhost:3000/class/4 -> { {param}: '4' }
+// ex. output: /class/:userId -> http://localhost:3000/class/4 -> { userId: '4' }
+app.get('/class/:userId', (request, response) => {
+    // get userId from the request parameters
+    const studentId = Number(request.params.userId);
+
+    // filter student where studentData.id === studentId
+    const student = studentData.filter((student) => {
+        return student.id === studentId;
+    });
+
+    // send response data
+    response.send(student);
+});
+
+// route for create '/create' - post(path, handler)
 app.post('/create', (request, response) => {
     response.send('This is a POST request at /create');
 });
 
-// router for edit '/edit' - post(path, handler)
+// route for edit '/edit' - post(path, handler)
 app.put('/edit', (request, response) => {
     response.send('This is a PUT request at /edit');
 });
 
-// router for delete '/delete' - post(path, handler)
+// route for delete '/delete' - post(path, handler)
 app.delete('/delete', (request, response) => {
     response.send('This is a DELETE request at /delete');
 });
@@ -37,5 +53,4 @@ app.delete('/delete', (request, response) => {
 // starts server
 app.listen(PORT, () => {
     console.log(`Express Server running on port:${PORT} `);
-    console.log('data: ', data);
 });
