@@ -8,7 +8,7 @@ const PORT = 3000;
 
 // router for root '/' - get(path, handler)
 app.get('/', (request, response) => {
-    response.send('This is a GET request at /');
+    response.json(data);
 });
 
 // router for create '/create' - post(path, handler)
