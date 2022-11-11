@@ -1,1 +1,3 @@
-console.log('hello world');
+import cardForm from './components/cardForm';
+
+cardForm();
