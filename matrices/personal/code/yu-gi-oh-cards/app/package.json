@@ -1,0 +1,21 @@
+{
+    "name": "app",
+    "version": "1.0.0",
+    "description": "My Yu-Gi-Oh App",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon --experimental-json-modules --exec babel-node app.js --ignore public/"
+    },
+    "author": "Lord Savith",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.2",
+        "nodemon": "^2.0.20"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.19.3",
+        "@babel/core": "^7.20.2",
+        "@babel/node": "^7.20.2",
+        "@babel/preset-env": "^7.20.2"
+    }
+}
