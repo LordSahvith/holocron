@@ -7,7 +7,7 @@ const getCount = () => count;
 
 module.exports = {
     anything: true,
-    who: "Bill",
+    who: 'Bill',
     count,
     inc,
     dec,

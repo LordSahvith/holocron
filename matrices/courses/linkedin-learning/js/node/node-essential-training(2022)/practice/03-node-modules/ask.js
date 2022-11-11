@@ -1,4 +1,4 @@
-const readline = require("readline");
+const readline = require('readline');
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -30,7 +30,7 @@ const questions = [
 ];
 
 collectAnswers(questions, (answers) => {
-    console.log("Thank you for your answers!");
+    console.log('Thank you for your answers!');
     console.log(answers);
     process.exit();
 });
