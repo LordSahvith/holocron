@@ -27,9 +27,7 @@ app.get('/class/:userId', (request, response) => {
     const studentId = Number(request.params.userId);
 
     // filter student where studentData.id === studentId
-    const student = studentData.filter((student) => {
-        return student.id === studentId;
-    });
+    const student = studentData.filter((student) => student.id === studentId);
 
     // send response data
     response.send(student);
