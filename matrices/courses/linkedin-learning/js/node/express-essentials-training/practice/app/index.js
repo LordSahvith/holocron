@@ -19,6 +19,14 @@ app.get('/', (request, response) => {
     response.json(studentData);
 });
 
+// GET with next()
+app.get('/next', (request, response, next) => {
+    console.log('The response will be sent by the next function.');
+    next();
+}, (request, response) => {
+    response.send('This is a route with a second callback.');
+});
+
 // GET with routing parameters
 // ex. use: /class/:{param} -> http://localhost:3000/class/4 -> { {param}: '4' }
 // ex. output: /class/:userId -> http://localhost:3000/class/4 -> { userId: '4' }
@@ -26,7 +34,7 @@ app.get('/class/:userId', (request, response) => {
     // get userId from the request parameters
     const studentId = Number(request.params.userId);
 
-    // filter student where studentData.id === studentId
+    // filter student from student data that matches the user id
     const student = studentData.filter((student) => student.id === studentId);
 
     // send response data
