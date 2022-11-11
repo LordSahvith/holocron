@@ -6,6 +6,14 @@ import studentData from './data/mockStudents.json' assert { type: 'json' };
 const app = express();
 const PORT = 3000;
 
+const getStudentInfo = (student) => {
+    // get userId from the request parameters
+    const studentId = Number(student.userId);
+
+    // filter student from student data that matches the user id
+    return studentData.filter((student) => student.id === studentId);
+};
+
 // route using the public 'static' folder at root
 app.use(express.static('public'));
 
@@ -37,19 +45,44 @@ app.get('/download', (request, response) => {
     response.download('./public/images/mountains_2.jpeg');
 });
 
+// route chaining
+app.route('/class')
+    .get((request, response) => {
+        response.send('Retrieve class info');
+    })
+    .post((request, response) => {
+        response.send('Create class info');
+    })
+    .put((request, response) => {
+        response.send('Update class info');
+    })
+    .delete((request, response) => {
+        response.send('Delete class info');
+    });
+
 // GET with routing parameters
 // ex. use: /class/:{param} -> http://localhost:3000/class/4 -> { {param}: '4' }
 // ex. output: /class/:userId -> http://localhost:3000/class/4 -> { userId: '4' }
-app.get('/class/:userId', (request, response) => {
-    // get userId from the request parameters
-    const studentId = Number(request.params.userId);
+app.route('/class/:userId')
+    .get((request, response) => {
+        const student = getStudentInfo(request.params);
 
-    // filter student from student data that matches the user id
-    const student = studentData.filter((student) => student.id === studentId);
+        // send response data
+        response.send(student);
+    })
+    .post((request, response) => {
+        const student = getStudentInfo(request.params);
+        response.send(`Create class info for ${student[0].first_name}`);
+    })
+    .put((request, response) => {
+        const student = getStudentInfo(request.params);
+        response.send(`Update class info for ${student[0].first_name}`);
+    })
+    .delete((request, response) => {
+        const student = getStudentInfo(request.params);
+        response.send(`Delete class info for ${student[0].first_name}`);
+    });
 
-    // send response data
-    response.send(student);
-});
 
 // route for create '/create' - post(path, handler)
 app.post('/create', (request, response) => {
