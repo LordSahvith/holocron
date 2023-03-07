@@ -140,7 +140,7 @@ console.log(flight.status && flight.status.nonExistent); // undefined
 try {
   // throws error because flight.status is undefined so nonExistent coulnd't possibly be
   console.log(flight.status.nonExistent); // throws "TypeError"
-} catch(errorMsg) {
+} catch (errorMsg) {
   console.error(errorMsg);
 }
 
@@ -190,7 +190,9 @@ const nick = stooge.nickname;
 // stooge and x refer to the same location in memory so updating one updates both
 console.log(nick); // Curly
 
-const a = {}, b = {}, c = {}; // define 3 different empty objects
+const a = {},
+  b = {},
+  c = {}; // define 3 different empty objects
 a.test = 'only here'; // define a property
 console.log(a, b, c); // {test: 'only here'} {} {}
 
@@ -200,7 +202,6 @@ const bc = emptyObject; // reference empty object
 const cd = emptyObject; // reference empty object
 bc.test = 'only everywhere'; // define a property
 console.log(ab, bc, cd); // {test: 'only everywhere'} {test: 'only everywhere'} {test: 'only everywhere'}
-
 
 console.groupEnd('Reference');
 
@@ -215,7 +216,7 @@ if (typeof Object.create !== 'function') {
     const F = function () {};
     F.prototype = o;
     return new F();
-  }
+  };
 }
 const another_stooge = Object.create(stooge);
 console.log(another_stooge); // {}
