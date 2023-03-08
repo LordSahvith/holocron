@@ -1,8 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders react modal with open button', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const buttonElement = screen.getByText(/Open/i);
+  expect(buttonElement).toBeInTheDocument();
+});
+
+test('renders and checks for modal', () => {
+  render(<App />);
+  const modalMain = document.querySelector('.modal-main')
+  expect(modalMain).toBeInTheDocument();
 });
