@@ -24,5 +24,5 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UPROPERTY(EditAnywhere)
-	FVector MyVector;
+	FVector MyVector = FVector(-13400.0, -4030.0, 4056.0);
 };
