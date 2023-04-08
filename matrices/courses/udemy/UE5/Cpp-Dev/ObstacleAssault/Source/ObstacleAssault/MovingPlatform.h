@@ -34,4 +34,10 @@ private:
 
 	void MovePlatform(float DeltaTime);
 	void RotatePlatform(float DeltaTime);
+
+	bool ShouldPlatformReturn();
+	float GetDistanceMoved();
+
+	// TODO: debug line
+	void TPlatformOverShoot();
 };
