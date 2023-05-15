@@ -15,6 +15,11 @@ console.groupCollapsed('4 types of objects');
 // Object Literals
 console.groupCollapsed('Object Literals');
 
+/** 
+ * objects produced using object literals creates a hidden link to Object.prototype 
+ * (prototypes will be covered more in chapters 4 & 5)
+*/
+
 const empty_object_literal = {}; // simplest object
 const object_literal = {
   one: 'one',

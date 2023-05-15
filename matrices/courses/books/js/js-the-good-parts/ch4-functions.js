@@ -65,6 +65,25 @@ console.groupEnd('Method Invocation');
  *******************************/
 console.groupCollapsed('Function Invocation');
 
+/**
+ * here with Function Invocation Patter, 'this' gets assinged to the global function - not a desired result (a bit of a flaw in the design)
+ * the workaround for this is explained a bit further down (line: 88 - when we assign 'this' to 'that)
+*/
+const immediateInvocation = add(3, 4); // gets invoked immediately since it's not a property and has parentheses () (function invocation pattern)
+
+console.log('immediateInvocation: ', immediateInvocation); // 7 - returns the result since it was invoked on creation (line 68)
+
+/** 
+ * assign the add() function but does not run until invoked 
+ * (i.e. parentheses () are appended)
+ * or, if it's a property, not until method invocation (starts line: 43)
+ * (i.e. dot (Object.whatever()) or subscript (Object[{whatever}]) expressions)
+*/ 
+const notImmediateInvocation = add; 
+
+console.log('notImmediateInvocatin: ', add); // ƒ add(a, b) { return a + b; }
+console.log('notImmediateInvocatin: ', add(4, 4)); // 8 - function invocation pattern
+
 myObject.double = function () {
   const that = this; // workaround for this since this will be scoped to global object
 
