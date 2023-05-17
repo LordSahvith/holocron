@@ -36,7 +36,7 @@ function foo(one, two, globalObj) {
 }
 
 const globalObj = this; // EDUCATIONAL PURPOSES, NOT RECOMMENDED - passing the global object is a security risk, just showing use case for strict mode
-foo('first', 'second', globalObj); 
+foo('first', 'second', globalObj);
 
 console.groupEnd('Base Invocation');
 
@@ -68,18 +68,18 @@ console.groupCollapsed('Function Invocation');
 /**
  * here with Function Invocation Patter, 'this' gets assinged to the global function - not a desired result (a bit of a flaw in the design)
  * the workaround for this is explained a bit further down (line: 88 - when we assign 'this' to 'that)
-*/
+ */
 const immediateInvocation = add(3, 4); // gets invoked immediately since it's not a property and has parentheses () (function invocation pattern)
 
 console.log('immediateInvocation: ', immediateInvocation); // 7 - returns the result since it was invoked on creation (line 68)
 
-/** 
- * assign the add() function but does not run until invoked 
+/**
+ * assign the add() function but does not run until invoked
  * (i.e. parentheses () are appended)
  * or, if it's a property, not until method invocation (starts line: 43)
  * (i.e. dot (Object.whatever()) or subscript (Object[{whatever}]) expressions)
-*/ 
-const notImmediateInvocation = add; 
+ */
+const notImmediateInvocation = add;
 
 console.log('notImmediateInvocatin: ', add); // ƒ add(a, b) { return a + b; }
 console.log('notImmediateInvocatin: ', add(4, 4)); // 8 - function invocation pattern
@@ -182,7 +182,6 @@ console.log(sum); // 7
 const statusObject = {
   status: 'A-OK',
 };
-
 // statusObject does not inherit from Quo.prototype
 // but we can invoke the get_status method on
 // statusObject even though statusObject does not have
@@ -193,5 +192,69 @@ const status2 = myQuo2.get_status.apply(statusObject);
 console.log(status2); // A-OK and you've been overwritten
 
 console.groupEnd('Apply Invocation');
+
+/*************
+ * Arguments *
+ *************/
+console.groupCollapsed('Arguments');
+
+/**
+ * Arguments Array: a bonus parameter that is available when a function is invoked
+ * caveat: this is a work around and doens't work with ES6 arrow functions - which is the preferred and modern way
+ */
+const argumentsExample = function () {
+  console.log('arguments: ', arguments);
+};
+
+argumentsExample(); // [callee: (...), Symbol(Symbol.iterator): ƒ, ...]
+argumentsExample('a', 'two', 3); // ['a', 'two', 3, callee: (...), Symbol(Symbol.iterator): ƒ, ...]
+
+/**
+ * ES6 sorta solves this with a rest parameter, however,
+ * this doesn't have the extra data as a function invocation pattern
+ * and isn't the true Arguments Array
+ */
+const argumentsArrowExample = (...args) => {
+  console.log('arrow: ', args);
+};
+
+argumentsArrowExample(); // []
+argumentsArrowExample('a', 'two', 3); // ['a', 'two', 3]
+
+// book example
+const sumArray = function () {
+  let i;
+  let sumDeclared; // just declaring will cause variable to be NaN
+  let sum = 0; // make sure to define your variable by assigning a value
+
+  for (i = 0; i < arguments.length; i++) {
+    console.log('array: ', arguments[i], typeof arguments[i]);
+    sum += arguments[i];
+    sumDeclared += arguments[i];
+  }
+
+  return { sum, sumDeclared };
+};
+
+console.log('sum: ', sumArray(1, 2, 3, 4, 5, 6, 7, 8, 9)); // {sum: 45, sumDeclared: NaN}
+
+// arrow conversion - this is the preferred way
+const sumArrayArrow = (...args) => {
+  let i;
+  let sumDeclared; // just declaring will cause variable to be NaN
+  let sum = 0; // make sure to define your variable by assigning a value
+
+  for (i = 0; i < args.length; i++) {
+    console.log('array: ', args[i], typeof args[i]);
+    sum += args[i];
+    sumDeclared += args[i];
+  }
+
+  return { sum, sumDeclared };
+};
+
+console.log('sum Arrow: ', sumArrayArrow(1, 2, 3, 4, 5, 6, 7, 8, 9)); // {sum: 45, sumDeclared: NaN}
+
+console.groupEnd('Arguments');
 
 console.groupEnd('Ch4 - Functions');
