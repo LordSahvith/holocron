@@ -262,7 +262,7 @@ console.groupEnd('Arguments');
  **********/
 console.groupCollapsed('Return');
 
-const returnFunction1 = function() {
+const returnFunction1 = function () {
   console.log('I get logged.');
   return; // returns exit block of code immediately and not code is executed after inside the block
   console.log('but I do not');
@@ -274,13 +274,13 @@ const testReturn1 = returnFunction1();
 
 console.log('test return 1: ', testReturn1); // undefined - functions always return a value, even when there isn't a return, in this case, undefined is returned
 
-const returnFunction2 = function() {
+const returnFunction2 = function () {
   return 'the truth is out there!'; // returns exit block of code immediately and not code is executed after inside the block
 };
 
 console.log('test with value: ', returnFunction2()); // the truth is out there!
 
-const ReturnFunction3 = function(first, last) {
+const ReturnFunction3 = function (first, last) {
   this.first = first;
   this.last = last;
 
@@ -301,8 +301,8 @@ const addException = function (a, b) {
   if (typeof a !== 'number' || typeof b !== 'number') {
     throw {
       name: 'TypeError',
-      message: 'add needs numbers'
-    }
+      message: 'add needs numbers',
+    };
   }
 
   return a + b;
@@ -328,7 +328,7 @@ console.groupCollapsed('Augmenting Types');
 Function.prototype.method = function (name, func) {
   this.prototype[name] = func;
   return this;
-}
+};
 
 Number.method('integer', function () {
   return Math[this < 0 ? 'ceil' : 'floor'](this);
@@ -349,7 +349,7 @@ console.log(' neat '.trim(), ''); // neat
 // conditionally set the method of it's not there
 // this helps prevent cross library discrepancies
 Function.prototype.method2 = function (name, func) {
-  if (!this.prototype[name]) {   
+  if (!this.prototype[name]) {
     this.prototype[name] = func;
     return this;
   }
@@ -373,7 +373,7 @@ const hanoi = function hanoi(disc, src, aux, dst) {
 hanoi(3, 'Src', 'Aux', 'Dst');
 
 /**
- * Defines a function that visits every 
+ * Defines a function that visits every
  * node of the tree in HTML source order,
  * starting from some given node. It invokes
  * a function, passing it each node in turn.
@@ -393,7 +393,7 @@ const walk_the_DOM = function walk(node, func) {
  * Takes an attributre name string and an optional
  * matching value. It calls walk_the_DOM, passing it
  * a function that looks for an attribute name in the
- * node. The matching nodes are accumulated in a 
+ * node. The matching nodes are accumulated in a
  * results array
  */
 const getElementsByAttribute = function (att, value) {
@@ -401,17 +401,18 @@ const getElementsByAttribute = function (att, value) {
 
   walk_the_DOM(document.body, function (node) {
     const actual = node.nodeType === 1 && node.getAttribute(att); // returns string if present, otherwise false
-    if (typeof actual === 'string' && (actual === value || typeof value !== 'string')) { // || typeof value handles optional parameter
+    if (typeof actual === 'string' && (actual === value || typeof value !== 'string')) {
+      // || typeof value handles optional parameter
       console.log('node: ', node); // matching node
       console.log('actual: ', actual); // attribute's value
-      results.push(node); 
+      results.push(node);
     }
   });
 
   return results;
 };
 
-console.log('data-test: ', getElementsByAttribute('data-test','in control')); // [h1.heading1]
+console.log('data-test: ', getElementsByAttribute('data-test', 'in control')); // [h1.heading1]
 console.log('class: ', getElementsByAttribute('class')); // [h1.heading1, p.paragraph, p.paragraph.two]
 console.log('class two: ', getElementsByAttribute('class', 'paragraph two')); // [p.paragraph.two]
 
@@ -429,5 +430,69 @@ const factorial = function factorial(i, a) {
 console.log('js does not support tail recursion: ', factorial(4)); // 24
 
 console.groupEnd('Recursion');
+
+/*********
+ * Scope *
+ *********/
+console.groupCollapsed('Scope');
+
+// fucntion scope
+const scopeFu = () => {
+  const functionScope = "this is scoped to this function unless it's passed to another function";
+  console.log('function scope (in): ', functionScope); // 'this is scoped to this function unless it's passed to another function'
+
+  const scopeFoo = () => {
+    console.log('function scope (in - in): ', functionScope); // 'this is scoped to this function unless it's passed to another function'
+    const innerFunctionScope = 'scoped here and to "decending" code';
+    console.log('inner: ', innerFunctionScope); // scoped here and to "decending" code
+  };
+
+  try {
+    console.log('outer: ', innerFunctionScope); // Uncaught ReferenceError: innerFunctionScope is not defined
+  } catch (e) {
+    console.error('outer: ', e.message); // innerFunctionScope is not defined
+  }
+
+  scopeFoo();
+};
+
+scopeFu();
+
+// block scope
+var everywhereVar = 'vars are global with block scope';
+let everywhereLet = 'lets are global to inner blocks but not outer';
+const everywhereConst = 'consts are global to inner blocks but not outer';
+
+console.log('outer global var: ', everywhereVar);
+console.log('outer global let: ', everywhereLet);
+console.log('outer global const: ', everywhereConst);
+
+if (true) {
+  console.log('inner global var: ', everywhereVar);
+  console.log('inner global let: ', everywhereLet);
+  console.log('inner global const: ', everywhereConst);
+  var blockVar = 'vars are global with block scope';
+  let blockLet = 'lets are global to inner blocks but not outer';
+  const blockConst = 'consts are global to inner blocks but not outer';
+  console.log('inner block var: ', blockVar); //vars are global with block scope
+  console.log('inner block let: ', blockLet); // lets are global to inner blocks but not outer
+  console.log('inner block const: ', blockConst); // consts are global to inner blocks but not outer
+}
+
+console.log('inner block var: ', blockVar); // vars are global with block scope
+
+try {
+  console.log('inner block let: ', blockLet); // Uncaught ReferenceError: blockLet is not defined
+} catch (e) {
+  console.error('outer: ', e.message); // blockLet is not defined
+}
+
+try {
+  console.log('inner block const: ', blockConst); // Uncaught ReferenceError: blockConst is not defined
+} catch (e) {
+  console.error('outer: ', e.message); // blockConst is not defined
+}
+
+console.groupEnd('Scope');
 
 console.groupEnd('Ch4 - Functions');
