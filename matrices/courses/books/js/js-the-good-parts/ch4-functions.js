@@ -397,7 +397,7 @@ const walk_the_DOM = function walk(node, func) {
  * results array
  */
 const getElementsByAttribute = function (att, value) {
-  let results = [];
+  const results = [];
 
   walk_the_DOM(document.body, function (node) {
     const actual = node.nodeType === 1 && node.getAttribute(att); // returns string if present, otherwise false
@@ -494,5 +494,48 @@ try {
 }
 
 console.groupEnd('Scope');
+
+/***********
+ * Closure *
+ ***********/
+console.groupCollapsed('Closure');
+
+const myObjectClosure = (function () {
+  let value = 0;
+
+  return {
+    increment: (inc) => {
+      value += typeof inc === 'number' ? inc : 1;
+    },
+    getValue: () => {
+      return value;
+    }
+  };
+}()); // () at end invokes the anonymous function
+
+console.log('myObjectClosure: ', myObjectClosure); // {increment: ƒ, getValue: ƒ}
+console.log('myObjectClosure.getValue(): ', myObjectClosure.getValue()); // 0
+console.log('myObjectClosure.increment(): ', myObjectClosure.increment()); // undefined
+console.log('myObjectClosure.getValue(): ', myObjectClosure.getValue()); // 1
+console.log('myObjectClosure: ', myObjectClosure); // {increment: ƒ, getValue: ƒ}
+
+/**
+ * create a maker function called quo. it makes an
+ * object with a get_status method and a private
+ * status property
+ */
+const quoClosure = (status) => {
+  return {
+    get_status: () => {
+      return status;
+    }
+  }
+};
+
+// make an instance of quo
+const myQuoClosure = quoClosure('closure is pretty cool');
+console.log('myQuoClosure.get_status: ', myQuoClosure.get_status()); // closure is pretty cool
+
+console.groupEnd('Closure');
 
 console.groupEnd('Ch4 - Functions');
