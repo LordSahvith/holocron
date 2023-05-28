@@ -505,7 +505,7 @@ const myObjectClosure = (function () {
 
   return {
     increment: (inc) => {
-      value += typeof inc === 'number' ? inc : 1;
+      value += typeof inc === 'number' ? inc : 1; // JS keeps value alive as long as it's needed for this function - closure
     },
     getValue: () => {
       return value;
