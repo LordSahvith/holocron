@@ -536,6 +536,22 @@ const quoClosure = (status) => {
 const myQuoClosure = quoClosure('closure is pretty cool');
 console.log('myQuoClosure.get_status: ', myQuoClosure.get_status()); // closure is pretty cool
 
+// set DOM node color to yellow and fade to white
+const fade = (node) => {
+  let level = 1;
+  const step = () => {
+    let hex = level.toString(16);
+    node.style.backgroundColor = '#FFFF' + hex + hex;
+    if (level < 15) {
+      level += 1;
+      setTimeout(step, 100);
+    }
+  };
+  setTimeout(step, 100);
+};
+
+fade(document.body);
+
 console.groupEnd('Closure');
 
 console.groupEnd('Ch4 - Functions');
