@@ -504,14 +504,14 @@ const myObjectClosure = (function () {
   let value = 0;
 
   return {
-    increment: (inc) => {
+    increment: inc => {
       value += typeof inc === 'number' ? inc : 1; // JS keeps value alive as long as it's needed for this function - closure
     },
     getValue: () => {
       return value;
-    }
+    },
   };
-}()); // () at end invokes the anonymous function
+})(); // () at end invokes the anonymous function
 
 console.log('myObjectClosure: ', myObjectClosure); // {increment: ƒ, getValue: ƒ}
 console.log('myObjectClosure.getValue(): ', myObjectClosure.getValue()); // 0
@@ -524,12 +524,12 @@ console.log('myObjectClosure: ', myObjectClosure); // {increment: ƒ, getValue: 
  * object with a get_status method and a private
  * status property
  */
-const quoClosure = (status) => {
+const quoClosure = status => {
   return {
     get_status: () => {
       return status;
-    }
-  }
+    },
+  };
 };
 
 // make an instance of quo
@@ -537,7 +537,7 @@ const myQuoClosure = quoClosure('closure is pretty cool');
 console.log('myQuoClosure.get_status: ', myQuoClosure.get_status()); // closure is pretty cool
 
 // set DOM node color to yellow and fade to white
-const fade = (node) => {
+const fade = node => {
   let level = 1;
   const step = () => {
     let hex = level.toString(16);
@@ -553,5 +553,20 @@ const fade = (node) => {
 fade(document.body);
 
 console.groupEnd('Closure');
+
+/*************
+ * Callbacks *
+ *************/
+console.groupCollapsed('Callbacks');
+
+const apiURL = 'https://pokeapi.co/api/v2/pokemon/charmander';
+const response = fetch(apiURL)
+  .then(blob => blob.json())
+  .then(json => console.log('callback (async): ', json)) // {abilities: Array(2), base_experience: 62, forms: Array(1), game_indices: Array(20), height: 6, …}
+  .catch(e => console.log(e.message));
+
+console.log('no callback (sync): ', response); // in frozen state. response pending since it did not wait for server response
+
+console.groupEnd('Callbacks');
 
 console.groupEnd('Ch4 - Functions');
