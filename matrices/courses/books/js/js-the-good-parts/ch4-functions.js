@@ -645,4 +645,24 @@ console.log('unique: ', uniqueArray); // ['Q1000', 'Q1001', 'Q1002', 'Q1003', 'Q
 
 console.groupEnd('Module');
 
+/*********
+ * Curry *
+ *********/
+console.groupCollapsed('Curry');
+
+Function.method('curry', function () {
+  const slice = Array.prototype.slice;
+  const args = slice.apply(arguments);
+  const that = this;
+
+  return function () {
+    return that.apply(null, args.concat(slice.apply(arguments)));
+  };
+});
+
+const add1 = add.curry(1);
+console.log('add1: ', add1(6));
+
+console.groupEnd('Curry');
+
 console.groupEnd('Ch4 - Functions');
