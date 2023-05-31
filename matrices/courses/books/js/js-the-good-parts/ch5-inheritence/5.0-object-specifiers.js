@@ -1,8 +1,8 @@
 'use strict';
 
-/*******************
+/*********************
  * Object Specifiers *
- *******************/
+ *********************/
 console.groupCollapsed('Object Specifiers');
 
 const makerNoObjectSpecifier = (name, title, powerLevel) => {
