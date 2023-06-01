@@ -75,7 +75,7 @@ const partsObj = {
   name: 'savith'
 };
 
-eventuality(partsObj)
+eventuality(partsObj);
 
 console.log('parts:', partsObj);
 
