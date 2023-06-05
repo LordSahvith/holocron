@@ -4,6 +4,7 @@
  * Array Literals *
  ******************/
 console.groupCollapsed('Array Literals');
+
 // inherits from Array.prototype
 const empty = [];
 const numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
