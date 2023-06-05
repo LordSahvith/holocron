@@ -28,6 +28,9 @@ function App() {
 
       <hr />
 
+      {/* create instance of List */}
+      <List />
+      {/* create instance of List */}
       <List />
     </div>
   );
