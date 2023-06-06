@@ -35,15 +35,41 @@ console.log('join2:', join2); // abcd
 console.groupEnd('join()');
 
 console.groupCollapsed('pop()');
+const pop1 = ARRAY1.concat();
+console.log('pop1 before pop():', pop1); // ['a', 'b', 'c']
+const pop2 = pop1.pop();
+console.log('pop1 after pop():', pop1); // ['a', 'b']
+console.log('pop2:', pop2); // c
 console.groupEnd('pop()');
 
 console.groupCollapsed('push()');
+const push1 = ARRAY1.concat();
+const push2 = ARRAY2.concat();
+
+// push() modifies the array, in this case push1
+// and returns the new length
+const push3 = push1.push(push2, true);
+console.log('push1:', push1); // ['a', 'b', 'c', Array(3), true]
+console.log('push3:', push3); // 5
 console.groupEnd('push()');
 
 console.groupCollapsed('reverse()');
+const reverse1 = ARRAY1.concat();
+console.log('reverse1 before reverse():', reverse1); // ['a', 'b', 'c']
+const reverse2 = reverse1.reverse(); // modifies and returns reference to array
+console.log('reverse1 after reverse():', reverse1); // ['c', 'b', 'a']
+console.log('reverse2:', reverse2); // ['c', 'b', 'a']
+reverse2.push('d');
+console.log('reverse1 after reverse2.push():', reverse1); // ['c', 'b', 'a']
+console.log('reverse2 after reverse2.push():', reverse2); // ['c', 'b', 'a']
 console.groupEnd('reverse()');
 
 console.groupCollapsed('shift()');
+const shift1 = ARRAY1.concat();
+console.log('shift1 before shift():', shift1); // ['a', 'b', 'c']
+const shift2 = shift1.shift(); // modifies and returns value
+console.log('shift1 after shift():', shift1); // ['b', 'c']
+console.log('shift2:', shift2); // 'a'
 console.groupEnd('shift()');
 
 console.groupCollapsed('slice()');
