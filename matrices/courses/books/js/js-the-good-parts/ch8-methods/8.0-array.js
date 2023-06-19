@@ -7,6 +7,15 @@ console.groupCollapsed('Array');
 
 const ARRAY1 = ['a', 'b', 'c'];
 const ARRAY2 = ['x', 'y', 'z'];
+const ARRAY_NUM_1 = [5, 4, 2, 3, 1];
+const ARRAY_NUM_2 = [15, 2, 24, 44, 69];
+const ARRAY_MULTI_TYPE_1 = ['aa', 'bb', 'a', 'c', 88, 33, 55, 11, 0];
+const ARRAY_OBJECTS_1 = [
+  {first: 'Lord', last: 'Vader'},
+  {first: 'sith', last: 'lord'},
+  {first: 'ashoka', last: 'tanno'},
+  {first: 'Lord', last: 'savith'},
+];
 
 console.groupCollapsed('concat()');
 const concat1 = ARRAY1.concat();
@@ -73,9 +82,58 @@ console.log('shift2:', shift2); // 'a'
 console.groupEnd('shift()');
 
 console.groupCollapsed('slice()');
+
+const slice1 = ARRAY1.concat(); // shallow copy
+const slice2 = slice1.slice(0, 1); // shallow copy
+const slice3 = slice1.slice(1); // not a reference
+const slice4 = slice1.slice(2, 3);
+
+console.log('slice1:', slice1); // ['a', 'b', 'c']
+console.log('slice2:', slice2); // ['a']
+console.log('slice3:', slice3); // ['b', 'c']
+console.log('slice4:', slice4); // ['c']
+
+// since slice isn't a reference but a shallow copy it remains unmodified
+console.log('slice1:', slice1); // ['a', 'b', 'c']
+
 console.groupEnd('slice()');
 
 console.groupCollapsed('sort()');
+
+const sortNumbers1 = ARRAY_NUM_1.concat(); // [5, 4, 2, 3, 1]
+const sortNumbers2 = ARRAY_NUM_2.concat(); // [15, 2, 24, 44, 69]
+const sortNumbers3 = sortNumbers1.concat(sortNumbers2); // [5, 4, 2, 3, 1, 15, 2, 24, 44, 69]
+
+// bad way to sort numbers since JS by default assumes strings
+console.log('sortNumbers1 bad (lucky):', sortNumbers1.sort()); // [1, 2, 3, 4, 5] - lucky shot
+console.log('sortNumbers2 bad:', sortNumbers2.sort()); // [15, 2, 24, 44, 69]
+console.log('sortNumbers3 bad:', sortNumbers3.sort()); // [1, 15, 2, 2, 24, 3, 4, 44, 5, 69]
+
+const sortNumbers4 = ARRAY_NUM_1.concat(); // [5, 4, 2, 3, 1]
+const sortNumbers5 = ARRAY_NUM_2.concat(); // [15, 2, 24, 44, 69]
+const sortNumbers6 = sortNumbers4.concat(sortNumbers5); // [5, 4, 2, 3, 1, 15, 2, 24, 44, 69]
+
+// good way to sort numbers since we are passing in a function that compares numbers
+// find sortNumbersFunc in ../helpers/arrays.js 
+console.log('sortNumbers4 good:', sortNumbers4.sort(sortNumbersFunc)); // [1, 2, 3, 4, 5]
+console.log('sortNumbers5 good:', sortNumbers5.sort(sortNumbersFunc)); // [2, 15, 24, 44, 69]
+console.log('sortNumbers6 good:', sortNumbers6.sort(sortNumbersFunc)); // [1, 2, 2, 3, 4, 5, 15, 24, 44, 69]
+
+// notice that when logged after sorting, it shows the  new order. that's becuase sorting
+// changes the order of the array.
+console.log('sortNumbers6 after sort:', sortNumbers6); // [1, 2, 2, 3, 4, 5, 15, 24, 44, 69]
+
+const sortMulti1 = ARRAY_MULTI_TYPE_1.concat();
+
+// find sortMultiFunc in ../helpers/arrays.js 
+console.log('sortMulti1 before sort:', sortMulti1); // ['aa', 'bb', 'a', 'c', 88, 33, 55, 11, 0]
+console.log('sortMulti1 after sort:', sortMulti1.sort(sortMultiFunc)); // [0, 11, 33, 55, 88, 'a', 'aa', 'bb', 'c']
+
+const sortArrayObjects1 = ARRAY_OBJECTS_1.concat();
+const sortArrayObjects2 = sortArrayObjects1.concat();
+console.log('sortArrayObjects1 before sort:', sortArrayObjects1);
+console.log('sortArrayObjects1 after sort:', sortArrayObjects2.sort(by('first')));
+
 console.groupEnd('sort()');
 
 console.groupCollapsed('splice()');
