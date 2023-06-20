@@ -137,9 +137,23 @@ console.log('sortArrayObjects1 after sort:', sortArrayObjects2.sort(by('first'))
 console.groupEnd('sort()');
 
 console.groupCollapsed('splice()');
+
+const spliceArray1 = ARRAY1.concat();
+console.log('spliceArray1 before splice:', spliceArray1); // ['a', 'b', 'c']
+const spliceArray2 = spliceArray1.splice(0, 1, 'bob', 'sheryl');
+console.log('spliceArray1 after splice:', spliceArray1); // ['bob', 'sheryl', 'b', 'c']
+console.log('spliceArray2:', spliceArray2); // ['a']
+
 console.groupEnd('splice()');
 
 console.groupCollapsed('unshift()');
+
+const unshiftArray1 = ARRAY1.concat();
+console.log('unshiftArray1 before shift:', unshiftArray1); // ['a', 'b', 'c']
+const unshiftArray2 = unshiftArray1.unshift('1', 8);
+console.log('unshiftArray1 after shift:', unshiftArray1); // ['1', 8, 'a', 'b', 'c']
+console.log('unshiftArray2:', unshiftArray2); // 5
+
 console.groupEnd('unshift()');
 
 console.groupEnd('Array');

@@ -27,7 +27,7 @@ const by = (name) => {
     let a;
     let b;
 
-    if (typeof o === 'object' && typeof p === 'object' &&  o && p) {
+    if (typeof o === 'object' && typeof p === 'object' && o && p) {
       a = o[name];
       b = p[name];
 
@@ -41,7 +41,7 @@ const by = (name) => {
 
       const typeA = typeof a;
       const typeB = typeof b;
-    
+
       return typeA < typeB ? -1 : 1;
     } else {
       throw {
