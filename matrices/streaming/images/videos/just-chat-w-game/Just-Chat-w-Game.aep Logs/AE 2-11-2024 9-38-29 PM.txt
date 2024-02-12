@@ -1,0 +1,17 @@
+Adobe After Effects v24.1 Windows 64 render log for project “Just-Chat-w-Game.aep”
+
+Rendering started on 2/11/2024 at 9:38:29 PM
+
+  2/11/2024 9:38:29 PM: Starting composition “starting-soon-glass-1”.
+
+  Output To: C:\Users\bulle\Documents\GitHub\holocron\matrices\streaming\images\videos\just-chat-w-game\starting-soon-glass-1.mov  After Effects warning: Could not open the file 'C:\Users\bulle\AppData\Local\Temp\Adobe\After Effects\24.1\Disk Cache - MSI.noindex\b0\b0c9bc86-5fcb-a698-685e-0a7d15ebadb9.ADBE LCV.F00864E.lwQAAJEDAADlBAAA3wMAAJcEAACRAwAA5QQAAN8DAACXBAAAkQMAAOUEAADfAwAAAAAAAAAAAACABwAAOAQAAAIAAAA=.aecache'.After Effects warning: Could not open the file 'C:\Users\bulle\AppData\Local\Temp\Adobe\After Effects\24.1\Disk Cache - MSI.noindex\0e\0ef97ee3-3cf8-54fb-d4d6-8c2fef4673a7.ADBE LCV.F00864E.fgIAAHMDAADMAgAAwQMAAH4CAABzAwAAzAIAAMEDAAB+AgAAcwMAAMwCAADBAwAAAAAAAAAAAACABwAAOAQAAAIAAAA=.aecache'.After Effects warning: Could not open the file 'C:\Users\bulle\AppData\Local\Temp\Adobe\After Effects\24.1\Disk Cache - MSI.noindex\0e\0ef97ee3-3cf8-54fb-d4d6-8c2fef4673a7.ADBE LCV.F00864E.fgIAAHMDAADMAgAAwQMAAH4CAABzAwAAzAIAAMEDAAB+AgAAcwMAAMwCAADBAwAAAAAAAAAAAACABwAAOAQAAAIAAAA=.aecache'.After Effects warning: Could not open the file 'C:\Users\bulle\AppData\Local\Temp\Adobe\After Effects\24.1\Disk Cache - MSI.noindex\02\02bfaa13-3b98-ee37-558e-56e6f63ee7b5.ADBE LCV.F00864E.UwQAAN4DAAChBAAALAQAAFMEAADeAwAAoQQAACwEAABTBAAA3gMAAKEEAAAsBAAAAAAAAAAAAACABwAAOAQAAAIAAAA=.aecache'.After Effects warning: Could not open the file 'C:\Users\bulle\AppData\Local\Temp\Adobe\After Effects\24.1\Disk Cache - MSI.noindex\4a\4aa66b16-6ba6-5ce2-f7b7-028e0858b8d7.ADBE LCV.F00864E.1wIAANMDAAAlAwAAIQQAANcCAADTAwAAJQMAACEEAADXAgAA0wMAACUDAAAhBAAAAAAAAAAAAACABwAAOAQAAAIAAAA=.aecache'.After Effects warning: Could not open the file 'C:\Users\bulle\AppData\Local\Temp\Adobe\After Effects\24.1\Disk Cache - MSI.noindex\8c\8c21e217-7c64-1bd2-20b0-24ba84f7c291.ADBE ICV.F00864E.AAAAADgEgAc=.aecache'.  2/11/2024 9:40:25 PM: Finished composition “starting-soon-glass-1”.
+
+
+  2/11/2024 9:40:25 PM: Starting composition “just-chat-w-game”.
+
+  Output To: C:\Users\bulle\Documents\GitHub\holocron\matrices\streaming\images\videos\just-chat-w-game\just-chat-w-game-webcam-overlay.mov    2/11/2024 9:42:25 PM: Finished composition “just-chat-w-game”.
+
+
+  Total Time Elapsed: 3 Min, 56 Sec
+Log closed on 2/11/2024 at 9:42:25 PM
+
