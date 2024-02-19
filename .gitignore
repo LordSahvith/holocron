@@ -18,6 +18,7 @@ nbproject
 .gitattributes
 .DS_Store
 /magento/app/code/Cryozonic/StripePayments/lib/stripe-php/
+*.mov
 
 */stream-videos/**/css
 **/bare-bones/css/
