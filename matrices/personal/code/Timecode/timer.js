@@ -3,12 +3,19 @@ let fs = require('fs');
 let sec = 0;
 let min = 0;
 let hour = 0;
-let timeInFormat = '';
-let timeOutFormat = '';
-let subTitleFormat = '';
 const finalFormatArray = [['Timecode In', 'Timecode Out', 'Subtitle']];
 
-for (let x = 0; x < 601; x++) {
+const prependZero = time => {
+  if (time < 10) {
+    time = '0' + time;
+  }
+
+  return time;
+};
+
+const TIMER_DURATION = 601; // 10 mins 1 sec gives 00:00 - 10:00
+
+for (let x = 0; x < TIMER_DURATION; x++) {
   if (sec === 60) {
     sec = 0;
     min++;
@@ -36,33 +43,16 @@ for (let x = 0; x < 601; x++) {
     formatedOutHour++;
   }
 
-  if (formatedInSec < 10) {
-    formatedInSec = '0' + formatedInSec;
-  }
+  formatedInSec = prependZero(formatedInSec);
+  formatedOutSec = prependZero(formatedOutSec);
+  formatedInMin = prependZero(formatedInMin);
+  formatedOutMin = prependZero(formatedOutMin);
+  formatedInHour = prependZero(formatedInHour);
+  formatedOutHour = prependZero(formatedOutHour);
 
-  if (formatedOutSec < 10) {
-    formatedOutSec = '0' + formatedOutSec;
-  }
-
-  if (formatedInMin < 10) {
-    formatedInMin = '0' + formatedInMin;
-  }
-
-  if (formatedOutMin < 10) {
-    formatedOutMin = '0' + formatedOutMin;
-  }
-
-  if (formatedInHour < 10) {
-    formatedInHour = '0' + formatedInHour;
-  }
-
-  if (formatedOutHour < 10) {
-    formatedOutHour = '0' + formatedOutHour;
-  }
-
-  timeInFormat = formatedInHour + ':' + formatedInMin + ':' + formatedInSec + ':00\t';
-  timeOutFormat = formatedOutHour + ':' + formatedOutMin + ':' + formatedOutSec + ':00\t';
-  subTitleFormat =
+  let timeInFormat = formatedInHour + ':' + formatedInMin + ':' + formatedInSec + ':00\t';
+  let timeOutFormat = formatedOutHour + ':' + formatedOutMin + ':' + formatedOutSec + ':00\t';
+  let subTitleFormat =
     hour > 0 ? formatedInHour + ':' + formatedInMin + ':' + formatedInSec : formatedInMin + ':' + formatedInSec;
 
   finalFormatArray.push([timeInFormat + timeOutFormat + subTitleFormat]);
