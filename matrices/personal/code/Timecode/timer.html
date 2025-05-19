@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        let sec = 0;
+let min = 0;
+let hour = 0;
+let format = '';
+
+for (let x = 0; x < 10; x++){
+    if (sec === 60) {
+        sec = 0;
+        min++;
+    }
+
+    if (sec < 10 || min < ) {
+        sec = '0' + sec;
+    }
+
+    let timeIn = hour + ":"+ min + ":" + sec  + ":00\t";
+    let timeOut = hour + ":" + min + ":" + ++sec  + ":00\t";
+    let subtitle = min + ":" + sec + "\n";
+
+    format += timeIn + timeOut + subtitle;
+}
+
+console.log(format);
+    </script>
+    
+</body>
+</html>
