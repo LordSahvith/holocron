@@ -6,9 +6,12 @@ let hour = 0;
 let timeInFormat = '';
 let timeOutFormat = '';
 let subTitleFormat = '';
-let finalFormatArray = [['Timecode In', 'Timecode Out', 'Subtitle']];
+let finalFormatArray = [
+  ['Timecode In', 'Timecode Out', 'Subtitle'],
+  ['00:08:57:00', '00:08:58:00', '08:57'],
+];
 
-for (let x = 0; x < 11; x++) {
+for (let x = 0; x < 600; x++) {
   if (sec === 60) {
     sec = 0;
     min++;
@@ -40,8 +43,8 @@ for (let x = 0; x < 11; x++) {
     formatedInHour = '0' + formatedInHour;
   }
 
-  timeInFormat = formatedInHour + ':' + formatedInMin + ':' + formatedInSec + ':00\u0009';
-  timeOutFormat = formatedInHour + ':' + formatedInMin + ':' + formatedOutSec + ':00\u0009';
+  timeInFormat = formatedInHour + ':' + formatedInMin + ':' + formatedInSec + ':00';
+  timeOutFormat = formatedInHour + ':' + formatedInMin + ':' + formatedOutSec + ':00';
   subTitleFormat =
     hour > 0 ? formatedInHour + ':' + formatedInMin + ':' + formatedInSec : formatedInMin + ':' + formatedInSec;
 
