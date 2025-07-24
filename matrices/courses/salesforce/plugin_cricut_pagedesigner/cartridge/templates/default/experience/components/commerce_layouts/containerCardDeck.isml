@@ -1,7 +1,0 @@
-<isscript>
-    var assets = require('*/cartridge/scripts/assets.js');
-    assets.addCss('/css/components/pd-containerCardDeck.css');
-</isscript>
-<div class="${pdict.containerMaxWidth}">
-    <isprint value="${pdict.regions.cardsInDeck.setClassName('pd-card-deck' + pdict.smColsClass + pdict.mdColsClass + pdict.lgColsClass).setComponentClassName('card bg-transparent border-0').render()}" encoding="off" />
-</div>

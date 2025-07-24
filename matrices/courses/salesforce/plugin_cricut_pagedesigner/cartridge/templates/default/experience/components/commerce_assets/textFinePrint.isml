@@ -1,8 +1,0 @@
-<isscript>
-    var assets = require('*/cartridge/scripts/assets.js');
-    assets.addCss('/css/components/pd-finePrint.css');
-</isscript>
-
-<div class="finePrint${pdict.orderedListStyling}${pdict.unorderedListStyling}">
-    <isprint value="${pdict.text}" encoding="off" />
-</div>

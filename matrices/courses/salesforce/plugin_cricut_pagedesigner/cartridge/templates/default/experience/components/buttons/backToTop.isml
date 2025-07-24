@@ -1,9 +1,0 @@
-<isscript>
-    var assets = require('*/cartridge/scripts/assets.js');
-    assets.addCss('/css/components/pd-backToTop.css');
-    assets.addJs('/js/components/backToTop.js');
-</isscript>
-
-<button id="backToTop" class="pd-backToTop scrollItem${pdict.buttonColor}"<isprint value="${pdict.gaEvent}" encoding="off" /><isprint value="${pdict.buttonScrollTo}" encoding="off" /><isprint value="${pdict.buttonDataTarget}" encoding="off" />>
-    <img src="https://d2e2oszluhwxlw.cloudfront.net/home/v3/public/icons/up-arrow.png" alt="Back to Top">
-</button>

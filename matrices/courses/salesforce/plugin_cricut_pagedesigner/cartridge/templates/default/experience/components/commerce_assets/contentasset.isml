@@ -1,3 +1,0 @@
-<isinclude template="/components/modules" sf-toolkit="off" />
-
-<iscontentasset aid="${pdict.aid}" />

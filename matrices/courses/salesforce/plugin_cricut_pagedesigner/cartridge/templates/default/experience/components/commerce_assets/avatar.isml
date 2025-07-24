@@ -1,6 +1,0 @@
-<isscript>
-    var assets = require('*/cartridge/scripts/assets.js');
-    assets.addCss('/css/components/pd-avatar.css');
-</isscript>
-
-<img class="avatar" src="${pdict.imgSrc ? pdict.imgSrc : URLUtils.staticURL(pdict.swatch)}" alt="${pdict.imgAlt}" />

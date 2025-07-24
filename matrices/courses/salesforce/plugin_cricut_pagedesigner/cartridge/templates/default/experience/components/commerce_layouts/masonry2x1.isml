@@ -1,9 +1,0 @@
-<isscript>
-    var assets = require('*/cartridge/scripts/assets.js');
-    assets.addCss('/css/components/pd-masonry.css');
-</isscript>
-
-<div class="masonry no-gutters">
-    <isprint value="${pdict.regions.column1.setClassName("masonry__brick order-"+ pdict.order1 + " order-md-"+ pdict.order1Desktop +"").render()}" encoding="off"/>
-    <isprint value="${pdict.regions.column2.setClassName("masonry__brick order-"+ pdict.order2 + " order-md-"+ pdict.order2Desktop +"").render()}" encoding="off"/>
-</div>

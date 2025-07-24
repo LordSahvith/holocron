@@ -1,5 +1,0 @@
-<div class="bundlesWrapper">
-    <div class="bundles bundles-featured">
-        <isprint value="${pdict.regions.bundleProductRegion.render()}" encoding="off"/>
-    </div>
-</div>

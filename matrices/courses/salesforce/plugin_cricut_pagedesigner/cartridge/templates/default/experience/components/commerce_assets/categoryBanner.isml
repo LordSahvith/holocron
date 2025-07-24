@@ -1,9 +1,0 @@
-<div class="category-banner__wrapper">
-    <div class="category-banner">
-        <div class="category-banner__content">
-            <h2 class="category-banner__title js-category-banner__title" data-cgid="${pdict.categoryId}">
-                <isprint value="${pdict.heading ? pdict.heading : ''}" encoding="off" />
-            </h2>
-        </div>
-    </div>
-</div>
