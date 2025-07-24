@@ -1,7 +1,0 @@
-<isscript>
-    var assets = require('*/cartridge/scripts/assets.js');
-    assets.addCss('/css/components/pd-containerAdjustableWidth.css');
-</isscript>
-<div class="${pdict.containerMaxWidth}${pdict.mobileAbove}${pdict.tabletAbove}${pdict.desktopAbove}${pdict.mobileBelow}${pdict.tabletBelow}${pdict.desktopBelow}${pdict.mobileLeft}${pdict.tabletLeft}${pdict.desktopLeft}${pdict.mobileRight}${pdict.tabletRight}${pdict.desktopRight}">
-    <isprint value="${pdict.regions.containterContent.render()}" encoding="off" />
-</div>

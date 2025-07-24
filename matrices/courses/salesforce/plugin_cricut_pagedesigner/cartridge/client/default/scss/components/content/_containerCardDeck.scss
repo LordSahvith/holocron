@@ -1,8 +1,0 @@
-.pd-card-deck {
-    --grid-gutter-width: 20px;
-
-    display: flex;
-    flex-flow: row wrap;
-    column-gap: var(--grid-gutter-width);
-    row-gap: calc(3 * var(--grid-gutter-width));
-}

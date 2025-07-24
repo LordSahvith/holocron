@@ -1,9 +1,0 @@
-{
-    "thumbnail" : 300,
-    "mobile"    : 640,
-    "mobile2x"  : 1280,
-    "tablet"    : 1024,
-    "tablet2x"  : 2048,
-    "desktop"   : 2048,
-    "desktop2x" : 3000
-}
