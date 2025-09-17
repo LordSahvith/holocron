@@ -51,7 +51,12 @@
           });
       }
 
+      // call on load
       GetSubscribers();
+
+      // then call with interval every min
+      const intervalDuration = 6 * 10 * 1000;
+      setInterval(GetSubscribers, intervalDuration);
     </script>
   </body>
 </html>
