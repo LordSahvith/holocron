@@ -1,0 +1,12 @@
+AE 26.5x89, font: UppercutAngle
+> new project
+  ok
+> build 4K
+  ok
+> build 1080p
+  ok
+> save project
+  ok
+done
+> export mogrt 4K: true
+> export mogrt 1080p: true
